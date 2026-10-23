@@ -34,6 +34,9 @@ MANIFIESTO = Path(args.referencia) / f"rastreo-{args.idioma}.json"
 filas = json.loads(MANIFIESTO.read_text(encoding="utf-8"))
 SALIDA = Path(args.salida)
 estructura = json.loads(SALIDA.read_text(encoding="utf-8")) if SALIDA.exists() else {}
+# Reglas de contenido aprobadas por Yama (títulos/H1): mismo fichero que leen las plantillas.
+_REGLAS = Path("src/data/reglas-contenido") / f"{args.idioma}.json"
+REGLAS_H1 = {k: v["h1"] for k, v in (json.loads(_REGLAS.read_text(encoding="utf-8")).get("titulos", {}).get("categorias", {}) if _REGLAS.exists() else {}).items() if isinstance(v, dict) and v.get("h1")}
 
 # Título del H1 para la página de contacto, por idioma (el <title> del original es
 # «Contacte con nosotros - Telas de Mamá»; se toma la parte antes del guion).
@@ -68,6 +71,13 @@ for url, f in filas.items():
     for h in soup.find_all(re.compile(r"^h[1-6]$")):
         t = texto(h)
         encs.append({"n": int(h.name[1]), "t": t})
+    # Reglas de contenido aprobadas (src/data/reglas-contenido/<idioma>.json): H1 nuevo en ciertas categorías.
+    if f.get("tipo") == "category" and REGLAS_H1.get(str(f.get("id"))):
+        nuevo_h1 = REGLAS_H1[str(f.get("id"))]
+        for e in encs:
+            if e["n"] == 1:
+                e["t"] = nuevo_h1
+                break
     n_h1 = sum(1 for e in encs if e["n"] == 1)
     regla = None
     if n_h1 == 0:

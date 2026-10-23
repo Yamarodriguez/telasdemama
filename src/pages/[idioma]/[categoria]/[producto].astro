@@ -4,6 +4,7 @@ import Base from '../../../layouts/Base.astro';
 import Ficha from '../../../components/plantillas/Ficha.astro';
 import { idiomas, catalogo, bloques, textoPlano, numeroPlano } from '../../../lib/catalogo';
 import { absoluta } from '../../../lib/sitio';
+import { tituloProducto } from '../../../lib/reglas-titulos.mjs';
 
 export function getStaticPaths() {
   const rutas = [];
@@ -61,6 +62,6 @@ const jsonLd = p.muestra_precio
     }
   : undefined;
 ---
-<Base idioma={idioma} tipo="product" layout="layout-full-width" clasesExtra={clases} title={p.meta_title || p.title || p.nombre} description={p.meta_description || descripcionPlana} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url} migas={p.breadcrumb} og={og} jsonLd={jsonLd}>
+<Base idioma={idioma} tipo="product" layout="layout-full-width" clasesExtra={clases} title={tituloProducto(idioma, p)} description={p.meta_description || descripcionPlana} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url} migas={p.breadcrumb} og={og} jsonLd={jsonLd}>
   <Ficha idioma={idioma} producto={p} />
 </Base>

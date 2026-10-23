@@ -15,6 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { parse } from 'node-html-parser';
+import { tituloCategoria, h1Categoria, tituloProducto, tituloPortada } from '../src/lib/reglas-titulos.mjs';
 
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i === -1 ? d : process.argv[i + 1]; };
 const IDIOMA = arg('idioma', 'es');
@@ -29,6 +30,37 @@ const ATTR_IGNORADOS = new Set(config.atributos_ignorados);
 const IDS_ALEATORIOS = config.ids_aleatorios.map((r) => new RegExp(r));
 const RENOMBRAR = Object.keys(config.renombrar);
 const QUITAR = Object.keys(config.quitar).join(', ');
+
+// ---- reglas de contenido aprobadas (títulos): se aplican a la REFERENCIA antes de comparar ----
+const catalogoDir = `src/data/catalogo/${IDIOMA}`;
+const leerJson = (f) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null);
+const categorias = leerJson(`${catalogoDir}/categorias.json`) ?? [];
+const productos = leerJson(`${catalogoDir}/productos.json`) ?? [];
+const otras = leerJson(`${catalogoDir}/otras.json`) ?? {};
+const categoriaPorId = new Map(categorias.map((c) => [c.id, c]));
+const categoriaPorUrl = new Map(categorias.map((c) => [c.url, c]));
+const productoPorUrl = new Map(productos.map((p) => [p.url, p]));
+/** Title y H1 que debe tener la página nueva según las reglas; null = el de la referencia. */
+function esperadoPara(url) {
+  const ruta = decodeURIComponent(new URL(url).pathname).replace(/\/$/, '') || '/';
+  if (ruta === `/${IDIOMA}`) { const o = otras[`/${IDIOMA}`] ?? otras[`/${IDIOMA}/`]; return o ? { title: tituloPortada(IDIOMA, o.title) } : null; }
+  const c = categoriaPorUrl.get(ruta);
+  if (c) return { title: tituloCategoria(IDIOMA, c, categoriaPorId), h1: h1Categoria(IDIOMA, c), h1Original: c.h1 || c.nombre };
+  const p = productoPorUrl.get(ruta);
+  if (p) return { title: tituloProducto(IDIOMA, p) };
+  return null;
+}
+function aplicarReglasAReferencia(root, url) {
+  const e = esperadoPara(url);
+  if (!e) return;
+  const page = new URL(url).searchParams.get('page');
+  const t = root.querySelector('title');
+  if (t && e.title) t.set_content(page && page !== '1' ? `${e.title} (${page})` : e.title);
+  if (e.h1 && e.h1 !== e.h1Original) {
+    const h1 = root.querySelector('.block-category h1');
+    if (h1) h1.set_content(e.h1);
+  }
+}
 
 // ---- utilidades ----
 function ficheroDist(url) {
@@ -175,6 +207,7 @@ for (const [url, f] of entradas) {
   if (!fs.existsSync(destino)) { r.diffs.push({ donde: '(fichero)', que: 'falta en dist', ref: destino, nuevo: '' }); }
   else {
     const ra = preparar(fs.readFileSync(f.fichero, 'utf8'), 'ref');
+    aplicarReglasAReferencia(ra, url);
     const rb = preparar(fs.readFileSync(destino, 'utf8'), 'nuevo');
     r.diffs.push(...compararCabecera(ra, rb));
     const ba = ra.querySelector('body'), bb = rb.querySelector('body');

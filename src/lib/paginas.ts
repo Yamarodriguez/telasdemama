@@ -2,6 +2,7 @@
 // las rutas de Astro compartan la misma información: productos, paginación, metadatos y columna izquierda.
 
 import { catalogo, bloques, nodoArbol, paginar, type NodoArbol, type Producto } from './catalogo';
+import { tituloCategoria, h1Categoria } from './reglas-titulos.mjs';
 
 export interface Listado {
   /** Tramo de la URL tras /idioma/ (p. ej. «3-telas», «mas-vendidos», «brand/1-telasdemama»). */
@@ -40,14 +41,16 @@ export function listados(idioma: string): Listado[] {
     const slug = cat.url.replace(`/${idioma}/`, '');
     const productos = c.productosDe(cat.productos);
     const extra = b.facetas[String(cat.id)] ?? {};
+    // Títulos y H1 con las reglas de contenido aprobadas (src/data/reglas-contenido/<idioma>.json).
+    const h1 = h1Categoria(idioma, cat);
     res.push({
       slug,
       base: cat.url,
       tipo: 'category',
       layout: 'layout-left-column',
-      titulo: cat.h1 || cat.nombre,
-      h1: cat.h1 || cat.nombre,
-      title: cat.title,
+      titulo: cat.h1 || cat.nombre, // el rótulo del listado («Telas · Hay 332 productos») sigue siendo el nombre
+      h1,
+      title: tituloCategoria(idioma, cat, c.categoriaPorId),
       description: cat.meta_description,
       keywords: cat.meta_keywords,
       canonical: cat.canonical,

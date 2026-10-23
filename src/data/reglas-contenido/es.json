@@ -1,0 +1,24 @@
+{
+  "_nota": "Cambios de contenido APROBADOS por Yama (regla A3.2 del método: regla en fichero de datos, script repetible con pasada en seco, commit propio). Las plantillas y las comprobaciones (estructura-viva, comparar-plantillas) leen este mismo fichero. Lo escrito a mano por la tienda (títulos a medida) no se pisa.",
+  "titulos": {
+    "aprobado": "Yama, 23-10-2026 (informes/analisis-competencia.md §4)",
+    "portada": {
+      "title": "Telas de Mamá · Tienda de telas online y mercería en Asturias",
+      "h1": "Tienda de telas online: telas infantiles, algodón y mercería",
+      "_h1_nota": "En la copia fiel el H1 de la portada es el logotipo; este H1 lo pinta el rediseño (Fase 3) en su cabecera de portada."
+    },
+    "categorias": {
+      "3": { "h1": "Telas por metros", "_nota": "El title de «Telas» ya está escrito a mano en la tienda y se conserva." }
+    },
+    "patron_categoria_sin_titulo_propio": {
+      "_nota": "Solo cuando el title de la categoría era su nombre a secas (PrestaShop por defecto). {nombre} es el nombre de la categoría.",
+      "bajo_telas": "{nombre} · Telas por metros · Telas de Mamá",
+      "bajo_merceria": "{nombre} · Mercería online · Telas de Mamá",
+      "resto": "{nombre} · Telas de Mamá"
+    },
+    "patron_ficha_sin_titulo_propio": {
+      "_nota": "Solo cuando el title de la ficha era el nombre del producto a secas (sin meta title propio).",
+      "patron": "{nombre} · Telas de Mamá"
+    }
+  }
+}

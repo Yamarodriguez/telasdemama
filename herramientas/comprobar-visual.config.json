@@ -32,6 +32,7 @@
     ".product-actions": "Dec. 8: contiene el botón de WhatsApp",
     ".product-additional-info": "Dec. 8: va pegado al botón de WhatsApp, que es más ancho que el de carrito",
     ".page-heading": "Regla del H1: en los listados sin H1 el contador va en una línea aparte bajo el título",
+    ".block-category h1": "Títulos aprobados por Yama (reglas-contenido): el H1 de «Telas» pasa a «Telas por metros» y en móvil ocupa dos líneas",
     "#main h1": "Regla del H1: H1 nuevo en los listados y en contacto",
     ".h1-regla": "Regla del H1: la página de contacto gana un título H1 encima de las columnas",
     ".sitemap": "Dec. 8: en el mapa del sitio desaparece la columna «Su cuenta» (en móvil las columnas van apiladas y la página es más corta)",
