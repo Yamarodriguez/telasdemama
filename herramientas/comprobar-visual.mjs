@@ -13,7 +13,7 @@
 // puerto 8091, con las mismas reglas que Netlify) y usa el Chrome instalado (Playwright, channel chrome).
 // Las peticiones a dominios externos (Google, Revi, Metricool…) se bloquean en los dos lados.
 //
-// Uso: node herramientas/comprobar-visual.mjs [--idioma es] [--solo C4] [--pagina /es/3-telas] [--sin-capturas]
+// Uso: node herramientas/comprobar-visual.mjs [--idioma es] [--solo C4] [--pagina /es/3-telas] [--sin-capturas] [--dist dist]
 // Salida: informes/visual.md, capturas/*.png; código 1 si hay fallos.
 
 import fs from 'node:fs';
@@ -27,6 +27,7 @@ const IDIOMA = arg('idioma', 'es');
 const SOLO = arg('solo', '');
 const PAGINA = arg('pagina', '');
 const SIN_CAPTURAS = process.argv.includes('--sin-capturas');
+const DIST = arg('dist', 'dist'); // carpeta compilada que se sirve en 8091
 const PUERTO_REF = 8090, PUERTO_NUEVA = 8091;
 const config = JSON.parse(fs.readFileSync('herramientas/comprobar-visual.config.json', 'utf8'));
 const manifiesto = JSON.parse(fs.readFileSync(`referencia/rastreo-${IDIOMA}.json`, 'utf8'));
@@ -50,7 +51,7 @@ paginas.push({ url: DOMINIO + '/pagina-que-no-existe-404', tipo: 'pagenotfound' 
 function rutaDist(urlPath) {
   let p; try { p = decodeURIComponent(urlPath); } catch { p = urlPath; }
   const candidatos = [p, p + '.html', p.replace(/\/$/, '') + '/index.html', p + '/index.html'];
-  for (const c of candidatos) { const f = path.join('dist', c); if (fs.existsSync(f) && fs.statSync(f).isFile()) return f; }
+  for (const c of candidatos) { const f = path.join(DIST, c); if (fs.existsSync(f) && fs.statSync(f).isFile()) return f; }
   return null;
 }
 const TIPOS = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'application/javascript', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.gif': 'image/gif', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.woff': 'font/woff', '.woff2': 'font/woff2', '.ttf': 'font/ttf', '.eot': 'application/vnd.ms-fontobject', '.webp': 'image/webp', '.json': 'application/json' };
@@ -63,7 +64,7 @@ function servirDist() {
       const page = u.searchParams.get('page');
       if (page && page !== '1') p = p.replace(/\/$/, '') + `/pagina/${page}`;
       const f = rutaDist(p) ?? (fs.existsSync(path.join('public', decodeURIComponent(p))) && fs.statSync(path.join('public', decodeURIComponent(p))).isFile() ? path.join('public', decodeURIComponent(p)) : null);
-      if (!f) { r.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' }); r.end(fs.existsSync('dist/404.html') ? fs.readFileSync('dist/404.html') : 'no'); return; }
+      if (!f) { r.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' }); r.end(fs.existsSync(path.join(DIST, '404.html')) ? fs.readFileSync(path.join(DIST, '404.html')) : 'no'); return; }
       r.writeHead(200, { 'Content-Type': TIPOS[path.extname(f).toLowerCase()] ?? 'application/octet-stream' });
       r.end(fs.readFileSync(f));
     });

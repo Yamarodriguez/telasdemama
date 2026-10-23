@@ -1,6 +1,7 @@
 #!/bin/sh
 # Hook pre-push (método, sección C): desde la Fase 2 no se sube nada sin 0 fallos.
-# Pasa `npm run todo:visual` (datos, compilar, validar, encabezados, plantillas y navegador).
+# Pasa `npm run todo:visual` (datos, compilar, validar, encabezados, plantillas y navegador)
+# compilando en dist-comprobacion/ (carpeta propia: otra sesión puede estar recompilando dist/).
 # Se activa con `npm run hooks:activar` (git config core.hooksPath .githooks).
 # Si de verdad hay que subir algo con las comprobaciones rotas (por ejemplo datos de la Fase 1
 # mientras faltan imágenes), se puede saltar UNA vez con: SALTAR_COMPROBACIONES=1 git push
@@ -12,7 +13,7 @@ if [ "$SALTAR_COMPROBACIONES" = "1" ]; then
 fi
 
 echo "pre-push: pasando npm run todo:visual antes de subir…"
-npm run todo:visual
+npm run todo:visual -- --dist dist-comprobacion
 estado=$?
 if [ $estado -ne 0 ]; then
   echo ""

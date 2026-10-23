@@ -11,6 +11,10 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 
 const VISUAL = process.argv.includes('--visual');
+// --dist <carpeta>: compilar y comprobar en una carpeta propia (el hook pre-push usa dist-comprobacion/) para que
+// otra sesión que recompile dist/ a la vez no estropee la comprobación.
+const iDist = process.argv.indexOf('--dist');
+const DIST = iDist === -1 ? 'dist' : process.argv[iDist + 1];
 const inicio = Date.now();
 const resultados = [];
 
@@ -65,20 +69,20 @@ paso('datos', () => {
 });
 
 // 2. Compilar con Astro.
-paso('compilar', () => ejecutar('npx', ['astro', 'build']));
+paso('compilar', () => ejecutar('npx', ['astro', 'build', '--outDir', DIST]));
 
 // 3. Validador (C6).
-paso('validar', () => ejecutar('node', ['herramientas/validar.mjs']));
+paso('validar', () => ejecutar('node', ['herramientas/validar.mjs', '--dist', DIST]));
 
 // 4. Encabezados (C1), completo desde la Fase 2: falla si falta alguna página de la referencia.
-paso('encabezados', () => ejecutar('node', ['herramientas/comparar-encabezados.mjs', '--completo']));
+paso('encabezados', () => ejecutar('node', ['herramientas/comparar-encabezados.mjs', '--completo', '--dist', DIST]));
 
 // 5. Marcado por plantilla (C2): cada página compilada contra su referencia, sin navegador.
-paso('plantillas', () => ejecutar('node', ['herramientas/comparar-plantillas.mjs']));
+paso('plantillas', () => ejecutar('node', ['herramientas/comparar-plantillas.mjs', '--dist', DIST]));
 
 // 6. Con navegador (C3 contraste, C4 geometría, C5 404 en vivo): herramientas/comprobar-visual.mjs.
 if (VISUAL) {
-  paso('visual', () => ejecutar('node', ['herramientas/comprobar-visual.mjs']));
+  paso('visual', () => ejecutar('node', ['herramientas/comprobar-visual.mjs', '--dist', DIST]));
 }
 
 informe();

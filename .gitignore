@@ -3,6 +3,10 @@
 node_modules/
 # solo el dist/ de la raíz: el módulo ps_facetedsearch tiene una carpeta views/dist/ que sí sube
 /dist/
+# compilación aparte de las capturas del rediseño (herramientas/capturar-rediseno.mjs), para no pisar dist/
+/dist-rediseno/
+# compilación propia del hook pre-push (herramientas/todo.mjs --dist)
+/dist-comprobacion/
 .astro/
 *.xml
 *.zip
