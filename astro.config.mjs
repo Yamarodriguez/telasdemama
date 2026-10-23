@@ -7,7 +7,7 @@ export default defineConfig({
   site: 'https://telasdemama.com',
   trailingSlash: 'never',
   build: {
-    format: 'file',
+    format: 'preserve', // index.astro → carpeta/index.html (la portada es /es/), el resto → nombre.html
     assets: '_astro',
   },
   compressHTML: false,

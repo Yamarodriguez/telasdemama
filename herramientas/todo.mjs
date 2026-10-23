@@ -70,8 +70,11 @@ paso('compilar', () => ejecutar('npx', ['astro', 'build']));
 // 3. Validador (C6).
 paso('validar', () => ejecutar('node', ['herramientas/validar.mjs']));
 
-// 4. Encabezados (C1).
-paso('encabezados', () => ejecutar('node', ['herramientas/comparar-encabezados.mjs']));
+// 4. Encabezados (C1), completo desde la Fase 2: falla si falta alguna página de la referencia.
+paso('encabezados', () => ejecutar('node', ['herramientas/comparar-encabezados.mjs', '--completo']));
+
+// 5. Marcado por plantilla (C2): cada página compilada contra su referencia, sin navegador.
+paso('plantillas', () => ejecutar('node', ['herramientas/comparar-plantillas.mjs']));
 
 // 5. Con navegador (Fase 2): marcado por plantilla, contraste, geometría, 404 en vivo.
 if (VISUAL) {

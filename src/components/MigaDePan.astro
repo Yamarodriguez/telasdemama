@@ -1,0 +1,16 @@
+---
+/** Miga de pan con microdatos BreadcrumbList, igual que la de PrestaShop. */
+import { absoluta } from '../lib/sitio';
+interface Props { migas: { texto: string; url: string }[] }
+const { migas } = Astro.props;
+---
+<nav data-depth={migas.length} class="breadcrumb">
+  <ol class="container -responsive" itemscope itemtype="http://schema.org/BreadcrumbList">
+    {migas.map((m, i) => (
+      <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <a itemprop="item" href={m.url}><span itemprop="name">{m.texto}</span></a>
+        <meta itemprop="position" content={String(i + 1)} />
+      </li>
+    ))}
+  </ol>
+</nav>

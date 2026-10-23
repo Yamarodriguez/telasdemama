@@ -1,0 +1,129 @@
+---
+/**
+ * Pie: boletín, «Sobre nosotros», enlaces, información de la tienda y aviso de las ayudas Leader.
+ * Datos de src/data/bloques/<idioma>/pie.json. Por la Dec. 8, el bloque «Su cuenta» (acceso de
+ * clientes) se sustituye por un bloque «Pedidos» con los textos de src/data/nuevo/<idioma>.json.
+ */
+import { bloques, nuevo } from '../lib/catalogo';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const p = bloques(idioma).pie;
+const n = nuevo(idioma);
+const E_MAS = '';
+const E_MENOS = '';
+---
+<footer id="footer">
+  <div class="footer-three">
+    <div class="container">
+      <div class="row">
+        <div class="block_newsletter col-12">
+          <div class="newsletter-inner">
+            <p class="h3 hidden-md-down">{p.boletin.titulo}</p>
+            <div class="block_newsletter_list">
+              <p class="conditions">{p.boletin.texto}</p>
+              <div class="form">
+                <form action="#footer" method="post" title={n.boletin_aviso}>
+                  <div class="input-wrapper">
+                    <input class="form-control" name="email" type="email" value="" placeholder={p.boletin.placeholder} disabled title={n.boletin_aviso} />
+                    <input type="hidden" name="action" value="0" />
+                    <button class="btn btn-submit" name="submitNewsletter" type="submit" disabled title={n.boletin_aviso}><span>{p.boletin.boton}</span></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-container">
+    <div class="footer-one">
+      <div class="container">
+        <div class="row">
+          <div class="footer-block links col-lg-3">
+            <div class="title clearfix hidden-lg-up" data-target="#footer_block_1" data-toggle="collapse">
+              <span class="h3">{p.sobre_nosotros.titulo}</span>
+              <span class="pull-xs-right">
+                <span class="navbar-toggler collapse-icons"><i class="material-icons add">{E_MAS}</i><i class="material-icons remove">{E_MENOS}</i></span>
+              </span>
+            </div>
+            <div class="collapse" id="footer_block_1" aria-expanded="false">
+              <p><img src={p.sobre_nosotros.logo.src} alt={p.sobre_nosotros.logo.alt} width={p.sobre_nosotros.logo.width} /></p>
+              <Fragment set:html={p.sobre_nosotros.copyright_html} />
+              <p>
+                {p.sobre_nosotros.redes.map((r: any) => (
+                  r.href ? <a href={r.href} target="_blank" rel="noreferrer noopener"><img src={r.img} alt={r.alt} width={r.width} /></a> : <a><img src={r.img} alt={r.alt} width={r.width} /></a>
+                ))}
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 links">
+            <div class="row">
+              {p.columnas.map((col: any) => (
+                <div class="col-lg-6 wrapper">
+                  <p class="h3 hidden-md-down">{col.titulo}</p>
+                  <div class="title clearfix hidden-lg-up" data-target={`#${col.id}`} data-toggle="collapse">
+                    <span class="h3">{col.titulo}</span>
+                    <span class="pull-xs-right">
+                      <span class="navbar-toggler collapse-icons"><i class="material-icons add">{E_MAS}</i><i class="material-icons remove">{E_MENOS}</i></span>
+                    </span>
+                  </div>
+                  <ul id={col.id} class="collapse">
+                    {col.enlaces.map((e: any) => (
+                      <li><a id={e.id || undefined} class="cms-page-link" href={e.href} title={e.title}>{e.texto}</a></li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="col-lg-2 links wrapper" id="block_pedidos">
+            <p class="h3 myaccount-title hidden-md-down"><span class="text-uppercase">{n.pie_pedidos_titulo}</span></p>
+            <div class="title clearfix hidden-lg-up" data-target="#footer_pedidos_list" data-toggle="collapse">
+              <span class="h3">{n.pie_pedidos_titulo}</span>
+              <span class="pull-xs-right">
+                <span class="navbar-toggler collapse-icons"><i class="material-icons add">{E_MAS}</i><i class="material-icons remove">{E_MENOS}</i></span>
+              </span>
+            </div>
+            <ul class="account-list collapse" id="footer_pedidos_list">
+              {n.pie_pedidos_enlaces.map((e: any) => (
+                <li><a href={e.href} title={e.texto} target={e.externo ? '_blank' : undefined} rel={e.externo ? 'noreferrer noopener' : undefined}>{e.texto}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div class="block-contact col-lg-3 links wrapper">
+            <p class="h3 text-uppercase block-contact-title hidden-md-down">{p.tienda.titulo}</p>
+            <div class="title clearfix hidden-lg-up" data-target="#footer_contact" data-toggle="collapse">
+              <span class="h3">{p.tienda.titulo}</span>
+              <span class="pull-xs-right">
+                <span class="navbar-toggler collapse-icons"><i class="material-icons add">{E_MAS}</i><i class="material-icons remove">{E_MENOS}</i></span>
+              </span>
+            </div>
+            <ul id="footer_contact" class="collapse">
+              <Fragment set:html={p.tienda.direccion_html} />
+              <li class="phone">{p.tienda.telefono_etiqueta} <span>{p.tienda.telefono}</span></li>
+              <li class="e-mail">{p.tienda.correo_etiqueta} <span>{p.tienda.correo}</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-one">
+      <div class="container">
+        <div class="row">
+          <center>
+            <hr style={p.leader.hr_style} />
+            <p><span style="color: #a3a3a3;">{p.leader.texto}</span></p>
+            <img src={p.leader.img} width={p.leader.width} />
+          </center>
+        </div>
+      </div>
+    </div>
+    <div class="footer-two">
+      <div class="container">
+        <div class="row inner-wrapper"></div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-to-top js-btn-to-top"></div>
+</footer>

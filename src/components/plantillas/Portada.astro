@@ -1,0 +1,94 @@
+---
+/**
+ * Portada: banners superiores (htmlbanners1), productos destacados (homefeatured),
+ * bloque «Sobre mí» (htmlbanners3), ventajas (htmlbanners5) y opiniones de Revi.
+ * Todo sale de src/data/bloques/<idioma>/portada.json, capturado del HTML en vivo.
+ */
+import { bloques, catalogo, textos } from '../../lib/catalogo';
+import { REVI } from '../../lib/sitio';
+import MiniaturaProducto from '../MiniaturaProducto.astro';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const po = bloques(idioma).portada;
+const c = catalogo(idioma);
+const t = textos(idioma);
+const destacados = c.productosDe(po.destacados.productos);
+---
+<div id="content-wrapper" class="col-12">
+  <section id="main">
+    <div class="topcolumn-section">
+      <div id="htmlbanners1" class="top-banners container wow fadeInDown" data-wow-delay="0.4s">
+        <div class="htmlbanners1-inner js-htmlbanners1-carousel row clearfix">
+          {po.banners_superiores.map((b: any) => (
+            <div class={b.clase}>
+              <a class="banner-link" href={b.href}>
+                <figure>
+                  <img class="img-banner" src={b.img} alt={b.alt} />
+                  <figcaption class="banner-description">
+                    <h4 class={b.titulo_clase}>{b.titulo}</h4>
+                    {b.boton && <p><button class="btn btn-default">{b.boton}</button></p>}
+                  </figcaption>
+                </figure>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <section id="content" class="page-home">
+      <div class="home-section">
+        <div class="none-in-tabs">
+          <div class="container">
+            <p class="headline-section">{po.destacados.titulo}</p>
+            <div class="products grid row view-carousel js-carousel-featured" {...po.destacados.data}>
+              {destacados.map((p) => <MiniaturaProducto producto={p} idioma={idioma} />)}
+            </div>
+            <div class="text-center"><a class="more-btn" href={po.destacados.mas.href}>{po.destacados.mas.texto}</a></div>
+          </div>
+        </div>
+        <div id="htmlbanners3" class="home-video wow fadeInUp" data-wow-offset="50">
+          <div class="htmlbanners3-inner js-htmlbanners3-carousel htmlbanners3-carousel" {...po.promo.data}>
+            <div class="promo-home">
+              <div class="container">
+                <div class="row">
+                  <div class="promo_about-us col-sm-5 col-xs-12">
+                    <div class="promo_about-us__inner" set:html={po.promo.html} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="htmlbanners5" class="features-home wow fadeInUp" data-wow-offset="50">
+          <div class="container">
+            <div class="htmlbanners5-inner js-htmlbanners5-carousel view-grid row">
+              {po.caracteristicas.map((f: any) => {
+                const Enlace = f.href ? 'a' : 'div';
+                return (
+                  <div class="feature-item col-sm-3 col-6">
+                    <div class="feature-item-inner">
+                      <Enlace class="banner-link" href={f.href ?? undefined}>
+                        <figure>
+                          {f.img && <img class="img-banner" src={f.img} alt={f.img_alt} />}
+                          <figcaption class="banner-description">
+                            <p class="wrap-icon"><img src={f.icono} alt={f.icono_alt} /></p>
+                            <h4>{f.titulo}</h4>
+                            <p>{f.texto}</p>
+                          </figcaption>
+                        </figure>
+                      </Enlace>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div class={`revi_widget_wide_${REVI.tienda}`}></div>
+        <p class="revi_align_center"><small><a href={`https://revi.io/${idioma}`} target="_blank">{t.reviews_by} <span class="revi_colour">Revi</span></a></small></p>
+        <script is:inline type="text/javascript" set:html={`var s = document.createElement("script");s.type = "text/javascript";s.setAttribute("async", "");s.setAttribute("defer", "");s.src = "https://revi.io/widgets/wide/${REVI.cuenta}/${REVI.tienda}/${idioma}";document.getElementsByTagName('body')[0].appendChild(s);`} />
+      </div>
+    </section>
+    <footer class="page-footer"><!-- Footer content --></footer>
+  </section>
+</div>

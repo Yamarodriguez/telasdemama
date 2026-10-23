@@ -65,6 +65,11 @@ for (const f of htmls(DIST)) {
   const internos = new Set();
   for (const m of html.matchAll(/<(a|link|script|img|source)\b([^>]*)>/gi)) {
     const attrs = m[2];
+    // hreflang a idiomas que todavía no están compilados: no es un enlace roto, es la Fase 1 a medias
+    if (m[1].toLowerCase() === 'link' && /rel="alternate"/i.test(attrs)) {
+      const idioma = attrs.match(/href="https?:\/\/[^/]+\/([a-z]{2})\//i)?.[1];
+      if (idioma && !fs.existsSync(path.join(DIST, idioma))) continue;
+    }
     const get = a => attrs.match(new RegExp(`(?<![\\w-])${a}\\s*=\\s*"([^"]*)"`, 'i'))?.[1];
     for (const a of ['href', 'src', 'data-src', 'data-full-size-image-url', 'data-image-large-src']) {
       let v = get(a); if (!v) continue;

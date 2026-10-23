@@ -1,0 +1,32 @@
+{
+  "_nota": "Diferencias ACEPTADAS entre la tienda vieja y la nueva (Dec. 8 y lo que dependía del servidor). Cada regla tiene su motivo. Todo lo que no esté aquí y difiera es un fallo de la copia.",
+  "tipos_omitidos": {
+    "authentication": "Dec. 8: no hay cuentas de cliente; la URL redirige a contacto",
+    "password": "Dec. 8: no hay cuentas de cliente"
+  },
+  "quitar": {
+    "script, style, noscript, link, meta": "Scripts, hojas y metadatos se comparan aparte (cabecera) o no son DOM visible",
+    "#_desktop_user_info": "Dec. 8: desaparece el acceso a la cuenta de cliente",
+    "#block_myaccount_infos, #block_pedidos": "Dec. 8: el bloque «Su cuenta» del pie se sustituye por «Pedidos»",
+    ".language-selector .dropdown-menu": "Solo se ofrecen los idiomas que ya existen en la web nueva",
+    ".highlighted-informations form, .highlighted-informations .add-cart": "Dec. 8: «Añadir al carrito» pasa a «Pedir por WhatsApp»",
+    "a.quick-view": "La vista rápida pedía la ficha al servidor por AJAX",
+    ".products-sort-order .dropdown-menu": "El orden (?order=) pedía al servidor; se muestra el orden actual sin desplegable (Fase 2, punto 6)",
+    ".product-comment-modal": "Ventanas para escribir o denunciar reseñas: necesitaban el servidor",
+    "input[type=hidden], .product-refresh, input[name=url], form style": "Tokens de sesión y campos ocultos de los formularios de PrestaShop",
+    "#search_filter_controls": "Botón OK de los filtros en móvil: los filtros no funcionan en estático",
+    "#notifications": "Avisos de sesión (vacío siempre)",
+    ".h1-regla, .heading-counter-wrapper": "Regla del H1 aprobada: H1 nuevo en contacto y el contador «Hay N productos» fuera del H1 en los listados"
+  },
+  "quitar_si_texto": [
+    { "selector": ".sitemap .col-md-3", "contiene": "Su cuenta", "motivo": "Dec. 8: la columna «Su cuenta» del mapa del sitio desaparece" }
+  ],
+  "renombrar": {
+    ".search-link": "Filtros sin servidor: el filtro «Categorías» enlaza a la subcategoría; disponibilidad y precio pasan de enlace a texto",
+    ".select-title": "Orden: de enlace desplegable a texto fijo",
+    ".add-to-cart, .add .btn": "Dec. 8: el botón de carrito pasa a enlace de WhatsApp",
+    ".page-heading": "Regla del H1 aprobada: en los listados sin H1 el h2.page-heading pasa a h1 (su texto lo comprueba C1, encabezados)"
+  },
+  "atributos_ignorados": ["static_token", "urls_pages_cart", "title", "disabled", "action", "method", "enctype", "target", "rel", "aria-disabled", "data-button-action", "data-product", "data-comment-item-prototype", "data-list-comments-url", "data-report-comment-url", "data-update-comment-usefulness-url", "data-search-url", "data-slider-encoded-url", "data-slider-specifications", "data-slider-values", "data-slider-id", "data-search-controller-url", "data-mensaje", "data-numero", "data-id-product-attribute", "value"],
+  "ids_aleatorios": ["^top_sub_menu_\\d+$", "^facet_\\d+$", "^facet_input_\\d+_(\\d+)$", "^facet_label_\\d+$", "^slider-range_\\d+$", "^footer_sub_menu_\\d+$"]
+}

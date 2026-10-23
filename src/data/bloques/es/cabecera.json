@@ -1,0 +1,47 @@
+{
+ "logo": {
+  "src": "/img/telas-de-mama-logo-1571903558.jpg",
+  "alt": "Telas de Mamá"
+ },
+ "bandera": "/img/l/1.jpg",
+ "idioma_actual": "es",
+ "idiomas": [
+  {
+   "codigo": "es",
+   "href": "/es/",
+   "actual": true
+  },
+  {
+   "codigo": "ca",
+   "href": "/ca/",
+   "actual": false
+  },
+  {
+   "codigo": "gl",
+   "href": "/gl/",
+   "actual": false
+  },
+  {
+   "codigo": "eu",
+   "href": "/eu/",
+   "actual": false
+  },
+  {
+   "codigo": "pt",
+   "href": "/pt/",
+   "actual": false
+  }
+ ],
+ "telefono": "643 945 052",
+ "telefono_href": "tel:643 945 052",
+ "correo": "contacto@telasdemama.com",
+ "buscador": {
+  "accion": "/es/busqueda",
+  "placeholder": "Busca en nuestro catálogo...",
+  "titulo": "Buscar"
+ },
+ "cuenta": {
+  "texto": "Iniciar sesión",
+  "title": "Acceda a su cuenta de cliente"
+ }
+}

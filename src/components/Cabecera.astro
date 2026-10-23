@@ -1,0 +1,90 @@
+---
+/**
+ * Cabecera: logo, selector de idioma, contacto, buscador y menú. Marcado del tema Cosmetics.
+ * Por la Dec. 8 desaparecen la entrada a la cuenta de cliente y el carrito.
+ */
+import Menu from './Menu.astro';
+import Buscador from './Buscador.astro';
+import { bloques, idiomas, textos } from '../lib/catalogo';
+interface Props { idioma: string; esPortada: boolean; hreflang: Record<string, string>; menuActual?: string }
+const { idioma, esPortada, hreflang, menuActual = '' } = Astro.props;
+const b = bloques(idioma);
+const t = textos(idioma);
+const c = b.cabecera;
+// Solo se ofrecen los idiomas que ya existen en la web nueva; el enlace lleva a la misma página en ese idioma.
+const disponibles = new Set(idiomas());
+const codigoDe = (etiqueta: string) => etiqueta.split('-')[0];
+const alternativas = Object.entries(hreflang)
+  .map(([etiqueta, url]) => ({ codigo: codigoDe(etiqueta), href: url.replace(/^https?:\/\/[^/]+/, '') }))
+  .filter((x) => disponibles.has(x.codigo));
+---
+<header id="header">
+  <div class="header-banner"></div>
+  <nav class="header-nav">
+    <div class="container">
+      <div class="row inner-wrapper">
+        <div id="_desktop_logo">
+          {esPortada ? (
+            <h1>
+              <a href="/"><img class="logo img-responsive" src={c.logo.src} alt={c.logo.alt} /><span>{c.logo.alt}</span></a>
+            </h1>
+          ) : (
+            <a href="/"><img class="logo img-responsive" src={c.logo.src} alt={c.logo.alt} /></a>
+          )}
+        </div>
+        <div id="_desktop_language_selector">
+          <div class="language-selector-wrapper">
+            <div class="language-selector dropdown js-dropdown">
+              <span class="expand-more" data-toggle="dropdown"><img class="lang-flag" src={c.bandera} />{idioma}</span>
+              <a data-target="#" data-toggle="dropdown" class="hidden-md-down" aria-haspopup="true" aria-expanded="false"><i class="material-icons">{''}</i></a>
+              <div class="dropdown-menu">
+                <ul>
+                  {alternativas.map((a) => (
+                    <li class:list={[a.codigo === idioma && 'current']}><a href={a.href} class="dropdown-item">{a.codigo}</a></li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="_desktop_contact_link">
+          <div class="header__contact dropdown js-dropdown">
+            <span class="expand-more font-phone-call hidden-lg-up" data-toggle="dropdown" aria-expanded="false"></span>
+            <div class="dropdown-menu header__contact__list js-header__contact__list toogle_content">
+              <div>
+                <a class="shop-phone header__contact__item" href={c.telefono_href} title={t.contacto_title}><i class="font-phone-call"></i>{c.telefono}</a>
+                <a class="header__contact__item" href={`mailto:${c.correo.trim()}`} title={t.contacto_title}><i class="material-icons">{''}</i>{c.correo.trim()}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Buscador idioma={idioma} />
+        <div class="hidden-lg-up mobile">
+          <div id="menu-icon"><i class="material-icons d-inline">{''}</i></div>
+          <div class="top-logo" id="_mobile_logo"></div>
+          <div id="_mobile_cart"></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-nav hidden-lg-up">
+    <div class="toggle-link" id="_mobile_currency_selector"></div>
+    <div class="toggle-link" id="_mobile_language_selector"></div>
+    <div class="toggle-link" id="_mobile_contact_link"></div>
+    <div class="toggle-link" id="_mobile_search_bar"></div>
+    <div class="toggle-link" id="_mobile_user_info"></div>
+  </div>
+  <div class="header-top">
+    <div class="container">
+      <div class="row inner-wrapper hidden-md-down">
+        <div class="main-menu col-12 js-top-menu position-static hidden-md-down" id="_desktop_top_menu">
+          <Menu nodos={b.menu} actual={menuActual} />
+        </div>
+      </div>
+      <div id="mobile_top_menu_wrapper" class="row hidden-lg-up">
+        <div id="_mobile_link_block"></div>
+        <div class="js-top-menu mobile" id="_mobile_top_menu"></div>
+      </div>
+    </div>
+  </div>
+</header>

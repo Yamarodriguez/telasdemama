@@ -1,0 +1,77 @@
+---
+/**
+ * Listado de productos de una categoría, marca o lista (más vendidos, novedades, rebajados):
+ * título con contador, barra de selección, rejilla de 12 y barra inferior. Marcado del tema.
+ */
+import type { Producto } from '../lib/catalogo';
+import { textos, contadorProductos, paginar, PRODUCTOS_POR_PAGINA } from '../lib/catalogo';
+import MiniaturaProducto from './MiniaturaProducto.astro';
+import SeleccionProductos from './SeleccionProductos.astro';
+import Buscador from './Buscador.astro';
+
+interface Props {
+  idioma: string;
+  titulo: string;
+  productos: Producto[];
+  base: string;
+  pagina: number;
+  /** Hay filtros por facetas (botón «Filtrar» en móvil). */
+  conFiltros?: boolean;
+  /** Las categorías llevan el bloque de «filtros activos»; las demás listas, solo su contenedor vacío. */
+  esCategoria?: boolean;
+  /** Texto del orden actual («Relevancia», «Ventas en orden decreciente»…). */
+  orden?: string;
+  /** Página de marca: descripciones de la marca bajo el título. */
+  marca?: { descripcion_corta_html: string; descripcion_html: string };
+}
+const { idioma, titulo, productos, base, pagina, conFiltros = false, esCategoria = false, orden, marca } = Astro.props;
+const t = textos(idioma);
+const paginas = paginar(productos, PRODUCTOS_POR_PAGINA);
+const visibles = paginas[pagina - 1] ?? [];
+const contador = contadorProductos(t, productos.length);
+---
+{esCategoria ? (
+  <h2 class="page-heading product-listing">
+    <span>{titulo}</span>
+    <span class="heading-counter">{contador}</span>
+  </h2>
+) : (
+  <Fragment>
+    {/* Regla del H1 aprobada: en los listados sin H1 (más vendidos, novedades, rebajados, marca) el título visible pasa a H1,
+        sin el «Hay N productos», que queda fuera para no formar parte del encabezado. */}
+    <h1 class="page-heading product-listing"><span>{titulo}</span></h1>
+    <p class="page-heading product-listing heading-counter-wrapper"><span class="heading-counter">{contador}</span></p>
+  </Fragment>
+)}
+{marca && (
+  <Fragment>
+    <div id="manufacturer-short_description" class="rte" set:html={marca.descripcion_corta_html} />
+    <div id="manufacturer-description" class="rte" set:html={marca.descripcion_html} />
+  </Fragment>
+)}
+<section id="products" class="grid">
+  {productos.length === 0 ? (
+    <section id="content" class="page-content page-not-found">
+      <h4>{t.lamentamos}</h4>
+      <p>{t.nueva_busqueda}</p>
+      <Buscador idioma={idioma} />
+    </section>
+  ) : (
+    <Fragment>
+      <div>
+        <SeleccionProductos idioma={idioma} id="js-product-list-top" base={base} pagina={pagina} totalPaginas={paginas.length} conFiltros={conFiltros} orden={orden} />
+      </div>
+      <div class="hidden-sm-down" id="">
+        {esCategoria && <div id="js-active-search-filters" class="hide"><p class="h6 active-filter-title">{t.filtros_activos}</p></div>}
+      </div>
+      <div>
+        <div id="js-product-list">
+          <div class="products catalog-products row">
+            {visibles.map((p) => <MiniaturaProducto producto={p} idioma={idioma} />)}
+          </div>
+        </div>
+      </div>
+      <SeleccionProductos idioma={idioma} id="js-product-list-bottom" base={base} pagina={pagina} totalPaginas={paginas.length} conFiltros={conFiltros} orden={orden} />
+    </Fragment>
+  )}
+</section>

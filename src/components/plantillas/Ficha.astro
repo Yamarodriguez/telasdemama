@@ -1,0 +1,293 @@
+---
+/**
+ * Ficha de producto. Marcado del tema Cosmetics (columna de imágenes, columna de datos,
+ * pestañas, otros productos, modal de imágenes). Cambios por la Dec. 8: el botón de carrito
+ * pasa a «Pedir por WhatsApp» con la cantidad elegida; los comentarios se muestran fijos.
+ */
+import type { Producto } from '../../lib/catalogo';
+import { bloques, catalogo, nuevo, textos, numeroPlano, formatoPrecio, textoPlano, altImagen } from '../../lib/catalogo';
+import { absoluta, enlaceWhatsApp, plantilla, REVI } from '../../lib/sitio';
+import MiniaturaProducto from '../MiniaturaProducto.astro';
+
+interface Props { idioma: string; producto: Producto }
+const { idioma, producto: p } = Astro.props;
+const t = textos(idioma);
+const n = nuevo(idioma);
+const b = bloques(idioma);
+const c = catalogo(idioma);
+const extra = b.fichasExtra[String(p.id)] ?? {};
+const etiquetas = b.etiquetas[String(p.id)]?.ficha ?? [];
+const sinFoto = (tam: string) => `/img/p/${idioma}-default-${tam}.jpg`;
+const portada = p.imagenes.find((i) => i.portada) ?? p.imagenes[0];
+const imagenes = p.imagenes.length ? p.imagenes : [];
+const src = (img: typeof portada | undefined, tam: string) => (img ? img.por_tamano[tam] : sinFoto(tam));
+const urlAbs = absoluta(p.url);
+const pedible = p.muestra_precio && p.disponible_para_pedido && p.disponibilidad !== 'unavailable';
+const mensaje = plantilla(n.mensaje_ficha, { nombre: p.nombre, referencia: p.referencia ?? '', cantidad: '{cantidad}', url: urlAbs });
+const whatsapp = enlaceWhatsApp(n.whatsapp_numero, mensaje.replace('{cantidad}', String(p.cantidad_minima || 1)));
+const descuentoTexto = p.descuento_tipo === 'percentage' && p.descuento_porcentaje ? `- ${String(p.descuento_porcentaje).replace('-', '')}` : null;
+const accesorios = c.productosDe(p.accesorios.map((a) => a.id));
+const marca = p.fabricante_id ? c.marcaPorId(p.fabricante_id) : undefined;
+const otros = c.productosDe(extra.otros ?? []);
+const disponibilidad = p.disponibilidad === 'unavailable' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock';
+// La pestaña «Detalles del producto» solo existe si hay algo que enseñar (referencia o ficha técnica).
+const conDetalles = Boolean(p.referencia) || (p.caracteristicas?.length ?? 0) > 0;
+// El visor de fotos lleva flechas (y la máscara sin «nomargin») cuando hay más de MAX_SIN_FLECHAS imágenes.
+const MAX_SIN_FLECHAS = 5;
+const conFlechasModal = imagenes.length > MAX_SIN_FLECHAS;
+const datosProducto = { id: p.id, id_product: p.id, name: p.nombre, reference: p.referencia, link_rewrite: p.link_rewrite, price: p.precio_visible, price_amount: p.precio_con_iva, link: urlAbs, quantity: p.stock, availability: p.disponibilidad, id_product_attribute: '0', minimal_quantity: p.cantidad_minima };
+---
+<div id="content-wrapper" class="col-12">
+  <section id="main" itemscope itemtype="https://schema.org/Product">
+    <div class="row">
+      <div class="col-lg-5 l-column p-page">
+        <section class="page-content" id="content">
+          <div class="images-container">
+            <div class="product-cover">
+              {portada ? (
+                <Fragment>
+                  <img class="js-qv-product-cover" src={src(portada, 'large_default')} alt={p.nombre} title={p.nombre} style="width:100%;" itemprop="image" />
+                  <div class="layer" data-toggle="modal" data-target="#product-modal"><i class="material-icons zoom-in">{''}</i></div>
+                </Fragment>
+              ) : (
+                <img src={sinFoto('large_default')} style="width:100%;" />
+              )}
+              <ul class="product-flags">
+                {etiquetas.map((e) => <li class={e.clase}><span>{e.texto}</span></li>)}
+              </ul>
+            </div>
+            <div class="wrapper-thumbnails">
+              <div class="scroll-box-arrows">
+                <i class="material-icons left">{''}</i>
+                <i class="material-icons right">{''}</i>
+              </div>
+              <div class="arrows js-arrows">
+                <i class="material-icons arrow-up js-arrow-up">{''}</i>
+                <i class="material-icons arrow-down js-arrow-down">{''}</i>
+              </div>
+              <div class="js-qv-mask mask">
+                <ul class="product-images js-qv-product-images">
+                  {imagenes.map((img) => (
+                    <li class="thumb-container">
+                      <img class:list={['thumb js-thumb', img === portada && 'selected']} data-image-medium-src={img.por_tamano.medium_default} data-image-large-src={img.por_tamano.large_default} src={img.por_tamano.home_default} alt={altImagen(extra.leyendas, img.id)} title={p.nombre} width="100" itemprop="image" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col-lg-7 r-column">
+        <h1 class="h1" itemprop="name">{p.nombre}</h1>
+        <div class="js-additional-info-to additional-info-to"></div>
+        {marca && (
+          <div class="product-manufacturer">
+            <label class="label">{t.marca}</label>
+            <span><a href={marca.url}>{marca.nombre}</a></span>
+            <meta itemprop="brand" content={marca.nombre} />
+          </div>
+        )}
+        {p.muestra_precio && (
+          <div class="product-prices">
+            {p.tiene_descuento && p.precio_tachado != null && (
+              <div class="product-discount"><span class="regular-price">{formatoPrecio(p.precio_tachado)}</span></div>
+            )}
+            <div class:list={['product-price h5', p.tiene_descuento && 'has-discount']} itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+              <link itemprop="availability" href={disponibilidad} />
+              <meta itemprop="priceCurrency" content={t.moneda.iso_code} />
+              <meta itemprop="url" content={urlAbs} />
+              <div class="current-price">
+                <span class="price" itemprop="price" content={numeroPlano(p.precio_con_iva)}>{p.precio_visible}</span>
+                {descuentoTexto && <span class="discount discount-percentage">{descuentoTexto}</span>}
+              </div>
+              {p.unidad && <p class="product-unit-price sub">({p.precio_unidad} {p.unidad})</p>}
+            </div>
+            <div class="tax-shipping-delivery-label">{t.impuestos_incluidos}</div>
+          </div>
+        )}
+        <div class="product-information">
+          <div class="product-actions">
+            <form action="#" method="post" id="add-to-cart-or-refresh" data-mensaje={mensaje} data-numero={n.whatsapp_numero}>
+              <input type="hidden" name="id_product" value={p.id} id="product_page_product_id" />
+              <input type="hidden" name="id_customization" value="0" id="product_customization_id" />
+              <div class="product-variants"></div>
+              <div class="quantity-control-label">{t.cantidad}</div>
+              <div class="product-add-to-cart">
+                <div class="product-quantity">
+                  <div class="qty">
+                    <input type="text" name="qty" id="quantity_wanted" value={p.cantidad_minima || 1} class="input-group" min={p.cantidad_minima || 1} />
+                  </div>
+                  <div class="add">
+                    <a class:list={['btn btn-primary add-to-cart pedir-whatsapp', !pedible && 'disabled']} href={pedible ? whatsapp : undefined} target={pedible ? '_blank' : undefined} rel={pedible ? 'noreferrer noopener' : undefined} aria-disabled={!pedible}>{n.pedir_whatsapp}</a>
+                  </div>
+                </div>
+                <span id="product-availability" set:html={extra.disponibilidad_html ?? ''} />
+              </div>
+              <div class="product-additional-info">
+                <div class="social-sharing">
+                  <ul>
+                    <li class="facebook icon-gray"><a href={`http://www.facebook.com/sharer.php?u=${urlAbs}`} class="text-hide" title={t.compartir} target="_blank"></a></li>
+                    <li class="twitter icon-gray"><a href={`https://twitter.com/intent/tweet?text=${p.nombre} ${urlAbs}`} class="text-hide" title={t.tuitear} target="_blank"></a></li>
+                    <li class="googleplus icon-gray"><a href={`https://plus.google.com/share?url=${urlAbs}`} class="text-hide" title={t.googleplus} target="_blank"></a></li>
+                    <li class="pinterest icon-gray"><a href={`http://www.pinterest.com/pin/create/button/?media=${absoluta(portada ? `/${portada.id}/${portada.fichero}` : `/0/${p.link_rewrite}.jpg`)}&url=${urlAbs}`} class="text-hide" title={t.pinterest} target="_blank"></a></li>
+                  </ul>
+                </div>
+                <div class="product-comments-additional-info js-additional-info-from">
+                  <div class="comments-note">
+                    <div class="star-content">
+                      <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+                    </div>
+                  </div>
+                  <span class="reviews_count" title={t.leer_resenas}>{extra.resenas_texto ?? plantilla(t.resenas, { n: p.opiniones.length })}</span>
+                  <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    <meta itemprop="reviewCount" content={extra.agregado?.reviewCount ?? p.valoracion.opiniones} />
+                    <meta itemprop="ratingValue" content={extra.agregado?.ratingValue ?? p.valoracion.media} />
+                    <meta itemprop="worstRating" content="0" />
+                    <meta itemprop="bestRating" content="5" />
+                  </div>
+                </div>
+                {extra.revi_rating_html && <Fragment set:html={extra.revi_rating_html} />}
+                <input type="hidden" id="emarketing_product_id" value={p.id} />
+                <input type="hidden" id="emarketing_product_name" value={p.nombre} />
+                <input type="hidden" id="emarketing_product_price" value={numeroPlano(p.precio_con_iva)} />
+                <input type="hidden" id="emarketing_product_category" value={p.categoria_defecto?.nombre} />
+                <input type="hidden" id="emarketing_currency" value={t.moneda.iso_code} />
+              </div>
+            </form>
+            <div id={`product-description-short-${p.id}`} class="product-description-short rte" itemprop="description" set:html={p.descripcion_corta} />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="more-info">
+      <ul class="nav nav-tabs_alternative">
+        {conDetalles && <li class="nav-item"><a class="data-sheet-tab nav-link" data-toggle="tab" href="#product-details">{t.detalles_producto}</a></li>}
+        {p.descripcion && <li class="nav-item"><a class="more-info-tab nav-link" data-toggle="tab" href="#description">{t.descripcion}</a></li>}
+        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#extra-0">{t.opiniones}</a></li>
+        {accesorios.length > 0 && <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories">{t.accesorios}</a></li>}
+        <li class="nav-item" id="product-comments-list-header"><a class="nav-link" data-toggle="tab" href="#productcomments">{t.comentarios}</a></li>
+      </ul>
+      <div class="tab-content" id="tab-content">
+        {conDetalles && <div class="tab-pane fade in" id="product-details" data-product={JSON.stringify(datosProducto)}>
+          <div class="tab-pane-inner">
+            <div class="product-info">
+              {p.referencia && (
+                <div class="product-reference"><label class="label">{t.referencia}</label><span itemprop="sku">{p.referencia}</span></div>
+              )}
+            </div>
+            <div class="product-out-of-stock"></div>
+          </div>
+        </div>}
+        {p.descripcion && (
+          <div class="tab-pane fade in" id="description">
+            <div class="product-description tab-pane-inner rte" set:html={p.descripcion} />
+          </div>
+        )}
+        <div class="tab-pane fade in tab-revi" id="extra-0">
+          <div class="tab-pane-inner">
+            <section class="page-product-box" id="revi-p-reviews">
+              <div class="rte">
+                <div id="revi_prod"></div>
+                <div class={`revi_widget_product_${REVI.tienda}`}></div>
+                <script is:inline type="text/javascript" set:html={`var s = document.createElement("script");s.type = "text/javascript";s.setAttribute("async", "");s.setAttribute("defer", "");s.src = "https://revi.io/widgets/product/${REVI.cuenta}/${p.id}/0/${REVI.tienda}/${idioma}";document.getElementsByTagName('body')[0].appendChild(s);`} />
+              </div>
+            </section>
+          </div>
+        </div>
+        {accesorios.length > 0 && (
+          <div class="tab-pane fade in" id="accessories">
+            <div class="product-accessories">
+              <div class="products grid row js-carousel-products">
+                {accesorios.map((a) => <MiniaturaProducto producto={a} idioma={idioma} />)}
+              </div>
+            </div>
+          </div>
+        )}
+        <div class="tab-pane fade in" id="productcomments">
+          <div class="tab-pane-inner">
+            {p.opiniones.length === 0 && <div id="empty-product-comment">{t.sin_resenas}</div>}
+            <div class="row" id="product-comments-list">
+              {p.opiniones.map((o: any) => (
+                <div class="product-comment-list-item" data-product-id={p.id}>
+                  <div class="col-md-3 col-sm-3 comment-infos">
+                    <div class="grade-stars"></div>
+                    <div class="comment-date">{o.fecha ?? ''}</div>
+                    <div class="comment-author">{o.autor ?? ''}</div>
+                  </div>
+                  <div class="col-md-9 col-sm-9 comment-content">
+                    <p class="comment-title">{o.titulo ?? ''}</p>
+                    <p class="comment-post">{o.texto ?? ''}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12" id="product-comments-list-footer"><div id="product-comments-list-pagination"></div></div>
+            </div>
+          </div>
+        </div>
+        {otros.length > 0 && (
+          <div class="none-in-tabs category-products">
+            <p class="headline-section">{extra.otros_titulo || plantilla(t.otros_productos, { n: otros.length })}</p>
+            <div class="products grid row js-carousel-products">
+              {otros.map((o) => <MiniaturaProducto producto={o} idioma={idioma} />)}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+    <div class="modal fade js-product-images-modal" id="product-modal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <figure>
+              <img class="js-modal-product-cover product-cover-modal" width={portada ? '1000' : ''} src={portada ? src(portada, 'large_default') : ''} alt={altImagen(extra.leyendas, portada?.id)} title="" itemprop="image" />
+              <figcaption class="image-caption">
+                <div id="product-description-short" itemprop="description" set:html={p.descripcion_corta} />
+              </figcaption>
+            </figure>
+            <aside id="thumbnails" class="thumbnails js-thumbnails text-xs-center">
+              <div class:list={['js-modal-mask mask', !conFlechasModal && 'nomargin']}>
+                <ul class="product-images js-modal-product-images">
+                  {imagenes.map((img) => (
+                    <li class="thumb-container">
+                      <img data-image-large-src={img.por_tamano.large_default} class="thumb js-modal-thumb" src={img.por_tamano.home_default} alt={altImagen(extra.leyendas, img.id)} title="" width="253" itemprop="image" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {conFlechasModal && (
+                <div class="arrows js-modal-arrows">
+                  <i class="material-icons arrow-up js-modal-arrow-up">{''}</i>
+                  <i class="material-icons arrow-down js-modal-arrow-down">{''}</i>
+                </div>
+              )}
+            </aside>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <footer class="page-footer"><!-- Footer content --></footer>
+  </section>
+</div>
+<script is:inline>
+  // El enlace de WhatsApp lleva la cantidad que el cliente escribe en la ficha.
+  (function () {
+    var form = document.querySelector('form[data-mensaje]');
+    if (!form) return;
+    var enlace = form.querySelector('.pedir-whatsapp');
+    var cantidad = form.querySelector('#quantity_wanted');
+    if (!enlace || !cantidad || !enlace.getAttribute('href')) return;
+    function actualizar() {
+      var n = parseInt(cantidad.value, 10);
+      if (!(n > 0)) n = 1;
+      var texto = form.getAttribute('data-mensaje').replace('{cantidad}', n);
+      enlace.setAttribute('href', 'https://wa.me/' + form.getAttribute('data-numero') + '?text=' + encodeURIComponent(texto));
+    }
+    cantidad.addEventListener('input', actualizar);
+    cantidad.addEventListener('change', actualizar);
+    form.addEventListener('submit', function (e) { e.preventDefault(); actualizar(); window.open(enlace.getAttribute('href'), '_blank', 'noopener'); });
+    actualizar();
+  })();
+</script>

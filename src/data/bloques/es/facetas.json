@@ -1,0 +1,1128 @@
+{
+ "3": {
+  "titulo": "Filtrar por",
+  "facetas": [
+   {
+    "titulo": "Categorías",
+    "tipo": "lista",
+    "valores": [
+     {
+      "texto": "Tipo de tejido",
+      "magnitud": "(319)",
+      "q": "Categor%C3%ADas-Tipo+de+tejido"
+     },
+     {
+      "texto": "Estampado",
+      "magnitud": "(309)",
+      "q": "Categor%C3%ADas-Estampado"
+     },
+     {
+      "texto": "Composición",
+      "magnitud": "(316)",
+      "q": "Categor%C3%ADas-Composici%C3%B3n"
+     },
+     {
+      "texto": "Otoño / Invierno",
+      "magnitud": "(139)",
+      "q": "Categor%C3%ADas-Oto%C3%B1o+//+Invierno"
+     },
+     {
+      "texto": "Primavera / Verano",
+      "magnitud": "(197)",
+      "q": "Categor%C3%ADas-Primavera+//+Verano"
+     },
+     {
+      "texto": "Continuidad",
+      "magnitud": "(85)",
+      "q": "Categor%C3%ADas-Continuidad"
+     }
+    ]
+   },
+   {
+    "titulo": "Disponibilidad",
+    "tipo": "lista",
+    "valores": [
+     {
+      "texto": "No disponible",
+      "magnitud": "(12)",
+      "q": "Disponibilidad-No+disponible"
+     },
+     {
+      "texto": "En stock",
+      "magnitud": "(320)",
+      "q": "Disponibilidad-En+stock"
+     }
+    ]
+   },
+   {
+    "titulo": "Precio",
+    "tipo": "slider",
+    "min": "1",
+    "max": "21",
+    "unidad": "€",
+    "etiqueta": "1,00 € - 21,00 €",
+    "especificaciones": "{\"symbol\":[\".\",\",\",\";\",\"%\",\"-\",\"+\",\"E\",\"\\u00d7\",\"\\u2030\",\"\\u221e\",\"NaN\"],\"currencyCode\":\"EUR\",\"currencySymbol\":\"\\u20ac\",\"positivePattern\":\"#,##0.00\\u00a0\\u00a4\",\"negativePattern\":\"-#,##0.00\\u00a0\\u00a4\",\"maxFractionDigits\":2,\"minFractionDigits\":2,\"groupingUsed\":true,\"primaryGroupSize\":3,\"secondaryGroupSize\":3}"
+   }
+  ],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-telas",
+  "orden": "Relevancia"
+ },
+ "12": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-composicion",
+  "orden": "Relevancia"
+ },
+ "13": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-algodon-100-",
+  "orden": "Relevancia"
+ },
+ "14": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-algodon-organico",
+  "orden": "Relevancia"
+ },
+ "131": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-algodon-elastan",
+  "orden": "Relevancia"
+ },
+ "16": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-algodon-lino",
+  "orden": "Relevancia"
+ },
+ "15": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-algodon-poliester",
+  "orden": "Relevancia"
+ },
+ "136": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-algodon-viscosa",
+  "orden": "Relevancia"
+ },
+ "20": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-lana",
+  "orden": "Relevancia"
+ },
+ "17": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-lino",
+  "orden": "Relevancia"
+ },
+ "18": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-poliester",
+  "orden": "Relevancia"
+ },
+ "19": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-viscosa",
+  "orden": "Relevancia"
+ },
+ "116": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-continuidad",
+  "orden": "Relevancia"
+ },
+ "11": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-estampado",
+  "orden": "Relevancia"
+ },
+ "45": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-acolchadas",
+  "orden": ""
+ },
+ "40": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-animales",
+  "orden": "Relevancia"
+ },
+ "41": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-cuadros",
+  "orden": "Relevancia"
+ },
+ "34": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-disney",
+  "orden": "Relevancia"
+ },
+ "36": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-estrellas",
+  "orden": "Relevancia"
+ },
+ "37": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-flores",
+  "orden": "Relevancia"
+ },
+ "106": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-frutas",
+  "orden": "Relevancia"
+ },
+ "109": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-liso",
+  "orden": "Relevancia"
+ },
+ "39": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-lunares",
+  "orden": "Relevancia"
+ },
+ "43": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-magicas-cambian-de-color",
+  "orden": "Relevancia"
+ },
+ "108": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-marinero",
+  "orden": "Relevancia"
+ },
+ "105": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-naturaleza",
+  "orden": "Relevancia"
+ },
+ "130": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-navidad",
+  "orden": "Relevancia"
+ },
+ "42": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-pata-de-gallo",
+  "orden": "Relevancia"
+ },
+ "107": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-personas",
+  "orden": "Relevancia"
+ },
+ "44": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-rayas",
+  "orden": "Relevancia"
+ },
+ "38": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-unicornios",
+  "orden": "Relevancia"
+ },
+ "35": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-vichy",
+  "orden": "Relevancia"
+ },
+ "32": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-otono-invierno",
+  "orden": "Relevancia"
+ },
+ "33": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-primavera-verano",
+  "orden": "Relevancia"
+ },
+ "10": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-tipo-de-tejido",
+  "orden": "Relevancia"
+ },
+ "95": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-abrigo-cheviot-lana",
+  "orden": "Relevancia"
+ },
+ "59": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-acolchado",
+  "orden": "Relevancia"
+ },
+ "110": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-algodon",
+  "orden": "Relevancia"
+ },
+ "75": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-algodon-estampado",
+  "orden": "Relevancia"
+ },
+ "104": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-bambula",
+  "orden": "Relevancia"
+ },
+ "50": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-batista",
+  "orden": "Relevancia"
+ },
+ "51": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-batista-forro",
+  "orden": "Relevancia"
+ },
+ "124": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-canvas",
+  "orden": "Relevancia"
+ },
+ "52": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-camiseria",
+  "orden": ""
+ },
+ "112": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-chambray",
+  "orden": "Relevancia"
+ },
+ "117": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-chanel",
+  "orden": "Relevancia"
+ },
+ "61": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-denim",
+  "orden": "Relevancia"
+ },
+ "125": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-doble-gasa",
+  "orden": "Relevancia"
+ },
+ "58": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-escoces",
+  "orden": "Relevancia"
+ },
+ "64": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-espiga",
+  "orden": "Relevancia"
+ },
+ "137": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-espiguilla",
+  "orden": "Relevancia"
+ },
+ "85": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-felpa",
+  "orden": "Relevancia"
+ },
+ "69": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-franela",
+  "orden": "Relevancia"
+ },
+ "120": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-french-terry",
+  "orden": "Relevancia"
+ },
+ "111": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-gabardina",
+  "orden": "Relevancia"
+ },
+ "103": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-gasa",
+  "orden": "Relevancia"
+ },
+ "77": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-impermeable",
+  "orden": "Relevancia"
+ },
+ "74": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-jacquard",
+  "orden": "Relevancia"
+ },
+ "70": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-lino",
+  "orden": "Relevancia"
+ },
+ "57": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-micropana",
+  "orden": ""
+ },
+ "79": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-mouflon",
+  "orden": "Relevancia"
+ },
+ "60": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-neopreno",
+  "orden": ""
+ },
+ "78": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-ojo-de-perdiz",
+  "orden": ""
+ },
+ "118": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-pana",
+  "orden": "Relevancia"
+ },
+ "115": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-panama",
+  "orden": ""
+ },
+ "56": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-pelo",
+  "orden": "Relevancia"
+ },
+ "54": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-pique-liso",
+  "orden": "Relevancia"
+ },
+ "55": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-pique-estampado",
+  "orden": "Relevancia"
+ },
+ "76": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-plastificado",
+  "orden": "Relevancia"
+ },
+ "46": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-plumetti",
+  "orden": "Relevancia"
+ },
+ "93": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-polipiel",
+  "orden": "Relevancia"
+ },
+ "53": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-popelin",
+  "orden": "Relevancia"
+ },
+ "94": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-punto",
+  "orden": "Relevancia"
+ },
+ "127": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-punto-camiseta",
+  "orden": "Relevancia"
+ },
+ "73": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-sarga",
+  "orden": "Relevancia"
+ },
+ "87": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-seersucker",
+  "orden": "Relevancia"
+ },
+ "119": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-softshell",
+  "orden": "Relevancia"
+ },
+ "49": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-vichys",
+  "orden": "Relevancia"
+ },
+ "92": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-viscosa",
+  "orden": "Relevancia"
+ },
+ "48": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-viyela",
+  "orden": "Relevancia"
+ },
+ "47": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-viyela-plumetti",
+  "orden": "Relevancia"
+ },
+ "113": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-voile",
+  "orden": ""
+ },
+ "114": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-waffle",
+  "orden": ""
+ },
+ "6": {
+  "titulo": "Filtrar por",
+  "facetas": [
+   {
+    "titulo": "Categorías",
+    "tipo": "lista",
+    "valores": [
+     {
+      "texto": "Hilos",
+      "magnitud": "(167)",
+      "q": "Categor%C3%ADas-Hilos"
+     },
+     {
+      "texto": "Tira bordada",
+      "magnitud": "(11)",
+      "q": "Categor%C3%ADas-Tira+bordada"
+     },
+     {
+      "texto": "Botones",
+      "magnitud": "(12)",
+      "q": "Categor%C3%ADas-Botones"
+     },
+     {
+      "texto": "Puntilla",
+      "magnitud": "(6)",
+      "q": "Categor%C3%ADas-Puntilla"
+     },
+     {
+      "texto": "Goma elástica",
+      "magnitud": "(7)",
+      "q": "Categor%C3%ADas-Goma+el%C3%A1stica"
+     },
+     {
+      "texto": "Cintas y cordones",
+      "magnitud": "(22)",
+      "q": "Categor%C3%ADas-Cintas+y+cordones"
+     },
+     {
+      "texto": "Piculina/Tripa de pollo",
+      "magnitud": "(4)",
+      "q": "Categor%C3%ADas-Piculina//Tripa+de+pollo"
+     },
+     {
+      "texto": "Vivo",
+      "magnitud": "(4)",
+      "q": "Categor%C3%ADas-Vivo"
+     },
+     {
+      "texto": "Entredos",
+      "magnitud": "(3)",
+      "q": "Categor%C3%ADas-Entredos"
+     },
+     {
+      "texto": "Punto Smock",
+      "magnitud": "(2)",
+      "q": "Categor%C3%ADas-Punto+Smock"
+     },
+     {
+      "texto": "Alfileres y  Agujas",
+      "magnitud": "(1)",
+      "q": "Categor%C3%ADas-Alfileres+y++Agujas"
+     },
+     {
+      "texto": "Kit Costura",
+      "magnitud": "(5)",
+      "q": "Categor%C3%ADas-Kit+Costura"
+     },
+     {
+      "texto": "Entretela",
+      "magnitud": "(2)",
+      "q": "Categor%C3%ADas-Entretela"
+     },
+     {
+      "texto": "Tijeras y cortahilos",
+      "magnitud": "(6)",
+      "q": "Categor%C3%ADas-Tijeras+y+cortahilos"
+     }
+    ]
+   },
+   {
+    "titulo": "Disponibilidad",
+    "tipo": "lista",
+    "valores": [
+     {
+      "texto": "No disponible",
+      "magnitud": "(17)",
+      "q": "Disponibilidad-No+disponible"
+     },
+     {
+      "texto": "En stock",
+      "magnitud": "(237)",
+      "q": "Disponibilidad-En+stock"
+     }
+    ]
+   },
+   {
+    "titulo": "Precio",
+    "tipo": "slider",
+    "min": "0",
+    "max": "49",
+    "unidad": "€",
+    "etiqueta": "0,00 € - 49,00 €",
+    "especificaciones": "{\"symbol\":[\".\",\",\",\";\",\"%\",\"-\",\"+\",\"E\",\"\\u00d7\",\"\\u2030\",\"\\u221e\",\"NaN\"],\"currencyCode\":\"EUR\",\"currencySymbol\":\"\\u20ac\",\"positivePattern\":\"#,##0.00\\u00a0\\u00a4\",\"negativePattern\":\"-#,##0.00\\u00a0\\u00a4\",\"maxFractionDigits\":2,\"minFractionDigits\":2,\"groupingUsed\":true,\"primaryGroupSize\":3,\"secondaryGroupSize\":3}"
+   }
+  ],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-merceria",
+  "orden": "Relevancia"
+ },
+ "97": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-alfileres-y-agujas",
+  "orden": "Relevancia"
+ },
+ "23": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-bies",
+  "orden": ""
+ },
+ "24": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-botones",
+  "orden": "Relevancia"
+ },
+ "81": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-cintas-y-cordones",
+  "orden": "Relevancia"
+ },
+ "99": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-cremalleras",
+  "orden": ""
+ },
+ "84": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-entredos",
+  "orden": "Relevancia"
+ },
+ "138": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-entretela",
+  "orden": "Relevancia"
+ },
+ "27": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-goma-elastica",
+  "orden": "Relevancia"
+ },
+ "21": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-hilos",
+  "orden": "Relevancia"
+ },
+ "101": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-kit-costura",
+  "orden": "Relevancia"
+ },
+ "82": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-piculina-tripa-de-pollo",
+  "orden": "Relevancia"
+ },
+ "80": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-pompon",
+  "orden": ""
+ },
+ "25": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-puntilla",
+  "orden": "Relevancia"
+ },
+ "96": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-punto-smock",
+  "orden": "Relevancia"
+ },
+ "122": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-tijeras-y-cortahilos",
+  "orden": "Relevancia"
+ },
+ "22": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-tira-bordada",
+  "orden": "Relevancia"
+ },
+ "83": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-vivo",
+  "orden": "Relevancia"
+ },
+ "9": {
+  "titulo": "Filtrar por",
+  "facetas": [
+   {
+    "titulo": "Precio",
+    "tipo": "slider",
+    "min": "7",
+    "max": "8",
+    "unidad": "€",
+    "etiqueta": "7,00 € - 8,00 €",
+    "especificaciones": "{\"symbol\":[\".\",\",\",\";\",\"%\",\"-\",\"+\",\"E\",\"\\u00d7\",\"\\u2030\",\"\\u221e\",\"NaN\"],\"currencyCode\":\"EUR\",\"currencySymbol\":\"\\u20ac\",\"positivePattern\":\"#,##0.00\\u00a0\\u00a4\",\"negativePattern\":\"-#,##0.00\\u00a0\\u00a4\",\"maxFractionDigits\":2,\"minFractionDigits\":2,\"groupingUsed\":true,\"primaryGroupSize\":3,\"secondaryGroupSize\":3}"
+   }
+  ],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-revistas-y-libros",
+  "orden": "Relevancia"
+ },
+ "29": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-patrones-infantiles",
+  "orden": "Relevancia"
+ },
+ "30": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-patrones-sueltos",
+  "orden": ""
+ },
+ "89": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-libros-de-costura",
+  "orden": ""
+ },
+ "133": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-liquidacion",
+  "orden": "Relevancia"
+ },
+ "135": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-remate-final-invierno-25",
+  "orden": "Relevancia"
+ },
+ "139": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "",
+  "clase_body": "category-nueva-coleccion",
+  "orden": ""
+ },
+ "102": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-primavera-verano-024",
+  "orden": "Relevancia"
+ },
+ "91": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-coleccion-otoNo-invierno",
+  "orden": "Relevancia"
+ },
+ "86": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-combinaciones-invierno",
+  "orden": "Relevancia"
+ },
+ "100": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-confeccion",
+  "orden": "Relevancia"
+ },
+ "90": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-otoNo-invierno-2021",
+  "orden": "Relevancia"
+ },
+ "121": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-verano-2024",
+  "orden": "Relevancia"
+ },
+ "123": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-caja-de-retales",
+  "orden": "Relevancia"
+ },
+ "128": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-nueva-coleccion-otoNo-invierno",
+  "orden": "Relevancia"
+ },
+ "129": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-mis-combinaciones",
+  "orden": "Relevancia"
+ },
+ "132": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-sacos-de-navidad",
+  "orden": "Relevancia"
+ },
+ "134": {
+  "titulo": "",
+  "facetas": [],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-coleccion-verano-2026",
+  "orden": "Relevancia"
+ },
+ "2": {
+  "titulo": "Filtrar por",
+  "facetas": [
+   {
+    "titulo": "Categorías",
+    "tipo": "lista",
+    "valores": [
+     {
+      "texto": "Telas",
+      "magnitud": "(323)",
+      "q": "Categor%C3%ADas-Telas"
+     },
+     {
+      "texto": "Mercería",
+      "magnitud": "(254)",
+      "q": "Categor%C3%ADas-Mercer%C3%ADa"
+     },
+     {
+      "texto": "Revistas Y LIBROS",
+      "magnitud": "(4)",
+      "q": "Categor%C3%ADas-Revistas+Y+LIBROS"
+     },
+     {
+      "texto": "Combinaciones INVIERNO",
+      "magnitud": "(20)",
+      "q": "Categor%C3%ADas-Combinaciones+INVIERNO"
+     },
+     {
+      "texto": "OTOÑO / INVIERNO 2021",
+      "magnitud": "(2)",
+      "q": "Categor%C3%ADas-OTO%C3%91O+//+INVIERNO+2021"
+     },
+     {
+      "texto": "COLECCIÓN OTOÑO-INVIERNO",
+      "magnitud": "(104)",
+      "q": "Categor%C3%ADas-COLECCI%C3%93N+OTO%C3%91O--INVIERNO"
+     },
+     {
+      "texto": "CONFECCIÓN",
+      "magnitud": "(9)",
+      "q": "Categor%C3%ADas-CONFECCI%C3%93N"
+     },
+     {
+      "texto": "PRIMAVERA VERANO 024",
+      "magnitud": "(105)",
+      "q": "Categor%C3%ADas-PRIMAVERA+VERANO+024"
+     },
+     {
+      "texto": "VERANO 2024",
+      "magnitud": "(28)",
+      "q": "Categor%C3%ADas-VERANO+2024"
+     },
+     {
+      "texto": "CAJA DE RETALES",
+      "magnitud": "(4)",
+      "q": "Categor%C3%ADas-CAJA+DE+RETALES"
+     },
+     {
+      "texto": "NUEVA COLECCIÓN OTOÑO-INVIERNO",
+      "magnitud": "(38)",
+      "q": "Categor%C3%ADas-NUEVA+COLECCI%C3%93N+OTO%C3%91O--INVIERNO"
+     },
+     {
+      "texto": "MIS COMBINACIONES",
+      "magnitud": "(2)",
+      "q": "Categor%C3%ADas-MIS+COMBINACIONES"
+     },
+     {
+      "texto": "SACOS DE NAVIDAD",
+      "magnitud": "(4)",
+      "q": "Categor%C3%ADas-SACOS+DE+NAVIDAD"
+     },
+     {
+      "texto": "LIQUIDACIÓN",
+      "magnitud": "(7)",
+      "q": "Categor%C3%ADas-LIQUIDACI%C3%93N"
+     },
+     {
+      "texto": "COLECCIÓN VERANO 2026",
+      "magnitud": "(156)",
+      "q": "Categor%C3%ADas-COLECCI%C3%93N+VERANO+2026"
+     },
+     {
+      "texto": "REMATE FINAL INVIERNO 25",
+      "magnitud": "(39)",
+      "q": "Categor%C3%ADas-REMATE+FINAL+INVIERNO+25"
+     }
+    ]
+   },
+   {
+    "titulo": "Disponibilidad",
+    "tipo": "lista",
+    "valores": [
+     {
+      "texto": "No disponible",
+      "magnitud": "(38)",
+      "q": "Disponibilidad-No+disponible"
+     },
+     {
+      "texto": "En stock",
+      "magnitud": "(620)",
+      "q": "Disponibilidad-En+stock"
+     }
+    ]
+   },
+   {
+    "titulo": "Precio",
+    "tipo": "slider",
+    "min": "0",
+    "max": "49",
+    "unidad": "€",
+    "etiqueta": "0,00 € - 49,00 €",
+    "especificaciones": "{\"symbol\":[\".\",\",\",\";\",\"%\",\"-\",\"+\",\"E\",\"\\u00d7\",\"\\u2030\",\"\\u221e\",\"NaN\"],\"currencyCode\":\"EUR\",\"currencySymbol\":\"\\u20ac\",\"positivePattern\":\"#,##0.00\\u00a0\\u00a4\",\"negativePattern\":\"-#,##0.00\\u00a0\\u00a4\",\"maxFractionDigits\":2,\"minFractionDigits\":2,\"groupingUsed\":true,\"primaryGroupSize\":3,\"secondaryGroupSize\":3}"
+   }
+  ],
+  "activos_titulo": "Filtros activos",
+  "clase_body": "category-inicio",
+  "orden": "Relevancia"
+ }
+}

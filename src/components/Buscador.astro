@@ -1,0 +1,53 @@
+---
+/**
+ * Bloque del buscador (módulo ps_searchbar). El buscador necesitaba el servidor de PrestaShop;
+ * hasta que se decida Pagefind o quitarlo (Fase 2, punto 8) se muestra igual pero desactivado
+ * de forma visible, nunca roto en silencio.
+ */
+import { bloques, nuevo, textos } from '../lib/catalogo';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const c = bloques(idioma).cabecera.buscador;
+const n = nuevo(idioma);
+const t = textos(idioma);
+---
+<!-- Block search module TOP -->
+<div id="_desktop_search_bar">
+  <div id="search_widget" data-search-controller-url={c.accion}>
+    <div class="search-bar dropdown js-dropdown hidden-lg-up">
+      <span class="expand-more font-search" data-toggle="dropdown" aria-expanded="false"></span>
+      <div class="dropdown-menu">
+        <form method="get" action={c.accion} class="search-bar__wrap" title={n.buscador_aviso}>
+          <input type="hidden" name="controller" value="search" />
+          <input type="text" name="s" value="" placeholder={c.placeholder} aria-label={t.buscar} class="search-bar__text" disabled title={n.buscador_aviso} />
+          <button type="submit" class="search-bar__btn font-search" disabled title={n.buscador_aviso}></button>
+        </form>
+      </div>
+    </div>
+    <div class="hidden-md-down">
+      <button type="button" class="js-search-btn-toggle search-btn-toggle font-search" data-toggle="modal" data-target="#search-modal" title={n.buscador_aviso}></button>
+      <div class="modal fade" id="search-modal" tabindex="-1" role="dialog" aria-labelledby="searchProducts" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <p class="modal-title header__search__title" id="searchProducts">{c.titulo}</p>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <div id="search-block-top" class="search-block">
+                <form method="get" action={c.accion} class="search-form">
+                  <div class="search-field container -responsive">
+                    <input type="hidden" name="controller" value="search" />
+                    <input type="text" name="s" value="" placeholder={c.placeholder} aria-label={t.buscar} class="input-text" disabled title={n.buscador_aviso} />
+                    <button type="submit" class="search-btn font-search" disabled title={n.buscador_aviso}></button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Block search module TOP -->

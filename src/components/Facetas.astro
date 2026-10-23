@@ -1,0 +1,72 @@
+---
+/**
+ * Filtros por facetas (módulo ps_facetedsearch) de una categoría. Los filtros pedían al servidor
+ * (?q=…), así que en estático: el filtro «Categorías» enlaza a la subcategoría real; los demás
+ * (disponibilidad, precio) se muestran pero sin enlace y con aviso. Se decide en la Fase 2, punto 7.
+ * El contenedor existe en todas las categorías, aunque no tengan filtros (como en la tienda vieja).
+ */
+import type { NodoArbol } from '../lib/catalogo';
+import { nuevo } from '../lib/catalogo';
+interface Props { idioma: string; datos: any; raiz: NodoArbol | null }
+const { idioma, datos, raiz } = Astro.props;
+const n = nuevo(idioma);
+const E_OK = '';
+const E_MAS = '';
+const E_MENOS = '';
+const E_CHECK = '';
+const facetas: any[] = datos?.facetas ?? [];
+const hrefDe = (texto: string) => raiz?.hijos.find((h) => h.nombre.trim() === texto.trim())?.href;
+---
+<div id="search_filters_wrapper" class="hidden-sm-down">
+  <div id="search_filter_controls" class="hidden-lg-up">
+    <span id="_mobile_search_filters_clear_all"></span>
+    <button class="btn btn-secondary ok"><i class="material-icons">{E_OK}</i>OK</button>
+  </div>
+  {facetas.length > 0 && (
+    <div id="search_filters">
+      <p class="text-uppercase h6 hidden-md-down">{datos.titulo}</p>
+      <div class="facets-wrapper">
+        {facetas.map((f: any, fi: number) => (
+          <div class="facet clearfix">
+            <p class="facet-title hidden-md-down">{f.titulo}</p>
+            <div class="title hidden-md-up" data-target={`#facet_${fi}`} data-toggle="collapse">
+              <p class="h6 facet-title">{f.titulo}</p>
+              <span class="float-xs-right">
+                <span class="navbar-toggler collapse-icons"><i class="material-icons add">{E_MAS}</i><i class="material-icons remove">{E_MENOS}</i></span>
+              </span>
+            </div>
+            {f.tipo === 'lista' ? (
+              <ul id={`facet_${fi}`} class="collapse">
+                {f.valores.map((v: any, vi: number) => {
+                  const href = f.titulo === 'Categorías' ? hrefDe(v.texto) : undefined;
+                  return (
+                    <li>
+                      <label class="facet-label" for={`facet_input_${fi}_${vi}`} title={href ? undefined : n.filtro_aviso}>
+                        <span class="custom-checkbox">
+                          <input id={`facet_input_${fi}_${vi}`} type="checkbox" disabled={!href} data-search-url={href} />
+                          <span class="ps-shown-by-js"><i class="material-icons rtl-no-flip checkbox-checked">{E_CHECK}</i></span>
+                        </span>
+                        {href ? (
+                          <a href={href} class="_gray-darker search-link js-search-link" rel="nofollow">{v.texto}<span class="magnitude">{v.magnitud}</span></a>
+                        ) : (
+                          <span class="_gray-darker search-link js-search-link">{v.texto}<span class="magnitude">{v.magnitud}</span></span>
+                        )}
+                      </label>
+                    </li>
+                  );
+                })}
+              </ul>
+            ) : (
+              <ul id={`facet_${fi}`} class="faceted-slider" data-slider-label={f.titulo} data-slider-min={f.min} data-slider-max={f.max} data-slider-unit={f.unidad} title={n.filtro_aviso}>
+                <li class="slider-type">
+                  <div id={`slider-range_${fi}`}></div>
+                  <p id={`facet_label_${fi}`} class="slider-title">{f.etiqueta}</p>
+                </li>
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</div>

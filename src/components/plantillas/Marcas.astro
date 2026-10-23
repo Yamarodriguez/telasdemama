@@ -1,0 +1,28 @@
+---
+/** Lista de marcas (/brands): una sola marca en la tienda. Con columna izquierda como los listados. */
+import type { NodoArbol } from '../../lib/catalogo';
+import { catalogo, textos } from '../../lib/catalogo';
+import ColumnaIzquierda from '../ColumnaIzquierda.astro';
+interface Props { idioma: string; raiz: NodoArbol }
+const { idioma, raiz } = Astro.props;
+const c = catalogo(idioma);
+const t = textos(idioma);
+const marcas = Object.entries(c.otras).filter(([u]) => u.includes('/brand/')).map(([u, o]) => ({ url: u, nombre: o.h1 || o.titulo_visible || o.title }));
+---
+<ColumnaIzquierda idioma={idioma} raiz={raiz} conFacetas={false} />
+<div id="content-wrapper" class="left-column col-xs-12 col-lg-9">
+  <section id="main">
+    <h1>{t.marcas}</h1>
+    <ul>
+      {marcas.map((m) => (
+        <li class="brand">
+          <div class="brand-img"><a href={m.url}><img src={`/img/m/${idioma}-default-small_default.jpg`} alt={m.nombre} /></a></div>
+          <div class="brand-infos">
+            <p class="h3"><a href={m.url}>{m.nombre}</a></p>
+            <p>{m.nombre}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+</div>

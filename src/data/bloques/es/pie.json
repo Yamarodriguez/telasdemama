@@ -1,0 +1,167 @@
+{
+ "boletin": {
+  "titulo": "NEWSLETTER",
+  "texto": "Suscríbete a nuestro boletín y podrás estar al tanto de todas las novedades y ofertas de Telas de Mamá!",
+  "placeholder": "Su dirección de correo electrónico",
+  "boton": "Suscribirse"
+ },
+ "sobre_nosotros": {
+  "titulo": "Sobre nosotros",
+  "logo": {
+   "src": "/img/logo-footer.png",
+   "alt": "Telas de Mamá",
+   "width": "250"
+  },
+  "copyright_html": "<p>Copyright © 2019 Telasdemama.com <br/>Todos los derechos reservados</p>",
+  "redes": [
+   {
+    "href": "https://www.instagram.com/telasdemama/",
+    "img": "/img/instagram.png",
+    "alt": "instagram.png",
+    "width": "40"
+   },
+   {
+    "href": "https://www.facebook.com/Telas-de-mam%C3%A1-110502563705632/",
+    "img": "/img/facebook.png",
+    "alt": "facebook.png",
+    "width": "40"
+   },
+   {
+    "href": null,
+    "img": "/img/pinterest.png",
+    "alt": "pinterest.png",
+    "width": "40"
+   }
+  ]
+ },
+ "columnas": [
+  {
+   "titulo": "Productos",
+   "id": "footer_sub_menu_70827",
+   "enlaces": [
+    {
+     "texto": "Ofertas - telas y tejidos rebajados",
+     "href": "/es/productos-rebajados",
+     "title": "Nuestra mejores ofertas - telas y tejidos rebajados, ofertas de mercería...",
+     "id": "link-product-page-prices-drop-1"
+    },
+    {
+     "texto": "Novedades en Telas de Mamá - Tienda de telas, tejidos y mercería",
+     "href": "/es/novedades",
+     "title": "Novedades en Telas de Mamá: las mejores telas de algodón, tejidos suaves, mercería...",
+     "id": "link-product-page-new-products-1"
+    },
+    {
+     "texto": "Los más vendidos",
+     "href": "/es/mas-vendidos",
+     "title": "Los más vendidos",
+     "id": "link-product-page-best-sales-1"
+    }
+   ]
+  },
+  {
+   "titulo": "Nuestra empresa",
+   "id": "footer_sub_menu_80218",
+   "enlaces": [
+    {
+     "texto": "Envíos y devoluciones",
+     "href": "/es/content/1-envios-y-devoluciones",
+     "title": "Nuestros términos y condiciones de envío",
+     "id": "link-cms-page-1-2"
+    },
+    {
+     "texto": "Aviso legal",
+     "href": "/es/content/2-aviso-legal",
+     "title": "Aviso legal",
+     "id": "link-cms-page-2-2"
+    },
+    {
+     "texto": "Términos y condiciones",
+     "href": "/es/content/3-terminos-y-condiciones-de-uso",
+     "title": "Nuestros términos y condiciones",
+     "id": "link-cms-page-3-2"
+    },
+    {
+     "texto": "Sobre mí",
+     "href": "/es/content/4-sobre-mi",
+     "title": "Conoce a Natalia, la mente creativa detrás de Telas de Mamá. Descubre nuestra pasión por la moda infantil y las telas de calidad. ¡Haz clic ahora!",
+     "id": "link-cms-page-4-2"
+    },
+    {
+     "texto": "Pago seguro",
+     "href": "/es/content/5-pago-seguro",
+     "title": "Nuestra forma de pago segura",
+     "id": "link-cms-page-5-2"
+    },
+    {
+     "texto": "Contacte con nosotros",
+     "href": "/es/contactenos",
+     "title": "Contáctenos",
+     "id": "link-static-page-contact-2"
+    },
+    {
+     "texto": "Mapa del sitio",
+     "href": "/es/mapa del sitio",
+     "title": "¿Perdido? Encuentre lo que está buscando",
+     "id": "link-static-page-sitemap-2"
+    },
+    {
+     "texto": "Tiendas",
+     "href": "/es/tiendas",
+     "title": "",
+     "id": "link-static-page-stores-2"
+    }
+   ]
+  }
+ ],
+ "cuenta": {
+  "titulo": "Su cuenta",
+  "href": "/es/mi-cuenta",
+  "enlaces": [
+   {
+    "texto": "Información personal",
+    "href": "/es/datos-personales",
+    "title": "Información personal",
+    "id": ""
+   },
+   {
+    "texto": "Pedidos",
+    "href": "/es/historial-compra",
+    "title": "Pedidos",
+    "id": ""
+   },
+   {
+    "texto": "Facturas por abono",
+    "href": "/es/facturas-abono",
+    "title": "Facturas por abono",
+    "id": ""
+   },
+   {
+    "texto": "Direcciones",
+    "href": "/es/direcciones",
+    "title": "Direcciones",
+    "id": ""
+   },
+   {
+    "texto": "Cupones de descuento",
+    "href": "/es/descuento",
+    "title": "Cupones de descuento",
+    "id": ""
+   }
+  ]
+ },
+ "tienda": {
+  "titulo": "Información de la tienda",
+  "direccion_html": "<li class=\"address-item\">Telas de Mamá<br/>Calle La Vega 97, Rioseco<br/>33993 Sobrescobio<br/>Asturias<br/>España</li>",
+  "telefono_etiqueta": "Llámenos:",
+  "telefono": "643 945 052",
+  "correo_etiqueta": "Envíenos un correo electrónico:",
+  "correo": "contacto@telasdemama.com"
+ },
+ "leader": {
+  "texto": "“Colaboración de la Unión Europea en cumplimiento de las obligaciones establecidas en la normativa de las Ayudas Leader, al recibir la concesión de la ayuda (Bases Reguladoras de la Ayuda Resolución nº 92 de 15-V-2019)”.",
+  "img": "/img/banner_instituciones.png",
+  "width": "80%",
+  "hr_style": "background-color:#a3a3a3"
+ }
+}

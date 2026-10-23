@@ -1,0 +1,45 @@
+---
+/**
+ * Columna izquierda de los listados: árbol de categorías, filtros (solo categorías),
+ * bloques «Los más vendidos» y «En oferta», y el widget vertical de opiniones de Revi.
+ */
+import type { NodoArbol } from '../lib/catalogo';
+import { bloques, catalogo, textos } from '../lib/catalogo';
+import { REVI } from '../lib/sitio';
+import BloqueCategorias from './BloqueCategorias.astro';
+import Facetas from './Facetas.astro';
+import MiniaturaProducto from './MiniaturaProducto.astro';
+
+interface Props { idioma: string; raiz: NodoArbol; facetas?: any; /** La lista de marcas no lleva el contenedor de filtros. */ conFacetas?: boolean }
+const { idioma, raiz, facetas, conFacetas = true } = Astro.props;
+const b = bloques(idioma);
+const c = catalogo(idioma);
+const t = textos(idioma);
+---
+<div id="left-column" class="sidebar col-xs-12 col-lg-3">
+  <BloqueCategorias raiz={raiz} />
+  {conFacetas && <Facetas idioma={idioma} datos={facetas} raiz={raiz} />}
+  {b.laterales.bloques.map((bl) => (
+    <section class="featured-products column-block clearfix">
+      <p class="h6 text-uppercase">{bl.titulo}</p>
+      <div class="toggle-block">
+        <div class="products-list">
+          {c.productosDe(bl.productos).map((p) => <MiniaturaProducto producto={p} idioma={idioma} />)}
+        </div>
+        {bl.todos && <a class="all-product-link btn btn-primary" href={bl.todos.href}>{bl.todos.texto}</a>}
+      </div>
+    </section>
+  ))}
+  {b.laterales.revi_vertical && (
+    <div class="block">
+      <div class="title_block">{t.opiniones}</div>
+      <div class="block_content">
+        <div class={`revi_widget_vertical_${REVI.tienda}`}></div>
+        <p class="revi_align_center"><small><a href={`https://revi.io/${idioma}`} target="_blank">Reviews by <span class="revi_colour">revi</span></a></small></p>
+      </div>
+    </div>
+  )}
+  {b.laterales.revi_vertical && (
+    <script is:inline type="text/javascript" set:html={`var s = document.createElement("script");s.type = "text/javascript";s.setAttribute("async", "");s.setAttribute("defer", "");s.src = "https://revi.io/widgets/vertical/${REVI.cuenta}/${REVI.tienda}/${idioma}";document.getElementsByTagName('body')[0].appendChild(s);`} />
+  )}
+</div>

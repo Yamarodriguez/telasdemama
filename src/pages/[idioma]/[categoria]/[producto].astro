@@ -1,0 +1,66 @@
+---
+/** Fichas de producto: /es/inicio/1091-algodon-mar-caspio.html (la URL no cambia, con su .html). */
+import Base from '../../../layouts/Base.astro';
+import Ficha from '../../../components/plantillas/Ficha.astro';
+import { idiomas, catalogo, bloques, textoPlano, numeroPlano } from '../../../lib/catalogo';
+import { absoluta } from '../../../lib/sitio';
+
+export function getStaticPaths() {
+  const rutas = [];
+  for (const idioma of idiomas()) {
+    for (const p of catalogo(idioma).productos) {
+      // Astro quita el .html del parámetro y, con build.format 'file', escribe el fichero con .html.
+      const m = p.url.match(new RegExp(`^/${idioma}/([^/]+)/([^/]+)\\.html$`));
+      if (!m) continue;
+      rutas.push({ params: { idioma, categoria: m[1], producto: m[2] }, props: { id: p.id } });
+    }
+  }
+  return rutas;
+}
+const { idioma } = Astro.params;
+const { id } = Astro.props;
+const c = catalogo(idioma);
+const p = c.porId.get(id)!;
+const extra = bloques(idioma).fichasExtra[String(p.id)] ?? {};
+const portada = p.imagenes.find((i) => i.portada) ?? p.imagenes[0];
+const descripcionPlana = textoPlano(p.descripcion_corta);
+// La clase «product-<nombre>» usa el link_rewrite real del producto, que no siempre coincide con el tramo de la URL.
+const clases = [`product-id-${p.id}`, extra.clase_producto ?? `product-${p.link_rewrite}`, `product-id-category-${p.categoria_defecto?.id ?? 0}`, `product-id-manufacturer-${p.fabricante_id ?? 0}`, 'product-id-supplier-0', ...(p.disponible_para_pedido && p.muestra_precio ? ['product-available-for-order'] : []), ...(p.en_oferta ? ['product-on-sale'] : [])];
+const og = [
+  { property: 'og:type', content: 'product' },
+  { property: 'og:url', content: p.canonical || absoluta(p.url) },
+  { property: 'og:title', content: p.nombre },
+  { property: 'og:site_name', content: 'Telas de Mamá' },
+  { property: 'og:description', content: descripcionPlana },
+  ...(portada ? [{ property: 'og:image', content: absoluta(portada.por_tamano.large_default) }] : []),
+  ...(p.muestra_precio
+    ? [
+        { property: 'product:pretax_price:amount', content: numeroPlano(p.precio_sin_iva) },
+        { property: 'product:pretax_price:currency', content: 'EUR' },
+        { property: 'product:price:amount', content: numeroPlano(p.precio_con_iva) },
+        { property: 'product:price:currency', content: 'EUR' },
+      ]
+    : []),
+];
+// Datos estructurados JSON-LD (nuevo; la tienda vieja solo llevaba microdatos). Mismo precio que el visible.
+const jsonLd = p.muestra_precio
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: p.nombre,
+      sku: p.referencia ?? undefined,
+      image: p.imagenes.map((i) => absoluta(i.por_tamano.large_default)),
+      description: descripcionPlana,
+      offers: {
+        '@type': 'Offer',
+        url: p.canonical || absoluta(p.url),
+        price: numeroPlano(p.precio_con_iva),
+        priceCurrency: 'EUR',
+        availability: p.disponibilidad === 'unavailable' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
+      },
+    }
+  : undefined;
+---
+<Base idioma={idioma} tipo="product" layout="layout-full-width" clasesExtra={clases} title={p.meta_title || p.title || p.nombre} description={p.meta_description || descripcionPlana} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url} migas={p.breadcrumb} og={og} jsonLd={jsonLd}>
+  <Ficha idioma={idioma} producto={p} />
+</Base>

@@ -1,0 +1,52 @@
+---
+/**
+ * Mapa del sitio: ofertas, árbol de categorías y páginas. La columna «Su cuenta» desaparece
+ * por la Dec. 8 (no hay cuentas de cliente).
+ */
+import type { NodoArbol } from '../../lib/catalogo';
+import { bloques } from '../../lib/catalogo';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const b = bloques(idioma);
+const m = b.mapa;
+const columnas = m.columnas.filter((c: any) => c.titulo !== 'Su cuenta');
+const sinCuenta = (enlaces: any[]) => enlaces.filter((e) => !/iniciar-sesion|mi-cuenta|recuperar/.test(e.href));
+---
+<div id="content-wrapper" class="col-12">
+  <section id="main">
+    <header class="page-header"><h1><span class="sitemap-title">{m.titulo}</span></h1></header>
+    <div class="container-fluid">
+      <div class="row sitemap col-xs-12">
+        {columnas.map((col: any) => (
+          <div class="col-md-3">
+            <h2>{col.titulo}</h2>
+            {col.tipo === 'categorias' ? (
+              <ul>
+                {(function pintar(nodos: NodoArbol[]): any {
+                  return nodos.map((nd) => (
+                    <li>
+                      <a href={nd.href} title={nd.nombre} id={`category-page-${nd.id}`}>{nd.nombre}</a>
+                      {nd.hijos.length > 0 && <ul class="nested">{pintar(nd.hijos)}</ul>}
+                    </li>
+                  ));
+                })(b.arbol)}
+              </ul>
+            ) : (
+              <ul>
+                {sinCuenta(col.enlaces).map((e: any) => (
+                  <li>
+                    <a href={e.href} title={e.title} id={e.id || undefined}>{e.texto}</a>
+                    {e.hijos.length > 0 && (
+                      <ul class="nested">{e.hijos.map((h: any) => <li><a href={h.href} title={h.title} id={h.id || undefined}>{h.texto}</a></li>)}</ul>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+    <footer class="page-footer"><!-- Footer content --></footer>
+  </section>
+</div>

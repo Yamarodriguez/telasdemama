@@ -1,0 +1,23 @@
+---
+/** Página de una marca: /es/brand/1-telasdemama (listado con columna izquierda). */
+import Base from '../../../layouts/Base.astro';
+import Listado from '../../../components/plantillas/Listado.astro';
+import { idiomas } from '../../../lib/catalogo';
+import { listados } from '../../../lib/paginas';
+
+export function getStaticPaths() {
+  const rutas = [];
+  for (const idioma of idiomas()) {
+    for (const l of listados(idioma)) {
+      if (l.tipo === 'manufacturer') rutas.push({ params: { idioma, marca: l.slug.replace('brand/', '') }, props: { slug: l.slug } });
+    }
+  }
+  return rutas;
+}
+const { idioma } = Astro.params;
+const { slug } = Astro.props;
+const l = listados(idioma).find((x) => x.slug === slug)!;
+---
+<Base idioma={idioma} tipo="manufacturer" layout="layout-left-column" title={l.title} description={l.description} canonical={l.canonical} hreflang={l.hreflang} urlActual={l.base} migas={l.migas}>
+  <Listado idioma={idioma} tipo="manufacturer" titulo={l.titulo} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} orden={l.orden} />
+</Base>

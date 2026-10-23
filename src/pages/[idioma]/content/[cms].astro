@@ -1,0 +1,20 @@
+---
+/** Páginas de texto: /es/content/4-sobre-mi */
+import Base from '../../../layouts/Base.astro';
+import PaginaCms from '../../../components/plantillas/PaginaCms.astro';
+import { idiomas, catalogo } from '../../../lib/catalogo';
+
+export function getStaticPaths() {
+  const rutas = [];
+  for (const idioma of idiomas()) {
+    for (const p of catalogo(idioma).cms) rutas.push({ params: { idioma, cms: p.url.replace(`/${idioma}/content/`, '') }, props: { id: p.id } });
+  }
+  return rutas;
+}
+const { idioma } = Astro.params;
+const { id } = Astro.props;
+const p = catalogo(idioma).cms.find((x) => x.id === id)!;
+---
+<Base idioma={idioma} tipo="cms" layout="layout-full-width" clasesExtra={[`cms-id-${p.id}`]} title={p.title} description={p.meta_description} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url} migas={p.breadcrumb} menuActual={`cms-page-${p.id}`}>
+  <PaginaCms pagina={p} />
+</Base>

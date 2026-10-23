@@ -1,0 +1,43 @@
+---
+/**
+ * Paginación de un listado, con la misma regla que PrestaShop: primera, última, la actual
+ * y sus vecinas, con «…» en los huecos. Cada página es una URL propia (/pagina/n).
+ */
+import { textos, urlPagina } from '../lib/catalogo';
+interface Props { idioma: string; base: string; actual: number; total: number }
+const { idioma, base, actual, total } = Astro.props;
+const t = textos(idioma);
+const E_ANTERIOR = '';
+const E_SIGUIENTE = '';
+const visibles = new Set([1, total, actual - 1, actual, actual + 1].filter((p) => p >= 1 && p <= total));
+if (actual === 1) visibles.add(Math.min(3, total));
+if (actual === total) visibles.add(Math.max(1, total - 2));
+const paginas = [...visibles].sort((a, b) => a - b);
+const items: ({ n: number } | { espacio: true })[] = [];
+paginas.forEach((p, i) => {
+  if (i > 0 && p - paginas[i - 1] > 1) items.push({ espacio: true });
+  items.push({ n: p });
+});
+---
+{total >= 1 && (
+  <nav class="pagination">
+    <label>{t.pagina}</label>
+    <ul class="page-list clearfix text-xs-center">
+      {actual > 1 && (
+        <li><a rel="prev" href={urlPagina(base, actual - 1)} class="previous js-search-link"><i class="material-icons">{E_ANTERIOR}</i></a></li>
+      )}
+      {items.map((it) =>
+        'espacio' in it ? (
+          <li><span class="spacer">…</span></li>
+        ) : (
+          <li class:list={[it.n === actual && 'current']}>
+            <a rel="nofollow" href={urlPagina(base, it.n)} class:list={[it.n === actual && 'disabled', 'js-search-link']}>{it.n}</a>
+          </li>
+        )
+      )}
+      {actual < total && (
+        <li><a rel="next" href={urlPagina(base, actual + 1)} class="next js-search-link"><i class="material-icons">{E_SIGUIENTE}</i></a></li>
+      )}
+    </ul>
+  </nav>
+)}

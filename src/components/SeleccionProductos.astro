@@ -1,0 +1,33 @@
+---
+/**
+ * Barra de selección de un listado (arriba y abajo de la rejilla): vista rejilla/lista,
+ * orden y paginación. El orden (?order=) pedía al servidor: se muestra el actual sin desplegable.
+ */
+import { textos, nuevo } from '../lib/catalogo';
+import Paginacion from './Paginacion.astro';
+interface Props { idioma: string; id: 'js-product-list-top' | 'js-product-list-bottom'; base: string; pagina: number; totalPaginas: number; /** El botón «Filtrar» (móvil) solo sale si la página tiene filtros. */ conFiltros?: boolean; orden?: string }
+const { idioma, id, base, pagina, totalPaginas, conFiltros = false, orden } = Astro.props;
+const t = textos(idioma);
+const n = nuevo(idioma);
+---
+<div id={id} class="products-selection">
+  <div class="row sort-by-row">
+    <div class="display-view hidden-sm-down">
+      <label>{t.ver}</label>
+      <span class="material-icons view-item show_grid active">{''}</span>
+      <span class="material-icons view-item show_list">{''}</span>
+    </div>
+    <div class="products-sort-order dropdown" title={n.orden_aviso}>
+      <label class="sort-by">{t.ordenar_por}</label>
+      <div class="drow-down-wrapper">
+        <span class="select-title">{orden ?? t.relevancia}<i class="material-icons">{''}</i></span>
+      </div>
+    </div>
+    {conFiltros && (
+      <div class="hidden-lg-up filter-button">
+        <button id="search_filter_toggler" class="btn btn-secondary">{t.filtrar}</button>
+      </div>
+    )}
+    <Paginacion idioma={idioma} base={base} actual={pagina} total={totalPaginas} />
+  </div>
+</div>

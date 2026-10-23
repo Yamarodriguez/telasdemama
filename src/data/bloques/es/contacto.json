@@ -1,0 +1,46 @@
+{
+ "titulo": "Contacte con nosotros",
+ "info_titulo": "Información de la tienda",
+ "bloques": [
+  {
+   "icono": "",
+   "html": "Telas de Mamá<br/>Calle La Vega 97, Rioseco<br/>33993 Sobrescobio<br/>Asturias<br/>España",
+   "extra_html": ""
+  },
+  {
+   "icono": "",
+   "html": "Llámenos:<br/>\n<a href=\"tel:643 945 052\">643 945 052</a>",
+   "extra_html": ""
+  },
+  {
+   "icono": "",
+   "html": "Envíenos un mensaje de correo electrónico:<br/>",
+   "extra_html": "<a href=\"mailto:contacto@telasdemama.com\">contacto@telasdemama.com</a>"
+  }
+ ],
+ "campos": [
+  {
+   "etiqueta": "Asunto",
+   "comentario": ""
+  },
+  {
+   "etiqueta": "Dirección de correo electrónico",
+   "comentario": ""
+  },
+  {
+   "etiqueta": "Archivo adjunto",
+   "comentario": "opcional"
+  },
+  {
+   "etiqueta": "Mensaje",
+   "comentario": ""
+  }
+ ],
+ "asuntos": [
+  "Servicio al cliente"
+ ],
+ "placeholder_correo": "su@email.com",
+ "placeholder_mensaje": "¿Cómo podemos ayudarle?",
+ "boton_adjunto": "Seleccionar archivo",
+ "boton": "Enviar"
+}

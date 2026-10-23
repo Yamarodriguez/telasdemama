@@ -1,0 +1,15 @@
+---
+/** Portada de cada idioma: /es/ */
+import Base from '../../layouts/Base.astro';
+import Portada from '../../components/plantillas/Portada.astro';
+import { idiomas, catalogo } from '../../lib/catalogo';
+
+export function getStaticPaths() {
+  return idiomas().map((idioma) => ({ params: { idioma } }));
+}
+const { idioma } = Astro.params;
+const o = catalogo(idioma).otras[`/${idioma}`];
+---
+<Base idioma={idioma} tipo="index" layout="layout-full-width" title={o.title} description={o.meta_description} keywords={o.meta_keywords ?? ''} canonical="" hreflang={o.hreflang} urlActual={`/${idioma}/`} migas={o.breadcrumb} portada>
+  <Portada idioma={idioma} />
+</Base>

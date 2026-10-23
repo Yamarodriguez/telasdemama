@@ -1,0 +1,90 @@
+---
+/**
+ * Miniatura de producto (article.product-miniature) tal como la pinta el tema en listados,
+ * portada, bloques laterales y accesorios. El botón «Añadir al carrito» pasa a ser
+ * «Pedir por WhatsApp» (Dec. 8) y desaparece la vista rápida, que pedía datos al servidor.
+ */
+import type { Producto } from '../lib/catalogo';
+import { bloques, nuevo, textos, descripcionMiniatura, altImagen, numeroPlano, formatoPrecio, truncarSmarty } from '../lib/catalogo';
+import { absoluta, enlaceWhatsApp, plantilla } from '../lib/sitio';
+
+interface Props { producto: Producto; idioma: string }
+const { producto: p, idioma } = Astro.props;
+const t = textos(idioma);
+const n = nuevo(idioma);
+const b = bloques(idioma);
+const revi = b.revi[String(p.id)];
+const etiquetas = b.etiquetas[String(p.id)]?.miniatura ?? [];
+const leyendas = b.fichasExtra[String(p.id)]?.leyendas;
+// La foto principal es la portada; la que aparece al pasar el ratón es la segunda por posición (regla del tema).
+const porPosicion = [...p.imagenes].sort((a, b2) => Number(a.posicion) - Number(b2.posicion));
+const portada = p.imagenes.find((i) => i.portada) ?? porPosicion[0];
+const alternativa = porPosicion.length > 1 ? porPosicion[1] : undefined;
+const sinFoto = (tam: string) => `/img/p/${idioma}-default-${tam}.jpg`;
+const src = (img: typeof portada | undefined, tam: string) => (img ? img.por_tamano[tam] : sinFoto(tam));
+// El tema pinta en la miniatura la descripción LARGA recortada a 150 caracteres (y nada si está vacía).
+const descripcion = descripcionMiniatura(p.descripcion);
+// El tema también recorta el nombre en la miniatura (en la tienda vieja, un nombre de 63 caracteres sale cortado a 53 + «...»).
+const nombreMiniatura = truncarSmarty(p.nombre, 60);
+const whatsapp = enlaceWhatsApp(n.whatsapp_numero, plantilla(n.mensaje_lista, { nombre: p.nombre, referencia: p.referencia ?? '', url: absoluta(p.url) }));
+const pedible = p.muestra_precio && p.disponible_para_pedido && p.disponibilidad !== 'unavailable';
+---
+<article class="product-miniature js-product-miniature" data-id-product={p.id} data-id-product-attribute="0" itemscope itemtype="http://schema.org/Product">
+  <div class="thumbnail-container">
+    <div class="thumbnail-wrapper">
+      <a href={p.url} class="thumbnail product-thumbnail">
+        {alternativa && <img src={src(alternativa, 'home_default')} alt={altImagen(leyendas, alternativa.id)} class="thumbnail-alternate" />}
+        {portada ? (
+          <img src={src(portada, 'home_default')} alt={altImagen(leyendas, portada.id)} data-full-size-image-url={src(portada, 'large_default')} class="thumbnail-img" itemprop="image" />
+        ) : (
+          <img src={sinFoto('home_default')} alt="" class="thumbnail-img" />
+        )}
+      </a>
+      <ul class="product-flags">
+        {etiquetas.map((e) => <li class={e.clase}>{e.texto}</li>)}
+      </ul>
+    </div>
+    <div class="right-block">
+      <div class="product-desc">
+        <div class="star-wrapper">
+          <div class="star-content">
+            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          </div>
+        </div>
+        <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+          <meta itemprop="reviewCount" content={p.valoracion?.opiniones ?? '1'} />
+          <meta itemprop="ratingValue" content={p.valoracion?.media ?? '0'} />
+          <meta itemprop="worstRating" content="0" />
+          <meta itemprop="bestRating" content="5" />
+        </div>
+        {revi ? (
+          <div class="revi_stars_product_list_container">
+            {revi.estrellas.map((e) => <span class={`ministar ministar_active${e}`}></span>)}
+            <small class="revi_num_reviews">{revi.texto}</small>
+          </div>
+        ) : (
+          <div class="revi_product_list_blank"></div>
+        )}
+        <h3 class="h3 product-title" itemprop="name"><a href={p.url}>{nombreMiniatura}</a></h3>
+        {descripcion && <p class="product_desc" itemprop="description">{descripcion}</p>}
+        <meta itemprop="sku" content={p.referencia ?? ''} />
+        {p.muestra_precio && (
+          <div class="product-price-and-shipping" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+            <link itemprop="url" href={absoluta(p.url)} />
+            <meta itemprop="availability" content="https://schema.org/InStock" />
+            <meta itemprop="priceCurrency" content={t.moneda.iso_code} />
+            <span class="price" itemprop="price" content={numeroPlano(p.precio_con_iva)}>{p.precio_visible}</span>
+            {p.tiene_descuento && p.precio_tachado != null && <span class="regular-price">{formatoPrecio(p.precio_tachado)}</span>}
+            {t.impuestos_incluidos}
+          </div>
+        )}
+      </div>
+      <div class="highlighted-informations no-variants">
+        <a class:list={['btn btn-primary add-cart pedir-whatsapp', !pedible && 'disabled']} href={pedible ? whatsapp : undefined} target={pedible ? '_blank' : undefined} rel={pedible ? 'noreferrer noopener' : undefined} data-id-product={p.id}>
+          <span>{n.pedir_whatsapp}</span>
+        </a>
+        <a class="link-view" href={p.url} title={t.mas_informacion}><i class="font-info-circled"></i><span>{t.mas_informacion}</span></a>
+      </div>
+    </div>
+  </div>
+</article>

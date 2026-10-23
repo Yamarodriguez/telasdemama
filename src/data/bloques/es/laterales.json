@@ -1,0 +1,41 @@
+{
+ "bloques": [
+  {
+   "titulo": "Los más vendidos",
+   "productos": [
+    642,
+    386,
+    388,
+    93,
+    637,
+    596,
+    379,
+    102
+   ],
+   "todos": {
+    "texto": "Los productos más vendidos",
+    "href": "/es/mas-vendidos"
+   },
+   "con_descripcion": true
+  },
+  {
+   "titulo": "En oferta",
+   "productos": [
+    674,
+    1028,
+    711,
+    739,
+    795,
+    730,
+    687,
+    794
+   ],
+   "todos": {
+    "texto": "Todos los productos en oferta",
+    "href": "/es/productos-rebajados"
+   },
+   "con_descripcion": true
+  }
+ ],
+ "revi_vertical": true
+}

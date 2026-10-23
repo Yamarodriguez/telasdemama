@@ -1,0 +1,19 @@
+---
+/** Contenido de la página 404 de PrestaShop. */
+import { textos } from '../../lib/catalogo';
+import Buscador from '../Buscador.astro';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const t = textos(idioma);
+---
+<div id="content-wrapper" class="col-12">
+  <section id="main">
+    <header class="page-header"><h1>{t.pagina_no_encontrada}</h1></header>
+    <section id="content" class="page-content page-not-found">
+      <h4>{t.lamentamos}</h4>
+      <p>{t.nueva_busqueda}</p>
+      <Buscador idioma={idioma} />
+    </section>
+    <footer class="page-footer"><!-- Footer content --></footer>
+  </section>
+</div>

@@ -1,0 +1,222 @@
+{
+ "674": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-50%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-50%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-50%"
+   }
+  ]
+ },
+ "1028": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-30%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-30%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-30%"
+   }
+  ]
+ },
+ "711": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-50%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-50%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-50%"
+   }
+  ]
+ },
+ "739": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-50%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-50%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-50%"
+   }
+  ]
+ },
+ "795": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-50%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-50%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-50%"
+   }
+  ]
+ },
+ "730": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-50%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-50%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-50%"
+   }
+  ]
+ },
+ "687": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-50%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-50%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-50%"
+   }
+  ]
+ },
+ "794": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-50%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-50%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-50%"
+   }
+  ]
+ },
+ "649": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-30%"
+   },
+   {
+    "clase": "on-sale",
+    "texto": "¡En oferta!"
+   },
+   {
+    "clase": "discount",
+    "texto": "-30%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag on-sale",
+    "texto": "¡En oferta!"
+   },
+   {
+    "clase": "product-flag discount",
+    "texto": "-30%"
+   }
+  ]
+ },
+ "788": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-30%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-30%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-30%"
+   }
+  ]
+ },
+ "888": {
+  "miniatura": [
+   {
+    "clase": "discount-percentage",
+    "texto": "-30%"
+   },
+   {
+    "clase": "discount",
+    "texto": "-30%"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag discount",
+    "texto": "-30%"
+   }
+  ]
+ },
+ "1167": {
+  "miniatura": [
+   {
+    "clase": "on-sale",
+    "texto": "¡En oferta!"
+   }
+  ],
+  "ficha": [
+   {
+    "clase": "product-flag on-sale",
+    "texto": "¡En oferta!"
+   }
+  ]
+ }
+}

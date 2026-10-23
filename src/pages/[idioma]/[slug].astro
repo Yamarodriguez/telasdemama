@@ -1,0 +1,66 @@
+---
+/**
+ * Páginas de primer nivel de cada idioma: categorías (/es/3-telas), listas (más vendidos, novedades,
+ * rebajados) y páginas sueltas (contacto, tienda, mapa del sitio, marcas, proveedores).
+ * Las de cuenta de cliente (iniciar sesión, contraseña) no existen: Dec. 8.
+ */
+import Base from '../../layouts/Base.astro';
+import Listado from '../../components/plantillas/Listado.astro';
+import Contacto from '../../components/plantillas/Contacto.astro';
+import Tiendas from '../../components/plantillas/Tiendas.astro';
+import MapaDelSitio from '../../components/plantillas/MapaDelSitio.astro';
+import Marcas from '../../components/plantillas/Marcas.astro';
+import Proveedores from '../../components/plantillas/Proveedores.astro';
+import { idiomas, catalogo, bloques } from '../../lib/catalogo';
+import { listados } from '../../lib/paginas';
+
+export function getStaticPaths() {
+  // Tipos de página suelta con plantilla propia (getStaticPaths no ve las constantes de fuera).
+  const SUELTAS: Record<string, string> = { contact: 'contact', stores: 'stores', sitemap: 'sitemap', supplier: 'supplier' };
+  const rutas = [];
+  for (const idioma of idiomas()) {
+    for (const l of listados(idioma)) {
+      if (l.slug.includes('/')) continue; // las marcas van en brand/[marca]
+      rutas.push({ params: { idioma, slug: l.slug }, props: { clase: 'listado', slug: l.slug } });
+    }
+    for (const [url, o] of Object.entries(catalogo(idioma).otras)) {
+      const slug = decodeURIComponent(url.replace(`/${idioma}/`, ''));
+      if (url === `/${idioma}/brands`) rutas.push({ params: { idioma, slug }, props: { clase: 'marcas', url } });
+      else if (SUELTAS[o.tipo]) rutas.push({ params: { idioma, slug }, props: { clase: o.tipo, url } });
+    }
+  }
+  return rutas;
+}
+
+const { idioma } = Astro.params;
+const { clase, slug, url } = Astro.props;
+const c = catalogo(idioma);
+const b = bloques(idioma);
+const l = clase === 'listado' ? listados(idioma).find((x) => x.slug === slug)! : null;
+const o = url ? c.otras[url] : null;
+const urlActual = l ? l.base : decodeURIComponent(url);
+---
+{l ? (
+  <Base idioma={idioma} tipo={l.tipo} layout={l.layout} clasesExtra={l.clasesBody} title={l.title} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual} migas={l.migas} menuActual={l.menuActual}>
+    <Fragment slot="antes-columnas">
+      {l.tipo === 'category' ? <div class="container"><div class="block-category"><h1 class="h1">{l.h1}</h1></div></div> : <div class="container"></div>}
+    </Fragment>
+    <Listado idioma={idioma} tipo={l.tipo} titulo={l.titulo} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} facetas={l.facetas} orden={l.orden} />
+  </Base>
+) : (
+  <Base idioma={idioma} tipo={clase === 'marcas' ? 'manufacturer' : clase} layout={clase === 'contact' || clase === 'marcas' ? 'layout-left-column' : 'layout-full-width'} title={o!.title} description={o!.meta_description} canonical={o!.canonical} hreflang={o!.hreflang} urlActual={urlActual} migas={o!.breadcrumb}>
+    <Fragment slot="antes-columnas">
+      {clase === 'contact' ? (
+        /* Regla del H1 aprobada: la página de contacto no tenía H1; el título de la página pasa a serlo. */
+        <div class="container"><header class="page-header h1-regla"><h1>{o!.title}</h1></header></div>
+      ) : (
+        <div class="container"></div>
+      )}
+    </Fragment>
+    {clase === 'contact' && <Contacto idioma={idioma} />}
+    {clase === 'stores' && <Tiendas idioma={idioma} />}
+    {clase === 'sitemap' && <MapaDelSitio idioma={idioma} />}
+    {clase === 'marcas' && <Marcas idioma={idioma} raiz={b.arbol[0]} />}
+    {clase === 'supplier' && <Proveedores idioma={idioma} />}
+  </Base>
+)}

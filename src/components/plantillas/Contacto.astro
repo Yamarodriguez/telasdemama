@@ -1,0 +1,68 @@
+---
+/**
+ * Página de contacto. El formulario de PrestaShop (con captcha) pedía al servidor; hasta la Fase 5
+ * (servicio de formularios) el envío abre el programa de correo con los campos escritos (mailto).
+ */
+import { bloques, nuevo } from '../../lib/catalogo';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const c = bloques(idioma).contacto;
+const n = nuevo(idioma);
+const ICONOS = ['', '', ''];
+---
+<div id="left-column" class="col-xs-12 col-lg-3">
+  <div class="contact-rich">
+    <h4>{c.info_titulo}</h4>
+    {c.bloques.map((b: any, i: number) => (
+      <Fragment>
+        {i > 0 && <hr />}
+        <div class="block">
+          <div class="icon"><i class="material-icons">{b.icono || ICONOS[i]}</i></div>
+          <div class:list={['data', i === 2 && 'email']} set:html={b.html} />
+          {b.extra_html && <Fragment set:html={b.extra_html} />}
+        </div>
+      </Fragment>
+    ))}
+  </div>
+</div>
+<div id="content-wrapper" class="left-column col-xs-12 col-lg-9">
+  <section id="main">
+    <section id="content" class="page-content card card-block">
+      <section class="contact-form">
+        <form action={`mailto:${n.contacto_correo}`} method="post" enctype="text/plain">
+          <section class="form-fields">
+            <div class="form-group row">
+              <div class="col-md-9 col-md-offset-3"><h3>{c.titulo}</h3></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">{c.campos[0].etiqueta}</label>
+              <div class="col-md-6">
+                <select name="id_contact" class="form-control form-control-select">
+                  {c.asuntos.map((a: string) => <option value={a}>{a}</option>)}
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">{c.campos[1].etiqueta}</label>
+              <div class="col-md-6"><input class="form-control" name="from" type="email" value="" placeholder={c.placeholder_correo} /></div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">{c.campos[2].etiqueta}</label>
+              <div class="col-md-6"><input type="file" name="fileUpload" class="filestyle" data-buttonText={c.boton_adjunto} disabled title={n.adjunto_aviso} /></div>
+              <span class="col-md-3 form-control-comment">{c.campos[2].comentario}</span>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">{c.campos[3].etiqueta}</label>
+              <div class="col-md-9"><textarea class="form-control" name="message" placeholder={c.placeholder_mensaje} rows="3"></textarea></div>
+            </div>
+            <div class="form-group row"><div class="offset-md-3"></div></div>
+          </section>
+          <footer class="form-footer text-sm-right">
+            <input class="btn btn-primary" type="submit" name="submitMessage" value={c.boton} />
+          </footer>
+        </form>
+      </section>
+    </section>
+    <footer class="page-footer"><!-- Footer content --></footer>
+  </section>
+</div>

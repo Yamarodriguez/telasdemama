@@ -1,0 +1,126 @@
+{
+ "titulo": "Mapa del sitio",
+ "columnas": [
+  {
+   "titulo": "Nuestras ofertas",
+   "tipo": "lista",
+   "enlaces": [
+    {
+     "texto": "Novedades",
+     "href": "/es/novedades",
+     "id": "new-product-page",
+     "title": "Novedades",
+     "hijos": []
+    },
+    {
+     "texto": "Marcas",
+     "href": "/es/brands",
+     "id": "manufacturer-page",
+     "title": "Marcas",
+     "hijos": [
+      {
+       "texto": "telasdemama",
+       "href": "/es/brand/1-telasdemama",
+       "id": "manufacturer-page-1",
+       "title": "telasdemama",
+       "hijos": []
+      }
+     ]
+    },
+    {
+     "texto": "Proveedores",
+     "href": "/es/proveedor",
+     "id": "supplier-page",
+     "title": "Proveedores",
+     "hijos": []
+    }
+   ]
+  },
+  {
+   "titulo": "Categorías",
+   "tipo": "categorias"
+  },
+  {
+   "titulo": "Su cuenta",
+   "tipo": "lista",
+   "enlaces": [
+    {
+     "texto": "Iniciar sesión",
+     "href": "/es/iniciar-sesion",
+     "id": "login-page",
+     "title": "Iniciar sesión",
+     "hijos": []
+    },
+    {
+     "texto": "Crear nueva cuenta",
+     "href": "/es/iniciar-sesion",
+     "id": "register-page",
+     "title": "Crear nueva cuenta",
+     "hijos": []
+    }
+   ]
+  },
+  {
+   "titulo": "Páginas",
+   "tipo": "lista",
+   "enlaces": [
+    {
+     "texto": "Envíos y devoluciones",
+     "href": "/es/content/1-envios-y-devoluciones",
+     "id": "cms-page-1",
+     "title": "Envíos y devoluciones",
+     "hijos": []
+    },
+    {
+     "texto": "Aviso legal",
+     "href": "/es/content/2-aviso-legal",
+     "id": "cms-page-2",
+     "title": "Aviso legal",
+     "hijos": []
+    },
+    {
+     "texto": "Términos y condiciones",
+     "href": "/es/content/3-terminos-y-condiciones-de-uso",
+     "id": "cms-page-3",
+     "title": "Términos y condiciones",
+     "hijos": []
+    },
+    {
+     "texto": "Sobre mí",
+     "href": "/es/content/4-sobre-mi",
+     "id": "cms-page-4",
+     "title": "Sobre mí",
+     "hijos": []
+    },
+    {
+     "texto": "Pago seguro",
+     "href": "/es/content/5-pago-seguro",
+     "id": "cms-page-5",
+     "title": "Pago seguro",
+     "hijos": []
+    },
+    {
+     "texto": "Nuestra tienda",
+     "href": "/es/tiendas",
+     "id": "stores-page",
+     "title": "Nuestra tienda",
+     "hijos": []
+    },
+    {
+     "texto": "Contacte con nosotros",
+     "href": "/es/contactenos",
+     "id": "contact-page",
+     "title": "Contacte con nosotros",
+     "hijos": []
+    },
+    {
+     "texto": "Mapa del sitio",
+     "href": "/es/mapa del sitio",
+     "id": "sitemap-page",
+     "title": "Mapa del sitio",
+     "hijos": []
+    }
+   ]
+  }
+ ]
+}

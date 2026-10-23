@@ -1,0 +1,36 @@
+---
+/** Menú principal (módulo ps_mainmenu). Los datos salen de src/data/bloques/<idioma>/menu.json. */
+interface Nodo { id: string; clase: string; texto: string; href: string; hijos: Nodo[] }
+interface Props { nodos: Nodo[]; profundidad?: number; /** id del <li> de la página actual (p. ej. «category-3», «cms-page-4») */ actual?: string }
+const { nodos, profundidad = 0, actual = '' } = Astro.props;
+const E_MAS = ''; // material icon expand_more
+const E_MENOS = ''; // expand_less
+const idSub = (n: Nodo) => `top_sub_menu_${n.id.replace(/\D/g, '') || n.texto.length}`;
+const claseEnlace = (n: Nodo) => ['dropdown-item', profundidad === 1 && 'dropdown-submenu', n.hijos.length && 'with-ul'].filter(Boolean).join(' ');
+---
+<ul class="top-menu" data-depth={profundidad} id={profundidad === 0 ? 'top-menu' : undefined}>
+  {nodos.map((n) => (
+    <li class:list={[n.clase, n.id === actual && 'current']} id={n.id}>
+      <a class={claseEnlace(n)} href={n.href} data-depth={profundidad}>
+        {n.texto}
+        {n.hijos.length > 0 && (
+          <span class="navbar-toggler collapse-icons hidden-lg-up" data-target={`#${idSub(n)}`} data-toggle="collapse">
+            <i class="material-icons add">{E_MAS}</i>
+            <i class="material-icons remove">{E_MENOS}</i>
+          </span>
+        )}
+      </a>
+      {n.hijos.length > 0 && (profundidad === 0 ? (
+        <div class="popover sub-menu js-sub-menu submenu collapse" id={idSub(n)}>
+          <div class="inner-wrapper">
+            <Astro.self nodos={n.hijos} profundidad={profundidad + 1} actual={actual} />
+          </div>
+        </div>
+      ) : (
+        <div class="collapse submenu" id={idSub(n)}>
+          <Astro.self nodos={n.hijos} profundidad={profundidad + 1} actual={actual} />
+        </div>
+      ))}
+    </li>
+  ))}
+</ul>

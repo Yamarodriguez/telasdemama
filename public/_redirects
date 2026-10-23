@@ -1,0 +1,102 @@
+# Generado por herramientas/redirecciones.mjs a partir del catálogo. No editar a mano.
+
+/  /es/  302!
+
+# es: paginación vieja (?page=N) → página propia
+/es/2-inicio  page=1  /es/2-inicio  301
+/es/2-inicio  page=:n  /es/2-inicio/pagina/:n  301
+/es/3-telas  page=1  /es/3-telas  301
+/es/3-telas  page=:n  /es/3-telas/pagina/:n  301
+/es/6-merceria  page=1  /es/6-merceria  301
+/es/6-merceria  page=:n  /es/6-merceria/pagina/:n  301
+/es/10-tipo-de-tejido  page=1  /es/10-tipo-de-tejido  301
+/es/10-tipo-de-tejido  page=:n  /es/10-tipo-de-tejido/pagina/:n  301
+/es/11-estampado  page=1  /es/11-estampado  301
+/es/11-estampado  page=:n  /es/11-estampado/pagina/:n  301
+/es/12-composicion  page=1  /es/12-composicion  301
+/es/12-composicion  page=:n  /es/12-composicion/pagina/:n  301
+/es/13-algodon-100  page=1  /es/13-algodon-100  301
+/es/13-algodon-100  page=:n  /es/13-algodon-100/pagina/:n  301
+/es/14-algodon-organico  page=1  /es/14-algodon-organico  301
+/es/14-algodon-organico  page=:n  /es/14-algodon-organico/pagina/:n  301
+/es/15-algodon-poliester  page=1  /es/15-algodon-poliester  301
+/es/15-algodon-poliester  page=:n  /es/15-algodon-poliester/pagina/:n  301
+/es/18-poliester  page=1  /es/18-poliester  301
+/es/18-poliester  page=:n  /es/18-poliester/pagina/:n  301
+/es/19-viscosa  page=1  /es/19-viscosa  301
+/es/19-viscosa  page=:n  /es/19-viscosa/pagina/:n  301
+/es/21-hilos  page=1  /es/21-hilos  301
+/es/21-hilos  page=:n  /es/21-hilos/pagina/:n  301
+/es/32-otono-invierno  page=1  /es/32-otono-invierno  301
+/es/32-otono-invierno  page=:n  /es/32-otono-invierno/pagina/:n  301
+/es/33-primavera-verano  page=1  /es/33-primavera-verano  301
+/es/33-primavera-verano  page=:n  /es/33-primavera-verano/pagina/:n  301
+/es/35-vichy  page=1  /es/35-vichy  301
+/es/35-vichy  page=:n  /es/35-vichy/pagina/:n  301
+/es/37-flores  page=1  /es/37-flores  301
+/es/37-flores  page=:n  /es/37-flores/pagina/:n  301
+/es/40-animales  page=1  /es/40-animales  301
+/es/40-animales  page=:n  /es/40-animales/pagina/:n  301
+/es/41-cuadros  page=1  /es/41-cuadros  301
+/es/41-cuadros  page=:n  /es/41-cuadros/pagina/:n  301
+/es/44-rayas  page=1  /es/44-rayas  301
+/es/44-rayas  page=:n  /es/44-rayas/pagina/:n  301
+/es/46-plumetti  page=1  /es/46-plumetti  301
+/es/46-plumetti  page=:n  /es/46-plumetti/pagina/:n  301
+/es/48-viyela  page=1  /es/48-viyela  301
+/es/48-viyela  page=:n  /es/48-viyela/pagina/:n  301
+/es/49-vichys  page=1  /es/49-vichys  301
+/es/49-vichys  page=:n  /es/49-vichys/pagina/:n  301
+/es/50-batista  page=1  /es/50-batista  301
+/es/50-batista  page=:n  /es/50-batista/pagina/:n  301
+/es/53-popelin  page=1  /es/53-popelin  301
+/es/53-popelin  page=:n  /es/53-popelin/pagina/:n  301
+/es/75-algodon-estampado  page=1  /es/75-algodon-estampado  301
+/es/75-algodon-estampado  page=:n  /es/75-algodon-estampado/pagina/:n  301
+/es/81-cintas-y-cordones  page=1  /es/81-cintas-y-cordones  301
+/es/81-cintas-y-cordones  page=:n  /es/81-cintas-y-cordones/pagina/:n  301
+/es/86-combinaciones-invierno  page=1  /es/86-combinaciones-invierno  301
+/es/86-combinaciones-invierno  page=:n  /es/86-combinaciones-invierno/pagina/:n  301
+/es/91-coleccion-otono-invierno  page=1  /es/91-coleccion-otono-invierno  301
+/es/91-coleccion-otono-invierno  page=:n  /es/91-coleccion-otono-invierno/pagina/:n  301
+/es/102-primavera-verano-024  page=1  /es/102-primavera-verano-024  301
+/es/102-primavera-verano-024  page=:n  /es/102-primavera-verano-024/pagina/:n  301
+/es/109-liso  page=1  /es/109-liso  301
+/es/109-liso  page=:n  /es/109-liso/pagina/:n  301
+/es/110-algodon  page=1  /es/110-algodon  301
+/es/110-algodon  page=:n  /es/110-algodon/pagina/:n  301
+/es/116-continuidad  page=1  /es/116-continuidad  301
+/es/116-continuidad  page=:n  /es/116-continuidad/pagina/:n  301
+/es/121-verano-2024  page=1  /es/121-verano-2024  301
+/es/121-verano-2024  page=:n  /es/121-verano-2024/pagina/:n  301
+/es/128-nueva-coleccion-otono-invierno  page=1  /es/128-nueva-coleccion-otono-invierno  301
+/es/128-nueva-coleccion-otono-invierno  page=:n  /es/128-nueva-coleccion-otono-invierno/pagina/:n  301
+/es/134-coleccion-verano-2026  page=1  /es/134-coleccion-verano-2026  301
+/es/134-coleccion-verano-2026  page=:n  /es/134-coleccion-verano-2026/pagina/:n  301
+/es/135-remate-final-invierno-25  page=1  /es/135-remate-final-invierno-25  301
+/es/135-remate-final-invierno-25  page=:n  /es/135-remate-final-invierno-25/pagina/:n  301
+/es/mas-vendidos  page=1  /es/mas-vendidos  301
+/es/mas-vendidos  page=:n  /es/mas-vendidos/pagina/:n  301
+
+# es: redirecciones que ya hacía la tienda vieja
+/es/9-revistas  /es/9-revistas-y-libros  301
+
+# es: cuenta de cliente, carrito y pedido ya no existen (Dec. 8) → contacto
+/es/mi-cuenta  /es/contactenos  301
+/es/iniciar-sesion  /es/contactenos  301
+/es/recuperar-contrase%C3%B1a  /es/contactenos  301
+/es/datos-personales  /es/contactenos  301
+/es/historial-compra  /es/contactenos  301
+/es/facturas-abono  /es/contactenos  301
+/es/direcciones  /es/contactenos  301
+/es/descuento  /es/contactenos  301
+/es/carrito  /es/contactenos  301
+/es/pedido  /es/contactenos  301
+/es/confirmacion-pedido  /es/contactenos  301
+/es/seguimiento-pedido  /es/contactenos  301
+/es/seguimiento-pedido-invitado  /es/contactenos  301
+/es/direccion  /es/contactenos  301
+/es/busqueda  /es/  302
+
+# URL antiguas de PrestaShop con index.php
+/index.php  /  301

@@ -1,0 +1,119 @@
+{
+ "banners_superiores": [
+  {
+   "clase": "top-banner col-8 skin-four",
+   "href": "/es/3-telas",
+   "img": "/modules/htmlbanners1/views/img/upload/66a1cd86dcc574d20c86af3510739cbbf1662892_TDM-Cat-Telas.jpg",
+   "alt": "Telas",
+   "titulo": "Telas",
+   "titulo_clase": "htmlcontent__title-one",
+   "boton": "Ver modelos"
+  },
+  {
+   "clase": "top-banner col-4 skin-five",
+   "href": "/es/6-merceria",
+   "img": "/modules/htmlbanners1/views/img/upload/181535fdd6a3b308229f5d120554e80638625fb0_TDM-Cat-Merceria.jpg",
+   "alt": "Merceria",
+   "titulo": "Merceria",
+   "titulo_clase": "htmlcontent__title-one",
+   "boton": null
+  },
+  {
+   "clase": "top-banner col-4 skin-six",
+   "href": "/es/9-revistas",
+   "img": "/modules/htmlbanners1/views/img/upload/7389981aba34585a7050a8f8c1848cae120cb859_TDM-Cat-Revistas-2.jpg",
+   "alt": "Revistas",
+   "titulo": "Revistas",
+   "titulo_clase": "htmlcontent__title-one style=",
+   "boton": null
+  }
+ ],
+ "destacados": {
+  "titulo": "Productos destacados",
+  "productos": [
+   1091,
+   1096,
+   1094,
+   1093,
+   1092,
+   1102,
+   1098,
+   1100
+  ],
+  "data": {
+   "data-carousel": "true",
+   "data-autoplay": "true",
+   "data-speed": "6000",
+   "data-pag": "true",
+   "data-arrows": "false",
+   "data-loop": "true",
+   "data-rows": "1",
+   "data-col": "4",
+   "data-col_1200": "4",
+   "data-col_992": "3",
+   "data-col_769": "3",
+   "data-col_576": "2"
+  },
+  "mas": {
+   "texto": "Todos los productos",
+   "href": "/es/102-primavera-verano-024"
+  }
+ },
+ "promo": {
+  "html": "<h4>Sobre mí</h4>\n<h4 style=\"text-align: justify;\">Natalia, asturiana, emprendedora y feliz mamá de una niña.</h4>\n<p style=\"text-align: justify;\">¿Tienes intriga por saber quien está al frente de este negocio? Soy Natalia, técnico en Moda y Confección, con muchas inquietudes en el mundo de la moda infantil. Fue a raíz de mi maternidad que me embarqué en este precioso proyecto, buscando y seleccionando las telas más bonitas para confección infantil. Es por ello que todo este trabajo se lo debo a ella, mi hija, mi gran amor.</p>\n<p style=\"text-align: justify;\">¿Qué somos y qué ofrecemos?</p>\n<p style=\"text-align: justify;\">En Telas de Mamá, somos una tienda online especializada en telas infantiles y mercería básica. Nuestros tejidos son buscados en los rincones más recónditos del mundo, y elegidos con mucho mimo. Ofrecemos telas de gran calidad, dando preferencia siempre a las bases de algodón.</p>\n<p style=\"text-align: justify;\">Con nuestro amplio catálogo de tejidos de alta calidad, ofrecemos a nuestros clientes la oportunidad de crear prendas únicas y personalizadas para los más pequeños.</p>\n<p style=\"text-align: justify;\">Nuestro almacén está lleno de opciones creativas para todos los proyectos de costura.</p>\n<p style=\"text-align: justify;\">Ubicados en Rioseco de Sobrescobio, un precioso pueblo de Asturias, pretendemos hacer llegar a muchas otras mamás, abuelas, modistas y demás personas aficionadas a la costura, lo necesario para crear todo cuanto tengan en mente, sin salir de casa, tan solo a golpe de click.</p>\n<p style=\"text-align: justify;\">¡Descubre nuestras telas y accesorios de costura hoy mismo y deja volar tu imaginación!</p>\n<p style=\"text-align: justify;\"><a href=\"/\">Telasdemama</a> será desde ahora, tu tienda online de telas infantiles y productos de mercería.</p>\n<p></p>\n<img alt=\"\" height=\"360\" src=\"/img/cms/TDM-sobre-mi.jpg\" width=\"597\"/>",
+  "data": {
+   "data-carousel": "true",
+   "data-autoplay": "true",
+   "data-timeout": "5000",
+   "data-pause": "hover",
+   "data-pagination": "true",
+   "data-navigation": "true",
+   "data-loop": "true",
+   "data-items": "1",
+   "data-items_1199": "1",
+   "data-items_991": "1",
+   "data-items_768": "1",
+   "data-items_480": "1"
+  }
+ },
+ "caracteristicas": [
+  {
+   "href": "http://wa.me/34643945052",
+   "img": "/modules/htmlbanners5/views/img/upload/5ae26c95988ff032ddfb372e9bea8c01c7ef0e6b_variante-del-logo-de-whatsapp.png",
+   "img_alt": "Fast delivery",
+   "icono": "/img/iconos/whatsapp.png",
+   "icono_alt": "whatsapp.png",
+   "titulo": "consultas whatsapp",
+   "texto": "Escríbenos tus dudas a través del teléfono 643 94 50 52."
+  },
+  {
+   "href": null,
+   "img": null,
+   "img_alt": null,
+   "icono": "/img/iconos/portes.png",
+   "icono_alt": "portes.png",
+   "titulo": "Portes gratuitos",
+   "texto": "Portes gratis en Península a partir de 50€ de compra."
+  },
+  {
+   "href": null,
+   "img": null,
+   "img_alt": null,
+   "icono": "/img/iconos/pagos.png",
+   "icono_alt": "pagos.png",
+   "titulo": "formas de pago",
+   "texto": "Puedes pagar tu pedido por Tarjeta Bancaria, PayPal, Transferencia o Contra-reembolso."
+  },
+  {
+   "href": "/es/content/1-envios-y-devoluciones",
+   "img": null,
+   "img_alt": null,
+   "icono": "/img/iconos/envios.png",
+   "icono_alt": "envios.png",
+   "titulo": "envíos",
+   "texto": "Los paquetes se envían dentro de las 48 horas siguientes a la recepción del pago."
+  }
+ ],
+ "revi_wide": "revi.io/widgets/wide/5f9170edaac41/99/es",
+ "revi_texto": "Reviews by Revi"
+}

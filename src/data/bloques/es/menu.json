@@ -1,0 +1,771 @@
+[
+ {
+  "id": "category-3",
+  "clase": "category",
+  "texto": "Telas",
+  "href": "/es/3-telas",
+  "hijos": [
+   {
+    "id": "category-12",
+    "clase": "category",
+    "texto": "Composición",
+    "href": "/es/12-composicion",
+    "hijos": [
+     {
+      "id": "category-13",
+      "clase": "category",
+      "texto": "Algodón 100%",
+      "href": "/es/13-algodon-100",
+      "hijos": []
+     },
+     {
+      "id": "category-14",
+      "clase": "category",
+      "texto": "Algodón orgánico",
+      "href": "/es/14-algodon-organico",
+      "hijos": []
+     },
+     {
+      "id": "category-131",
+      "clase": "category",
+      "texto": "Algodón - Elastán",
+      "href": "/es/131-algodon-elastan",
+      "hijos": []
+     },
+     {
+      "id": "category-16",
+      "clase": "category",
+      "texto": "Algodón - Lino",
+      "href": "/es/16-algodon-lino",
+      "hijos": []
+     },
+     {
+      "id": "category-15",
+      "clase": "category",
+      "texto": "Algodón - Poliester",
+      "href": "/es/15-algodon-poliester",
+      "hijos": []
+     },
+     {
+      "id": "category-136",
+      "clase": "category",
+      "texto": "Algodón-Viscosa",
+      "href": "/es/136-algodon-viscosa",
+      "hijos": []
+     },
+     {
+      "id": "category-20",
+      "clase": "category",
+      "texto": "Lana",
+      "href": "/es/20-lana",
+      "hijos": []
+     },
+     {
+      "id": "category-17",
+      "clase": "category",
+      "texto": "Lino",
+      "href": "/es/17-lino",
+      "hijos": []
+     },
+     {
+      "id": "category-18",
+      "clase": "category",
+      "texto": "Poliester",
+      "href": "/es/18-poliester",
+      "hijos": []
+     },
+     {
+      "id": "category-19",
+      "clase": "category",
+      "texto": "Viscosa",
+      "href": "/es/19-viscosa",
+      "hijos": []
+     }
+    ]
+   },
+   {
+    "id": "category-116",
+    "clase": "category",
+    "texto": "Continuidad",
+    "href": "/es/116-continuidad",
+    "hijos": []
+   },
+   {
+    "id": "category-11",
+    "clase": "category",
+    "texto": "Estampado",
+    "href": "/es/11-estampado",
+    "hijos": [
+     {
+      "id": "category-45",
+      "clase": "category",
+      "texto": "Acolchadas",
+      "href": "/es/45-acolchadas",
+      "hijos": []
+     },
+     {
+      "id": "category-40",
+      "clase": "category",
+      "texto": "Animales",
+      "href": "/es/40-animales",
+      "hijos": []
+     },
+     {
+      "id": "category-41",
+      "clase": "category",
+      "texto": "Cuadros",
+      "href": "/es/41-cuadros",
+      "hijos": []
+     },
+     {
+      "id": "category-34",
+      "clase": "category",
+      "texto": "Disney",
+      "href": "/es/34-disney",
+      "hijos": []
+     },
+     {
+      "id": "category-36",
+      "clase": "category",
+      "texto": "Estrellas",
+      "href": "/es/36-estrellas",
+      "hijos": []
+     },
+     {
+      "id": "category-37",
+      "clase": "category",
+      "texto": "Flores",
+      "href": "/es/37-flores",
+      "hijos": []
+     },
+     {
+      "id": "category-106",
+      "clase": "category",
+      "texto": "Frutas",
+      "href": "/es/106-frutas",
+      "hijos": []
+     },
+     {
+      "id": "category-109",
+      "clase": "category",
+      "texto": "Liso",
+      "href": "/es/109-liso",
+      "hijos": []
+     },
+     {
+      "id": "category-39",
+      "clase": "category",
+      "texto": "Lunares",
+      "href": "/es/39-lunares",
+      "hijos": []
+     },
+     {
+      "id": "category-43",
+      "clase": "category",
+      "texto": "Mágicas: Cambian de color",
+      "href": "/es/43-magicas-cambian-de-color",
+      "hijos": []
+     },
+     {
+      "id": "category-108",
+      "clase": "category",
+      "texto": "Marinero",
+      "href": "/es/108-marinero",
+      "hijos": []
+     },
+     {
+      "id": "category-105",
+      "clase": "category",
+      "texto": "Naturaleza",
+      "href": "/es/105-naturaleza",
+      "hijos": []
+     },
+     {
+      "id": "category-130",
+      "clase": "category",
+      "texto": "Navidad",
+      "href": "/es/130-navidad",
+      "hijos": []
+     },
+     {
+      "id": "category-42",
+      "clase": "category",
+      "texto": "Pata de gallo",
+      "href": "/es/42-pata-de-gallo",
+      "hijos": []
+     },
+     {
+      "id": "category-107",
+      "clase": "category",
+      "texto": "Personas",
+      "href": "/es/107-personas",
+      "hijos": []
+     },
+     {
+      "id": "category-44",
+      "clase": "category",
+      "texto": "Rayas",
+      "href": "/es/44-rayas",
+      "hijos": []
+     },
+     {
+      "id": "category-38",
+      "clase": "category",
+      "texto": "Unicornios",
+      "href": "/es/38-unicornios",
+      "hijos": []
+     },
+     {
+      "id": "category-35",
+      "clase": "category",
+      "texto": "Vichy",
+      "href": "/es/35-vichy",
+      "hijos": []
+     }
+    ]
+   },
+   {
+    "id": "category-32",
+    "clase": "category",
+    "texto": "Otoño / Invierno",
+    "href": "/es/32-otono-invierno",
+    "hijos": []
+   },
+   {
+    "id": "category-33",
+    "clase": "category",
+    "texto": "Primavera / Verano",
+    "href": "/es/33-primavera-verano",
+    "hijos": []
+   },
+   {
+    "id": "category-10",
+    "clase": "category",
+    "texto": "Tipo de tejido",
+    "href": "/es/10-tipo-de-tejido",
+    "hijos": [
+     {
+      "id": "category-95",
+      "clase": "category",
+      "texto": "Abrigo/Cheviot/Lana",
+      "href": "/es/95-abrigocheviotlana",
+      "hijos": []
+     },
+     {
+      "id": "category-59",
+      "clase": "category",
+      "texto": "Acolchado",
+      "href": "/es/59-acolchado",
+      "hijos": []
+     },
+     {
+      "id": "category-110",
+      "clase": "category",
+      "texto": "Algodón",
+      "href": "/es/110-algodon",
+      "hijos": []
+     },
+     {
+      "id": "category-75",
+      "clase": "category",
+      "texto": "Algodón estampado",
+      "href": "/es/75-algodon-estampado",
+      "hijos": []
+     },
+     {
+      "id": "category-104",
+      "clase": "category",
+      "texto": "Bambula",
+      "href": "/es/104-bambula",
+      "hijos": []
+     },
+     {
+      "id": "category-50",
+      "clase": "category",
+      "texto": "Batista",
+      "href": "/es/50-batista",
+      "hijos": []
+     },
+     {
+      "id": "category-51",
+      "clase": "category",
+      "texto": "Batista forro",
+      "href": "/es/51-batista-forro",
+      "hijos": []
+     },
+     {
+      "id": "category-124",
+      "clase": "category",
+      "texto": "Canvas",
+      "href": "/es/124-canvas",
+      "hijos": []
+     },
+     {
+      "id": "category-52",
+      "clase": "category",
+      "texto": "Camisería",
+      "href": "/es/52-camiseria",
+      "hijos": []
+     },
+     {
+      "id": "category-112",
+      "clase": "category",
+      "texto": "Chambray",
+      "href": "/es/112-chambray",
+      "hijos": []
+     },
+     {
+      "id": "category-117",
+      "clase": "category",
+      "texto": "Chanel",
+      "href": "/es/117-chanel",
+      "hijos": []
+     },
+     {
+      "id": "category-61",
+      "clase": "category",
+      "texto": "Denim",
+      "href": "/es/61-denim",
+      "hijos": []
+     },
+     {
+      "id": "category-125",
+      "clase": "category",
+      "texto": "Doble Gasa",
+      "href": "/es/125-doble-gasa",
+      "hijos": []
+     },
+     {
+      "id": "category-58",
+      "clase": "category",
+      "texto": "Escocés",
+      "href": "/es/58-escoces",
+      "hijos": []
+     },
+     {
+      "id": "category-64",
+      "clase": "category",
+      "texto": "Espiga",
+      "href": "/es/64-espiga",
+      "hijos": []
+     },
+     {
+      "id": "category-137",
+      "clase": "category",
+      "texto": "Espiguilla",
+      "href": "/es/137-espiguilla",
+      "hijos": []
+     },
+     {
+      "id": "category-85",
+      "clase": "category",
+      "texto": "Felpa",
+      "href": "/es/85-felpa",
+      "hijos": []
+     },
+     {
+      "id": "category-69",
+      "clase": "category",
+      "texto": "Franela",
+      "href": "/es/69-franela",
+      "hijos": []
+     },
+     {
+      "id": "category-120",
+      "clase": "category",
+      "texto": "French Terry",
+      "href": "/es/120-french-terry",
+      "hijos": []
+     },
+     {
+      "id": "category-111",
+      "clase": "category",
+      "texto": "Gabardina",
+      "href": "/es/111-gabardina",
+      "hijos": []
+     },
+     {
+      "id": "category-103",
+      "clase": "category",
+      "texto": "Gasa",
+      "href": "/es/103-gasa",
+      "hijos": []
+     },
+     {
+      "id": "category-77",
+      "clase": "category",
+      "texto": "Impermeable",
+      "href": "/es/77-impermeable",
+      "hijos": []
+     },
+     {
+      "id": "category-74",
+      "clase": "category",
+      "texto": "Jacquard",
+      "href": "/es/74-jacquard",
+      "hijos": []
+     },
+     {
+      "id": "category-70",
+      "clase": "category",
+      "texto": "Lino",
+      "href": "/es/70-lino",
+      "hijos": []
+     },
+     {
+      "id": "category-57",
+      "clase": "category",
+      "texto": "Micropana",
+      "href": "/es/57-micropana",
+      "hijos": []
+     },
+     {
+      "id": "category-79",
+      "clase": "category",
+      "texto": "Mouflon",
+      "href": "/es/79-mouflon",
+      "hijos": []
+     },
+     {
+      "id": "category-60",
+      "clase": "category",
+      "texto": "Neopreno",
+      "href": "/es/60-neopreno",
+      "hijos": []
+     },
+     {
+      "id": "category-78",
+      "clase": "category",
+      "texto": "Ojo de perdiz",
+      "href": "/es/78-ojo-de-perdiz",
+      "hijos": []
+     },
+     {
+      "id": "category-118",
+      "clase": "category",
+      "texto": "Pana",
+      "href": "/es/118-pana",
+      "hijos": []
+     },
+     {
+      "id": "category-115",
+      "clase": "category",
+      "texto": "Panama",
+      "href": "/es/115-panama",
+      "hijos": []
+     },
+     {
+      "id": "category-56",
+      "clase": "category",
+      "texto": "Pelo",
+      "href": "/es/56-pelo",
+      "hijos": []
+     },
+     {
+      "id": "category-54",
+      "clase": "category",
+      "texto": "Piqué liso",
+      "href": "/es/54-pique-liso",
+      "hijos": []
+     },
+     {
+      "id": "category-55",
+      "clase": "category",
+      "texto": "Piqué estampado",
+      "href": "/es/55-pique-estampado",
+      "hijos": []
+     },
+     {
+      "id": "category-76",
+      "clase": "category",
+      "texto": "Plastificado",
+      "href": "/es/76-plastificado",
+      "hijos": []
+     },
+     {
+      "id": "category-46",
+      "clase": "category",
+      "texto": "Plumetti",
+      "href": "/es/46-plumetti",
+      "hijos": []
+     },
+     {
+      "id": "category-93",
+      "clase": "category",
+      "texto": "Polipiel",
+      "href": "/es/93-polipiel",
+      "hijos": []
+     },
+     {
+      "id": "category-53",
+      "clase": "category",
+      "texto": "Popelin",
+      "href": "/es/53-popelin",
+      "hijos": []
+     },
+     {
+      "id": "category-94",
+      "clase": "category",
+      "texto": "PUNTO",
+      "href": "/es/94-punto",
+      "hijos": []
+     },
+     {
+      "id": "category-127",
+      "clase": "category",
+      "texto": "Punto camiseta",
+      "href": "/es/127-punto-camiseta",
+      "hijos": []
+     },
+     {
+      "id": "category-73",
+      "clase": "category",
+      "texto": "Sarga",
+      "href": "/es/73-sarga",
+      "hijos": []
+     },
+     {
+      "id": "category-87",
+      "clase": "category",
+      "texto": "Seersucker",
+      "href": "/es/87-seersucker",
+      "hijos": []
+     },
+     {
+      "id": "category-119",
+      "clase": "category",
+      "texto": "Softshell",
+      "href": "/es/119-softshell",
+      "hijos": []
+     },
+     {
+      "id": "category-49",
+      "clase": "category",
+      "texto": "Vichys",
+      "href": "/es/49-vichys",
+      "hijos": []
+     },
+     {
+      "id": "category-92",
+      "clase": "category",
+      "texto": "Viscosa",
+      "href": "/es/92-viscosa",
+      "hijos": []
+     },
+     {
+      "id": "category-48",
+      "clase": "category",
+      "texto": "Viyela",
+      "href": "/es/48-viyela",
+      "hijos": []
+     },
+     {
+      "id": "category-47",
+      "clase": "category",
+      "texto": "Viyela plumetti",
+      "href": "/es/47-viyela-plumetti",
+      "hijos": []
+     },
+     {
+      "id": "category-113",
+      "clase": "category",
+      "texto": "VOILE",
+      "href": "/es/113-voile",
+      "hijos": []
+     },
+     {
+      "id": "category-114",
+      "clase": "category",
+      "texto": "Waffle",
+      "href": "/es/114-waffle",
+      "hijos": []
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "category-6",
+  "clase": "category",
+  "texto": "Mercería",
+  "href": "/es/6-merceria",
+  "hijos": [
+   {
+    "id": "category-97",
+    "clase": "category",
+    "texto": "Alfileres y  Agujas",
+    "href": "/es/97-alfileres-y-agujas",
+    "hijos": []
+   },
+   {
+    "id": "category-23",
+    "clase": "category",
+    "texto": "Bies",
+    "href": "/es/23-bies",
+    "hijos": []
+   },
+   {
+    "id": "category-24",
+    "clase": "category",
+    "texto": "Botones",
+    "href": "/es/24-botones",
+    "hijos": []
+   },
+   {
+    "id": "category-81",
+    "clase": "category",
+    "texto": "Cintas y cordones",
+    "href": "/es/81-cintas-y-cordones",
+    "hijos": []
+   },
+   {
+    "id": "category-99",
+    "clase": "category",
+    "texto": "Cremalleras",
+    "href": "/es/99-cremalleras",
+    "hijos": []
+   },
+   {
+    "id": "category-84",
+    "clase": "category",
+    "texto": "Entredos",
+    "href": "/es/84-entredos",
+    "hijos": []
+   },
+   {
+    "id": "category-138",
+    "clase": "category",
+    "texto": "Entretela",
+    "href": "/es/138-entretela",
+    "hijos": []
+   },
+   {
+    "id": "category-27",
+    "clase": "category",
+    "texto": "Goma elástica",
+    "href": "/es/27-goma-elastica",
+    "hijos": []
+   },
+   {
+    "id": "category-21",
+    "clase": "category",
+    "texto": "Hilos",
+    "href": "/es/21-hilos",
+    "hijos": []
+   },
+   {
+    "id": "category-101",
+    "clase": "category",
+    "texto": "Kit Costura",
+    "href": "/es/101-kit-costura",
+    "hijos": []
+   },
+   {
+    "id": "category-82",
+    "clase": "category",
+    "texto": "Piculina/Tripa de pollo",
+    "href": "/es/82-piculinatripa-de-pollo",
+    "hijos": []
+   },
+   {
+    "id": "category-80",
+    "clase": "category",
+    "texto": "Pompón",
+    "href": "/es/80-pompon",
+    "hijos": []
+   },
+   {
+    "id": "category-25",
+    "clase": "category",
+    "texto": "Puntilla",
+    "href": "/es/25-puntilla",
+    "hijos": []
+   },
+   {
+    "id": "category-96",
+    "clase": "category",
+    "texto": "Punto Smock",
+    "href": "/es/96-punto-smock",
+    "hijos": []
+   },
+   {
+    "id": "category-122",
+    "clase": "category",
+    "texto": "Tijeras y cortahilos",
+    "href": "/es/122-tijeras-y-cortahilos",
+    "hijos": []
+   },
+   {
+    "id": "category-22",
+    "clase": "category",
+    "texto": "Tira bordada",
+    "href": "/es/22-tira-bordada",
+    "hijos": []
+   },
+   {
+    "id": "category-83",
+    "clase": "category",
+    "texto": "Vivo",
+    "href": "/es/83-vivo",
+    "hijos": []
+   }
+  ]
+ },
+ {
+  "id": "category-9",
+  "clase": "category",
+  "texto": "Revistas Y LIBROS",
+  "href": "/es/9-revistas-y-libros",
+  "hijos": [
+   {
+    "id": "category-29",
+    "clase": "category",
+    "texto": "Patrones infantiles",
+    "href": "/es/29-patrones-infantiles",
+    "hijos": []
+   },
+   {
+    "id": "category-30",
+    "clase": "category",
+    "texto": "Patrones sueltos",
+    "href": "/es/30-patrones-sueltos",
+    "hijos": []
+   },
+   {
+    "id": "category-89",
+    "clase": "category",
+    "texto": "Libros de costura",
+    "href": "/es/89-libros-de-costura",
+    "hijos": []
+   }
+  ]
+ },
+ {
+  "id": "cms-page-4",
+  "clase": "cms-page",
+  "texto": "Sobre mí",
+  "href": "/es/content/4-sobre-mi",
+  "hijos": []
+ },
+ {
+  "id": "category-133",
+  "clase": "category",
+  "texto": "LIQUIDACIÓN",
+  "href": "/es/133-liquidacion-",
+  "hijos": []
+ },
+ {
+  "id": "category-135",
+  "clase": "category",
+  "texto": "REMATE FINAL INVIERNO 25",
+  "href": "/es/135-remate-final-invierno-25",
+  "hijos": []
+ },
+ {
+  "id": "category-139",
+  "clase": "category",
+  "texto": "NUEVA COLECCIÓN",
+  "href": "/es/139-nueva-coleccion",
+  "hijos": []
+ }
+]

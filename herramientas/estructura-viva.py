@@ -55,6 +55,15 @@ for url, f in filas.items():
         continue
     raw = Path(f["fichero"]).read_text(encoding="utf-8", errors="replace")
     soup = BeautifulSoup(raw, "lxml")
+    # Las ventanas modales (ocultas; formularios de reseñas que necesitaban el servidor) no cuentan:
+    # sus encabezados no forman parte de la lectura de la página.
+    for modal in soup.select("div.modal"):
+        modal.decompose()
+    # Dec. 8 (sin cuentas de cliente): en el mapa del sitio desaparece la columna «Su cuenta».
+    if f.get("tipo") == "sitemap":
+        for col in soup.select(".sitemap .col-md-3"):
+            if col.find("h2") and texto(col.find("h2")) == "Su cuenta":
+                col.decompose()
     encs = []
     for h in soup.find_all(re.compile(r"^h[1-6]$")):
         t = texto(h)

@@ -1,0 +1,42 @@
+---
+/** Página «Nuestra tienda»: dirección y horario de la tienda física. */
+import { bloques, catalogo } from '../../lib/catalogo';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const d = bloques(idioma).tiendas;
+const pagina = catalogo(idioma).otras[`/${idioma}/tiendas`];
+---
+<div id="content-wrapper" class="col-12">
+  <section id="main">
+    <header class="page-header"><h1>{pagina?.h1}</h1></header>
+    <p>{d.intro}</p>
+    <section id="content" class="page-content page-stores">
+      <article id={d.tienda.id} class="store-item card">
+        <div class="store-item-container clearfix">
+          <div class="col-md-3 store-picture hidden-sm-down"><img src={d.tienda.img} alt={d.tienda.img_alt} title={d.tienda.img_alt} /></div>
+          <div class="col-md-5 col-sm-7 col-xs-12 store-description">
+            <p class="h3 card-title">{d.tienda.nombre}</p>
+            <address set:html={d.tienda.direccion_html} />
+          </div>
+          <div class="col-md-4 col-sm-5 col-xs-12 divide-left">
+            <table>
+              {d.tienda.horario.map((h: any) => (
+                <tr>
+                  <th>{h.dia}</th>
+                  <td><ul>{h.horas.map((x: string) => <li>{x}</li>)}</ul></td>
+                </tr>
+              ))}
+            </table>
+          </div>
+        </div>
+        <footer class="collapse" id="about-1">
+          <div class="store-item-footer divide-top">
+            <div class="card-block"></div>
+            <ul class="card-block"></ul>
+          </div>
+        </footer>
+      </article>
+    </section>
+    <footer class="page-footer"><!-- Footer content --></footer>
+  </section>
+</div>

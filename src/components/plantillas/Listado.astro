@@ -1,0 +1,19 @@
+---
+/**
+ * Página de listado (categoría, marca, más vendidos, novedades, rebajados): columna izquierda
+ * con árbol, filtros y bloques laterales, y a la derecha el listado paginado.
+ */
+import type { NodoArbol, Producto } from '../../lib/catalogo';
+import { bloques } from '../../lib/catalogo';
+import ColumnaIzquierda from '../ColumnaIzquierda.astro';
+import ListaProductos from '../ListaProductos.astro';
+interface Props { idioma: string; tipo: string; titulo: string; productos: Producto[]; base: string; pagina: number; raiz: NodoArbol; facetas?: any; orden?: string }
+const { idioma, tipo, titulo, productos, base, pagina, raiz, facetas, orden } = Astro.props;
+const marca = tipo === 'manufacturer' ? bloques(idioma).marcas[base] : undefined;
+---
+<ColumnaIzquierda idioma={idioma} raiz={raiz} facetas={facetas} />
+<div id="content-wrapper" class="left-column col-xs-12 col-lg-9">
+  <section id="main">
+    <ListaProductos idioma={idioma} titulo={titulo} productos={productos} base={base} pagina={pagina} conFiltros={Boolean(facetas?.facetas?.length)} esCategoria={tipo === 'category'} orden={orden} marca={marca} />
+  </section>
+</div>

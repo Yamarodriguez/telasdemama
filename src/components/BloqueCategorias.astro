@@ -1,0 +1,53 @@
+---
+/**
+ * Bloque «categorías» de la columna izquierda (módulo ps_categorytree): el árbol a partir de la
+ * categoría actual, dos niveles plegables. El orden es el de la tienda (src/data/bloques/.../arbol-categorias.json).
+ */
+import type { NodoArbol } from '../lib/catalogo';
+interface Props { raiz: NodoArbol }
+const { raiz } = Astro.props;
+---
+<div class="block-categories">
+  <ul class="category-top-menu">
+    <li><h2 class="text-uppercase h6">{raiz.nombre}</h2></li>
+    <li>
+      {raiz.hijos.length > 0 && <ul class="category-sub-menu">
+        {raiz.hijos.map((h) => (
+          <li data-depth="0">
+            <a href={h.href}>{h.nombre}</a>
+            {h.hijos.length > 0 && (
+              <Fragment>
+                <div class="navbar-toggler collapse-icons" data-toggle="collapse" data-target={`#exCollapsingNavbar${h.id}`}>
+                  <i class="font-down-open-big add"></i><i class="font-up-open-big remove"></i>
+                </div>
+                <div class="collapse" id={`exCollapsingNavbar${h.id}`}>
+                  <ul class="category-sub-menu">
+                    {h.hijos.map((n) => (
+                      <li data-depth="1">
+                        <a class="category-sub-link" href={n.href}>{n.nombre}</a>
+                        {n.hijos.length > 0 && (
+                          <Fragment>
+                            <span class="arrows" data-toggle="collapse" data-target={`#exCollapsingNavbar${n.id}`}>
+                              <i class="font-up-open-big arrow-up"></i><i class="font-down-open-big arrow-down"></i>
+                            </span>
+                            <div class="collapse" id={`exCollapsingNavbar${n.id}`}>
+                              <ul class="category-sub-menu">
+                                {n.hijos.map((nn) => (
+                                  <li data-depth="2"><a class="category-sub-link" href={nn.href}>{nn.nombre}</a></li>
+                                ))}
+                              </ul>
+                            </div>
+                          </Fragment>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Fragment>
+            )}
+          </li>
+        ))}
+      </ul>}
+    </li>
+  </ul>
+</div>

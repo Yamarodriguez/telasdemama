@@ -13,6 +13,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { parse } from 'node-html-parser';
 
 const arg = (n, d) => { const i = process.argv.indexOf('--' + n); return i === -1 ? d : process.argv[i + 1]; };
 const DIST = arg('dist', 'dist');
@@ -29,19 +30,27 @@ function* htmls(dir) {
   }
 }
 const limpiar = t => t.replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#039;|&#39;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
+// Las ventanas modales (<div class="modal …">) van ocultas y no forman parte de la lectura de la
+// página: sus encabezados no cuentan (estructura-viva.py hace lo mismo con la referencia).
+// Se usa un lector de HTML de verdad (node-html-parser), no expresiones regulares.
 function encabezados(html) {
-  const out = [];
-  for (const m of html.matchAll(/<h([1-6])\b[^>]*>([\s\S]*?)<\/h\1>/gi)) out.push({ n: Number(m[1]), t: limpiar(m[2]) });
-  return out;
+  const root = parse(html, { comment: false });
+  for (const modal of root.querySelectorAll('div.modal')) modal.remove();
+  return root.querySelectorAll('h1, h2, h3, h4, h5, h6').map((h) => ({ n: Number(h.tagName[1]), t: limpiar(h.innerHTML) }));
 }
-// fichero de dist/ → ruta pública (inversa de build.format 'file' y de la paginación __page-N)
+// fichero de dist/ → ruta pública (inversa de build.format 'preserve' y de la paginación /pagina/N)
 function rutaDe(f) {
   let r = '/' + path.relative(DIST, f).split(path.sep).join('/');
-  if (r.endsWith('/index.html')) return r.slice(0, -'index.html'.length);
-  r = r.replace(/__page-(\d+)\.html$/, '?page=$1');
-  if (/\/\d+-[^/]+\.html$/.test(r) && /^\/[a-z]{2}\/[^/]+\/\d+-/.test(r)) return r; // ficha: conserva .html
+  if (r === '/index.html') return '/';
+  if (r.endsWith('/index.html')) return r.slice(0, -'/index.html'.length); // /es/index.html → /es (clave de la referencia)
+  r = r.replace(/\/pagina\/(\d+)\.html$/, '?page=$1');
+  r = r.replace(/ /g, '%20');
+  if (/^\/[a-z]{2}\/(?!content\/|brand\/)[^/]+\/\d+-[^/]+\.html$/.test(r)) return r; // ficha: conserva .html
   return r.replace(/\.html$/, '');
 }
+// Páginas de la referencia que no existen en la web nueva por decisión (Dec. 8: sin cuentas de cliente).
+const TIPOS_SIN_PAGINA = new Set(['authentication', 'password']);
+for (const [ruta, e] of Object.entries(estructura)) if (TIPOS_SIN_PAGINA.has(e.tipo)) delete estructura[ruta];
 
 const diferencias = [], sinReferencia = [];
 let comparadas = 0;

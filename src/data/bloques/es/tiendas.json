@@ -1,0 +1,54 @@
+{
+ "intro": "Recuerda que puedes registrar tu compra online y pasar a recogerlo en nuestro local.",
+ "tienda": {
+  "id": "store-1",
+  "img": "/img/st/1-stores_default.jpg",
+  "img_alt": "Telas de Mamá",
+  "nombre": "Telas de Mamá",
+  "direccion_html": "Calle La Vega 97, Rioseco<br/>33993 Sobrescobio<br/>Asturias<br/>España",
+  "horario": [
+   {
+    "dia": "Lun.",
+    "horas": [
+     "10:00AM - 02:00PM"
+    ]
+   },
+   {
+    "dia": "Mar.",
+    "horas": [
+     "10:00AM - 02:00PM"
+    ]
+   },
+   {
+    "dia": "Mié.",
+    "horas": [
+     "10:00AM - 02:00PM"
+    ]
+   },
+   {
+    "dia": "Jue.",
+    "horas": [
+     "10:00AM - 02:00PM"
+    ]
+   },
+   {
+    "dia": "Vie.",
+    "horas": [
+     "10:00AM - 02:00PM"
+    ]
+   },
+   {
+    "dia": "Sáb.",
+    "horas": [
+     "10:00AM - 02:00PM"
+    ]
+   },
+   {
+    "dia": "Dom.",
+    "horas": [
+     "CERRADO"
+    ]
+   }
+  ]
+ }
+}

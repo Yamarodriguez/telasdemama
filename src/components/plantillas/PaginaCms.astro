@@ -1,0 +1,14 @@
+---
+/** Página de texto (CMS): título y contenido HTML tal cual, con las rutas del dominio viejo hechas relativas. */
+import type { PaginaCms } from '../../lib/catalogo';
+interface Props { pagina: PaginaCms }
+const { pagina } = Astro.props;
+const contenido = pagina.contenido.replace(/https?:\/\/(www\.)?telasdemama\.com\//g, '/');
+---
+<div id="content-wrapper" class="col-12">
+  <section id="main">
+    <header class="page-header"><h1>{pagina.h1 || pagina.nombre}</h1></header>
+    <section id="content" class:list={['page-content rte page-cms', `page-cms-${pagina.id}`]} set:html={contenido} />
+    <footer class="page-footer"><!-- Footer content --></footer>
+  </section>
+</div>

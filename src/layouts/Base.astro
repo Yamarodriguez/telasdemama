@@ -1,0 +1,115 @@
+---
+/**
+ * Esqueleto común de todas las páginas: <head> con las hojas del tema en su orden original,
+ * cabecera, miga de pan, columnas, pie y los scripts del tema al final del <body>.
+ * El marcado reproduce el de la tienda vieja (PrestaShop 1.7, tema Cosmetics).
+ */
+import temaRecursos from '../data/tema-recursos.json';
+import Cabecera from '../components/Cabecera.astro';
+import Pie from '../components/Pie.astro';
+import MigaDePan from '../components/MigaDePan.astro';
+import { bloques, textos, clasesBase } from '../lib/catalogo';
+import { objetoPrestashop } from '../lib/prestashop';
+import { SEGUIMIENTO, scriptPermitido } from '../lib/sitio';
+
+interface Props {
+  idioma: string;
+  /** page_name de PrestaShop: index, category, product, cms, best-sales, contact, stores, manufacturer, supplier, sitemap, pagenotfound… */
+  tipo: string;
+  /** Tipo cuyas hojas y scripts se cargan (por defecto, el mismo). */
+  recursosDe?: string;
+  layout: 'layout-full-width' | 'layout-left-column';
+  clasesExtra?: string[];
+  title: string;
+  description?: string;
+  keywords?: string;
+  canonical?: string;
+  hreflang: Record<string, string>;
+  urlActual: string;
+  migas: { texto: string; url: string }[];
+  /** La portada no lleva los contenedores de columnas. */
+  portada?: boolean;
+  /** Metadatos Open Graph (ficha de producto). */
+  og?: { property: string; content: string }[];
+  /** Datos estructurados JSON-LD (añadido nuevo, no existía en la tienda vieja). */
+  jsonLd?: object;
+  noindex?: boolean;
+  /** id del elemento del menú que corresponde a esta página (PrestaShop le pone la clase «current»). */
+  menuActual?: string;
+}
+
+const { idioma, tipo, recursosDe = tipo, layout, clasesExtra = [], title, description = '', keywords = '', canonical = '', hreflang, urlActual, migas, portada = false, og = [], jsonLd, noindex = false, menuActual = '' } = Astro.props;
+const t = textos(idioma);
+const b = bloques(idioma);
+const recursos = (temaRecursos.por_tipo_de_pagina as Record<string, { css: string[]; js: string[] }>)[recursosDe] ?? temaRecursos.por_tipo_de_pagina.cms;
+const scripts = recursos.js.filter(scriptPermitido);
+const clasesBody = [...clasesBase(idioma, t), layout, `page-${tipo}`, 'tax-display-enabled', ...clasesExtra];
+const ps = objetoPrestashop({ idioma, tipo, layout, title, description, keywords, canonical, urlActual, hreflang, migas, clasesBody: clasesExtra }, t, b.cabecera);
+const seg = SEGUIMIENTO;
+---
+<!doctype html>
+<html lang={idioma}>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    {Object.entries(hreflang).map(([lang, url]) => <link rel="alternate" href={url} hreflang={lang} />)}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/img/favicon.ico?1571903726" />
+    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico?1571903726" />
+    {seg.activo && (
+      <Fragment>
+        <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${seg.gtm}');`} />
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${seg.ads}`}></script>
+        <script is:inline set:html={`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${seg.ads}');`} />
+        <script is:inline set:html={`function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"${seg.metricool}"})});`} />
+      </Fragment>
+    )}
+    {recursos.css.map((href) => <link rel="stylesheet" href={href} type="text/css" media="all" />)}
+    <script is:inline set:html={`var prestashop = ${JSON.stringify(ps)};\nvar page_name = ${JSON.stringify(tipo)};`} />
+    {seg.activo && (
+      <Fragment>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${seg.ga4}`}></script>
+        <script is:inline set:html={`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${seg.ga4}');`} />
+      </Fragment>
+    )}
+    {og.map((m) => <meta property={m.property} content={m.content} />)}
+    {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body id={tipo} class:list={clasesBody}>
+    {seg.activo && (
+      <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${seg.gtm}`} height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    )}
+    <main id="page">
+      <Cabecera idioma={idioma} esPortada={tipo === 'index'} hreflang={hreflang} menuActual={menuActual} />
+      <section id="wrapper">
+        <MigaDePan migas={migas} />
+        {portada ? (
+          <div class="clearfix">
+            <div class="wrapper-columns">
+              <aside id="notifications"><div class="container"></div></aside>
+              <slot />
+            </div>
+          </div>
+        ) : (
+          <Fragment>
+            <slot name="antes-columnas"><div class="container"></div></slot>
+            <div class="container clearfix">
+              <div class="wrapper-columns row">
+                <aside id="notifications"><div class="container"></div></aside>
+                <slot />
+              </div>
+            </div>
+          </Fragment>
+        )}
+      </section>
+      <Pie idioma={idioma} />
+    </main>
+    {scripts.map((src) => <script is:inline type="text/javascript" src={src}></script>)}
+    <slot name="scripts-finales" />
+  </body>
+</html>
