@@ -1,5 +1,7 @@
 // Datos fijos de la web y decisiones que afectan a todas las páginas.
 
+import rediseno from '../data/rediseno.json';
+
 /** Dominio público (canonical, hreflang, og:url). Sin barra final. */
 export const DOMINIO = 'https://telasdemama.com';
 
@@ -53,4 +55,24 @@ export function enlaceWhatsApp(numero: string, mensaje: string): string {
 /** Rellena {campo} en una plantilla de texto. */
 export function plantilla(texto: string, valores: Record<string, string | number>): string {
   return texto.replace(/\{(\w+)\}/g, (_, k) => String(valores[k] ?? ''));
+}
+
+/**
+ * Interruptor del rediseño (Fase 3, Dec. 4): src/data/rediseno.json. Apagado, la web es la copia fiel.
+ * Encendido, solo las páginas de la lista cargan la hoja del rediseño y sus añadidos.
+ * REDISENO=1 / REDISENO=0 y REDISENO_OPCION=a|b|c en el entorno mandan sobre el fichero (para compilar
+ * las opciones en imagen sin editar nada).
+ */
+const envActivo = process.env.REDISENO;
+export const REDISENO = {
+  activo: envActivo === '1' ? true : envActivo === '0' ? false : Boolean(rediseno.activo),
+  opcion: process.env.REDISENO_OPCION || rediseno.opcion || 'a',
+  paginas: rediseno.paginas as string[],
+};
+
+/** ¿Esta página (ruta sin dominio, como /es/3-telas) lleva el rediseño? */
+export function redisenoActivo(url: string): boolean {
+  if (!REDISENO.activo || !url) return false;
+  const u = url.replace(/\/$/, '') || '/';
+  return REDISENO.paginas.some((p) => (p.replace(/\/$/, '') || '/') === u);
 }

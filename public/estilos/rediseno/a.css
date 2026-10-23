@@ -1,0 +1,24 @@
+/* Opción A — «Como ahora, más clara». Mismos colores de la tienda (rosa, verde agua) y misma letra Philosopher;
+   la ficha gana foto grande, precio, referencia y disponibilidad a la vista y botón verde de WhatsApp; la rejilla,
+   tarjetas limpias sin bordes. El rosa de los precios se oscurece un punto (#c43d55) para que se lea bien sobre blanco. */
+@import url("comun.css");
+
+body.rediseno-a {
+  --rd-texto: #2b2b2b;
+  --rd-fondo: #fff;
+  --rd-acento: #c43d55;
+  --rd-precio: #c43d55;
+  --rd-boton: #075e54;
+  --rd-linea: #f1d4d9;
+  --rd-radio: 4px;
+  --rd-radio-boton: 24px;
+  --rd-letra-titulos: "Philosopher";
+  --rd-tarjeta: #fff;
+  --rd-tarjeta-borde: 0;
+  --rd-sombra: none;
+  --rd-sombra-hover: 0 6px 22px rgba(0, 0, 0, .10);
+  --rd-foto-fondo: #fff;
+  --rd-tarjeta-alineacion: center;
+  --rd-cabecera-linea: 1px solid #f1d4d9;
+}
+body.rediseno-a .product-miniature .product-thumbnail { border-bottom: 1px solid #f3f3f3; }

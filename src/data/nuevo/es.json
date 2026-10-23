@@ -16,5 +16,7 @@
   "filtro_aviso": "Este filtro no está disponible en esta versión de la web",
   "orden_aviso": "La ordenación no está disponible en esta versión de la web",
   "adjunto_aviso": "Los archivos adjuntos no se pueden enviar desde este formulario; envíalos por WhatsApp o correo",
-  "contacto_correo": "contacto@telasdemama.com"
+  "contacto_correo": "contacto@telasdemama.com",
+  "disponible_texto": "En stock",
+  "_nota_disponible": "Fase 3 (PENDIENTE de Yama): la tienda vieja no escribe nada cuando hay existencias; el rediseño muestra este texto, tomado del filtro «Disponibilidad» de la propia tienda. «¡AGOTADO!» y «Últimas unidades en stock» son los textos originales."
 }

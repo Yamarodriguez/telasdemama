@@ -6,7 +6,8 @@
  */
 import type { Producto } from '../../lib/catalogo';
 import { bloques, catalogo, nuevo, textos, numeroPlano, formatoPrecio, textoPlano, altImagen } from '../../lib/catalogo';
-import { absoluta, enlaceWhatsApp, plantilla, REVI } from '../../lib/sitio';
+import { absoluta, enlaceWhatsApp, plantilla, REVI, redisenoActivo } from '../../lib/sitio';
+import webpDatos from '../../data/imagenes-webp.json';
 import MiniaturaProducto from '../MiniaturaProducto.astro';
 
 interface Props { idioma: string; producto: Producto }
@@ -35,6 +36,16 @@ const conDetalles = Boolean(p.referencia) || (p.caracteristicas?.length ?? 0) > 
 // El visor de fotos lleva flechas (y la máscara sin «nomargin») cuando hay más de MAX_SIN_FLECHAS imágenes.
 const MAX_SIN_FLECHAS = 5;
 const conFlechasModal = imagenes.length > MAX_SIN_FLECHAS;
+// Fase 3 (rediseño, solo con el interruptor encendido en esta página): foto principal en webp con srcset, sin estirar,
+// con width y height; y referencia y disponibilidad siempre a la vista, junto al precio. Con el interruptor apagado no cambia nada.
+const rd = redisenoActivo(p.url);
+const webp = webpDatos as Record<string, { ancho: number; alto: number; base: string; anchos: number[] }>;
+const srcsetWebp = (w: { base: string; anchos: number[] }) => w.anchos.map((a) => `${w.base}-${a}.webp ${a}w`).join(', ');
+const webpPortada = rd && portada ? webp[String(portada.id)] : undefined;
+const mapaWebp = rd ? Object.fromEntries(imagenes.filter((i) => webp[String(i.id)]).map((i) => [i.por_tamano.large_default, srcsetWebp(webp[String(i.id)])])) : {};
+const estadoDispo = p.disponibilidad === 'unavailable' ? 'agotado' : p.disponibilidad === 'last_remaining_items' ? 'ultimas' : p.disponibilidad === 'available' ? 'disponible' : '';
+// Texto de disponibilidad: el de la tienda vieja si lo hay («¡AGOTADO!», «Últimas unidades en stock»); si hay existencias, el de nuevo/es.json (pendiente de Yama).
+const textoDispo = (p as any).mensaje_disponibilidad || (p.disponibilidad === 'available' ? n.disponible_texto ?? '' : '');
 const datosProducto = { id: p.id, id_product: p.id, name: p.nombre, reference: p.referencia, link_rewrite: p.link_rewrite, price: p.precio_visible, price_amount: p.precio_con_iva, link: urlAbs, quantity: p.stock, availability: p.disponibilidad, id_product_attribute: '0', minimal_quantity: p.cantidad_minima };
 ---
 <div id="content-wrapper" class="col-12">
@@ -46,7 +57,14 @@ const datosProducto = { id: p.id, id_product: p.id, name: p.nombre, reference: p
             <div class="product-cover">
               {portada ? (
                 <Fragment>
-                  <img class="js-qv-product-cover" src={src(portada, 'large_default')} alt={p.nombre} title={p.nombre} style="width:100%;" itemprop="image" />
+                  {webpPortada ? (
+                    <picture class="rd-foto" data-webp={JSON.stringify(mapaWebp)}>
+                      <source type="image/webp" srcset={srcsetWebp(webpPortada)} sizes="(min-width: 992px) 640px, 100vw" />
+                      <img class="js-qv-product-cover" src={src(portada, 'large_default')} alt={p.nombre} title={p.nombre} width={webpPortada.ancho} height={webpPortada.alto} itemprop="image" />
+                    </picture>
+                  ) : (
+                    <img class="js-qv-product-cover" src={src(portada, 'large_default')} alt={p.nombre} title={p.nombre} style="width:100%;" itemprop="image" />
+                  )}
                   <div class="layer" data-toggle="modal" data-target="#product-modal"><i class="material-icons zoom-in">{''}</i></div>
                 </Fragment>
               ) : (
@@ -104,6 +122,12 @@ const datosProducto = { id: p.id, id_product: p.id, name: p.nombre, reference: p
               {p.unidad && <p class="product-unit-price sub">({p.precio_unidad} {p.unidad})</p>}
             </div>
             <div class="tax-shipping-delivery-label">{t.impuestos_incluidos}</div>
+          </div>
+        )}
+        {rd && (p.referencia || textoDispo) && (
+          <div class="rd-datos">
+            {p.referencia && <span class="rd-ref"><span class="rd-etiqueta">{t.referencia}:</span> {p.referencia}</span>}
+            {textoDispo && <span class:list={['rd-dispo', estadoDispo]}>{textoDispo}</span>}
           </div>
         )}
         <div class="product-information">
@@ -291,3 +315,19 @@ const datosProducto = { id: p.id, id_product: p.id, name: p.nombre, reference: p
     actualizar();
   })();
 </script>
+{webpPortada && (
+  <script is:inline>
+    // Rediseño: al pulsar una miniatura, el tema cambia el src del jpg; aquí se cambia también el webp (o se quita si no lo hay).
+    (function () {
+      var pic = document.querySelector('picture.rd-foto');
+      if (!pic) return;
+      var img = pic.querySelector('img'), source = pic.querySelector('source');
+      var mapa = {};
+      try { mapa = JSON.parse(pic.getAttribute('data-webp') || '{}'); } catch (e) {}
+      new MutationObserver(function () {
+        var ss = mapa[img.getAttribute('src') || ''];
+        if (ss) source.setAttribute('srcset', ss); else source.removeAttribute('srcset');
+      }).observe(img, { attributes: true, attributeFilter: ['src'] });
+    })();
+  </script>
+)}

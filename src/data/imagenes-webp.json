@@ -1,0 +1,39 @@
+{
+  "2709": {
+    "ancho": 1000,
+    "alto": 750,
+    "base": "/webp/2709-large_default/algodon-mar-caspio",
+    "anchos": [
+      500,
+      1000
+    ]
+  },
+  "2710": {
+    "ancho": 1000,
+    "alto": 750,
+    "base": "/webp/2710-large_default/algodon-mar-caspio",
+    "anchos": [
+      500,
+      1000
+    ]
+  },
+  "2711": {
+    "ancho": 1000,
+    "alto": 750,
+    "base": "/webp/2711-large_default/algodon-mar-caspio",
+    "anchos": [
+      500,
+      1000
+    ]
+  },
+  "2712": {
+    "ancho": 1000,
+    "alto": 750,
+    "base": "/webp/2712-large_default/algodon-mar-caspio",
+    "anchos": [
+      500,
+      1000
+    ]
+  },
+  "_nota": "Versiones webp de las fotos de producto (Fase 3: foto principal con srcset, sin estirar, con width y height). Lo genera herramientas/webp.mjs a partir de public/<id>-large_default/; la clave es el id de la imagen de PrestaShop. Si una imagen no está aquí, la ficha usa el jpg original."
+}

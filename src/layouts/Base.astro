@@ -10,7 +10,7 @@ import Pie from '../components/Pie.astro';
 import MigaDePan from '../components/MigaDePan.astro';
 import { bloques, textos, clasesBase } from '../lib/catalogo';
 import { objetoPrestashop } from '../lib/prestashop';
-import { SEGUIMIENTO, scriptPermitido } from '../lib/sitio';
+import { SEGUIMIENTO, scriptPermitido, REDISENO, redisenoActivo } from '../lib/sitio';
 
 interface Props {
   idioma: string;
@@ -43,7 +43,9 @@ const t = textos(idioma);
 const b = bloques(idioma);
 const recursos = (temaRecursos.por_tipo_de_pagina as Record<string, { css: string[]; js: string[] }>)[recursosDe] ?? temaRecursos.por_tipo_de_pagina.cms;
 const scripts = recursos.js.filter(scriptPermitido);
-const clasesBody = [...clasesBase(idioma, t), layout, `page-${tipo}`, 'tax-display-enabled', ...clasesExtra];
+// Fase 3: con el interruptor encendido, la página de prueba lleva la clase «rediseno» y su hoja, la última del <head>.
+const rediseno = redisenoActivo(urlActual);
+const clasesBody = [...clasesBase(idioma, t), layout, `page-${tipo}`, 'tax-display-enabled', ...clasesExtra, ...(rediseno ? ['rediseno', `rediseno-${REDISENO.opcion}`] : [])];
 const ps = objetoPrestashop({ idioma, tipo, layout, title, description, keywords, canonical, urlActual, hreflang, migas, clasesBody: clasesExtra }, t, b.cabecera);
 const seg = SEGUIMIENTO;
 ---
@@ -71,6 +73,7 @@ const seg = SEGUIMIENTO;
     )}
     {recursos.css.map((href) => <link rel="stylesheet" href={href} type="text/css" media="all" />)}
     <link rel="stylesheet" href="/estilos/nuevo.css" type="text/css" media="all" />{/* lo nuevo, siempre la última */}
+    {rediseno && <link rel="stylesheet" href={`/estilos/rediseno/${REDISENO.opcion}.css`} type="text/css" media="all" />}{/* Fase 3: solo con el interruptor encendido */}
     <script is:inline set:html={`var prestashop = ${JSON.stringify(ps)};\nvar page_name = ${JSON.stringify(tipo)};`} />
     {seg.activo && (
       <Fragment>

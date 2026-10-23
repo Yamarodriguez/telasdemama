@@ -1,0 +1,9 @@
+{
+  "_nota": "Interruptor del rediseño (Fase 3, Dec. 4). Con «activo» en false la web es la copia fiel de la tienda vieja. Con «activo» en true, SOLO las páginas de «paginas» cargan la hoja public/estilos/rediseno/<opcion>.css (la última del <head>) y los añadidos del rediseño (referencia y disponibilidad visibles, foto principal en webp). Para compilar con el interruptor encendido sin tocar este fichero: variable de entorno REDISENO=1 (y REDISENO_OPCION=a|b|c).",
+  "activo": false,
+  "opcion": "a",
+  "paginas": [
+    "/es/inicio/1091-algodon-mar-caspio.html",
+    "/es/3-telas"
+  ]
+}
