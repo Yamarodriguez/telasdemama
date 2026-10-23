@@ -1,0 +1,4 @@
+# Lo bajado de la tienda vieja (public/) se guarda byte a byte, sin tocar finales de línea.
+public/** -text
+# El código propio, con finales de línea LF.
+* text=auto eol=lf
