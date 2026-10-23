@@ -18,8 +18,8 @@ capturas*/
 descargas/
 *-fallidas.txt
 public/css/
-# imágenes de producto bajadas de la tienda vieja (unos 250 MB; se decide con el hosting)
-public/*_default/
+# Las imágenes de producto (public/*_default/, 237 MB) SÍ van en git desde el 23-10-2026, por decisión de Yama:
+# Netlify compila desde el repositorio y así las muestra.
 # locales
 .env
 .env.*
