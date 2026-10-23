@@ -36,10 +36,16 @@ const DOMINIO = 'https://telasdemama.com';
 
 // ---------- muestra de páginas ----------
 const fijas = new Set(config.paginas_fijas.map((p) => DOMINIO + p));
+// Fase 3: las páginas con el rediseño encendido (src/data/rediseno.json) ya no son copia fiel: no se comparan
+// con la tienda vieja (se miran a ojo con las capturas de capturar-rediseno.mjs) y se cuentan aparte.
+const REDISENO = fs.existsSync('src/data/rediseno.json') ? JSON.parse(fs.readFileSync('src/data/rediseno.json', 'utf8')) : { activo: false, paginas: [] };
+const conRediseno = new Set(REDISENO.activo ? REDISENO.paginas.map((p) => DOMINIO + (p.replace(/\/$/, '') || '/')) : []);
+const saltadas = [];
 const porTipo = {};
 const paginas = [];
 for (const [url, f] of Object.entries(manifiesto)) {
   if (f.estado !== 200 || ['authentication', 'password'].includes(f.tipo)) continue;
+  if (conRediseno.has(url.replace(/\/$/, ''))) { saltadas.push(url.replace(DOMINIO, '')); continue; }
   if (PAGINA && url !== DOMINIO + PAGINA) continue;
   const fija = fijas.has(url);
   porTipo[f.tipo] = (porTipo[f.tipo] ?? 0) + (fija ? 0 : 1);
@@ -259,7 +265,7 @@ const geomReal = geometria;
 const geomAceptada = Object.keys(config.diferencias_aceptadas).length;
 const cuatroCeroUnicos = [...new Map(cuatroCero.map((x) => [x.recurso, x])).values()];
 const L = [`# Comprobaciones con navegador (C3, C4, C5) — ${new Date().toISOString().slice(0, 16).replace('T', ' ')}`, '',
-  `${paginas.length} páginas × ${config.anchos.join(' y ')} px (${medidas} pares de páginas); ${((Date.now() - inicio) / 1000).toFixed(0)} s. Capturas en capturas/.`, '',
+  `${paginas.length} páginas × ${config.anchos.join(' y ')} px (${medidas} pares de páginas); ${((Date.now() - inicio) / 1000).toFixed(0)} s. Capturas en capturas/.${saltadas.length ? ` Con el rediseño encendido, no comparadas: ${saltadas.length} (${saltadas.join(', ')}).` : ''}`, '',
   `## C4 Geometría: ${geomReal.length} diferencias (${geomAceptada} bloques con diferencia aceptada por decisión, ver comprobar-visual.config.json)`, ''];
 if (sinCaptura.length) L.push(`Sin captura (error del navegador): ${sinCaptura.join('; ')}`, '');
 if (geomReal.length) {

@@ -1,6 +1,6 @@
 {
   "_nota": "Interruptor del rediseño (Fase 3, Dec. 4). Con «activo» en false la web es la copia fiel de la tienda vieja. Con «activo» en true, SOLO las páginas de «paginas» se montan con las plantillas del rediseño (src/components/rediseno/, src/layouts/Rediseno.astro) y su hoja public/estilos/rediseno/<opcion>.css. Opciones: «1» (diseño propio, informes/analisis-competencia.md §5) y «2» (al estilo de quekucas.es, §6). Para compilar con el interruptor encendido sin tocar este fichero: REDISENO=1 y REDISENO_OPCION=1|2 en el entorno.",
-  "activo": false,
+  "activo": true,
   "opcion": "1",
   "paginas": [
     "/es/",

@@ -52,11 +52,17 @@ function rutaDe(f) {
 const TIPOS_SIN_PAGINA = new Set(['authentication', 'password']);
 for (const [ruta, e] of Object.entries(estructura)) if (TIPOS_SIN_PAGINA.has(e.tipo)) delete estructura[ruta];
 
-const diferencias = [], sinReferencia = [];
+// Fase 3: las páginas con el rediseño encendido (src/data/rediseno.json) ya no son copia fiel: no se comparan
+// con la tienda vieja (se miran a ojo con las capturas de capturar-rediseno.mjs) y se cuentan aparte.
+const REDISENO = fs.existsSync('src/data/rediseno.json') ? JSON.parse(fs.readFileSync('src/data/rediseno.json', 'utf8')) : { activo: false, paginas: [] };
+const conRediseno = new Set(REDISENO.activo ? REDISENO.paginas.map((p) => p.replace(/\/$/, '') || '/') : []);
+
+const diferencias = [], sinReferencia = [], saltadas = [];
 let comparadas = 0;
 const vistas = new Set();
 for (const f of htmls(DIST)) {
   const ruta = rutaDe(f);
+  if (conRediseno.has(ruta)) { saltadas.push(ruta); vistas.add(ruta); continue; }
   const ref = estructura[ruta];
   if (!ref) { sinReferencia.push(ruta); continue; }
   vistas.add(ruta);
@@ -77,7 +83,7 @@ const faltan = Object.keys(estructura).filter(r => !vistas.has(r) && compilado(i
 const idiomasSinCompilar = [...new Set(Object.keys(estructura).map(idiomaDe).filter(i => i && !compilado(i)))];
 const lineas = [
   '# Encabezados (C1)', '',
-  `${comparadas} páginas comparadas con la referencia; ${diferencias.length} con diferencias; ${sinReferencia.length} sin página de referencia; ${faltan.length} páginas de la referencia aún sin generar${COMPLETO ? ' (cuentan como fallo)' : ' (informativo hasta la Fase 2)'}${idiomasSinCompilar.length ? `; idiomas aún sin compilar (no cuentan): ${idiomasSinCompilar.join(', ')}` : ''}.`, '',
+  `${comparadas} páginas comparadas con la referencia; ${diferencias.length} con diferencias; ${sinReferencia.length} sin página de referencia; ${faltan.length} páginas de la referencia aún sin generar${COMPLETO ? ' (cuentan como fallo)' : ' (informativo hasta la Fase 2)'}${idiomasSinCompilar.length ? `; idiomas aún sin compilar (no cuentan): ${idiomasSinCompilar.join(', ')}` : ''}${saltadas.length ? `; ${saltadas.length} páginas con el rediseño encendido, no comparadas (${saltadas.join(', ')})` : ''}.`, '',
   ...(diferencias.length ? ['## Diferencias', ...diferencias.map(d => `- \`${d.ruta}\`: no encuentro ${d.falta} en su sitio`)] : []),
   ...(sinReferencia.length ? ['', '## Sin referencia (páginas nuevas)', ...sinReferencia.slice(0, 50).map(r => `- \`${r}\``)] : []),
   ...(COMPLETO && faltan.length ? ['', '## Páginas de la referencia sin generar', ...faltan.slice(0, 100).map(r => `- \`${r}\``)] : []),
