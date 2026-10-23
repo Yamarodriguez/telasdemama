@@ -130,7 +130,12 @@ for (const f of htmls(base)) {
 const faltan = [];
 const redirecciones = JSON.parse(fs.readFileSync(path.join(REFERENCIA, `rastreo-${IDIOMA}.json`), 'utf8'));
 const redirigidas = new Map();
-for (const [u, f] of Object.entries(redirecciones)) if (f.estado >= 300 && f.estado < 400) redirigidas.set(u.replace(reDom, ''), f.redirige_a);
+for (const [u, f] of Object.entries(redirecciones)) {
+  if (!(f.estado >= 300 && f.estado < 400)) continue;
+  const r = u.replace(reDom, '');
+  redirigidas.set(r, f.redirige_a);
+  try { redirigidas.set(decodeURIComponent(r), f.redirige_a); } catch { /* ruta sin codificar */ } // en el HTML van con espacios sin codificar
+}
 for (const [ruta, desde] of peticiones) {
   const r = resolver(ruta);
   if (r.redirigir) continue;

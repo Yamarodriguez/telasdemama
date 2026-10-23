@@ -1,0 +1,8 @@
+{
+ "/gl/a-minha-conta": "/gl/iniciar-sesion?back=my-account",
+ "/gl/datos-persoais": "/gl/iniciar-sesion?back=identity",
+ "/gl/historial-de-encomendas": "/gl/iniciar-sesion?back=history",
+ "/gl/recibo": "/gl/iniciar-sesion?back=order-slip",
+ "/gl/enderezos": "/gl/iniciar-sesion?back=addresses",
+ "/gl/desconto": "/gl/iniciar-sesion?back=discount"
+}

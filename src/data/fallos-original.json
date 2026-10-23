@@ -1,0 +1,23 @@
+{
+ "descripcion": "Recursos y enlaces que ya fallaban en la tienda vieja (404 en el servidor original). No cuentan como fallo del barrido ni del validador.",
+ "recursos": {
+  "/img/m/ca.jpg": {
+   "estado": 404,
+   "paginas": 1,
+   "nota": "imagen por defecto de un idioma que PrestaShop no tiene; 404 en el original",
+   "fecha": "2026-10-23"
+  },
+  "/img/p/ca-default-home_default.jpg": {
+   "estado": 404,
+   "paginas": 17,
+   "nota": "imagen por defecto de un idioma que PrestaShop no tiene; 404 en el original",
+   "fecha": "2026-10-23"
+  },
+  "/img/p/eu-default-home_default.jpg": {
+   "estado": 404,
+   "paginas": 10,
+   "nota": "imagen por defecto de un idioma que PrestaShop no tiene; 404 en el original",
+   "fecha": "2026-10-23"
+  }
+ }
+}
