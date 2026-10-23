@@ -1,0 +1,8 @@
+---
+/** Miga de pan del rediseño. */
+interface Props { migas: { texto: string; url: string }[] }
+const { migas } = Astro.props;
+---
+<nav class="rd-contenedor rd-migas" aria-label="Estás en">
+  <ol>{migas.map((m, i) => <li>{i < migas.length - 1 ? <a href={m.url}>{m.texto}</a> : <span aria-current="page">{m.texto}</span>}</li>)}</ol>
+</nav>

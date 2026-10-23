@@ -1,0 +1,28 @@
+---
+/** «Nuestra tienda» del rediseño: foto, dirección y horario de la tienda física (datos de la tienda vieja). */
+import { bloques, catalogo } from '../../lib/catalogo';
+import Migas from './Migas.astro';
+interface Props { idioma: string; migas: { texto: string; url: string }[] }
+const { idioma, migas } = Astro.props;
+const d = bloques(idioma).tiendas;
+const pagina = catalogo(idioma).otras[`/${idioma}/tiendas`];
+---
+<Migas migas={migas} />
+<div class="rd-contenedor rd-pagina">
+  <h1 class="rd-pagina__titulo">{pagina?.h1}</h1>
+  <p class="rd-pagina__intro">{d.intro}</p>
+  <article class="rd-tienda" id={d.tienda.id}>
+    <img class="rd-tienda__foto" src={d.tienda.img} alt={d.tienda.img_alt} loading="lazy" />
+    <div class="rd-tienda__datos">
+      <h2 class="rd-tienda__nombre">{d.tienda.nombre}</h2>
+      <address class="rd-tienda__direccion" set:html={d.tienda.direccion_html} />
+    </div>
+    <table class="rd-tienda__horario">
+      <tbody>
+        {d.tienda.horario.map((h: any) => (
+          <tr><th scope="row">{h.dia}</th><td>{h.horas.join(' · ')}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </article>
+</div>

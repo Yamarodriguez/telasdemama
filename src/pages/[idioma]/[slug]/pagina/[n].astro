@@ -4,6 +4,9 @@ import Base from '../../../../layouts/Base.astro';
 import Listado from '../../../../components/plantillas/Listado.astro';
 import { idiomas } from '../../../../lib/catalogo';
 import { listados } from '../../../../lib/paginas';
+import Rediseno from '../../../../layouts/Rediseno.astro';
+import ListadoRd from '../../../../components/rediseno/Listado.astro';
+import { REDISENO, redisenoActivo } from '../../../../lib/sitio';
 
 export function getStaticPaths() {
   const rutas = [];
@@ -19,10 +22,18 @@ const { idioma, n } = Astro.params;
 const { slug } = Astro.props;
 const l = listados(idioma).find((x) => x.slug === slug)!;
 const pagina = Number(n);
+const urlActual = `${l.base}/pagina/${pagina}`;
+const titulo = l.tipo === 'category' ? `${l.title} (${pagina})` : l.title;
 ---
+{redisenoActivo(urlActual) ? (
+  <Rediseno idioma={idioma} tipo={l.tipo} opcion={REDISENO.opcion} title={titulo} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual}>
+    <ListadoRd idioma={idioma} opcion={REDISENO.opcion} titulo={l.h1} productos={l.productos} base={l.base} pagina={pagina} raiz={l.raiz} migas={l.migas} />
+  </Rediseno>
+) : (
 <Base idioma={idioma} tipo={l.tipo} layout={l.layout} clasesExtra={l.clasesBody} title={l.tipo === 'category' ? `${l.title} (${pagina})` : l.title} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={`${l.base}/pagina/${pagina}`} migas={l.migas} menuActual={l.menuActual}>
   <Fragment slot="antes-columnas">
     {l.tipo === 'category' ? <div class="container"><div class="block-category"><h1 class="h1">{l.h1}</h1></div></div> : <div class="container"></div>}
   </Fragment>
   <Listado idioma={idioma} tipo={l.tipo} titulo={l.titulo} productos={l.productos} base={l.base} pagina={pagina} raiz={l.raiz} facetas={l.facetas} orden={l.orden} />
 </Base>
+)}

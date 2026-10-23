@@ -1,0 +1,52 @@
+---
+/**
+ * Contacto del rediseño: datos de la tienda (bloques de la tienda vieja) y el mismo formulario que la copia fiel
+ * (asunto, correo, adjunto desactivado con aviso, mensaje), que hasta la Fase 5 abre el programa de correo (mailto).
+ * Más el botón de WhatsApp, que es la vía de pedido (Dec. 8).
+ */
+import { bloques, nuevo } from '../../lib/catalogo';
+import { textosRediseno, whatsappGenerico } from '../../lib/rediseno';
+import Migas from './Migas.astro';
+interface Props { idioma: string; titulo: string; migas: { texto: string; url: string }[] }
+const { idioma, titulo, migas } = Astro.props;
+const c = bloques(idioma).contacto;
+const n = nuevo(idioma);
+const r = textosRediseno(idioma);
+---
+<Migas migas={migas} />
+<div class="rd-contenedor rd-contacto">
+  <h1 class="rd-pagina__titulo">{titulo}</h1>
+  <div class="rd-contacto__cuerpo">
+    <aside class="rd-contacto__datos">
+      <h2 class="rd-contacto__sub">{c.info_titulo}</h2>
+      {c.bloques.map((b: any) => (
+        <p class="rd-contacto__bloque">
+          <Fragment set:html={b.html} />
+          {b.extra_html && <Fragment set:html={b.extra_html} />}
+        </p>
+      ))}
+      <a class="rd-btn rd-btn--wa" href={whatsappGenerico(idioma)} target="_blank" rel="noreferrer noopener"><span class="rd-ico-wa" aria-hidden="true"></span>{r.ficha.pedir}</a>
+    </aside>
+    <form class="rd-formulario" action={`mailto:${n.contacto_correo}`} method="post" enctype="text/plain">
+      <h2 class="rd-contacto__sub">{c.titulo}</h2>
+      <label>
+        <span>{c.campos[0].etiqueta}</span>
+        <select name="id_contact">{c.asuntos.map((a: string) => <option value={a}>{a}</option>)}</select>
+      </label>
+      <label>
+        <span>{c.campos[1].etiqueta}</span>
+        <input name="from" type="email" placeholder={c.placeholder_correo} required />
+      </label>
+      <label>
+        <span>{c.campos[2].etiqueta} <small>({c.campos[2].comentario})</small></span>
+        <input type="file" name="fileUpload" disabled title={n.adjunto_aviso} />
+        <small class="rd-formulario__aviso">{n.adjunto_aviso}</small>
+      </label>
+      <label>
+        <span>{c.campos[3].etiqueta}</span>
+        <textarea name="message" placeholder={c.placeholder_mensaje} rows="6" required></textarea>
+      </label>
+      <button class="rd-btn rd-btn--primario" type="submit" name="submitMessage">{c.boton}</button>
+    </form>
+  </div>
+</div>

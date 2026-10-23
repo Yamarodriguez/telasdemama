@@ -66,13 +66,18 @@ export function plantilla(texto: string, valores: Record<string, string | number
 const envActivo = process.env.REDISENO;
 export const REDISENO = {
   activo: envActivo === '1' ? true : envActivo === '0' ? false : Boolean(rediseno.activo),
-  opcion: process.env.REDISENO_OPCION || rediseno.opcion || 'a',
+  opcion: process.env.REDISENO_OPCION || rediseno.opcion || '1',
+  /** Idiomas con el rediseño en TODAS sus páginas (los demás siguen como copia fiel). */
+  idiomas: ((rediseno as any).idiomas ?? []) as string[],
+  /** Páginas sueltas con el rediseño (y muestra para las capturas). */
   paginas: rediseno.paginas as string[],
 };
 
 /** ¿Esta página (ruta sin dominio, como /es/3-telas) lleva el rediseño? */
 export function redisenoActivo(url: string): boolean {
   if (!REDISENO.activo || !url) return false;
-  const u = url.replace(/\/$/, '') || '/';
-  return REDISENO.paginas.some((p) => (p.replace(/\/$/, '') || '/') === u);
+  const u = decodeURIComponent(url).replace(/\/$/, '') || '/';
+  const idioma = u.match(/^\/([a-z]{2})(\/|$)/)?.[1];
+  if (idioma && REDISENO.idiomas.includes(idioma)) return true;
+  return REDISENO.paginas.some((p) => (decodeURIComponent(p).replace(/\/$/, '') || '/') === u);
 }

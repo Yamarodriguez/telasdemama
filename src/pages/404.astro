@@ -3,10 +3,19 @@
 import Base from '../layouts/Base.astro';
 import NoEncontrada from '../components/plantillas/NoEncontrada.astro';
 import { idiomas, textos } from '../lib/catalogo';
+import Rediseno from '../layouts/Rediseno.astro';
+import NoEncontradaRd from '../components/rediseno/NoEncontrada.astro';
+import { REDISENO, redisenoActivo } from '../lib/sitio';
 const idioma = idiomas()[0];
 const t = textos(idioma);
 // Sin hreflang: la página de error de PrestaShop apuntaba a /es/pagina-no-encontrada, que en estático no existe (y va con noindex).
 ---
+{redisenoActivo(`/${idioma}/pagina-no-encontrada`) ? (
+  <Rediseno idioma={idioma} tipo="pagenotfound" opcion={REDISENO.opcion} title={t.error_404_title} description={t.error_404_description} hreflang={{}} urlActual={`/${idioma}/pagina-no-encontrada`} noindex>
+    <NoEncontradaRd idioma={idioma} />
+  </Rediseno>
+) : (
 <Base idioma={idioma} tipo="pagenotfound" recursosDe="cms" layout="layout-full-width" title={t.error_404_title} description={t.error_404_description} hreflang={{}} urlActual={`/${idioma}/pagina-no-encontrada`} migas={[{ texto: t.inicio, url: `/${idioma}/` }]} noindex>
   <NoEncontrada idioma={idioma} />
 </Base>
+)}

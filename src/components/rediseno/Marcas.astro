@@ -1,0 +1,17 @@
+---
+/** Lista de marcas del rediseño (/brands): la tienda tiene una sola marca. */
+import { catalogo, textos } from '../../lib/catalogo';
+import Migas from './Migas.astro';
+interface Props { idioma: string; migas: { texto: string; url: string }[] }
+const { idioma, migas } = Astro.props;
+const c = catalogo(idioma);
+const t = textos(idioma);
+const marcas = Object.entries(c.otras).filter(([u]) => u.includes('/brand/')).map(([u, o]) => ({ url: u, nombre: o.h1 || o.titulo_visible || o.title }));
+---
+<Migas migas={migas} />
+<div class="rd-contenedor rd-pagina">
+  <h1 class="rd-pagina__titulo">{t.marcas}</h1>
+  <ul class="rd-lista-enlaces">
+    {marcas.map((m) => <li><a href={m.url}>{m.nombre}</a></li>)}
+  </ul>
+</div>

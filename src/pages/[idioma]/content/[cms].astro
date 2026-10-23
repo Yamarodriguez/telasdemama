@@ -3,6 +3,9 @@
 import Base from '../../../layouts/Base.astro';
 import PaginaCms from '../../../components/plantillas/PaginaCms.astro';
 import { idiomas, catalogo } from '../../../lib/catalogo';
+import Rediseno from '../../../layouts/Rediseno.astro';
+import PaginaCmsRd from '../../../components/rediseno/PaginaCms.astro';
+import { REDISENO, redisenoActivo } from '../../../lib/sitio';
 
 export function getStaticPaths() {
   const rutas = [];
@@ -15,6 +18,12 @@ const { idioma } = Astro.params;
 const { id } = Astro.props;
 const p = catalogo(idioma).cms.find((x) => x.id === id)!;
 ---
+{redisenoActivo(p.url) ? (
+  <Rediseno idioma={idioma} tipo="cms" opcion={REDISENO.opcion} title={p.title} description={p.meta_description} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url}>
+    <PaginaCmsRd pagina={p} />
+  </Rediseno>
+) : (
 <Base idioma={idioma} tipo="cms" layout="layout-full-width" clasesExtra={[`cms-id-${p.id}`]} title={p.title} description={p.meta_description} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url} migas={p.breadcrumb} menuActual={`cms-page-${p.id}`}>
   <PaginaCms pagina={p} />
 </Base>
+)}

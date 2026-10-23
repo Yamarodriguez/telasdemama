@@ -9,8 +9,8 @@ import { textos, contadorProductos, paginar, urlPagina, PRODUCTOS_POR_PAGINA } f
 import { textosRediseno } from '../../lib/rediseno';
 import { plantilla } from '../../lib/sitio';
 import Tarjeta from './Tarjeta.astro';
-interface Props { idioma: string; opcion: string; titulo: string; productos: Producto[]; base: string; pagina: number; raiz: NodoArbol; migas: { texto: string; url: string }[] }
-const { idioma, opcion, titulo, productos, base, pagina, raiz, migas } = Astro.props;
+interface Props { idioma: string; opcion: string; titulo: string; productos: Producto[]; base: string; pagina: number; raiz: NodoArbol; migas: { texto: string; url: string }[]; /** Página de marca: descripciones de la marca bajo el título. */ marca?: { descripcion_corta_html: string; descripcion_html: string } }
+const { idioma, opcion, titulo, productos, base, pagina, raiz, migas, marca } = Astro.props;
 const t = textos(idioma);
 const r = textosRediseno(idioma);
 const paginas = paginar(productos, PRODUCTOS_POR_PAGINA);
@@ -42,6 +42,12 @@ numeros.forEach((n, i) => { if (i > 0 && n - numeros[i - 1] > 1) items.push({ es
       <h1 class="rd-listado__titulo">{titulo}</h1>
       <p class="rd-listado__contador">{opcion === '2' ? plantilla(r.listado.mostrando, { desde, hasta, total: productos.length }) : contadorProductos(t, productos.length)}</p>
     </header>
+    {marca && (marca.descripcion_corta_html || marca.descripcion_html) && (
+      <div class="rd-texto rd-listado__marca">
+        <Fragment set:html={marca.descripcion_corta_html} />
+        <Fragment set:html={marca.descripcion_html} />
+      </div>
+    )}
     <div class:list={['rd-rejilla', opcion === '2' ? 'rd-rejilla--4' : 'rd-rejilla--3']}>
       {visibles.map((p, i) => <Tarjeta producto={p} idioma={idioma} opcion={opcion} prioridad={i < 3} />)}
     </div>

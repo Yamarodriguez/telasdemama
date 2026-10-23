@@ -199,6 +199,45 @@ button { font: inherit; cursor: pointer; }
 .rd-detalles dt { font-weight: 600; }
 .rd-detalles dd { margin: 0; }
 
+/* ===== Páginas sueltas: texto, contacto, tienda, mapa, marcas, 404 ===== */
+.rd-pagina { padding-top: 8px; padding-bottom: 48px; }
+.rd-pagina__titulo { font-size: 36px; margin-bottom: 20px; }
+.rd-pagina__cuerpo { max-width: 820px; }
+.rd-pagina__cuerpo h2, .rd-pagina__cuerpo h3, .rd-pagina__cuerpo h4 { font-size: 22px; margin-top: 28px; }
+.rd-pagina__cuerpo img { border-radius: var(--rd-radio, 12px); }
+.rd-pagina__intro { max-width: 820px; color: #555; }
+.rd-contacto { padding-top: 8px; padding-bottom: 48px; }
+.rd-contacto__cuerpo { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start; }
+.rd-contacto__datos { background: var(--rd-fondo-suave, #f7f5f2); border-radius: var(--rd-radio, 12px); padding: 24px; }
+.rd-contacto__sub { font-size: 22px; margin-bottom: 14px; }
+.rd-contacto__bloque { font-size: 15px; line-height: 1.6; }
+.rd-contacto__datos .rd-btn { margin-top: 8px; }
+.rd-formulario { display: grid; gap: 16px; }
+.rd-formulario label { display: grid; gap: 6px; font-size: 14px; }
+.rd-formulario label > span { font-weight: 600; }
+.rd-formulario input, .rd-formulario select, .rd-formulario textarea { width: 100%; border: 1px solid #ccc; border-radius: 8px; padding: 10px 12px; font: inherit; font-size: 15px; }
+.rd-formulario input[disabled] { background: #f3f3f3; color: #888; }
+.rd-formulario__aviso { color: #666; }
+.rd-formulario .rd-btn { justify-self: start; }
+.rd-tienda { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: start; background: var(--rd-fondo-suave, #f7f5f2); border-radius: var(--rd-radio, 12px); padding: 24px; max-width: 900px; }
+.rd-tienda__foto { width: 170px; border-radius: 8px; }
+.rd-tienda__nombre { font-size: 22px; }
+.rd-tienda__direccion { font-style: normal; line-height: 1.6; }
+.rd-tienda__horario { border-collapse: collapse; font-size: 14px; }
+.rd-tienda__horario th { text-align: left; padding: 4px 14px 4px 0; font-weight: 600; }
+.rd-tienda__horario td { padding: 4px 0; color: #555; }
+.rd-mapa__columnas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.rd-mapa__col h2 { font-size: 22px; }
+.rd-mapa__col ul ul { padding-left: 16px; }
+.rd-mapa__col li { margin: 4px 0; font-size: 15px; }
+.rd-mapa__col a { text-decoration: none; }
+.rd-mapa__col a:hover { text-decoration: underline; }
+.rd-lista-enlaces li { padding: 8px 0; border-bottom: 1px solid #eee; font-size: 16px; }
+.rd-listado__marca { margin-bottom: 20px; max-width: 820px; }
+.rd-404 { text-align: center; max-width: 720px; padding-top: 48px; }
+.rd-404 .rd-botones { justify-content: center; margin-top: 20px; }
+.rd-404__texto { font-size: 17px; }
+
 /* ===== Pie ===== */
 .rd-pie { background: var(--rd-pie-fondo, #f7f5f2); color: var(--rd-pie-texto, #2d2d2d); margin-top: 24px; font-size: 14px; }
 .rd-pie a { color: inherit; text-decoration: none; }
@@ -234,6 +273,9 @@ button { font: inherit; cursor: pointer; }
   .rd-carrusel { grid-auto-columns: calc((100% - 20px) / 2); }
   .rd-rejilla--3, .rd-rejilla--4 { grid-template-columns: repeat(2, 1fr); }
   .rd-listado { grid-template-columns: 1fr; gap: 24px; }
+  .rd-contacto__cuerpo { grid-template-columns: 1fr; }
+  .rd-tienda { grid-template-columns: 1fr; }
+  .rd-mapa__columnas { grid-template-columns: 1fr; }
   .rd-listado__lateral { order: 2; }
   .rd-pie__cuerpo { grid-template-columns: 1fr 1fr; }
 }
@@ -252,6 +294,7 @@ button { font: inherit; cursor: pointer; }
   .rd-tarjeta__acciones { flex-wrap: wrap; }
   .rd-tarjeta__acciones .rd-btn { font-size: 13px; }
   .rd-listado__titulo { font-size: 28px; }
+  .rd-pagina__titulo { font-size: 28px; }
   .rd-ficha__titulo { font-size: 24px; }
   .rd-pedido { grid-template-columns: 100px 1fr; }
   .rd-pie__cuerpo { grid-template-columns: 1fr; gap: 24px; }

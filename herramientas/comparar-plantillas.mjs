@@ -199,8 +199,9 @@ const resultados = [];
 // Fase 3: las páginas con el rediseño encendido (src/data/rediseno.json) ya no son copia fiel: no se comparan
 // con la tienda vieja (se miran a ojo con las capturas de capturar-rediseno.mjs) y se cuentan aparte.
 const REDISENO = fs.existsSync('src/data/rediseno.json') ? JSON.parse(fs.readFileSync('src/data/rediseno.json', 'utf8')) : { activo: false, paginas: [] };
-const conRediseno = new Set(REDISENO.activo ? REDISENO.paginas.map((p) => DOMINIO + (p.replace(/\/$/, '') || '/')) : []);
-const esRediseno = (u) => conRediseno.has(u.replace(/\/$/, ''));
+const conRediseno = new Set(REDISENO.activo ? REDISENO.paginas.map((p) => DOMINIO + (decodeURIComponent(p).replace(/\/$/, '') || '/')) : []);
+const idiomasRediseno = new Set(REDISENO.activo ? REDISENO.idiomas ?? [] : []);
+const esRediseno = (u) => { let r; try { r = decodeURIComponent(u); } catch { r = u; } r = r.replace(/\/$/, ''); return conRediseno.has(r) || idiomasRediseno.has(r.replace(DOMINIO, '').match(/^\/([a-z]{2})(\/|$)/)?.[1]); };
 const saltadas = Object.keys(manifiesto).filter((u) => esRediseno(u));
 const entradas = Object.entries(manifiesto).filter(([u, f]) => f.estado === 200 && f.fichero && !config.tipos_omitidos[f.tipo] && (!SOLO || u === DOMINIO + SOLO) && !esRediseno(u));
 const contador = {};
@@ -234,7 +235,7 @@ for (const [url, f] of entradas) {
 
 // ---- informe ----
 const L = [`# Comparación por plantilla (C2) — ${new Date().toISOString().slice(0, 16).replace('T', ' ')}`, ''];
-L.push(`Páginas comparadas: ${resultados.length} · con diferencias: ${resultados.filter((r) => r.diffs.length).length}${saltadas.length ? ` · con el rediseño encendido, no comparadas: ${saltadas.length} (${saltadas.map((u) => u.replace(DOMINIO, '')).join(', ')})` : ''}`, '');
+L.push(`Páginas comparadas: ${resultados.length} · con diferencias: ${resultados.filter((r) => r.diffs.length).length}${saltadas.length ? ` · con el rediseño encendido, no comparadas: ${saltadas.length} (${saltadas.slice(0, 20).map((u) => u.replace(DOMINIO, '')).join(', ')}${saltadas.length > 20 ? '…' : ''})` : ''}`, '');
 L.push('| tipo | páginas | con diferencias |', '|---|---|---|');
 for (const [t, v] of Object.entries(porTipo).sort()) L.push(`| ${t} | ${v.paginas} | ${v.conDiferencias} |`);
 for (const [t, v] of Object.entries(porTipo).sort()) {

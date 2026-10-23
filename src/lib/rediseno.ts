@@ -74,7 +74,8 @@ export function precioPorUnidad(p: Producto): string {
 /** Foto de un producto por tamaño (home_default 253×230, medium_default 382×272, large_default 1000×750). */
 export function foto(p: Producto, tam: 'home_default' | 'medium_default' | 'large_default', idioma = 'es') {
   const portada = p.imagenes.find((i) => i.portada) ?? p.imagenes[0];
-  return portada ? portada.por_tamano[tam] : `/img/p/${idioma}-default-${tam}.jpg`;
+  // Sin foto: la imagen «sin foto» de PrestaShop. La tienda vieja solo servía la pequeña y la grande.
+  return portada ? portada.por_tamano[tam] : `/img/p/${idioma}-default-${tam === 'large_default' ? 'large_default' : 'home_default'}.jpg`;
 }
 
 /** Versiones webp (src/data/imagenes-webp.json) de una imagen, si herramientas/webp.mjs las generó. */

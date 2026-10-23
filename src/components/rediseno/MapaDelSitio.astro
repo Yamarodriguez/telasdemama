@@ -1,0 +1,44 @@
+---
+/** Mapa del sitio del rediseño: ofertas, árbol de categorías y páginas. Sin la columna «Su cuenta» (Dec. 8). */
+import type { NodoArbol } from '../../lib/catalogo';
+import { bloques } from '../../lib/catalogo';
+import Migas from './Migas.astro';
+interface Props { idioma: string; migas: { texto: string; url: string }[] }
+const { idioma, migas } = Astro.props;
+const b = bloques(idioma);
+const m = b.mapa;
+const columnas = m.columnas.filter((c: any) => c.titulo !== 'Su cuenta');
+const sinCuenta = (enlaces: any[]) => enlaces.filter((e) => !/iniciar-sesion|mi-cuenta|recuperar/.test(e.href));
+---
+<Migas migas={migas} />
+<div class="rd-contenedor rd-pagina rd-mapa">
+  <h1 class="rd-pagina__titulo">{m.titulo}</h1>
+  <div class="rd-mapa__columnas">
+    {columnas.map((col: any) => (
+      <section class="rd-mapa__col">
+        <h2>{col.titulo}</h2>
+        {col.tipo === 'categorias' ? (
+          <ul>
+            {(function pintar(nodos: NodoArbol[]): any {
+              return nodos.map((nd) => (
+                <li>
+                  <a href={nd.href}>{nd.nombre}</a>
+                  {nd.hijos.length > 0 && <ul>{pintar(nd.hijos)}</ul>}
+                </li>
+              ));
+            })(b.arbol)}
+          </ul>
+        ) : (
+          <ul>
+            {sinCuenta(col.enlaces).map((e: any) => (
+              <li>
+                <a href={e.href}>{e.texto}</a>
+                {e.hijos.length > 0 && <ul>{e.hijos.map((h: any) => <li><a href={h.href}>{h.texto}</a></li>)}</ul>}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    ))}
+  </div>
+</div>

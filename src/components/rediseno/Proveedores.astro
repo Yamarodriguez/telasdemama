@@ -1,0 +1,13 @@
+---
+/** Proveedores del rediseño: en la tienda vieja la página está vacía; se conserva porque la URL existe. */
+import { textos } from '../../lib/catalogo';
+import Migas from './Migas.astro';
+interface Props { idioma: string; migas: { texto: string; url: string }[] }
+const { idioma, migas } = Astro.props;
+const t = textos(idioma);
+---
+<Migas migas={migas} />
+<div class="rd-contenedor rd-pagina">
+  <h1 class="rd-pagina__titulo">{t.proveedores}</h1>
+  <ul class="rd-lista-enlaces"></ul>
+</div>

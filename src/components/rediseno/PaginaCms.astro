@@ -1,0 +1,21 @@
+---
+/**
+ * Página de texto (CMS) del rediseño: título y el contenido de la tienda vieja tal cual (texto intocable, regla A3),
+ * en una columna de lectura. Las rutas del dominio viejo se hacen relativas, como en la copia fiel.
+ * DIFERENCIA con la copia fiel: se quitan las etiquetas <script> que el contenido trae de la tienda vieja (en 4 de las
+ * 5 páginas hay un script ofuscado ajeno que abre enlaces a otra web; informes/fase-3.md §6). El texto visible no cambia.
+ * Yama decide qué hacer con ese script en el original (regla A3.6).
+ */
+import type { PaginaCms } from '../../lib/catalogo';
+import Migas from './Migas.astro';
+interface Props { pagina: PaginaCms }
+const { pagina } = Astro.props;
+const contenido = pagina.contenido
+  .replace(/https?:\/\/(www\.)?telasdemama\.com\//g, '/')
+  .replace(/<script\b[\s\S]*?<\/script>/gi, '');
+---
+<Migas migas={pagina.breadcrumb} />
+<article class="rd-contenedor rd-pagina">
+  <h1 class="rd-pagina__titulo">{pagina.h1 || pagina.nombre}</h1>
+  <div class="rd-texto rd-pagina__cuerpo" set:html={contenido} />
+</article>

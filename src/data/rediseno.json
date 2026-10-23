@@ -1,10 +1,23 @@
 {
-  "_nota": "Interruptor del rediseño (Fase 3, Dec. 4). Con «activo» en false la web es la copia fiel de la tienda vieja. Con «activo» en true, SOLO las páginas de «paginas» se montan con las plantillas del rediseño (src/components/rediseno/, src/layouts/Rediseno.astro) y su hoja public/estilos/rediseno/<opcion>.css. Opciones: «1» (diseño propio, informes/analisis-competencia.md §5) y «2» (al estilo de quekucas.es, §6). Para compilar con el interruptor encendido sin tocar este fichero: REDISENO=1 y REDISENO_OPCION=1|2 en el entorno.",
+  "_nota": "Interruptor del rediseño (Fase 3, Dec. 4). Con «activo» en false la web es la copia fiel de la tienda vieja. Con «activo» en true, las páginas de los idiomas de «idiomas» (todas) y las de «paginas» se montan con las plantillas del rediseño (src/components/rediseno/, src/layouts/Rediseno.astro) y su hoja public/estilos/rediseno/<opcion>.css. Opción elegida por Yama el 23-10-2026: «1» (diseño propio, informes/analisis-competencia.md §5); la «2» (al estilo de quekucas, §6) queda guardada. «paginas» es además la muestra que captura herramientas/capturar-rediseno.mjs. Los demás idiomas siguen como copia fiel hasta tener traducidos los textos nuevos de src/data/rediseno/. Para compilar sin tocar este fichero: REDISENO=1|0 y REDISENO_OPCION=1|2 en el entorno.",
   "activo": true,
   "opcion": "1",
+  "idiomas": ["es"],
   "paginas": [
     "/es/",
     "/es/3-telas",
-    "/es/inicio/1091-algodon-mar-caspio.html"
+    "/es/3-telas/pagina/2",
+    "/es/mas-vendidos",
+    "/es/inicio/1091-algodon-mar-caspio.html",
+    "/es/inicio/545-cobinacio-mcropana-negro-y-viyela-plumeti-marfil.html",
+    "/es/content/4-sobre-mi",
+    "/es/content/1-envios-y-devoluciones",
+    "/es/contactenos",
+    "/es/tiendas",
+    "/es/mapa%20del%20sitio",
+    "/es/brands",
+    "/es/brand/1-telasdemama",
+    "/es/proveedor",
+    "/pagina-que-no-existe-404"
   ]
 }

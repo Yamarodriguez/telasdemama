@@ -1,0 +1,18 @@
+---
+/** Página 404 del rediseño: los textos de PrestaShop y dos salidas (portada y telas). Sin buscador (pendiente de la Fase 2). */
+import { textos } from '../../lib/catalogo';
+import { textosRediseno } from '../../lib/rediseno';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const t = textos(idioma);
+const r = textosRediseno(idioma);
+---
+<div class="rd-contenedor rd-pagina rd-404">
+  <h1 class="rd-pagina__titulo">{t.pagina_no_encontrada}</h1>
+  <p class="rd-404__texto"><strong>{t.lamentamos}</strong></p>
+  <p class="rd-404__texto">{t.nueva_busqueda}</p>
+  <div class="rd-botones">
+    <a class="rd-btn rd-btn--primario" href={r.hero.boton_telas_href}>{r.hero.boton_telas}</a>
+    <a class="rd-btn rd-btn--secundario" href={`/${idioma}/`}>{t.inicio}</a>
+  </div>
+</div>
