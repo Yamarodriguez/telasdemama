@@ -1,0 +1,776 @@
+{
+ "/es": {
+  "tipo": "index",
+  "url": "/es",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/",
+   "ca-es": "https://telasdemama.com/ca/",
+   "gl-es": "https://telasdemama.com/gl/",
+   "eu-es": "https://telasdemama.com/eu/",
+   "pt-pt": "https://telasdemama.com/pt/"
+  },
+  "h1": "Telas de Mamá",
+  "titulo_visible": "Telas de Mamá",
+  "title": "Telas de Mamá -  Tienda de telas online y productos de mercería",
+  "meta_description": "Telas de Mamá es tu tienda de telas, tejidos y productos de mercería. Tienda de telas online.",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/index.html",
+  "destacados": [
+   "1091",
+   "1096",
+   "1094",
+   "1093",
+   "1092",
+   "1102",
+   "1098",
+   "1100"
+  ],
+  "banners": [
+   {
+    "src": "/modules/htmlbanners1/views/img/upload/66a1cd86dcc574d20c86af3510739cbbf1662892_TDM-Cat-Telas.jpg",
+    "alt": "Telas",
+    "enlace": "/es/3-telas"
+   },
+   {
+    "src": "/modules/htmlbanners1/views/img/upload/181535fdd6a3b308229f5d120554e80638625fb0_TDM-Cat-Merceria.jpg",
+    "alt": "Merceria",
+    "enlace": "/es/6-merceria"
+   },
+   {
+    "src": "/modules/htmlbanners1/views/img/upload/7389981aba34585a7050a8f8c1848cae120cb859_TDM-Cat-Revistas-2.jpg",
+    "alt": "Revistas",
+    "enlace": "/es/9-revistas"
+   },
+   {
+    "src": "/2709-home_default/algodon-mar-caspio.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1091-algodon-mar-caspio.html"
+   },
+   {
+    "src": "/2711-home_default/algodon-mar-caspio.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1091-algodon-mar-caspio.html"
+   },
+   {
+    "src": "/2714-home_default/popelin-haddock.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1096-popelin-haddock.html"
+   },
+   {
+    "src": "/2714-home_default/popelin-haddock.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1096-popelin-haddock.html"
+   },
+   {
+    "src": "/2718-home_default/algodon-sabana-africana.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1094-algodon-sabana-africana.html"
+   },
+   {
+    "src": "/2717-home_default/algodon-sabana-africana.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1094-algodon-sabana-africana.html"
+   },
+   {
+    "src": "/2720-home_default/raya-serie-teo-naranja.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1093-raya-serie-teo-naranja.html"
+   },
+   {
+    "src": "/2721-home_default/raya-serie-teo-naranja.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1093-raya-serie-teo-naranja.html"
+   },
+   {
+    "src": "/2722-home_default/raya-serie-teo-azul.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1092-raya-serie-teo-azul.html"
+   },
+   {
+    "src": "/2723-home_default/raya-serie-teo-azul.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1092-raya-serie-teo-azul.html"
+   },
+   {
+    "src": "/2750-home_default/algodon-pretty.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1102-algodon-pretty.html"
+   },
+   {
+    "src": "/2749-home_default/algodon-pretty.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1102-algodon-pretty.html"
+   },
+   {
+    "src": "/2734-home_default/popelin-patitos.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1098-popelin-patitos.html"
+   },
+   {
+    "src": "/2733-home_default/popelin-patitos.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1098-popelin-patitos.html"
+   },
+   {
+    "src": "/2742-home_default/algodon-wow.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1100-algodon-wow.html"
+   },
+   {
+    "src": "/2744-home_default/algodon-wow.jpg",
+    "alt": "",
+    "enlace": "/es/inicio/1100-algodon-wow.html"
+   },
+   {
+    "src": "/img/cms/TDM-sobre-mi.jpg",
+    "alt": "",
+    "enlace": null
+   },
+   {
+    "src": "/modules/htmlbanners5/views/img/upload/5ae26c95988ff032ddfb372e9bea8c01c7ef0e6b_variante-del-logo-de-whatsapp.png",
+    "alt": "Fast delivery",
+    "enlace": "http://wa.me/34643945052"
+   },
+   {
+    "src": "/img/iconos/whatsapp.png",
+    "alt": "whatsapp.png",
+    "enlace": "http://wa.me/34643945052"
+   },
+   {
+    "src": "/img/iconos/portes.png",
+    "alt": "portes.png",
+    "enlace": null
+   },
+   {
+    "src": "/img/iconos/pagos.png",
+    "alt": "pagos.png",
+    "enlace": null
+   },
+   {
+    "src": "/img/iconos/envios.png",
+    "alt": "envios.png",
+    "enlace": "/es/content/1-envios-y-devoluciones"
+   }
+  ],
+  "paginas": 1
+ },
+ "/es/mas-vendidos": {
+  "tipo": "best-sales",
+  "url": "/es/mas-vendidos",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/mas-vendidos",
+   "ca-es": "https://telasdemama.com/ca/els més venuts",
+   "gl-es": "https://telasdemama.com/gl/os-mais-vendidos",
+   "eu-es": "https://telasdemama.com/eu/best-sales",
+   "pt-pt": "https://telasdemama.com/pt/top-vendas"
+  },
+  "h1": "",
+  "titulo_visible": "Los más vendidos",
+  "title": "Los más vendidos",
+  "meta_description": "Los más vendidos",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [
+   "642",
+   "386",
+   "388",
+   "93",
+   "637",
+   "596",
+   "379",
+   "102",
+   "438",
+   "435",
+   "387",
+   "927",
+   "671",
+   "1176",
+   "1161",
+   "649",
+   "640",
+   "1101",
+   "1092",
+   "917",
+   "697",
+   "641",
+   "638",
+   "634",
+   "371",
+   "360",
+   "94",
+   "723",
+   "695",
+   "661",
+   "633",
+   "631",
+   "398",
+   "373",
+   "164",
+   "91",
+   "89",
+   "1139",
+   "1078",
+   "1025",
+   "1013",
+   "674",
+   "514",
+   "490",
+   "211",
+   "103",
+   "101",
+   "95",
+   "77",
+   "30",
+   "1225",
+   "1184",
+   "1137",
+   "1136",
+   "1126",
+   "1119",
+   "1115",
+   "1112",
+   "1083",
+   "1050",
+   "1036",
+   "1035",
+   "1023",
+   "995",
+   "984",
+   "983",
+   "956",
+   "930",
+   "916",
+   "890",
+   "888",
+   "822",
+   "804",
+   "802",
+   "754",
+   "753",
+   "740",
+   "698",
+   "694",
+   "688",
+   "682",
+   "666",
+   "663",
+   "625",
+   "612",
+   "601",
+   "576",
+   "548",
+   "527",
+   "521",
+   "513",
+   "467",
+   "365",
+   "307",
+   "293",
+   "280",
+   "238",
+   "163",
+   "100",
+   "99",
+   "44",
+   "26",
+   "25",
+   "1223",
+   "1221",
+   "1213",
+   "1205",
+   "1199",
+   "1180",
+   "1178",
+   "1171",
+   "1170",
+   "1160",
+   "1158",
+   "1151",
+   "1116",
+   "1111",
+   "1110",
+   "1107",
+   "1102",
+   "1091",
+   "1072",
+   "1068",
+   "1066",
+   "1065",
+   "1064",
+   "1047",
+   "1041",
+   "1039",
+   "1021",
+   "1010",
+   "1008",
+   "1004",
+   "1003",
+   "993",
+   "991",
+   "955",
+   "948",
+   "937",
+   "931",
+   "913",
+   "906",
+   "826",
+   "820",
+   "807",
+   "780",
+   "776",
+   "774",
+   "773",
+   "764",
+   "763",
+   "730",
+   "721",
+   "711",
+   "650",
+   "636",
+   "623",
+   "621",
+   "603",
+   "583",
+   "530",
+   "525",
+   "524",
+   "437",
+   "414",
+   "401",
+   "396",
+   "334",
+   "302",
+   "282",
+   "263",
+   "210",
+   "192",
+   "191",
+   "150",
+   "144",
+   "105",
+   "84",
+   "1307",
+   "1245",
+   "1239",
+   "1233",
+   "1218",
+   "1211",
+   "1208",
+   "1207",
+   "1201",
+   "1192",
+   "1190",
+   "1189",
+   "1181",
+   "1179",
+   "1174",
+   "1172",
+   "1169",
+   "1168",
+   "1162",
+   "1155",
+   "1153",
+   "1152",
+   "1150",
+   "1143",
+   "1138",
+   "1127",
+   "1120",
+   "1108",
+   "1106",
+   "1100",
+   "1098",
+   "1096",
+   "1094",
+   "1093",
+   "1088",
+   "1085",
+   "1070",
+   "1069",
+   "1063",
+   "1062",
+   "1061",
+   "1060",
+   "1058",
+   "1049",
+   "1022",
+   "1020",
+   "1018",
+   "1009",
+   "996",
+   "959",
+   "949",
+   "947",
+   "946",
+   "944",
+   "925",
+   "912",
+   "909",
+   "815",
+   "813",
+   "803",
+   "795",
+   "794",
+   "792",
+   "788",
+   "743",
+   "742",
+   "739",
+   "709",
+   "708",
+   "699",
+   "659",
+   "648",
+   "620",
+   "611",
+   "606",
+   "582",
+   "533",
+   "531",
+   "512",
+   "500",
+   "489",
+   "477",
+   "469",
+   "456",
+   "455",
+   "418",
+   "411",
+   "408",
+   "406",
+   "397",
+   "377",
+   "376",
+   "375",
+   "370",
+   "333",
+   "321",
+   "317",
+   "310",
+   "299",
+   "297",
+   "291",
+   "283",
+   "272",
+   "269",
+   "259",
+   "257",
+   "254",
+   "245",
+   "237",
+   "231",
+   "209",
+   "202",
+   "200",
+   "199",
+   "185",
+   "170",
+   "151",
+   "149",
+   "148",
+   "147",
+   "97",
+   "87",
+   "83",
+   "79",
+   "55"
+  ],
+  "fichero_referencia": "referencia/es/mas-vendidos.html",
+  "paginas": 26
+ },
+ "/es/productos-rebajados": {
+  "tipo": "prices-drop",
+  "url": "/es/productos-rebajados",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/productos-rebajados",
+   "ca-es": "https://telasdemama.com/ca/preus-rebaixats",
+   "gl-es": "https://telasdemama.com/gl/rebaixas",
+   "eu-es": "https://telasdemama.com/eu/prices-drop",
+   "pt-pt": "https://telasdemama.com/pt/promocoes"
+  },
+  "h1": "",
+  "titulo_visible": "Los precios bajan",
+  "title": "Ofertas - telas y tejidos rebajados",
+  "meta_description": "Nuestra mejores ofertas - telas y tejidos rebajados, ofertas de mercería...",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [
+   "687",
+   "711",
+   "795",
+   "730",
+   "794",
+   "739",
+   "674",
+   "649",
+   "788",
+   "888",
+   "1028"
+  ],
+  "fichero_referencia": "referencia/es/productos-rebajados.html",
+  "paginas": 1
+ },
+ "/es/novedades": {
+  "tipo": "new-products",
+  "url": "/es/novedades",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/novedades",
+   "ca-es": "https://telasdemama.com/ca/novedades",
+   "gl-es": "https://telasdemama.com/gl/novos-produtos",
+   "eu-es": "https://telasdemama.com/eu/new-products",
+   "pt-pt": "https://telasdemama.com/pt/novos-produtos"
+  },
+  "h1": "",
+  "titulo_visible": "Nuevos productos",
+  "title": "Novedades en Telas de Mamá - Tienda de telas, tejidos y mercería",
+  "meta_description": "Novedades en Telas de Mamá: las mejores telas de algodón, tejidos suaves, mercería...",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/novedades.html",
+  "paginas": 1
+ },
+ "/es/contactenos": {
+  "tipo": "contact",
+  "url": "/es/contactenos",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/contactenos",
+   "ca-es": "https://telasdemama.com/ca/contacteu amb nosaltres",
+   "gl-es": "https://telasdemama.com/gl/contacta-connosco",
+   "eu-es": "https://telasdemama.com/eu/contact-us",
+   "pt-pt": "https://telasdemama.com/pt/contacte-nos"
+  },
+  "h1": "",
+  "titulo_visible": "",
+  "title": "Contacte con nosotros",
+  "meta_description": "Contáctenos",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   },
+   {
+    "texto": "Contacte con nosotros",
+    "url": "/es/contactenos"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/contactenos.html",
+  "paginas": 1
+ },
+ "/es/mapa%20del%20sitio": {
+  "tipo": "sitemap",
+  "url": "/es/mapa%20del%20sitio",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/mapa del sitio",
+   "ca-es": "https://telasdemama.com/ca/mapa del web",
+   "gl-es": "https://telasdemama.com/gl/mapa do sitio",
+   "eu-es": "https://telasdemama.com/eu/sitemap",
+   "pt-pt": "https://telasdemama.com/pt/mapa do site"
+  },
+  "h1": "Mapa del sitio",
+  "titulo_visible": "Mapa del sitio",
+  "title": "Mapa del sitio",
+  "meta_description": "¿Perdido? Encuentre lo que está buscando",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/mapa del sitio.html",
+  "paginas": 1
+ },
+ "/es/tiendas": {
+  "tipo": "stores",
+  "url": "/es/tiendas",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/tiendas",
+   "ca-es": "https://telasdemama.com/ca/botigues",
+   "gl-es": "https://telasdemama.com/gl/tendas",
+   "eu-es": "https://telasdemama.com/eu/stores",
+   "pt-pt": "https://telasdemama.com/pt/lojas"
+  },
+  "h1": "Nuestra tienda",
+  "titulo_visible": "Nuestra tienda",
+  "title": "Tiendas",
+  "meta_description": "",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/tiendas.html",
+  "paginas": 1
+ },
+ "/es/brand/1-telasdemama": {
+  "tipo": "manufacturer",
+  "url": "/es/brand/1-telasdemama",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/brand/1-telasdemama",
+   "ca-es": "https://telasdemama.com/ca/brand/1-telasdemama",
+   "gl-es": "https://telasdemama.com/gl/brand/1-telasdemama",
+   "eu-es": "https://telasdemama.com/eu/brand/1-telasdemama",
+   "pt-pt": "https://telasdemama.com/pt/brand/1-telasdemama"
+  },
+  "h1": "",
+  "titulo_visible": "telasdemama",
+  "title": "telasdemama",
+  "meta_description": "",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   },
+   {
+    "texto": "Marcas",
+    "url": "/es/brands"
+   },
+   {
+    "texto": "telasdemama",
+    "url": "/es/brand/1-telasdemama"
+   }
+  ],
+  "productos": [
+   "596",
+   "603"
+  ],
+  "fichero_referencia": "referencia/es/brand/1-telasdemama.html",
+  "id": 0,
+  "paginas": 1
+ },
+ "/es/brands": {
+  "tipo": "manufacturer",
+  "url": "/es/brands",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/brands",
+   "ca-es": "https://telasdemama.com/ca/brands",
+   "gl-es": "https://telasdemama.com/gl/brands",
+   "eu-es": "https://telasdemama.com/eu/brands",
+   "pt-pt": "https://telasdemama.com/pt/brands"
+  },
+  "h1": "Marcas",
+  "titulo_visible": "Marcas",
+  "title": "Brands",
+  "meta_description": "Brands list",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   },
+   {
+    "texto": "Marcas",
+    "url": "/es/brands"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/brands.html",
+  "id": 0,
+  "paginas": 1
+ },
+ "/es/proveedor": {
+  "tipo": "supplier",
+  "url": "/es/proveedor",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/proveedor",
+   "ca-es": "https://telasdemama.com/ca/proveïdor",
+   "gl-es": "https://telasdemama.com/gl/provedora",
+   "eu-es": "https://telasdemama.com/eu/supplier",
+   "pt-pt": "https://telasdemama.com/pt/fornecedores"
+  },
+  "h1": "Proveedores",
+  "titulo_visible": "Proveedores",
+  "title": "Proveedores",
+  "meta_description": "Listado de proveedores",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/proveedor.html",
+  "paginas": 1
+ },
+ "/es/iniciar-sesion": {
+  "tipo": "authentication",
+  "url": "/es/iniciar-sesion",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/iniciar-sesion",
+   "ca-es": "https://telasdemama.com/ca/inici de sessió",
+   "gl-es": "https://telasdemama.com/gl/iniciar-sesion",
+   "eu-es": "https://telasdemama.com/eu/login",
+   "pt-pt": "https://telasdemama.com/pt/inicio-de-sessao"
+  },
+  "h1": "Iniciar sesión con su cuenta",
+  "titulo_visible": "Iniciar sesión con su cuenta",
+  "title": "Iniciar sesión",
+  "meta_description": "",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/iniciar-sesion.html",
+  "paginas": 1
+ },
+ "/es/recuperar-contrase%C3%B1a": {
+  "tipo": "password",
+  "url": "/es/recuperar-contrase%C3%B1a",
+  "canonical": "",
+  "hreflang": {
+   "es": "https://telasdemama.com/es/recuperar-contraseña",
+   "ca-es": "https://telasdemama.com/ca/recuperació de contrasenya",
+   "gl-es": "https://telasdemama.com/gl/recuperacion-contrasinal",
+   "eu-es": "https://telasdemama.com/eu/password-recovery",
+   "pt-pt": "https://telasdemama.com/pt/recuperar-palavra-passe"
+  },
+  "h1": "¿Olvidó su contraseña?",
+  "titulo_visible": "¿Olvidó su contraseña?",
+  "title": "Ha olvidado su contraseña",
+  "meta_description": "Introduzca la dirección de correo electrónico que utiliza a la hora de iniciar sesión, para recibir un correo electrónico con una nueva contraseña",
+  "breadcrumb": [
+   {
+    "texto": "Inicio",
+    "url": "/es"
+   }
+  ],
+  "productos": [],
+  "fichero_referencia": "referencia/es/recuperar-contraseña.html",
+  "paginas": 1
+ }
+}

@@ -1,0 +1,803 @@
+{
+ "dominio": "telasdemama.com",
+ "fecha": "2026-10-23",
+ "por_tipo_de_pagina": {
+  "category": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/themes/cosmetics_th/modules/ps_facetedsearch/views/dist/front.css",
+    "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/themes/cosmetics_th/assets/js/owl.carousel.min.js",
+    "/themes/cosmetics_th/assets/js/add-to-cart.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/themes/cosmetics_th/assets/js/rating.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_facetedsearch/views/dist/front.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/10-tipo-de-tejido.html"
+  },
+  "manufacturer": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/themes/cosmetics_th/assets/js/add-to-cart.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/themes/cosmetics_th/assets/js/rating.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/brand/1-telasdemama.html"
+  },
+  "contact": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/eicaptcha/views/css/eicaptcha.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/modules/eicaptcha/views/js/eicaptcha-contact-form.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js",
+    "https://www.google.com/recaptcha/api.js"
+   ],
+   "ejemplo": "referencia/es/contactenos.html"
+  },
+  "cms": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/content/1-envios-y-devoluciones.html"
+  },
+  "index": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/js/jquery/plugins/fancybox/jquery.fancybox.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/themes/cosmetics_th/assets/js/owl.carousel.min.js",
+    "/themes/cosmetics_th/assets/js/wow.js",
+    "/themes/cosmetics_th/assets/js/carousels.js",
+    "/themes/cosmetics_th/assets/js/index.js",
+    "/themes/cosmetics_th/assets/js/add-to-cart.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/themes/cosmetics_th/modules/homefeatured/views/js/front.js",
+    "/themes/cosmetics_th/modules/htmlbanners3/views/js/front.js",
+    "/themes/cosmetics_th/modules/htmlbanners3/views/js/carousel.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/themes/cosmetics_th/modules/htmlbanners9/views/js/front.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/themes/cosmetics_th/assets/js/rating.js",
+    "/js/jquery/plugins/fancybox/jquery.fancybox.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/index.html"
+  },
+  "authentication": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/eicaptcha/views/css/eicaptcha.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js",
+    "https://www.google.com/recaptcha/api.js"
+   ],
+   "ejemplo": "referencia/es/iniciar-sesion.html"
+  },
+  "product": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/js/jquery/plugins/fancybox/jquery.fancybox.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/themes/cosmetics_th/assets/js/owl.carousel.min.js",
+    "/themes/cosmetics_th/assets/js/carousels.js",
+    "/themes/cosmetics_th/assets/js/add-to-cart.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/modules/fancyboxthumb/views/js/front.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/post-comment.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/list-comments.js",
+    "/modules/productcomments/views/js/jquery.simplePagination.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/themes/cosmetics_th/assets/js/rating.js",
+    "/js/jquery/plugins/fancybox/jquery.fancybox.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/inicio/1003-popelin-andalucia.html"
+  },
+  "sitemap": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/mapa del sitio.html"
+  },
+  "best-sales": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/themes/cosmetics_th/assets/js/add-to-cart.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/themes/cosmetics_th/assets/js/rating.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/mas-vendidos.html"
+  },
+  "new-products": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/themes/cosmetics_th/assets/js/add-to-cart.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/themes/cosmetics_th/assets/js/rating.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/novedades.html"
+  },
+  "prices-drop": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/themes/cosmetics_th/assets/js/add-to-cart.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/themes/cosmetics_th/assets/js/rating.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/productos-rebajados.html"
+  },
+  "supplier": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/themes/cosmetics_th/assets/js/add-to-cart.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/themes/cosmetics_th/assets/js/rating.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/proveedor.html"
+  },
+  "password": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/recuperar-contraseña.html"
+  },
+  "stores": {
+   "css": [
+    "/themes/cosmetics_th/assets/css/theme.css",
+    "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+    "/modules/paypal/views/css/paypal_fo.css",
+    "/modules/codwfeeplus/views/css/style-front_17.css",
+    "/modules/productpricebysize/views/css/front/product.css",
+    "/modules/revi/views/css/style.css",
+    "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+    "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css",
+    "/modules/ps_imageslider/css/homeslider.css",
+    "/themes/cosmetics_th/assets/css/custom.css"
+   ],
+   "js": [
+    "/themes/core.js",
+    "/themes/cosmetics_th/assets/js/theme.js",
+    "/modules/ps_emailalerts/js/mailalerts.js",
+    "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js",
+    "/modules/ps_facebook/views/js/front/conversion-api.js",
+    "/modules/codwfeeplus/views/js/front.js",
+    "/modules/codwfeeplus/views/js/front-reorder.js",
+    "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js",
+    "/js/jquery/ui/jquery-ui.min.js",
+    "/js/jquery/plugins/jquery.typewatch.js",
+    "/modules/ps_imageslider/js/responsiveslides.min.js",
+    "/modules/ps_imageslider/js/homeslider.js",
+    "/modules/ps_searchbar/ps_searchbar.js",
+    "/modules/ps_shoppingcart/ps_shoppingcart.js",
+    "/themes/cosmetics_th/assets/js/custom.js"
+   ],
+   "externos": [
+    "https://www.googletagmanager.com/gtag/js"
+   ],
+   "ejemplo": "referencia/es/tiendas.html"
+  }
+ },
+ "recursos": {
+  "/img/favicon.ico": {
+   "paginas": 1156
+  },
+  "/js/jquery/plugins/fancybox/jquery.fancybox.css": {
+   "paginas": 659
+  },
+  "/js/jquery/plugins/fancybox/jquery.fancybox.js": {
+   "paginas": 659
+  },
+  "/js/jquery/plugins/jquery.typewatch.js": {
+   "paginas": 1156
+  },
+  "/js/jquery/ui/jquery-ui.min.js": {
+   "paginas": 1156
+  },
+  "/js/jquery/ui/themes/base/minified/jquery-ui.min.css": {
+   "paginas": 1156
+  },
+  "/js/jquery/ui/themes/base/minified/jquery.ui.theme.min.css": {
+   "paginas": 1156
+  },
+  "/modules/codwfeeplus/views/css/style-front_17.css": {
+   "paginas": 1156
+  },
+  "/modules/codwfeeplus/views/js/front-reorder.js": {
+   "paginas": 1156
+  },
+  "/modules/codwfeeplus/views/js/front.js": {
+   "paginas": 1156
+  },
+  "/modules/eicaptcha/views/css/eicaptcha.css": {
+   "paginas": 2
+  },
+  "/modules/eicaptcha/views/js/eicaptcha-contact-form.js": {
+   "paginas": 1
+  },
+  "/modules/fancyboxthumb/views/js/front.js": {
+   "paginas": 658
+  },
+  "/modules/paypal/views/css/paypal_fo.css": {
+   "paginas": 1156
+  },
+  "/modules/productcomments/views/js/jquery.simplePagination.js": {
+   "paginas": 658
+  },
+  "/modules/productpricebysize/views/css/front/product.css": {
+   "paginas": 1156
+  },
+  "/modules/productpricebysize/views/js/front/PPBSFrontProductController_new.js": {
+   "paginas": 1156
+  },
+  "/modules/ps_emailalerts/js/mailalerts.js": {
+   "paginas": 1156
+  },
+  "/modules/ps_emailsubscription/views/js/ps_emailsubscription.js": {
+   "paginas": 1156
+  },
+  "/modules/ps_facebook/views/js/front/conversion-api.js": {
+   "paginas": 1156
+  },
+  "/modules/ps_facetedsearch/views/dist/front.js": {
+   "paginas": 456
+  },
+  "/modules/ps_imageslider/css/homeslider.css": {
+   "paginas": 1156
+  },
+  "/modules/ps_imageslider/js/homeslider.js": {
+   "paginas": 1156
+  },
+  "/modules/ps_imageslider/js/responsiveslides.min.js": {
+   "paginas": 1156
+  },
+  "/modules/ps_searchbar/ps_searchbar.js": {
+   "paginas": 1156
+  },
+  "/modules/ps_shoppingcart/ps_shoppingcart.js": {
+   "paginas": 1156
+  },
+  "/modules/ps_socialfollow/views/css/ps_socialfollow.css": {
+   "paginas": 1156
+  },
+  "/modules/revi/views/css/style.css": {
+   "paginas": 1156
+  },
+  "/themes/core.js": {
+   "paginas": 1156
+  },
+  "/themes/cosmetics_th/assets/css/custom.css": {
+   "paginas": 1156
+  },
+  "/themes/cosmetics_th/assets/css/theme.css": {
+   "paginas": 1156
+  },
+  "/themes/cosmetics_th/assets/js/add-to-cart.js": {
+   "paginas": 1146
+  },
+  "/themes/cosmetics_th/assets/js/carousels.js": {
+   "paginas": 659
+  },
+  "/themes/cosmetics_th/assets/js/custom.js": {
+   "paginas": 1156
+  },
+  "/themes/cosmetics_th/assets/js/index.js": {
+   "paginas": 1
+  },
+  "/themes/cosmetics_th/assets/js/owl.carousel.min.js": {
+   "paginas": 1115
+  },
+  "/themes/cosmetics_th/assets/js/rating.js": {
+   "paginas": 1146
+  },
+  "/themes/cosmetics_th/assets/js/theme.js": {
+   "paginas": 1156
+  },
+  "/themes/cosmetics_th/assets/js/wow.js": {
+   "paginas": 1
+  },
+  "/themes/cosmetics_th/modules/homefeatured/views/js/front.js": {
+   "paginas": 1
+  },
+  "/themes/cosmetics_th/modules/htmlbanners3/views/js/carousel.js": {
+   "paginas": 1
+  },
+  "/themes/cosmetics_th/modules/htmlbanners3/views/js/front.js": {
+   "paginas": 1
+  },
+  "/themes/cosmetics_th/modules/htmlbanners9/views/js/front.js": {
+   "paginas": 1
+  },
+  "/themes/cosmetics_th/modules/productcomments/views/css/productcomments.css": {
+   "paginas": 1146
+  },
+  "/themes/cosmetics_th/modules/productcomments/views/js/jquery.rating.plugin.js": {
+   "paginas": 1146
+  },
+  "/themes/cosmetics_th/modules/productcomments/views/js/list-comments.js": {
+   "paginas": 658
+  },
+  "/themes/cosmetics_th/modules/productcomments/views/js/post-comment.js": {
+   "paginas": 658
+  },
+  "/themes/cosmetics_th/modules/ps_facetedsearch/views/dist/front.css": {
+   "paginas": 456
+  }
+ },
+ "desde_css": {
+  "/js/jquery/plugins/fancybox/blank.gif": "/js/jquery/plugins/fancybox/jquery.fancybox.css",
+  "/js/jquery/plugins/fancybox/fancybox_loading.gif": "/js/jquery/plugins/fancybox/jquery.fancybox.css",
+  "/js/jquery/plugins/fancybox/fancybox_loading@2x.gif": "/js/jquery/plugins/fancybox/jquery.fancybox.css",
+  "/js/jquery/plugins/fancybox/fancybox_overlay.png": "/js/jquery/plugins/fancybox/jquery.fancybox.css",
+  "/js/jquery/plugins/fancybox/fancybox_sprite.png": "/js/jquery/plugins/fancybox/jquery.fancybox.css",
+  "/js/jquery/plugins/fancybox/fancybox_sprite@2x.png": "/js/jquery/plugins/fancybox/jquery.fancybox.css",
+  "/js/jquery/ui/themes/base/minified/images/animated-overlay.gif": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-bg_flat_0_aaaaaa_40x100.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-bg_flat_75_ffffff_40x100.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-bg_glass_55_fbf9ee_1x400.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-bg_glass_65_ffffff_1x400.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-bg_glass_75_dadada_1x400.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-bg_glass_75_e6e6e6_1x400.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-bg_glass_95_fef1ec_1x400.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-bg_highlight-soft_75_cccccc_1x100.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-icons_222222_256x240.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-icons_2e83ff_256x240.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-icons_454545_256x240.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-icons_888888_256x240.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/js/jquery/ui/themes/base/minified/images/ui-icons_cd0a0a_256x240.png": "/js/jquery/ui/themes/base/minified/jquery-ui.min.css",
+  "/modules/ps_imageslider/homeslider.gif": "/modules/ps_imageslider/css/homeslider.css",
+  "/modules/ps_socialfollow/assets/icon/discord.svg": "/modules/ps_socialfollow/views/css/ps_socialfollow.css",
+  "/modules/revi/views/img/midstar-wee-0.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/midstar-wee-1.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/midstar-wee-2.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/midstar-wee-3.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/midstar-wee-4.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/ministar-wee-0.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/ministar-wee-1.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/ministar-wee-2.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/ministar-wee-3.png": "/modules/revi/views/css/style.css",
+  "/modules/revi/views/img/ministar-wee-4.png": "/modules/revi/views/css/style.css",
+  "/themes/cosmetics_th/assets/css/012cf6a10129e2275d79d6adac7f3b02.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/0a2628c2f6fd820b91d82c57f718c8f0.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/0ea04502930623aa3de110aac9f9e4fd.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/11fac44178d22807bbcb1c18f7746216.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/1bf000cc5ab3f3a93236a0bf69aa9c6c.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/1c0b4eb93fcf561eec03297a24922d6c.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/1eddb1bcd005037ac92e6acf88f1d104.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/26f1e68dfbd8b8621e5d07f75571a1f9.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/33f225b8f5f7d6b34a0926f58f96c1e9.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/3fd5520c543005256e40fdd68604fd13.woff2": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/471708caea84ccf84d7ac0a8a1de55ec.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/4a298856237878178bc4398a06c115ff.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/4ea30ff6d78560ed5dc5eb90d946e89b.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/50ae1971b13496fa2a95609cd64c06b7.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/5175b07f42821e35efbb503117c78e89.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/525074686dfb8aa36b1b92e29de467ac.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/570eb83859dc23dd0eec423a49e147fe.woff2": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/581f2fce5a7dbef109d5150f671bb8f1.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/5a100916f94b0babde0c92aaa8fb80d6.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/5c452fb7a0f5751f4e94e9d84eb01154.eot": "/themes/cosmetics_th/assets/css/custom.css",
+  "/themes/cosmetics_th/assets/css/5c452fb7a0f5751f4e94e9d84eb01154.svg": "/themes/cosmetics_th/assets/css/custom.css",
+  "/themes/cosmetics_th/assets/css/5c452fb7a0f5751f4e94e9d84eb01154.ttf": "/themes/cosmetics_th/assets/css/custom.css",
+  "/themes/cosmetics_th/assets/css/5c452fb7a0f5751f4e94e9d84eb01154.woff": "/themes/cosmetics_th/assets/css/custom.css",
+  "/themes/cosmetics_th/assets/css/5c452fb7a0f5751f4e94e9d84eb01154.woff2": "/themes/cosmetics_th/assets/css/custom.css",
+  "/themes/cosmetics_th/assets/css/63b18c415fec8887cebf2456cc2dcb79.woff2": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/65c3a89f7c13f9b9edcd61b9a94bb375.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/6725fc490942895a65f559882a17d524.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/7ae9b8ba7886341831bf7c85a0da40d0.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/7be88e73fea7b64568a450d7c01346b0.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/7ddf242f145c2ac79c9c788a2adab528.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/804037562eabaa5dbefa4a435206d017.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/87b02dd3e5e352a20c9b583b69b99736.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/892667349c5cff6fcf7e40439596b97c.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/9373d6c5fff690ae4038a5f6448547bd.woff2": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/963eb32907744d9a0d6b98127162808f.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/97534dd409492b05b11ab96b3dd4a557.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/9b30f13428e1b4a659aeeab4ac1fff35.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/9e29d067574c86c40782aa729e0e3a2f.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/9f2144213fad53d4e0fdb26ecf93865f.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/a131c309d62be8116479b0047aa1ef5b.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/a35546eef3ea0de0d4735f23b0a0873b.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/a37b0c01c0baf1888ca812cc0508f6e2.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/a54aba83b3d5d7702890c07c31c48147.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/ac327c4db6284ef64ebe872b6308f5da.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/ad091cf10d6f3228d49a86852dc3d236.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/b08ad706342408f4c888c74686d125f7.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/b18f657227867c9cf653e7c5e17dfc25.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/b64e9910811cdcc8df89cec2b5025a9f.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/bb100c995f1d20b8a96462fe5f528bd4.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/c17277d3f3ca8cad7b82d846f6383416.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/c36b5ac7c2dddf6f525c8d161412ef41.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/cd7296352d159532b66c07d98efb1126.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/d51c4cbdf58ed633c094cc393e644e66.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/d6291f88056601e360ce6cea4bf676f4.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/d6671d41dde41d355619fe05b44f4aac.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/d79f021974b1f6bc5c21f31689cde94f.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/da061416028fc9a66fbc0b80d33d6e6f.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/ddc348f204283c4f4090a3ed03853054.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/e487b7cb072550896dde6821d24de2be.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/e4e0f2216a450c9f6fecee1aab4db25b.svg": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/e716c252efb90d4dcef8bd8408cf1c81.woff2": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/e79bfd88537def476913f3ed52f4f4b3.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/ea07932c5245dd421e3d05f579098bc2.eot": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/ec55f263e2b86bc0f28fff46b873d6df.woff": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/ecb4572a5e478b107dfcb60c16a7eefa.ttf": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/f27369d7dc72c925696ce5670d5dd1e7.woff2": "/themes/cosmetics_th/assets/css/theme.css",
+  "/themes/cosmetics_th/assets/css/f641a7d4e80fd6321135b1a2b4ce8bb1.svg": "/themes/cosmetics_th/assets/css/theme.css"
+ },
+ "externos_en_css": [],
+ "fallos": []
+}

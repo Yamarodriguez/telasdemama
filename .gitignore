@@ -1,0 +1,27 @@
+# G2 del método. Lo que NUNCA sube a git: la referencia bajada, los informes,
+# los exports del Back Office y cualquier CSV o SQL (pueden llevar datos de clientes).
+node_modules/
+# solo el dist/ de la raíz: el módulo ps_facetedsearch tiene una carpeta views/dist/ que sí sube
+/dist/
+.astro/
+*.xml
+*.zip
+*.log
+*.csv
+*.sql
+exports/
+kit/
+analisis/
+referencia/
+informes/
+capturas*/
+descargas/
+*-fallidas.txt
+public/css/
+# imágenes de producto bajadas de la tienda vieja (unos 250 MB; se decide con el hosting)
+public/*_default/
+# locales
+.env
+.env.*
+.DS_Store
+Thumbs.db

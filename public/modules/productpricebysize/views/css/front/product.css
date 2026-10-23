@@ -1,0 +1,85 @@
+/* CSS Document */
+.unit-price {
+  font-size: 14px;
+  color: #111; }
+
+#unit_price_display {
+  font-size: 22px;
+  color: #111; }
+
+#ppbs_widget {
+  padding: 20px 10px;
+  background-color: #f6f6f6;
+  border: 1px solid #ddd;
+  margin: 0 0 0 0; }
+  #ppbs_widget .unit-entry label {
+    text-align: right;
+    padding-right: 10px;
+    display: inline-block;
+    width: 50%;
+    min-width: 100px; }
+  #ppbs_widget .unit-entry select, #ppbs_widget .unit-entry input[type='text'] {
+    min-width: 70px;
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    text-align: right; }
+  #ppbs_widget .ppbs-price-wrapper {
+    padding-top: 10px; }
+  #ppbs_widget #ppbs-price {
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    display: block; }
+  #ppbs_widget #ppbs-area-price,
+  #ppbs_widget #ppbs-total-area {
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    text-align: center; }
+  #ppbs_widget #ppbs-total-area {
+    margin-top: 0px;
+    font-size: 11px; }
+
+#ppbs_widget input.error, #ppbs_widget select.error {
+  border: 2px solid #aa0000;
+  color: #aa0000;
+  outline: none; }
+
+#ppbs_widget .unit-entry {
+  position: relative;
+  clear: both; }
+
+#ppbs_widget .error-unit {
+  display: inline-block;
+  background-color: #bf400d;
+  color: #fff;
+  padding: 3px 4px;
+  border-radius: 4px;
+  position: absolute;
+  left: 90%;
+  top: 0;
+  white-space: nowrap;
+  z-index: 100; }
+
+#ppbs_widget .ppbs_error {
+  color: #fff;
+  font-weight: bold;
+  background-color: #bf400d;
+  margin: 5px 0;
+  padding: 5px;
+  border-radius: 4px; }
+
+span.ppbs_unit_price_suffix {
+  font-size: 16px;
+  padding-left: 0px;
+  padding-right: 4px; }
+
+#our_price_display,
+.our_price_display {
+  font-size: 22px; }
+
+/*# sourceMappingURL=product.css.map */

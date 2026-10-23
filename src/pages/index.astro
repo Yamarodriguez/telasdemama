@@ -1,0 +1,25 @@
+---
+// Página provisional de la Fase 1. En la Fase 2 se sustituye por la copia fiel
+// por plantilla (portada en /es/, categorías, fichas, páginas de texto).
+// Las URL reales de la tienda no cambian; esta raíz (/) en el original redirige a /es/.
+import productos from '../data/catalogo/es/productos.json';
+import categorias from '../data/catalogo/es/categorias.json';
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Telas de Mamá — web nueva en construcción</title>
+    <link rel="icon" href="/img/favicon.ico" />
+  </head>
+  <body>
+    <h1>Telas de Mamá — web nueva en construcción</h1>
+    <p>Fase 1 de la migración: catálogo extraído de la tienda vieja.</p>
+    <ul>
+      <li>{productos.length} fichas de producto</li>
+      <li>{categorias.length} categorías</li>
+    </ul>
+  </body>
+</html>

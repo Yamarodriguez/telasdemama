@@ -1,0 +1,48 @@
+
+.revi-product-reviews-link {cursor: pointer;}
+.revi_rating_container{display:block; clear: both; margin:15px 0px;}
+.revi_rating_container a {text-decoration: none;}
+.revi_stars_container{display:inline-block; vertical-align: middle; margin:5px 0px 5px 0px;}
+.revi-right-text {display:inline-block; vertical-align: middle;}
+
+.ministar_active1{background: url(../img/ministar-wee-0.png) no-repeat !important;}
+.ministar_active2{background: url(../img/ministar-wee-1.png) no-repeat !important;}
+.ministar_active3{background: url(../img/ministar-wee-2.png) no-repeat !important;}
+.ministar_active4{background: url(../img/ministar-wee-3.png) no-repeat !important;}
+.ministar_active5{background: url(../img/ministar-wee-4.png) no-repeat !important;}
+.ministar{ width:16px; height: 16px; background: url(../img/ministar-wee-0.png) no-repeat; display: inline-block;}
+
+.midstar_active1{background: url(../img/midstar-wee-0.png) no-repeat !important;}
+.midstar_active2{background: url(../img/midstar-wee-1.png) no-repeat !important;}
+.midstar_active3{background: url(../img/midstar-wee-2.png) no-repeat !important;}
+.midstar_active4{background: url(../img/midstar-wee-3.png) no-repeat !important;}
+.midstar_active5{background: url(../img/midstar-wee-4.png) no-repeat !important;}
+.midstar{ width:24px; height: 24px; background: url(../img/midstar-wee-0.png) no-repeat; display: inline-block;}
+
+.label_revi {width: 100%; max-width:300px;}
+
+a.revi-link {color: #42BEB3}
+.revi-prod-reviews-link {cursor: pointer;}
+
+.revi_stars_product_list_container {display:inline-block; width:100%; text-align:center; vertical-align: middle; margin:5px 0px 5px 0px; height: 40px;}
+.revi_product_list_blank {display:inline-block; width:100%; margin:5px 0px 5px 0px; height: 40px;}
+.revi_stars_product_list_container .revi_num_reviews {display:block; clear:both; font-size: 11px; margin-top: -5px}
+.revi_prod_avg_rating {font-size:1.2em; margin-right: 10px;}
+.revi_rich_text {display: inline-block; margin-top:10px; font-size: 0.9em;}
+
+#revi-p-reviews {display: inline-block !important; width: 100%; margin: auto;}
+
+.revi_top_container {max-width:250px; position:relative; display:inline-block; float:right; clear: both;}
+
+
+/* PS 1.7 */
+/*
+#products .thumbnail-container, .featured-products .thumbnail-container, .product-accessories .thumbnail-container, .product-miniature .thumbnail-container{
+    height: 378px
+}
+#products .product-description, .featured-products .product-description, .product-accessories .product-description, .product-miniature .product-description {
+    height: 130px;
+}*/
+
+
+

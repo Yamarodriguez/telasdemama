@@ -1,0 +1,9 @@
+{
+ "/es/mi-cuenta": "/es/iniciar-sesion?back=my-account",
+ "/es/datos-personales": "/es/iniciar-sesion?back=identity",
+ "/es/historial-compra": "/es/iniciar-sesion?back=history",
+ "/es/facturas-abono": "/es/iniciar-sesion?back=order-slip",
+ "/es/direcciones": "/es/iniciar-sesion?back=addresses",
+ "/es/descuento": "/es/iniciar-sesion?back=discount",
+ "/es/9-revistas": "/es/9-revistas-y-libros"
+}
