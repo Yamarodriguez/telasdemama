@@ -1,0 +1,47 @@
+{
+  "_nota": "Qué páginas se miran con navegador (C3 contraste, C4 geometría, C5 404 en vivo), qué bloques se miden y qué diferencias están aceptadas, cada una con su motivo.",
+  "anchos": [1400, 390],
+  "tolerancia_px": 3,
+  "tolerancia_contraste": 0.1,
+  "por_tipo": 2,
+  "paginas_fijas": [
+    "/es/", "/es/3-telas", "/es/3-telas?page=2", "/es/12-composicion", "/es/139-nueva-coleccion",
+    "/es/inicio/1091-algodon-mar-caspio.html", "/es/inicio/649-revista-patrones-infantiles-n15.html",
+    "/es/inicio/545-cobinacio-mcropana-negro-y-viyela-plumeti-marfil.html", "/es/merceria/75-vivo-triple.html",
+    "/es/inicio/1028-revista-patrones-infantiles-n24.html", "/es/merceria/55-triple-puntilla-mostaza.html",
+    "/es/content/4-sobre-mi", "/es/content/2-aviso-legal", "/es/contactenos", "/es/tiendas", "/es/mapa%20del%20sitio",
+    "/es/brands", "/es/brand/1-telasdemama", "/es/mas-vendidos", "/es/mas-vendidos?page=2", "/es/novedades", "/es/productos-rebajados", "/es/proveedor"
+  ],
+  "selectores_comunes": ["#header", "#header .header-nav", "#header .header-top", "#wrapper", "nav.breadcrumb", "#left-column", "#content-wrapper", "#main", "#footer", ".footer-three", ".footer-container", ".footer-one"],
+  "selectores_por_tipo": {
+    "index": ["#htmlbanners1", ".js-carousel-featured", ".js-carousel-featured .product-miniature", "#htmlbanners3", "#htmlbanners5", ".revi_align_center"],
+    "category": [".block-category h1", ".page-heading", "#js-product-list-top", "#js-product-list", "#js-product-list .product-miniature", "#js-product-list-bottom", ".pagination", ".block-categories", "#search_filters_wrapper", ".featured-products"],
+    "best-sales": [".page-heading", "#js-product-list-top", "#js-product-list-top .display-view", "#js-product-list-top .products-sort-order", "#js-product-list", "#js-product-list .product-miniature", "#js-product-list-bottom", ".pagination", ".block-categories", ".featured-products"],
+    "new-products": [".page-heading", "#products", ".block-categories", ".featured-products"],
+    "prices-drop": [".page-heading", "#js-product-list", "#js-product-list .product-miniature", ".block-categories", ".featured-products"],
+    "manufacturer": [".page-heading", "#main h1", "#js-product-list", ".block-categories", ".featured-products"],
+    "product": [".l-column", ".product-cover", ".wrapper-thumbnails", ".r-column", ".r-column h1", ".product-prices", ".product-actions", ".product-add-to-cart", ".product-additional-info", ".product-description-short", ".more-info", ".nav-tabs_alternative", "#tab-content", ".category-products", ".category-products .product-miniature"],
+    "cms": [".page-header", ".page-header h1", "#content"],
+    "contact": [".h1-regla", ".contact-rich", ".contact-form", ".contact-form h3", ".contact-form select", ".contact-form input[type=email]", ".contact-form input[type=file]", ".contact-form textarea", ".form-footer"],
+    "stores": [".page-header", "#content", ".store-item"],
+    "sitemap": [".page-header", ".sitemap"],
+    "supplier": ["#main h1"]
+  },
+  "diferencias_aceptadas": {
+    ".product-add-to-cart": "Dec. 8: el botón «Pedir por WhatsApp» es más ancho que «Añadir al carrito»",
+    ".product-actions": "Dec. 8: contiene el botón de WhatsApp",
+    ".product-additional-info": "Dec. 8: va pegado al botón de WhatsApp, que es más ancho que el de carrito",
+    ".page-heading": "Regla del H1: en los listados sin H1 el contador va en una línea aparte bajo el título",
+    "#main h1": "Regla del H1: H1 nuevo en los listados y en contacto",
+    ".h1-regla": "Regla del H1: la página de contacto gana un título H1 encima de las columnas",
+    ".sitemap": "Dec. 8: en el mapa del sitio desaparece la columna «Su cuenta» (en móvil las columnas van apiladas y la página es más corta)",
+    ".contact-form": "Dec. 8 / Fase 5: el formulario de contacto va por mailto hasta tener servicio de formularios",
+    "#js-product-list-top": "El orden de los listados se muestra sin desplegable (pendiente de decisión)",
+    "#js-product-list-bottom": "Idem",
+    ".featured-products": "Las miniaturas laterales llevan el botón de WhatsApp (Dec. 8)"
+  },
+  "recursos_aceptados": {
+    "_nota": "Rutas que pueden dar 404 en vivo sin contar como fallo (además de src/data/fallos-original.json)",
+    "/es/pagina-no-encontrada": "Hreflang de la 404 de PrestaShop; en estático la 404 va sin hreflang"
+  }
+}

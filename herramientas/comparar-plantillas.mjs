@@ -143,7 +143,8 @@ function comparar(a, b, diffs, limite = 40) {
 
 function compararCabecera(ra, rb) {
   const diffs = [];
-  const dato = (root, sel, attr) => root.querySelectorAll(sel).map((e) => (attr ? normValor(attr, e.getAttribute(attr)) : normTexto(e.text)));
+  // /estilos/ es la hoja de lo nuevo (regla del H1, WhatsApp): no existe en la referencia y va la última.
+  const dato = (root, sel, attr) => root.querySelectorAll(sel).filter((e) => !(e.getAttribute('href') ?? '').startsWith('/estilos/')).map((e) => (attr ? normValor(attr, e.getAttribute(attr)) : normTexto(e.text)));
   const pares = [
     ['title', 'title', null],
     ['meta description', 'meta[name=description]', 'content'],

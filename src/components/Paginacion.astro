@@ -22,17 +22,21 @@ paginas.forEach((p, i) => {
 {total >= 1 && (
   <nav class="pagination">
     <label>{t.pagina}</label>
+    {/* Los <li> van separados por espacios en blanco, como en la plantilla de PrestaShop: son
+        inline-block y ese espacio se ve (sin él, la paginación sale 15 px más estrecha). */}
     <ul class="page-list clearfix text-xs-center">
       {actual > 1 && (
-        <li><a rel="prev" href={urlPagina(base, actual - 1)} class="previous js-search-link"><i class="material-icons">{E_ANTERIOR}</i></a></li>
+        <Fragment><li><a rel="prev" href={urlPagina(base, actual - 1)} class="previous js-search-link"><i class="material-icons">{E_ANTERIOR}</i></a></li>{' '}</Fragment>
       )}
       {items.map((it) =>
         'espacio' in it ? (
-          <li><span class="spacer">…</span></li>
+          <Fragment><li><span class="spacer">…</span></li>{' '}</Fragment>
         ) : (
-          <li class:list={[it.n === actual && 'current']}>
-            <a rel="nofollow" href={urlPagina(base, it.n)} class:list={[it.n === actual && 'disabled', 'js-search-link']}>{it.n}</a>
-          </li>
+          <Fragment>
+            <li class:list={[it.n === actual && 'current']}>
+              <a rel="nofollow" href={urlPagina(base, it.n)} class:list={[it.n === actual && 'disabled', 'js-search-link']}>{it.n}</a>
+            </li>{' '}
+          </Fragment>
         )
       )}
       {actual < total && (

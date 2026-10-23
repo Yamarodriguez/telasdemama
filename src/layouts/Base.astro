@@ -70,6 +70,7 @@ const seg = SEGUIMIENTO;
       </Fragment>
     )}
     {recursos.css.map((href) => <link rel="stylesheet" href={href} type="text/css" media="all" />)}
+    <link rel="stylesheet" href="/estilos/nuevo.css" type="text/css" media="all" />{/* lo nuevo, siempre la última */}
     <script is:inline set:html={`var prestashop = ${JSON.stringify(ps)};\nvar page_name = ${JSON.stringify(tipo)};`} />
     {seg.activo && (
       <Fragment>

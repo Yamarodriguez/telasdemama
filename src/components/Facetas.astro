@@ -70,3 +70,16 @@ const hrefDe = (texto: string) => raiz?.hijos.find((h) => h.nombre.trim() === te
     </div>
   )}
 </div>
+{facetas.some((f: any) => f.tipo === 'slider') && (
+  <script is:inline>
+    // El deslizador de precio lo pintaba el módulo de filtros con jQuery UI; aquí se pinta igual
+    // pero desactivado (el filtro necesitaba el servidor). jQuery UI llega al final de la página.
+    window.addEventListener('load', function () {
+      if (!window.jQuery || !jQuery.fn.slider) return;
+      jQuery('ul.faceted-slider').each(function () {
+        var ul = jQuery(this);
+        ul.find('.slider-type > div').slider({ range: true, min: Number(ul.data('slider-min')), max: Number(ul.data('slider-max')), values: [Number(ul.data('slider-min')), Number(ul.data('slider-max'))], disabled: true });
+      });
+    });
+  </script>
+)}

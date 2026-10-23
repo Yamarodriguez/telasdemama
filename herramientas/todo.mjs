@@ -76,12 +76,9 @@ paso('encabezados', () => ejecutar('node', ['herramientas/comparar-encabezados.m
 // 5. Marcado por plantilla (C2): cada página compilada contra su referencia, sin navegador.
 paso('plantillas', () => ejecutar('node', ['herramientas/comparar-plantillas.mjs']));
 
-// 5. Con navegador (Fase 2): marcado por plantilla, contraste, geometría, 404 en vivo.
+// 6. Con navegador (C3 contraste, C4 geometría, C5 404 en vivo): herramientas/comprobar-visual.mjs.
 if (VISUAL) {
-  paso('visual', () => {
-    console.log('Las comprobaciones con navegador (C2, C3, C4, C5 en vivo) se escriben en la Fase 2. De momento no hay nada que pasar.');
-    return 'pendiente de la Fase 2';
-  });
+  paso('visual', () => ejecutar('node', ['herramientas/comprobar-visual.mjs']));
 }
 
 informe();

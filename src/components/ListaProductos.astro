@@ -37,10 +37,13 @@ const contador = contadorProductos(t, productos.length);
   </h2>
 ) : (
   <Fragment>
-    {/* Regla del H1 aprobada: en los listados sin H1 (más vendidos, novedades, rebajados, marca) el título visible pasa a H1,
-        sin el «Hay N productos», que queda fuera para no formar parte del encabezado. */}
-    <h1 class="page-heading product-listing"><span>{titulo}</span></h1>
-    <p class="page-heading product-listing heading-counter-wrapper"><span class="heading-counter">{contador}</span></p>
+    {/* Regla del H1 aprobada: en los listados sin H1 (más vendidos, novedades, rebajados, marca) el título visible
+        pasa a H1 sin el «Hay N productos». La caja exterior conserva las clases del h2 original para verse igual;
+        el h1 de dentro hereda su letra (public/estilos/nuevo.css). */}
+    <div class="page-heading product-listing">
+      <h1><span>{titulo}</span></h1>
+      <span class="heading-counter">{contador}</span>
+    </div>
   </Fragment>
 )}
 {marca && (
