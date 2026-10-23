@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "web-nueva",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["astro", "preview", "--port", "4321"],
+      "port": 4321
+    },
+    {
+      "name": "referencia",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["herramientas/servir-referencia.mjs"],
+      "port": 8090
+    }
+  ]
+}
