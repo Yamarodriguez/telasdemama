@@ -1,0 +1,21 @@
+---
+/** Preguntas frecuentes de la portada (opción 1). Solo se muestran las que tienen respuesta; las [CONFIRMAR] esperan a Yama. */
+import { textosRediseno } from '../../lib/rediseno';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const t = textosRediseno(idioma);
+const items = t.faq.items.filter((i: any) => i.respuesta);
+---
+<section class="rd-seccion rd-faq">
+  <div class="rd-contenedor rd-faq__cuerpo">
+    <h2 class="rd-seccion__titulo">{t.faq.titulo}</h2>
+    <div class="rd-faq__lista">
+      {items.map((i: any, k: number) => (
+        <details class="rd-faq__item" open={k === 0}>
+          <summary>{i.pregunta}</summary>
+          <p>{i.respuesta}{i.enlace && <Fragment> <a href={i.enlace.href}>{i.enlace.texto}</a></Fragment>}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

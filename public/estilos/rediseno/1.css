@@ -1,0 +1,30 @@
+/* OPCIÓN 1 — «La tienda de telas infantiles de Asturias» (informes/analisis-competencia.md §5).
+   Blanco y gris muy claro, el rosa y el verde agua de la tienda solo como acentos; Open Sans para el texto y
+   Philosopher para los títulos (las dos letras ya estaban en el tema, se reutilizan sus ficheros). Sin Segoe Script.
+   El rosa no va en texto pequeño: para texto se usa #d9566b (contraste 4,5 sobre blanco). */
+@import url("base.css");
+
+@font-face { font-family: "Open Sans"; src: url("/themes/cosmetics_th/assets/css/ac327c4db6284ef64ebe872b6308f5da.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("/themes/cosmetics_th/assets/css/9f2144213fad53d4e0fdb26ecf93865f.woff") format("woff"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("/themes/cosmetics_th/assets/css/892667349c5cff6fcf7e40439596b97c.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Philosopher"; src: url("/themes/cosmetics_th/assets/css/e716c252efb90d4dcef8bd8408cf1c81.woff2") format("woff2"), url("/themes/cosmetics_th/assets/css/471708caea84ccf84d7ac0a8a1de55ec.woff") format("woff"); font-weight: 400 700; font-style: normal; font-display: swap; }
+
+body.rd-op1 {
+  --rd-letra: "Open Sans", Arial, sans-serif;
+  --rd-letra-titulos: "Philosopher", Georgia, serif;
+  --rd-texto: #2d2d2d;
+  --rd-fondo: #fff;
+  --rd-fondo-suave: #f7f5f2;
+  --rd-acento: #ef7e8e;
+  --rd-acento-oscuro: #d9566b;
+  --rd-precio: #d9566b;
+  --rd-wa: #075e54;
+  --rd-barra-fondo: #e3f3f2;
+  --rd-radio: 12px;
+  --rd-radio-boton: 24px;
+  --rd-tarjeta-fondo: #fff;
+  --rd-tarjeta-borde: 1px solid #ececec;
+  --rd-pie-fondo: #f7f5f2;
+}
+body.rd-op1 .rd-hero__titulo { color: #2d2d2d; }
+body.rd-op1 .rd-cab { border-bottom: 1px solid #efefef; }

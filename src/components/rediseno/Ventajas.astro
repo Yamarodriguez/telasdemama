@@ -1,0 +1,20 @@
+---
+/** Franja de 4 ventajas con los iconos y los datos de la web actual (bloque htmlbanners5). El texto vacío ([CONFIRMAR]) no se muestra. */
+import { textosRediseno } from '../../lib/rediseno';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const t = textosRediseno(idioma);
+---
+<section class="rd-ventajas" aria-label="Ventajas">
+  <ul class="rd-contenedor rd-ventajas__lista">
+    {t.ventajas.map((v: any) => (
+      <li class="rd-ventaja">
+        {v.icono ? <img class="rd-ventaja__icono" src={v.icono} alt="" width="32" height="32" loading="lazy" /> : <span class="rd-ventaja__icono rd-ico-estrella" aria-hidden="true"></span>}
+        <div>
+          <strong class="rd-ventaja__titulo">{v.titulo}</strong>
+          {v.texto && <p class="rd-ventaja__texto">{v.texto}</p>}
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>

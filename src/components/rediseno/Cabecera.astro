@@ -1,0 +1,55 @@
+---
+/**
+ * Cabecera del rediseño. Opción 1: barra de ventajas, logo a la izquierda, menú y WhatsApp a la derecha.
+ * Opción 2 (al estilo de quekucas): barra con contacto, envío e idiomas; logo centrado; menú centrado en una línea.
+ * Sin cuenta de cliente ni carrito (Dec. 8). El buscador queda fuera hasta la decisión de la Fase 2 (Pagefind o quitarlo).
+ */
+import { bloques } from '../../lib/catalogo';
+import { textosRediseno, menuRediseno, whatsappGenerico } from '../../lib/rediseno';
+interface Props { idioma: string; opcion: string; urlActual: string }
+const { idioma, opcion, urlActual } = Astro.props;
+const t = textosRediseno(idioma);
+const cab = bloques(idioma).cabecera;
+const menu = menuRediseno(idioma);
+const wa = whatsappGenerico(idioma);
+const actual = (href: string) => href === urlActual || (href !== `/${idioma}/` && urlActual.startsWith(href + '/'));
+---
+<header class="rd-cab">
+  <div class="rd-barra">
+    <div class="rd-contenedor rd-barra__fila">
+      {opcion === '2' ? (
+        <Fragment>
+          <span class="rd-barra__contacto"><a href={cab.telefono_href}>{cab.telefono}</a><span class="rd-barra__sep">·</span><a href={`mailto:${cab.correo.trim()}`}>{cab.correo.trim()}</a></span>
+          <span class="rd-barra__centro">{t.opcion2.barra}</span>
+          <span class="rd-barra__idiomas">{cab.idiomas.map((i: any) => <a href={i.href} aria-current={i.actual ? 'page' : undefined}>{i.codigo.toUpperCase()}</a>)}</span>
+        </Fragment>
+      ) : (
+        <ul class="rd-barra__lista">{t.barra_superior.map((x: string) => <li>{x}</li>)}</ul>
+      )}
+    </div>
+  </div>
+  <div class="rd-contenedor rd-cab__fila">
+    <a class="rd-logo" href={`/${idioma}/`}><img src={cab.logo.src} alt={cab.logo.alt} width="305" height="100" /></a>
+    <button class="rd-menu-boton" type="button" aria-expanded="false" aria-controls="rd-menu">
+      <span class="rd-menu-boton__lineas" aria-hidden="true"></span><span>{t.menu.abrir}</span>
+    </button>
+    <nav id="rd-menu" class="rd-menu" aria-label={t.menu.etiqueta}>
+      <ul class="rd-menu__lista">
+        {menu.map((m) => (
+          <li class:list={[m.hijos.length > 0 && 'rd-menu__con-hijos', actual(m.href) && 'rd-menu__actual']}>
+            <a href={m.href}>{m.texto}</a>
+            {m.hijos.length > 0 && (
+              <Fragment>
+                <button class="rd-menu__flecha" type="button" aria-expanded="false" aria-label={`Abrir ${m.texto}`}></button>
+                <ul class="rd-menu__sub">{m.hijos.map((h) => <li><a href={h.href}>{h.texto}</a></li>)}</ul>
+              </Fragment>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+    {opcion === '1' && (
+      <a class="rd-cab__wa" href={wa} target="_blank" rel="noreferrer noopener"><span class="rd-ico-wa" aria-hidden="true"></span><span class="rd-cab__wa-texto">{cab.telefono}</span></a>
+    )}
+  </div>
+</header>

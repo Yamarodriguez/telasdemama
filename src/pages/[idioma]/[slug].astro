@@ -13,6 +13,9 @@ import Marcas from '../../components/plantillas/Marcas.astro';
 import Proveedores from '../../components/plantillas/Proveedores.astro';
 import { idiomas, catalogo, bloques } from '../../lib/catalogo';
 import { listados } from '../../lib/paginas';
+import Rediseno from '../../layouts/Rediseno.astro';
+import ListadoRd from '../../components/rediseno/Listado.astro';
+import { REDISENO, redisenoActivo } from '../../lib/sitio';
 
 export function getStaticPaths() {
   // Tipos de página suelta con plantilla propia (getStaticPaths no ve las constantes de fuera).
@@ -39,8 +42,14 @@ const b = bloques(idioma);
 const l = clase === 'listado' ? listados(idioma).find((x) => x.slug === slug)! : null;
 const o = url ? c.otras[url] : null;
 const urlActual = l ? l.base : decodeURIComponent(url);
+// Fase 3: con el interruptor encendido, la categoría de prueba se monta con las plantillas del rediseño.
+const rd = redisenoActivo(urlActual);
 ---
-{l ? (
+{l && rd ? (
+  <Rediseno idioma={idioma} tipo={l.tipo} opcion={REDISENO.opcion} title={l.title} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual}>
+    <ListadoRd idioma={idioma} opcion={REDISENO.opcion} titulo={l.h1} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} migas={l.migas} />
+  </Rediseno>
+) : l ? (
   <Base idioma={idioma} tipo={l.tipo} layout={l.layout} clasesExtra={l.clasesBody} title={l.title} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual} migas={l.migas} menuActual={l.menuActual}>
     <Fragment slot="antes-columnas">
       {l.tipo === 'category' ? <div class="container"><div class="block-category"><h1 class="h1">{l.h1}</h1></div></div> : <div class="container"></div>}

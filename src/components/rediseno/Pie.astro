@@ -1,0 +1,44 @@
+---
+/**
+ * Pie del rediseño: logo, columnas de enlaces de la tienda (más el bloque «Pedidos» de la Dec. 8), datos de la
+ * tienda, redes, texto y banner de las ayudas Leader (se conservan tal cual) y el copyright actual.
+ */
+import { bloques, nuevo } from '../../lib/catalogo';
+import { textosRediseno } from '../../lib/rediseno';
+interface Props { idioma: string; opcion: string }
+const { idioma, opcion } = Astro.props;
+const t = textosRediseno(idioma);
+const pie = bloques(idioma).pie;
+const cab = bloques(idioma).cabecera;
+const n = nuevo(idioma);
+const columnas = [...pie.columnas, { titulo: n.pie_pedidos_titulo, enlaces: n.pie_pedidos_enlaces }];
+---
+<footer class="rd-pie">
+  <div class="rd-contenedor rd-pie__cuerpo">
+    <div class="rd-pie__marca">
+      <a href={`/${idioma}/`}><img src={cab.logo.src} alt={cab.logo.alt} width="305" height="100" loading="lazy" /></a>
+      <div class="rd-pie__copy" set:html={pie.sobre_nosotros.copyright_html} />
+      <ul class="rd-pie__redes" aria-label={t.pie.redes}>
+        {pie.sobre_nosotros.redes.filter((r: any) => r.href).map((r: any) => (
+          <li><a href={r.href} target="_blank" rel="noreferrer noopener"><img src={r.img} alt={r.alt.replace('.png', '')} width="40" height="40" loading="lazy" /></a></li>
+        ))}
+      </ul>
+    </div>
+    {columnas.map((col: any) => (
+      <div class="rd-pie__col">
+        <h2 class="rd-pie__titulo">{col.titulo}</h2>
+        <ul>{col.enlaces.map((e: any) => <li><a href={e.href} target={e.externo ? '_blank' : undefined} rel={e.externo ? 'noreferrer noopener' : undefined}>{e.texto}</a></li>)}</ul>
+      </div>
+    ))}
+    <div class="rd-pie__col rd-pie__tienda">
+      <h2 class="rd-pie__titulo">{pie.tienda.titulo}</h2>
+      <ul set:html={pie.tienda.direccion_html} />
+      <p>{pie.tienda.telefono_etiqueta} <a href={cab.telefono_href}>{pie.tienda.telefono}</a></p>
+      <p>{pie.tienda.correo_etiqueta} <a href={`mailto:${pie.tienda.correo}`}>{pie.tienda.correo}</a></p>
+    </div>
+  </div>
+  <div class="rd-contenedor rd-pie__leader">
+    <p>{pie.leader.texto}</p>
+    <img src={pie.leader.img} alt="" width="1500" height="250" loading="lazy" />
+  </div>
+</footer>

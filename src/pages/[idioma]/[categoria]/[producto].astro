@@ -3,7 +3,9 @@
 import Base from '../../../layouts/Base.astro';
 import Ficha from '../../../components/plantillas/Ficha.astro';
 import { idiomas, catalogo, bloques, textoPlano, numeroPlano } from '../../../lib/catalogo';
-import { absoluta } from '../../../lib/sitio';
+import { absoluta, REDISENO, redisenoActivo } from '../../../lib/sitio';
+import Rediseno from '../../../layouts/Rediseno.astro';
+import FichaRd from '../../../components/rediseno/Ficha.astro';
 import { tituloProducto } from '../../../lib/reglas-titulos.mjs';
 
 export function getStaticPaths() {
@@ -62,6 +64,13 @@ const jsonLd = p.muestra_precio
     }
   : undefined;
 ---
-<Base idioma={idioma} tipo="product" layout="layout-full-width" clasesExtra={clases} title={tituloProducto(idioma, p)} description={p.meta_description || descripcionPlana} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url} migas={p.breadcrumb} og={og} jsonLd={jsonLd}>
-  <Ficha idioma={idioma} producto={p} />
-</Base>
+{redisenoActivo(p.url) ? (
+  /* Fase 3: con el interruptor encendido, la ficha de prueba se monta con las plantillas del rediseño. */
+  <Rediseno idioma={idioma} tipo="product" opcion={REDISENO.opcion} title={tituloProducto(idioma, p)} description={p.meta_description || descripcionPlana} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url} og={og} jsonLd={jsonLd}>
+    <FichaRd idioma={idioma} opcion={REDISENO.opcion} producto={p} />
+  </Rediseno>
+) : (
+  <Base idioma={idioma} tipo="product" layout="layout-full-width" clasesExtra={clases} title={tituloProducto(idioma, p)} description={p.meta_description || descripcionPlana} keywords={p.meta_keywords} canonical={p.canonical} hreflang={p.hreflang} urlActual={p.url} migas={p.breadcrumb} og={og} jsonLd={jsonLd}>
+    <Ficha idioma={idioma} producto={p} />
+  </Base>
+)}

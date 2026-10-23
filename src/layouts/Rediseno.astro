@@ -1,0 +1,93 @@
+---
+/**
+ * Esqueleto de las páginas del REDISEÑO (Fase 3): solo se usa en las páginas de prueba y con el interruptor
+ * src/data/rediseno.json encendido. No carga las hojas ni los scripts del tema Cosmetics: solo su propia hoja
+ * public/estilos/rediseno/<opcion>.css. Conserva lo que no cambia con el diseño: metadatos, canonical, hreflang,
+ * Open Graph, JSON-LD y las etiquetas de seguimiento (GTM, Ads, GA4, Metricool) de la tienda vieja.
+ */
+import Cabecera from '../components/rediseno/Cabecera.astro';
+import Pie from '../components/rediseno/Pie.astro';
+import { SEGUIMIENTO } from '../lib/sitio';
+
+interface Props {
+  idioma: string;
+  /** index, category, product, cms… (clase del body) */
+  tipo: string;
+  opcion: string;
+  title: string;
+  description?: string;
+  keywords?: string;
+  canonical?: string;
+  hreflang: Record<string, string>;
+  urlActual: string;
+  og?: { property: string; content: string }[];
+  jsonLd?: object;
+  noindex?: boolean;
+}
+const { idioma, tipo, opcion, title, description = '', keywords = '', canonical = '', hreflang, urlActual, og = [], jsonLd, noindex = false } = Astro.props;
+const seg = SEGUIMIENTO;
+---
+<!doctype html>
+<html lang={idioma}>
+  <head>
+    <meta charset="utf-8" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    {Object.entries(hreflang).map(([lang, url]) => <link rel="alternate" href={url} hreflang={lang} />)}
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="/img/favicon.ico?1571903726" />
+    {seg.activo && (
+      <Fragment>
+        <script is:inline set:html={`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${seg.gtm}');`} />
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${seg.ads}`}></script>
+        <script is:inline set:html={`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '${seg.ads}');gtag('config', '${seg.ga4}');`} />
+        <script is:inline set:html={`function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"${seg.metricool}"})});`} />
+      </Fragment>
+    )}
+    {opcion === '2' && (
+      <Fragment>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@700&display=swap" />
+      </Fragment>
+    )}
+    <link rel="stylesheet" href={`/estilos/rediseno/${opcion}.css`} />{/* la única hoja del rediseño, y la última */}
+    {og.map((m) => <meta property={m.property} content={m.content} />)}
+    {jsonLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body class:list={['rd', `rd-op${opcion}`, `rd-${tipo}`]} data-url={urlActual}>
+    {seg.activo && (
+      <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${seg.gtm}`} height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    )}
+    <a class="rd-saltar" href="#rd-contenido">Ir al contenido</a>
+    <Cabecera idioma={idioma} opcion={opcion} urlActual={urlActual} />
+    <main id="rd-contenido" class="rd-principal">
+      <slot />
+    </main>
+    <Pie idioma={idioma} opcion={opcion} />
+    <script is:inline>
+      // Menú en el móvil: el botón abre y cierra la lista; los desplegables se abren al pulsar su flecha.
+      (function () {
+        var boton = document.querySelector('.rd-menu-boton');
+        var cab = document.querySelector('.rd-cab');
+        if (boton && cab) {
+          boton.addEventListener('click', function () {
+            var abierto = cab.classList.toggle('rd-cab--abierto');
+            boton.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+          });
+        }
+        document.querySelectorAll('.rd-menu__flecha').forEach(function (f) {
+          f.addEventListener('click', function (e) {
+            e.preventDefault();
+            var li = f.closest('li');
+            var abierto = li.classList.toggle('rd-menu__abierto');
+            f.setAttribute('aria-expanded', abierto ? 'true' : 'false');
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

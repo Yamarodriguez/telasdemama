@@ -1,0 +1,18 @@
+---
+/** Opiniones de Revi (la cuenta y el widget «wide» que ya usa la portada actual), con título nuevo. */
+import { textos } from '../../lib/catalogo';
+import { REVI } from '../../lib/sitio';
+import { textosRediseno } from '../../lib/rediseno';
+interface Props { idioma: string }
+const { idioma } = Astro.props;
+const t = textos(idioma);
+const r = textosRediseno(idioma);
+---
+<section class="rd-seccion rd-opiniones">
+  <div class="rd-contenedor">
+    <h2 class="rd-seccion__titulo">{r.opiniones.titulo}</h2>
+    <div class={`revi_widget_wide_${REVI.tienda}`}></div>
+    <p class="rd-opiniones__pie"><small><a href={`https://revi.io/${idioma}`} target="_blank" rel="noreferrer noopener">{t.reviews_by} Revi</a></small></p>
+    <script is:inline type="text/javascript" set:html={`var s = document.createElement("script");s.type = "text/javascript";s.setAttribute("async", "");s.setAttribute("defer", "");s.src = "https://revi.io/widgets/wide/${REVI.cuenta}/${REVI.tienda}/${idioma}";document.getElementsByTagName('body')[0].appendChild(s);`} />
+  </div>
+</section>

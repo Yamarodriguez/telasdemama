@@ -1,0 +1,78 @@
+{
+  "_nota": "Textos NUEVOS de los dos diseños de la Fase 3. Solo los que propone informes/analisis-competencia.md; los datos (envío, plazos, pago) son los que ya dice la tienda (bloque de ventajas de la portada y página «Envíos y devoluciones»). Lo que el informe marca [CONFIRMAR] va vacío («») y no se muestra hasta que Yama lo confirme. Yama puede cambiar cualquier texto aquí.",
+  "barra_superior": ["Envío gratis en Península desde 50 €", "Pedido por WhatsApp 643 945 052", "Envío en 48 h tras el pago"],
+  "menu": { "ofertas": "Ofertas", "contacto": "Contacto", "abrir": "Menú", "cerrar": "Cerrar", "etiqueta": "Menú principal" },
+  "hero": {
+    "titulo": "",
+    "_titulo": "Vacío = se usa el H1 actual de la portada («Telas de Mamá»). El propuesto en el informe §4 («Tienda de telas online: telas infantiles, algodón y mercería») solo se pone cuando Yama lo apruebe.",
+    "texto": "Telas escogidas una a una en Rioseco, Asturias. Te ayudamos a elegir la tela y la cantidad por WhatsApp.",
+    "boton_telas": "Ver telas",
+    "boton_telas_href": "/es/3-telas",
+    "boton_whatsapp": "Pedir por WhatsApp",
+    "imagen_id": 2711,
+    "_imagen": "id de la imagen de producto que hace de foto grande (hoy la de ALGODÓN MAR CASPIO, 1000×750, ya en webp). Mientras no haya fotos nuevas de tela (informe §7.5)."
+  },
+  "ventajas": [
+    { "icono": "/img/iconos/portes.png", "titulo": "Envío gratis en Península desde 50 €", "texto": "Portes gratis en Península a partir de 50 € de compra." },
+    { "icono": "/img/iconos/envios.png", "titulo": "Envío en 48 h tras el pago", "texto": "Los paquetes se envían dentro de las 48 horas siguientes a la recepción del pago." },
+    { "icono": "/img/iconos/whatsapp.png", "titulo": "Pago acordado por WhatsApp", "texto": "", "_texto": "[CONFIRMAR formas de cobro] (informe §7.2): vacío hasta que Yama diga qué se anuncia." },
+    { "icono": "", "titulo": "Opiniones verificadas por Revi", "texto": "Las opiniones de las clientas las recoge y verifica Revi.", "_icono": "Sin icono en la web vieja: se dibuja una estrella." }
+  ],
+  "accesos": [
+    { "titulo": "Telas", "subtitulo": "por tejido, estampado o composición", "href": "/es/3-telas", "imagen": "/modules/htmlbanners1/views/img/upload/66a1cd86dcc574d20c86af3510739cbbf1662892_TDM-Cat-Telas.jpg", "ancho": 757, "alto": 410 },
+    { "titulo": "Mercería", "subtitulo": "hilos, botones, cintas y más", "href": "/es/6-merceria", "imagen": "/modules/htmlbanners1/views/img/upload/181535fdd6a3b308229f5d120554e80638625fb0_TDM-Cat-Merceria.jpg", "ancho": 373, "alto": 200 },
+    { "titulo": "Revistas y libros", "subtitulo": "patrones y libros de costura", "href": "/es/9-revistas-y-libros", "imagen": "/modules/htmlbanners1/views/img/upload/7389981aba34585a7050a8f8c1848cae120cb859_TDM-Cat-Revistas-2.jpg", "ancho": 373, "alto": 200, "_nota": "El informe pone aquí «Combinaciones», pero no existe ninguna página de combinaciones en la tienda (informe §7.4): mientras Yama no decida, va Revistas y libros, que tiene banner y categoría." }
+  ],
+  "novedades": { "titulo": "Novedades", "ver_todas": "Ver todas las novedades", "href": "/es/novedades", "ver_tela": "Ver tela" },
+  "como_se_pide": {
+    "titulo": "Cómo se pide",
+    "pasos": [
+      { "titulo": "Eliges la tela y los metros", "texto": "En cada tela tienes el precio y una casilla para la cantidad." },
+      { "titulo": "Nos escribes por WhatsApp con un clic", "texto": "El botón «Pedir por WhatsApp» lleva ya el nombre, la referencia y la cantidad." },
+      { "titulo": "Te confirmamos disponibilidad, envío y pago", "texto": "Y el paquete sale en las 48 horas siguientes a recibir el pago." }
+    ]
+  },
+  "natalia": { "titulo": "Natalia, de Telas de Mamá", "enlace": "Leer más sobre mí", "href": "/es/content/4-sobre-mi", "imagen": "/img/cms/TDM-sobre-mi.jpg", "ancho": 597, "alto": 360, "_texto": "Los párrafos salen tal cual de la página «Sobre mí» (cms 4): el subtítulo y los dos primeros párrafos de texto." },
+  "opiniones": { "titulo": "Lo que dicen las clientas" },
+  "faq": {
+    "titulo": "Preguntas frecuentes",
+    "items": [
+      { "pregunta": "¿Cómo se compra?", "respuesta": "Eliges la tela y la cantidad, pulsas «Pedir por WhatsApp» y te confirmamos disponibilidad, envío y pago." },
+      { "pregunta": "¿Cuál es la cantidad mínima?", "respuesta": "", "_nota": "[CONFIRMAR] informe §7.1: no se muestra hasta tener respuesta." },
+      { "pregunta": "¿Cuánto tarda el envío?", "respuesta": "Como norma general, los paquetes se envían dentro de las 48 horas siguientes a la recepción del pago, a través de Correos España con número de seguimiento y entrega con firma.", "enlace": { "texto": "Envíos y devoluciones", "href": "/es/content/1-envios-y-devoluciones" } },
+      { "pregunta": "¿El envío es gratis?", "respuesta": "Portes gratis en Península a partir de 50 € de compra." },
+      { "pregunta": "¿Cómo se paga?", "respuesta": "", "_nota": "[CONFIRMAR formas de cobro] informe §7.2." },
+      { "pregunta": "¿Puedo devolver una tela?", "respuesta": "Una vez confirmado el pedido y preparado, no se hacen cambios ni devoluciones salvo tara o defecto del producto, para lo que dispones de 15 días naturales, previo aviso por correo.", "enlace": { "texto": "Envíos y devoluciones", "href": "/es/content/1-envios-y-devoluciones" }, "_nota": "Texto de la página actual; revisar con el gestor (informe §5.11)." }
+    ]
+  },
+  "listado": { "subcategorias": "Categorías", "mostrando": "Mostrando {desde}-{hasta} de {total}", "pagina_anterior": "Anterior", "pagina_siguiente": "Siguiente" },
+  "ficha": {
+    "envio_linea": "Envío en 48 h tras el pago · Gratis en Península desde 50 €",
+    "pedir": "Pedir por WhatsApp",
+    "cantidad_nota": "",
+    "_cantidad_nota": "[CONFIRMAR unidad de la cantidad] informe §7.1: vacío hasta que Yama diga qué es «cantidad 1».",
+    "detalles": "Detalles",
+    "otros_titulo": "Otras telas de la misma categoría",
+    "ver_tela": "Ver tela"
+  },
+  "pie": { "pedidos": "Pedidos", "contacto": "Contacto", "redes": "Síguenos" },
+  "opcion2": {
+    "barra": "Envío gratis en Península desde 50 €",
+    "hero": { "rotulo": "Nueva colección", "href": "/es/novedades", "categoria_id": 0, "_imagen": "Foto grande: la primera tela de los destacados de la portada, hasta que haya fotos nuevas (informe §7.5). La categoría «Nueva colección» (139) está vacía en el catálogo bajado, por eso el rótulo enlaza a Novedades." },
+    "tarjetas": [
+      { "titulo": "Telas infantiles", "href": "/es/3-telas" },
+      { "titulo": "Básicos", "href": "/es/12-composicion" },
+      { "titulo": "Mercería", "href": "/es/6-merceria" }
+    ],
+    "fondo_tela_imagen_id": 588,
+    "_fondo_tela": "Fondo de tela tras las tarjetas: una foto propia de la tienda (VICHY ALGODON CELESTE 5MM, imagen 588), nunca de quekucas.",
+    "banners": [
+      { "titulo": "Nueva colección", "href": "/es/139-nueva-coleccion", "categoria_id": 139, "_nota": "La categoría está vacía en el catálogo bajado (inventario §11): el banner usa la foto de los destacados hasta que Yama decida." },
+      { "titulo": "Ofertas", "href": "/es/productos-rebajados", "lista": "prices-drop" }
+    ],
+    "frase": "buscando y seleccionando las telas más bonitas para confección infantil",
+    "_frase": "Literal de la página «Sobre mí» actual.",
+    "combinaciones": { "titulo": "Nuestras combinaciones", "ver": "Ver", "_nota": "Las fichas «COMBINACION …» actuales, sin precio (informe §7.4: Yama decide si se mantienen)." },
+    "ver_todas": "Todas las novedades"
+  }
+}

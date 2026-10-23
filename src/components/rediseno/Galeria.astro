@@ -1,0 +1,51 @@
+---
+/**
+ * Galería de la ficha: foto grande (webp con srcset si herramientas/webp.mjs la generó, con width y height, sin
+ * estirar: como mucho su tamaño real) y miniaturas. Al pulsar una miniatura cambia la grande (jpg y webp).
+ */
+import type { Producto } from '../../lib/catalogo';
+import { altImagen, bloques } from '../../lib/catalogo';
+import { webpDe, srcsetWebp } from '../../lib/rediseno';
+interface Props { producto: Producto; idioma: string }
+const { producto: p, idioma } = Astro.props;
+const leyendas = bloques(idioma).fichasExtra[String(p.id)]?.leyendas;
+const sinFoto = `/img/p/${idioma}-default-large_default.jpg`;
+const portada = p.imagenes.find((i) => i.portada) ?? p.imagenes[0];
+const webp = webpDe(portada?.id);
+const mapa = Object.fromEntries(p.imagenes.map((i) => [i.por_tamano.large_default, webpDe(i.id) ? srcsetWebp(webpDe(i.id)!) : '']));
+---
+<div class="rd-galeria">
+  <picture class="rd-galeria__grande" data-webp={JSON.stringify(mapa)}>
+    {webp && <source type="image/webp" srcset={srcsetWebp(webp)} sizes="(min-width: 900px) 640px, 100vw" />}
+    <img class="rd-galeria__img" src={portada ? portada.por_tamano.large_default : sinFoto} alt={altImagen(leyendas, portada?.id) || p.nombre} width={webp?.ancho ?? 1000} height={webp?.alto ?? 750} />
+  </picture>
+  {p.imagenes.length > 1 && (
+    <ul class="rd-galeria__miniaturas">
+      {p.imagenes.map((i) => (
+        <li>
+          <button type="button" class:list={['rd-galeria__mini', i === portada && 'rd-galeria__mini--actual']} data-grande={i.por_tamano.large_default} aria-label={altImagen(leyendas, i.id) || p.nombre}>
+            <img src={i.por_tamano.home_default} alt="" width="253" height="230" loading="lazy" />
+          </button>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+<script is:inline>
+  (function () {
+    var pic = document.querySelector('.rd-galeria__grande');
+    if (!pic) return;
+    var img = pic.querySelector('img'), source = pic.querySelector('source');
+    var mapa = {};
+    try { mapa = JSON.parse(pic.getAttribute('data-webp') || '{}'); } catch (e) {}
+    document.querySelectorAll('.rd-galeria__mini').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var grande = b.getAttribute('data-grande');
+        img.setAttribute('src', grande);
+        if (source) { if (mapa[grande]) source.setAttribute('srcset', mapa[grande]); else source.removeAttribute('srcset'); }
+        document.querySelectorAll('.rd-galeria__mini--actual').forEach(function (x) { x.classList.remove('rd-galeria__mini--actual'); });
+        b.classList.add('rd-galeria__mini--actual');
+      });
+    });
+  })();
+</script>
