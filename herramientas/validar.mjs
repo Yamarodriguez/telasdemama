@@ -24,6 +24,18 @@ const PUBLIC = arg('public', 'public');
 const SITIO = 'https://telasdemama.com';
 const FALLOS_ORIGINAL = 'src/data/fallos-original.json';
 const listaBlanca = fs.existsSync(FALLOS_ORIGINAL) ? JSON.parse(fs.readFileSync(FALLOS_ORIGINAL, 'utf8')).recursos ?? {} : {};
+// Rutas que redirigen en la web nueva (public/_redirects, generado por redirecciones.mjs):
+// un enlace a una de ellas no está roto, aunque no tenga fichero (p. ej. /es/9-revistas).
+const REDIRECTS = path.join(PUBLIC, '_redirects');
+const redirigidas = new Set();
+if (fs.existsSync(REDIRECTS)) {
+  for (const linea of fs.readFileSync(REDIRECTS, 'utf8').split('\n')) {
+    const t = linea.trim();
+    if (!t || t.startsWith('#')) continue;
+    const origen = t.split(/\s+/)[0];
+    if (!origen.includes(':') && !origen.includes('*')) redirigidas.add(origen);
+  }
+}
 
 function* htmls(dir) {
   if (!fs.existsSync(dir)) return;
@@ -52,14 +64,19 @@ for (const f of htmls(DIST)) {
   const falla = msg => fallos.push({ pagina: rel, fallo: msg });
 
   if (!html.match(/<title>\s*[^<]+<\/title>/i)) falla('sin <title>');
+  // Una página que solo reenvía (<meta http-equiv="refresh">, como la raíz / → /es/, que en el
+  // original era un 302) no es una página de contenido: no se le exige H1.
+  const reenvio = /<meta[^>]+http-equiv="refresh"/i.test(html);
   const h1 = (html.match(/<h1\b/gi) ?? []).length;
-  if (h1 !== 1) falla(`${h1} H1 (tiene que haber exactamente uno)`);
+  if (h1 !== 1 && !reenvio) falla(`${h1} H1 (tiene que haber exactamente uno)`);
   if (/\{\$[a-zA-Z_]|\{l s=/.test(html)) falla('variable de Smarty sin resolver ({$… o {l s=…)');
 
   const can = html.match(/<link[^>]+rel="canonical"[^>]+href="([^"]+)"/i)?.[1];
   if (can) {
     if (!can.startsWith(SITIO + '/')) falla(`canonical no absoluto al dominio: ${can}`);
-    if (can.endsWith('/') && can !== SITIO + '/') falla(`canonical con barra final: ${can}`);
+    // La raíz de cada idioma (/es/, /ca/…) sí lleva barra en el original (es la portada); el resto, no.
+    const raizIdioma = new RegExp(`^${SITIO}/[a-z]{2}/$`);
+    if (can.endsWith('/') && can !== SITIO + '/' && !raizIdioma.test(can)) falla(`canonical con barra final: ${can}`);
   }
 
   const internos = new Set();
@@ -82,6 +99,7 @@ for (const f of htmls(DIST)) {
   for (const r of internos) {
     const limpio = r.split('?')[0].split('#')[0];
     if (listaBlanca[limpio] || listaBlanca[r]) continue;
+    if (redirigidas.has(limpio)) continue; // redirige en la web nueva (public/_redirects)
     const params = new URLSearchParams(r.split('?')[1] ?? '');
     if ([...params.keys()].some(k => k !== 'page')) continue; // filtros/buscador: se decide en la Fase 2
     if (!existeRuta(limpio)) falla(`enlace o recurso sin fichero: ${r}`);

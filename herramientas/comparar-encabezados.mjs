@@ -69,10 +69,15 @@ for (const f of htmls(DIST)) {
     p++;
   }
 }
-const faltan = Object.keys(estructura).filter(r => !vistas.has(r));
+// Solo cuentan como «sin generar» las páginas de los idiomas que ya se compilan (existe dist/<idioma>/);
+// los idiomas que todavía no se han montado (Fase 1 a medias) se informan aparte.
+const idiomaDe = r => r.match(/^\/([a-z]{2})(\/|$)/)?.[1];
+const compilado = i => !i || fs.existsSync(path.join(DIST, i));
+const faltan = Object.keys(estructura).filter(r => !vistas.has(r) && compilado(idiomaDe(r)));
+const idiomasSinCompilar = [...new Set(Object.keys(estructura).map(idiomaDe).filter(i => i && !compilado(i)))];
 const lineas = [
   '# Encabezados (C1)', '',
-  `${comparadas} páginas comparadas con la referencia; ${diferencias.length} con diferencias; ${sinReferencia.length} sin página de referencia; ${faltan.length} páginas de la referencia aún sin generar${COMPLETO ? ' (cuentan como fallo)' : ' (informativo hasta la Fase 2)'}.`, '',
+  `${comparadas} páginas comparadas con la referencia; ${diferencias.length} con diferencias; ${sinReferencia.length} sin página de referencia; ${faltan.length} páginas de la referencia aún sin generar${COMPLETO ? ' (cuentan como fallo)' : ' (informativo hasta la Fase 2)'}${idiomasSinCompilar.length ? `; idiomas aún sin compilar (no cuentan): ${idiomasSinCompilar.join(', ')}` : ''}.`, '',
   ...(diferencias.length ? ['## Diferencias', ...diferencias.map(d => `- \`${d.ruta}\`: no encuentro ${d.falta} en su sitio`)] : []),
   ...(sinReferencia.length ? ['', '## Sin referencia (páginas nuevas)', ...sinReferencia.slice(0, 50).map(r => `- \`${r}\``)] : []),
   ...(COMPLETO && faltan.length ? ['', '## Páginas de la referencia sin generar', ...faltan.slice(0, 100).map(r => `- \`${r}\``)] : []),
