@@ -34,7 +34,7 @@ Idiomas: es, ca, gl, eu, pt (hreflang es / ca-es / gl-es / eu-es / pt-pt) · mon
 GTM-KTP52S5 · GA4 G-8H0YS98F5Q · Google Ads AW-388689405 · Meta (ps_facebook) · Revi 5f9170edaac41
 WhatsApp +34 643 945 052 · correo contacto@telasdemama.com · formulario [pendiente]
 DNS en Infofuturo (dns1/dns2.infofuturo.net), servidor Hetzner 188.245.164.207 (cPanel) · **MX al propio servidor: el correo vive en el hosting viejo**
-Repositorio [pendiente] · hosting nuevo [pendiente] · Merchant Center [pendiente de confirmar; hay Google Ads]
+Repositorio https://github.com/Yamarodriguez/telasdemama.git (remoto `origin`, rama `main`, conectado el 23-10-2026) · hosting nuevo [pendiente] · Merchant Center [pendiente de confirmar; hay Google Ads]
 Webservice `/api` activo (pide clave). Sin sitemap declarado; rutas de sitemap sin confirmar (508).
 Páginas con tráfico (Search Console): [pendiente]
 
