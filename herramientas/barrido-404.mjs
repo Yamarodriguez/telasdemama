@@ -128,7 +128,11 @@ for (const f of htmls(base)) {
 
 // ---- comprobar en disco ----
 const faltan = [];
-const redirecciones = JSON.parse(fs.readFileSync(path.join(REFERENCIA, `rastreo-${IDIOMA}.json`), 'utf8'));
+// Redirecciones conocidas de TODOS los idiomas rastreados (una página en /pt/ puede enlazar a /es/9-revistas).
+const redirecciones = {};
+for (const f of fs.readdirSync(REFERENCIA)) {
+  if (/^rastreo-[a-z]{2}\.json$/.test(f)) Object.assign(redirecciones, JSON.parse(fs.readFileSync(path.join(REFERENCIA, f), 'utf8')));
+}
 const redirigidas = new Map();
 for (const [u, f] of Object.entries(redirecciones)) {
   if (!(f.estado >= 300 && f.estado < 400)) continue;

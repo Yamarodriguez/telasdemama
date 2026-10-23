@@ -18,6 +18,18 @@
    "paginas": 10,
    "nota": "imagen por defecto de un idioma que PrestaShop no tiene; 404 en el original",
    "fecha": "2026-10-23"
+  },
+  "/img/m/eu.jpg": {
+   "estado": 404,
+   "paginas": 1,
+   "ejemplo": "/eu/brands",
+   "fecha": "2026-10-23"
+  },
+  "/img/p/pt-default-large_default.jpg": {
+   "estado": 404,
+   "paginas": 1,
+   "ejemplo": "/pt/merceria/75-vivo-triple",
+   "fecha": "2026-10-23"
   }
  }
 }

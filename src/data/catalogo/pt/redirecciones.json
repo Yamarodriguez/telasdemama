@@ -1,0 +1,8 @@
+{
+ "/pt/a-minha-conta": "/pt/inicio-de-sessao?back=my-account",
+ "/pt/identidade": "/pt/inicio-de-sessao?back=identity",
+ "/pt/historico-de-encomendas": "/pt/inicio-de-sessao?back=history",
+ "/pt/nota-de-encomenda": "/pt/inicio-de-sessao?back=order-slip",
+ "/pt/enderecos": "/pt/inicio-de-sessao?back=addresses",
+ "/pt/descontos": "/pt/inicio-de-sessao?back=discount"
+}

@@ -1,0 +1,8 @@
+{
+ "/eu/my-account": "/eu/login?back=my-account",
+ "/eu/identity": "/eu/login?back=identity",
+ "/eu/order-history": "/eu/login?back=history",
+ "/eu/credit-slip": "/eu/login?back=order-slip",
+ "/eu/addresses": "/eu/login?back=addresses",
+ "/eu/discount": "/eu/login?back=discount"
+}
