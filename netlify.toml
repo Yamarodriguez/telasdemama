@@ -1,0 +1,16 @@
+# Netlify — telasdemama.com (web nueva en Astro)
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Astro 7 necesita Node 22.12 o superior
+  NODE_VERSION = "22"
+
+# G3 del método: la web de pruebas NO se indexa.
+# Se QUITA el día del cambio de DNS (Fase 7, paso 8), ni antes ni después.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
