@@ -65,7 +65,9 @@ body.rd-prototipo-3 .rd-pie__marca img { background: #fff; padding: 6px; }
   .rd3-dos { grid-template-columns: 1fr; }
 }
 @media (max-width: 599px) {
-  .rd3-mosaico li { aspect-ratio: 3 / 5; }
+  /* En el móvil el texto no cabe sobre el mosaico: el mosaico queda como franja y el texto va debajo, sobre fondo oscuro. */
+  .rd3-mosaico li { aspect-ratio: 1; }
+  .rd3-hero__texto { position: static; background: #1f1f1f; padding: 28px 20px 32px; }
   .rd3-hero__titulo { font-size: 28px; }
   .rd3-hero__linea { font-size: 15px; }
 }
