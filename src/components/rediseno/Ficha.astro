@@ -6,7 +6,7 @@
  * El texto de la tela no se toca (regla A3). Las fichas sin precio (COMBINACIÓN) salen sin precio ni botón.
  */
 import type { Producto } from '../../lib/catalogo';
-import { bloques, catalogo, textos, nuevo, textoPlano } from '../../lib/catalogo';
+import { bloques, catalogo, textos, nuevo, textoPlano, numeroPlano } from '../../lib/catalogo';
 import { absoluta, enlaceWhatsApp, plantilla, REVI } from '../../lib/sitio';
 import { textosRediseno, pedible, disponibilidad, precioPorUnidad } from '../../lib/rediseno';
 import Galeria from './Galeria.astro';
@@ -23,8 +23,15 @@ const dispo = disponibilidad(p);
 const unidad = precioPorUnidad(p);
 const puede = pedible(p);
 const urlAbs = absoluta(p.url);
-const mensaje = plantilla(n.mensaje_ficha, { nombre: p.nombre, referencia: p.referencia ?? '', cantidad: '{cantidad}', url: urlAbs });
-const whatsapp = enlaceWhatsApp(n.whatsapp_numero, mensaje.replace('{cantidad}', String(p.cantidad_minima || 1)));
+// Venta por centímetros (Yama, 24-10-2026): el precio de la ficha corresponde a «precio_base_cm» (100 = por metro);
+// se enseña el precio por centímetro y el total se calcula en vivo según los centímetros pedidos.
+const BASE_CM = Number(n.precio_base_cm) || 100;
+const cmPorDefecto = Math.max(Number(n.cantidad_por_defecto_cm) || BASE_CM, p.cantidad_minima || 1);
+const euros = (x: number) => x.toFixed(2).replace('.', ',') + ' €';
+const precioCm = p.precio_con_iva / BASE_CM;
+const totalInicial = euros(Math.round(p.precio_con_iva * cmPorDefecto / BASE_CM * 100) / 100);
+const mensaje = plantilla(n.mensaje_ficha_cm || n.mensaje_ficha, { nombre: p.nombre, referencia: p.referencia ?? '', cantidad: '{cantidad}', total: '{total}', url: urlAbs });
+const whatsapp = enlaceWhatsApp(n.whatsapp_numero, mensaje.replace('{cantidad}', String(cmPorDefecto)).replace('{total}', totalInicial));
 const accesorios = c.productosDe(p.accesorios.map((a) => a.id));
 const otros = c.productosDe(extra.otros ?? []).slice(0, 8);
 // En muchas fichas la descripción corta y la larga son el mismo texto: la larga solo se repite abajo si es distinta.
@@ -45,14 +52,16 @@ const largaDistinta = Boolean(p.descripcion) && textoPlano(p.descripcion).trim()
         {p.tiene_descuento && p.precio_tachado != null && <s class="rd-precio__antes">{p.precio_tachado.toFixed(2).replace('.', ',')} €</s>}
         <small class="rd-precio__iva">{t.impuestos_incluidos}</small>
         {unidad && <span class="rd-precio__unidad">{unidad}</span>}
+        <span class="rd-precio__cm">{precioCm.toFixed(4).replace('.', ',').replace(/0+$/, '').replace(/,$/, '')} € {r.ficha.por_cm}</span>
       </p>
     )}
     {puede ? (
-      <form class="rd-pedido" action="#" method="post" data-mensaje={mensaje} data-numero={n.whatsapp_numero}>
+      <form class="rd-pedido" action="#" method="post" data-mensaje={mensaje} data-numero={n.whatsapp_numero} data-precio={numeroPlano(p.precio_con_iva)} data-base={BASE_CM}>
         <label class="rd-pedido__cantidad" for="rd-cantidad">
           <span>{r.ficha.cantidad_etiqueta || t.cantidad}</span>
-          <input type="number" id="rd-cantidad" name="qty" value={p.cantidad_minima || 1} min={p.cantidad_minima || 1} step="1" inputmode="numeric" />
+          <input type="number" id="rd-cantidad" name="qty" value={cmPorDefecto} min={p.cantidad_minima || 1} step="1" inputmode="numeric" />
         </label>
+        <p class="rd-pedido__total"><span>{r.ficha.total}</span> <strong id="rd-total">{totalInicial}</strong></p>
         <a class="rd-btn rd-btn--wa rd-btn--grande rd-pedido__boton" href={whatsapp} target="_blank" rel="noreferrer noopener"><span class="rd-ico-wa" aria-hidden="true"></span>{r.ficha.pedir}</a>
         {r.ficha.cantidad_nota && <p class="rd-pedido__nota">{r.ficha.cantidad_nota}</p>}
       </form>
@@ -97,10 +106,14 @@ const largaDistinta = Boolean(p.descripcion) && textoPlano(p.descripcion).trim()
   (function () {
     var form = document.querySelector('.rd-pedido');
     if (!form) return;
-    var enlace = form.querySelector('.rd-pedido__boton'), cantidad = form.querySelector('#rd-cantidad');
+    var enlace = form.querySelector('.rd-pedido__boton'), cantidad = form.querySelector('#rd-cantidad'), total = document.getElementById('rd-total');
+    var precio = parseFloat(form.getAttribute('data-precio')), base = parseFloat(form.getAttribute('data-base')) || 100;
+    var euros = function (x) { return x.toFixed(2).replace('.', ',') + ' €'; };
     var actualizar = function () {
       var n = parseInt(cantidad.value, 10); if (!(n > 0)) n = 1;
-      enlace.setAttribute('href', 'https://wa.me/' + form.getAttribute('data-numero') + '?text=' + encodeURIComponent(form.getAttribute('data-mensaje').replace('{cantidad}', n)));
+      var importe = euros(Math.round(precio * n / base * 100) / 100);
+      if (total) total.textContent = importe;
+      enlace.setAttribute('href', 'https://wa.me/' + form.getAttribute('data-numero') + '?text=' + encodeURIComponent(form.getAttribute('data-mensaje').replace('{cantidad}', n).replace('{total}', importe)));
     };
     cantidad.addEventListener('input', actualizar); cantidad.addEventListener('change', actualizar);
     form.addEventListener('submit', function (e) { e.preventDefault(); actualizar(); window.open(enlace.getAttribute('href'), '_blank', 'noopener'); });

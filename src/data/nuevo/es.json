@@ -32,5 +32,9 @@
   "contacto_correo": "contacto@telasdemama.com",
   "disponible_texto": "En stock",
   "_nota_disponible": "Fase 3 (PENDIENTE de Yama): la tienda vieja no escribe nada cuando hay existencias; el rediseño muestra este texto, tomado del filtro «Disponibilidad» de la propia tienda. «¡AGOTADO!» y «Últimas unidades en stock» son los textos originales.",
-  "_nota_cantidad": "Yama, 24-10-2026: la venta es por centímetros (a petición del cliente); la cantidad del mensaje va en cm. Corte mínimo: [CONFIRMAR]."
+  "_nota_cantidad": "Yama, 24-10-2026: la venta es por centímetros (a petición del cliente); la cantidad del mensaje va en cm. Corte mínimo: [CONFIRMAR].",
+  "precio_base_cm": 100,
+  "cantidad_por_defecto_cm": 100,
+  "mensaje_ficha_cm": "Hola, quiero pedir: {nombre} (ref. {referencia}). Cantidad: {cantidad} cm ({total}). {url}",
+  "_nota_precio_cm": "Yama, 24-10-2026: el pedido va por centímetros y el precio se calcula por centímetro. «precio_base_cm» = a cuántos cm corresponde el precio de la ficha (100: el precio es por metro, como indican las 32 fichas que llevan «por metro»; si fuera otra base, cambiar aquí). «cantidad_por_defecto_cm» = lo que sale escrito en la casilla al abrir la ficha. El corte mínimo sigue [CONFIRMAR]."
 }
