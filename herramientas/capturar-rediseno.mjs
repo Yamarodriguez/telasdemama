@@ -25,7 +25,7 @@ const ALTO = { 1400: Number(arg('alto-1400', 2400)), 390: Number(arg('alto-390',
 const SIN_COMPILAR = process.argv.includes('--sin-compilar');
 const PUERTO = 8093;
 const SALIDA = 'dist-rediseno'; // carpeta propia: dist/ es de las comprobaciones (npm run todo:visual, hook pre-push)
-const NOMBRES = { ahora: 'Ahora (copia fiel)', nuevo: 'Diseño elegido', 'prototipo-2': 'Prototipo 2 · Al estilo de quekucas', 'prototipo-3': 'Prototipo 3 · Taller editorial' };
+const NOMBRES = { ahora: 'Ahora (copia fiel)', nuevo: 'Diseño elegido', 'prototipo-2': 'Prototipo 2 · Gran tienda de telas', 'prototipo-3': 'Prototipo 3 · Taller editorial' };
 const TODAS = ['ahora', 'nuevo', 'prototipo-2', 'prototipo-3'];
 const PERMITIDOS = /^https?:\/\/(localhost|fonts\.googleapis\.com|fonts\.gstatic\.com|revi\.io|[a-z0-9.-]*\.revi\.io)(:|\/|$)/;
 

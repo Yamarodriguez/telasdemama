@@ -1,87 +1,135 @@
 ---
 /**
- * PROTOTIPO 2 para enseñar al cliente (informe §6, estructura al estilo de quekucas.es con fotos y textos propios):
- * solo existe al compilar con REDISENO_PROTOTIPO=2 (capturas); la web publicada no lo usa. Hero
- * «Nueva colección» con rótulo caligráfico, Novedades, tres tarjetas de categoría sobre un fondo de tela propia,
- * dos banners a todo el ancho (Nueva colección, Ofertas), frase de marca, «Nuestras combinaciones», ventajas y Revi.
+ * PROTOTIPO 2 para enseñar al cliente, «al estilo de una gran tienda de telas» (modelo: Galerías Madrid; se toma la
+ * estructura y la sensación, nunca sus textos ni fotos): foto a toda pantalla con el título encima, y después
+ * franjas que alternan un banner grande de una categoría con una fila de cinco telas de esa categoría; dos cuadros
+ * grandes (Mercería, Revistas y libros); «Cómo se pide»; banda con la foto de Natalia; ventajas; opiniones.
+ * Mismos textos, fotos y precios que el diseño publicado. Solo en /prototipos/2/ y en las capturas.
  */
 import { bloques, catalogo } from '../../lib/catalogo';
-import { textosRediseno, webpDe, srcsetWebp, foto, primeraFotoDeCategoria, primeraFotoDeLista, combinaciones } from '../../lib/rediseno';
+import { listados } from '../../lib/paginas';
+import { textosRediseno, whatsappGenerico, webpDe, srcsetWebp, sobreMi, foto } from '../../lib/rediseno';
 import Tarjeta from './Tarjeta.astro';
 import Ventajas from './Ventajas.astro';
 import Opiniones from './Opiniones.astro';
 interface Props { idioma: string; h1: string }
 const { idioma, h1 } = Astro.props;
 const t = textosRediseno(idioma);
-const o2 = t.prototipo2;
+const p2 = t.prototipo2;
 const c = catalogo(idioma);
 const po = bloques(idioma).portada;
 const destacados = c.productosDe(po.destacados.productos);
-// La categoría «Nueva colección» (139) está vacía en el catálogo bajado: si no hay foto, se usa la primera de los destacados.
-const heroProducto = (o2.hero.categoria_id && primeraFotoDeCategoria(idioma, o2.hero.categoria_id)) || destacados.find((p) => p.imagenes.length > 0);
-const heroImg = heroProducto?.imagenes.find((i) => i.portada) ?? heroProducto?.imagenes[0];
+const titulo = t.hero.titulo || h1;
+const todos = listados(idioma);
+/** Franjas: banner de la categoría o lista + sus cinco primeras telas con foto. */
+const franjas = p2.franjas.map((f: any) => {
+  const l = todos.find((x) => x.slug === f.slug);
+  if (!l) return null;
+  const conFoto = l.productos.filter((p) => p.imagenes.length > 0);
+  const portada = conFoto[0]?.imagenes.find((i) => i.portada) ?? conFoto[0]?.imagenes[0];
+  return { titulo: l.h1 || l.titulo, href: l.base, productos: conFoto.slice(0, 5), imagen: portada, webp: webpDe(portada?.id) };
+}).filter(Boolean);
+const heroImg = destacados.find((p) => p.imagenes.length > 0)?.imagenes[0];
 const heroWebp = webpDe(heroImg?.id);
-const fondoTela = c.productos.flatMap((p) => p.imagenes).find((i) => i.id === o2.fondo_tela_imagen_id);
-const banners = o2.banners.map((b: any) => {
-  const p = (b.categoria_id ? primeraFotoDeCategoria(idioma, b.categoria_id) : primeraFotoDeLista(idioma, b.lista)) ?? destacados.find((x) => x.imagenes.length > 0);
-  return { ...b, imagen: p ? foto(p, 'large_default', idioma) : null };
-});
-const combos = combinaciones(idioma).slice(0, 8);
+const cuadros = p2.cuadros.map((q: any) => {
+  const l = todos.find((x) => x.slug === q.slug);
+  const prod = l?.productos.find((p) => p.imagenes.length > 0);
+  const acceso = t.accesos.find((a: any) => a.href === l?.base);
+  return l ? { titulo: l.h1 || l.titulo, subtitulo: acceso?.subtitulo ?? '', href: l.base, imagen: prod ? foto(prod, 'large_default', idioma) : null, webp: webpDe(prod?.imagenes[0]?.id) } : null;
+}).filter(Boolean);
+const natalia = sobreMi(idioma);
 ---
-<h1 class="rd-oculto">{h1}</h1>
-<section class="rd2-hero">
-  <a class="rd2-hero__enlace" href={o2.hero.href}>
-    {heroImg && (
-      <picture class="rd2-hero__foto">
-        {heroWebp && <source type="image/webp" srcset={srcsetWebp(heroWebp)} sizes="100vw" />}
-        <img src={heroImg.por_tamano.large_default} alt="" width={heroWebp?.ancho ?? 1000} height={heroWebp?.alto ?? 750} fetchpriority="high" />
-      </picture>
-    )}
-    <span class="rd2-hero__rotulo">{o2.hero.rotulo}</span>
-  </a>
+<section class="p2-hero">
+  {heroImg && (
+    <picture class="p2-hero__foto">
+      {heroWebp && <source type="image/webp" srcset={srcsetWebp(heroWebp)} sizes="100vw" />}
+      <img src={heroImg.por_tamano.large_default} alt="" width={heroWebp?.ancho ?? 1000} height={heroWebp?.alto ?? 750} fetchpriority="high" />
+    </picture>
+  )}
+  <div class="p2-hero__texto">
+    <h1 class="p2-hero__titulo">{titulo}</h1>
+    <p class="p2-hero__linea">{t.hero.texto}</p>
+    <div class="rd-botones">
+      <a class="rd-btn p2-btn-claro" href={t.hero.boton_telas_href}>{t.hero.boton_telas}</a>
+      <a class="rd-btn rd-btn--wa" href={whatsappGenerico(idioma)} target="_blank" rel="noreferrer noopener"><span class="rd-ico-wa" aria-hidden="true"></span>{t.hero.boton_whatsapp}</a>
+    </div>
+  </div>
 </section>
 
-<section class="rd-seccion rd-novedades">
+<section class="rd-seccion p2-fila">
   <div class="rd-contenedor">
-    <h2 class="rd-seccion__titulo rd-seccion__titulo--centrado">{t.novedades.titulo}</h2>
-    <ul class="rd-carrusel">
-      {destacados.map((p, i) => <li><Tarjeta producto={p} idioma={idioma} prioridad={i < 4} /></li>)}
+    <div class="rd-seccion__cabecera"><h2 class="rd-seccion__titulo">{t.novedades.titulo}</h2></div>
+    <ul class="rd-carrusel p2-carrusel">
+      {destacados.map((p, i) => <li><Tarjeta producto={p} idioma={idioma} prioridad={i < 5} /></li>)}
     </ul>
-    <p class="rd-centrado"><a class="rd-btn rd-btn--secundario" href={t.novedades.href}>{o2.ver_todas}</a></p>
+    <p><a class="rd-btn rd-btn--secundario" href={t.novedades.href}>{t.novedades.ver_todas}</a></p>
   </div>
 </section>
 
-<section class="rd2-tarjetas" style={fondoTela ? `background-image:url('${fondoTela.por_tamano.large_default}')` : undefined}>
-  <div class="rd-contenedor rd2-tarjetas__lista">
-    {o2.tarjetas.map((x: any) => <a class="rd2-tarjeta" href={x.href}>{x.titulo}</a>)}
-  </div>
-</section>
-
-{banners.map((b: any) => (
-  <section class="rd2-banner">
-    <a class="rd2-banner__enlace" href={b.href}>
-      {b.imagen && <img src={b.imagen} alt="" width="1000" height="750" loading="lazy" />}
-      <span class="rd2-banner__rotulo">{b.titulo}</span>
-    </a>
-  </section>
+{franjas.map((f: any) => (
+  <Fragment>
+    <section class="p2-banner">
+      <a class="p2-banner__enlace" href={f.href}>
+        {f.imagen && (
+          <picture class="p2-banner__foto">
+            {f.webp && <source type="image/webp" srcset={srcsetWebp(f.webp)} sizes="1000px" />}
+            <img src={f.imagen.por_tamano.large_default} alt="" width={f.webp?.ancho ?? 1000} height={f.webp?.alto ?? 750} loading="lazy" />
+          </picture>
+        )}
+        <span class="p2-banner__texto"><span class="p2-banner__titulo">{f.titulo}</span><span class="rd-btn p2-btn-claro">{p2.ver_coleccion}</span></span>
+      </a>
+    </section>
+    {f.productos.length > 0 && (
+      <section class="rd-seccion p2-fila">
+        <div class="rd-contenedor">
+          <ul class="rd-carrusel p2-carrusel">
+            {f.productos.map((p: any) => <li><Tarjeta producto={p} idioma={idioma} /></li>)}
+          </ul>
+          <p><a class="rd-btn rd-btn--secundario" href={f.href}>{p2.ver_coleccion}</a></p>
+        </div>
+      </section>
+    )}
+  </Fragment>
 ))}
 
-<section class="rd2-frase">
+{cuadros.length > 0 && (
+  <section class="p2-cuadros">
+    {cuadros.map((q: any) => (
+      <a class="p2-cuadro" href={q.href}>
+        {q.imagen && (
+          <picture class="p2-cuadro__foto">
+            {q.webp && <source type="image/webp" srcset={srcsetWebp(q.webp)} sizes="50vw" />}
+            <img src={q.imagen} alt="" width={q.webp?.ancho ?? 1000} height={q.webp?.alto ?? 750} loading="lazy" />
+          </picture>
+        )}
+        <span class="p2-cuadro__texto"><strong>{q.titulo}</strong>{q.subtitulo && <small>{q.subtitulo}</small>}<span class="rd-btn p2-btn-claro">{p2.ver_coleccion}</span></span>
+      </a>
+    ))}
+  </section>
+)}
+
+<section class="rd-seccion rd-pasos p2-pasos">
   <div class="rd-contenedor">
-    <blockquote class="rd2-frase__caja"><p>{o2.frase}</p></blockquote>
+    <h2 class="rd-seccion__titulo">{t.como_se_pide.titulo}</h2>
+    <ol class="rd-pasos__lista">
+      {t.como_se_pide.pasos.map((p: any, i: number) => (
+        <li class="rd-paso"><span class="rd-paso__numero" aria-hidden="true">{i + 1}</span><strong>{p.titulo}</strong><p>{p.texto}</p></li>
+      ))}
+    </ol>
   </div>
 </section>
 
-{combos.length > 0 && (
-  <section class="rd-seccion rd-combinaciones">
-    <div class="rd-contenedor">
-      <h2 class="rd-seccion__titulo rd-seccion__titulo--centrado">{o2.combinaciones.titulo}</h2>
-      <ul class="rd-carrusel">
-        {combos.map((p) => <li><Tarjeta producto={p} idioma={idioma} /></li>)}
-      </ul>
+<section class="p2-natalia">
+  <div class="rd-contenedor p2-natalia__cuerpo">
+    <img class="p2-natalia__foto" src={t.natalia.imagen} alt="" width={t.natalia.ancho} height={t.natalia.alto} loading="lazy" />
+    <div class="p2-natalia__texto">
+      <h2 class="rd-seccion__titulo">{t.natalia.titulo}</h2>
+      {natalia.subtitulo && <p class="rd-natalia__sub">{natalia.subtitulo}</p>}
+      {natalia.parrafos.slice(0, 1).map((p) => <p>{p}</p>)}
+      <a class="rd-btn p2-btn-claro" href={natalia.href || t.natalia.href}>{t.natalia.enlace}</a>
     </div>
-  </section>
-)}
+  </div>
+</section>
 
 <Ventajas idioma={idioma} />
 <Opiniones idioma={idioma} />

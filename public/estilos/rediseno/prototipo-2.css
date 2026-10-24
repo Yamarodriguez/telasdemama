@@ -1,115 +1,127 @@
-/* PROTOTIPO 2 (para enseñar al cliente; la web publicada no lo usa) — al estilo de quekucas.es (informes/analisis-competencia.md §6): logo centrado, barra de envío, menú
-   centrado, hero con rótulo caligráfico, tarjetas de categoría sobre fondo de tela propia, banners a todo el ancho,
-   frase de marca, 4 columnas en categoría. Serifa Playfair Display para títulos (Google Fonts, licencia libre) y
-   Dancing Script solo para el rótulo; rosa y verde agua en pastel como fondos; gris plomo para el texto secundario. */
+/* PROTOTIPO 2 (para enseñar al cliente; la web publicada no lo usa) — «al estilo de una gran tienda de telas»
+   (modelo: Galerías Madrid, solo la estructura y la sensación): blanco y negro, letra Inter (Google Fonts), fotos
+   grandes a sangre con el título encima, tarjetas sin borde con la foto cuadrada, botones rectos, pie oscuro.
+   El rosa de la tienda queda solo para las etiquetas y los precios rebajados. Mismos textos y datos. */
 @import url("rediseno.css");
 
-
 body.rd-prototipo-2 {
-  --rd-letra: "Open Sans", Arial, sans-serif;
-  --rd-letra-titulos: "Playfair Display", Georgia, serif;
-  --rd-texto: #333;
+  --rd-letra: "Inter", "Open Sans", Arial, sans-serif;
+  --rd-letra-titulos: "Inter", "Open Sans", Arial, sans-serif;
+  --rd-texto: #111;
   --rd-fondo: #fff;
-  --rd-fondo-suave: #fbe4e8;
-  --rd-acento: #ef7e8e;
-  --rd-acento-oscuro: #c9465c;
-  --rd-precio: #333;
-  --rd-wa: #075e54;
-  --rd-barra-fondo: #fff;
-  --rd-radio: 4px;
-  --rd-radio-boton: 4px;
-  --rd-tarjeta-fondo: #fff;
+  --rd-fondo-suave: #f4f4f4;
+  --rd-acento: #111;
+  --rd-acento-oscuro: #d9566b;
+  --rd-precio: #111;
+  --rd-radio: 0;
+  --rd-radio-boton: 2px;
   --rd-tarjeta-borde: 0;
-  --rd-pie-fondo: #fff;
+  --rd-barra-fondo: #111;
+  --rd-barra-texto: #fff;
+  --rd-pie-fondo: #1a1a1a;
+  --rd-pie-texto: #eee;
 }
-body.rd-prototipo-2 h1, body.rd-prototipo-2 h2, body.rd-prototipo-2 h3 { font-weight: 400; }
-body.rd-prototipo-2 .rd-seccion__titulo { font-size: 34px; }
+body.rd-prototipo-2 h1, body.rd-prototipo-2 h2, body.rd-prototipo-2 h3 { font-weight: 600; letter-spacing: -.2px; }
+body.rd-prototipo-2 .rd-seccion__titulo { font-size: 26px; }
+body.rd-prototipo-2 .rd-barra { font-size: 12px; }
+body.rd-prototipo-2 .rd-barra__lista li::before { content: none; }
+body.rd-prototipo-2 .rd-barra__lista { gap: 48px; }
+body.rd-prototipo-2 .rd-cab { border-bottom: 1px solid #eee; }
+body.rd-prototipo-2 .rd-cab__fila { min-height: 72px; }
+body.rd-prototipo-2 .rd-logo img { width: 170px; }
+body.rd-prototipo-2 .rd-menu__lista > li > a { font-weight: 500; font-size: 14px; }
+body.rd-prototipo-2 .rd-menu__lista > li > a:hover, body.rd-prototipo-2 .rd-menu__actual > a { border-bottom-color: #111; }
+body.rd-prototipo-2 .rd-cab__wa { color: #111; }
+body.rd-prototipo-2 .rd-btn { font-weight: 500; border-radius: 2px; }
+body.rd-prototipo-2 .rd-btn--primario { background: #111; }
+body.rd-prototipo-2 .rd-btn--secundario { border-color: #111; }
+.p2-btn-claro { background: #fff; color: #111; border-color: #fff; }
+.p2-btn-claro:hover { color: #111; }
 
-/* Barra, cabecera centrada y menú en una línea */
-body.rd-prototipo-2 .rd-barra { border-bottom: 1px solid #eee; font-size: 12px; color: #6b6b6b; }
-body.rd-prototipo-2 .rd-barra__fila { justify-content: space-between; }
-body.rd-prototipo-2 .rd-barra__centro { font-weight: 700; color: #333; }
-body.rd-prototipo-2 .rd-barra__idiomas a { margin-left: 8px; }
-body.rd-prototipo-2 .rd-barra__idiomas a[aria-current] { font-weight: 700; color: #333; }
-body.rd-prototipo-2 .rd-cab { background: #e3f3f2; }
-body.rd-prototipo-2 .rd-cab__fila { flex-wrap: wrap; justify-content: center; min-height: 0; padding: 18px 20px 0; }
-body.rd-prototipo-2 .rd-logo { flex: 1 0 100%; display: flex; justify-content: center; }
-body.rd-prototipo-2 .rd-logo img { width: 240px; }
-body.rd-prototipo-2 .rd-menu { flex: 1 0 100%; margin-top: 12px; }
-body.rd-prototipo-2 .rd-menu__lista > li > a { font-weight: 400; font-size: 15px; letter-spacing: .2px; border-bottom: 0; }
-body.rd-prototipo-2 .rd-menu__lista > li > a:hover, body.rd-prototipo-2 .rd-menu__actual > a { color: var(--rd-acento-oscuro); }
+/* Foto a toda pantalla con el título encima (la foto se recorta, nunca se estira más de 1000 px: fondo oscuro a los lados) */
+.p2-hero { position: relative; background: #1a1a1a; min-height: 520px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.p2-hero__foto { position: absolute; inset: 0; display: flex; justify-content: center; }
+.p2-hero__foto img { width: 100%; max-width: 1000px; height: 100%; object-fit: cover; opacity: .85; }
+.p2-hero__texto { position: relative; text-align: center; color: #fff; padding: 60px 24px; max-width: 820px; text-shadow: 0 2px 16px rgba(0, 0, 0, .55); }
+.p2-hero__titulo { font-size: 46px; color: #fff; margin-bottom: 12px; }
+.p2-hero__linea { font-size: 18px; margin-bottom: 24px; }
+.p2-hero .rd-botones { justify-content: center; }
 
-/* Hero con rótulo caligráfico (la foto nunca se estira más de su tamaño real) */
-.rd2-hero { background: #e3f3f2; }
-.rd2-hero__enlace { display: block; position: relative; max-width: 1200px; margin: 0 auto; }
-.rd2-hero__foto img { width: 100%; max-width: 1000px; margin: 0 auto; max-height: 460px; object-fit: cover; }
-.rd2-hero__rotulo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: "Dancing Script", "Philosopher", cursive; font-size: 72px; font-weight: 700; color: #fff; text-shadow: 0 2px 18px rgba(0, 0, 0, .45); white-space: nowrap; }
+/* Filas de telas: tarjetas sin borde, foto cuadrada, nombre y precio en pequeño */
+.p2-fila { padding: 40px 0 32px; }
+.p2-carrusel { grid-auto-columns: calc((100% - 80px) / 5); }
+body.rd-prototipo-2 .rd-tarjeta { background: transparent; }
+body.rd-prototipo-2 .rd-tarjeta:hover { box-shadow: none; }
+body.rd-prototipo-2 .rd-tarjeta__foto { background: #f4f4f4; }
+body.rd-prototipo-2 .rd-tarjeta__cuerpo { padding: 12px 0 0; }
+body.rd-prototipo-2 .rd-tarjeta__nombre { font-size: 14px; font-weight: 500; }
+body.rd-prototipo-2 .rd-precio__importe { font-size: 15px; font-weight: 500; }
+body.rd-prototipo-2 .rd-precio__iva { display: none; }
+body.rd-prototipo-2 .rd-tarjeta__acciones .rd-btn { background: transparent; color: #111; border: 1px solid #111; min-height: 36px; font-size: 13px; }
+body.rd-prototipo-2 .rd-tarjeta__acciones .rd-btn--apagado { color: #999; border-color: #ccc; }
+body.rd-prototipo-2 .rd-tarjeta__ver { color: #666; }
+body.rd-prototipo-2 .rd-etiqueta { background: #d9566b; color: #fff; border-radius: 2px; }
 
-/* Tarjetas de categoría sobre fondo de tela propia */
-.rd2-tarjetas { background-size: 420px auto; background-repeat: repeat; padding: 56px 0; }
-.rd2-tarjetas__lista { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.rd2-tarjeta { display: flex; align-items: center; justify-content: center; min-height: 72px; background: rgba(255, 255, 255, .92); font-family: var(--rd-letra-titulos); font-size: 22px; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; color: #333; }
-.rd2-tarjeta:hover { background: #fff; color: var(--rd-acento-oscuro); }
+/* Banner de categoría: foto (1000 px, recortada a 420 de alto) sobre banda oscura, título y botón encima */
+.p2-banner { background: #1a1a1a; }
+.p2-banner__enlace { position: relative; display: flex; align-items: center; justify-content: center; min-height: 420px; color: #fff; text-decoration: none; overflow: hidden; }
+.p2-banner__foto { position: absolute; inset: 0; display: flex; justify-content: center; }
+.p2-banner__foto img { width: 100%; max-width: 1000px; height: 100%; object-fit: cover; opacity: .8; }
+.p2-banner__texto { position: relative; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; text-shadow: 0 2px 14px rgba(0, 0, 0, .6); }
+.p2-banner__titulo { font-size: 36px; font-weight: 600; }
 
-/* Banners a todo el ancho */
-.rd2-banner { background: var(--rd-fondo-suave); margin-top: 16px; }
-.rd2-banner__enlace { display: grid; grid-template-columns: 1fr 1fr; align-items: center; max-width: 1200px; margin: 0 auto; text-decoration: none; min-height: 300px; }
-.rd2-banner__enlace img { width: 100%; max-width: 600px; height: 300px; object-fit: cover; }
-.rd2-banner__rotulo { display: block; text-align: center; font-family: var(--rd-letra-titulos); font-size: 40px; letter-spacing: 2px; text-transform: uppercase; color: #333; padding: 24px; }
-.rd2-banner:nth-of-type(odd) .rd2-banner__enlace img { order: 2; }
+/* Dos cuadros grandes */
+.p2-cuadros { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-top: 8px; }
+.p2-cuadro { position: relative; display: block; min-height: 420px; background: #1a1a1a; color: #fff; text-decoration: none; overflow: hidden; }
+.p2-cuadro__foto { position: absolute; inset: 0; }
+.p2-cuadro__foto img { width: 100%; height: 100%; object-fit: cover; opacity: .75; }
+.p2-cuadro__texto { position: absolute; left: 32px; bottom: 32px; right: 32px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; text-shadow: 0 2px 12px rgba(0, 0, 0, .6); }
+.p2-cuadro__texto strong { font-size: 30px; font-weight: 600; }
+.p2-cuadro__texto small { font-size: 15px; }
 
-/* Frase de marca */
-.rd2-frase { background: #f1f1f1; padding: 64px 0; }
-.rd2-frase__caja { max-width: 720px; margin: 0 auto; background: #fff; padding: 40px; text-align: center; font-family: var(--rd-letra-titulos); font-size: 26px; font-style: italic; color: #333; }
-.rd2-frase__caja p { margin: 0; }
-.rd2-frase__caja p::before { content: "“"; } .rd2-frase__caja p::after { content: "”"; }
+/* Cómo se pide, Natalia, ventajas */
+.p2-pasos { background: #fff; }
+body.rd-prototipo-2 .rd-paso { background: var(--rd-fondo-suave); }
+body.rd-prototipo-2 .rd-paso__numero { background: #111; }
+.p2-natalia { background: #1a1a1a; color: #fff; }
+.p2-natalia__cuerpo { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding-top: 48px; padding-bottom: 48px; }
+.p2-natalia__foto { width: 100%; max-width: 597px; }
+.p2-natalia__texto .rd-seccion__titulo, .p2-natalia__texto p { color: #fff; }
+.p2-natalia__texto p { font-size: 15px; }
+body.rd-prototipo-2 .rd-ventajas { border: 0; }
+body.rd-prototipo-2 .rd-ico-estrella { background: #111; }
 
-/* Tarjetas y rejilla más sobrias */
-body.rd-prototipo-2 .rd-tarjeta__nombre { font-family: var(--rd-letra-titulos); font-weight: 400; font-size: 17px; }
-body.rd-prototipo-2 .rd-tarjeta__foto { background: #fff; }
-body.rd-prototipo-2 .rd-precio__importe { font-family: var(--rd-letra-titulos); font-size: 22px; font-weight: 400; }
-body.rd-prototipo-2 .rd-tarjeta__acciones .rd-btn { flex: none; width: auto; }
-body.rd-prototipo-2 .rd-listado__titulo { font-size: 32px; }
-body.rd-prototipo-2 .rd-listado__cabecera { background: #f6f6f6; padding: 20px; }
+/* Categoría: cabecera gris claro, tres columnas grandes */
+body.rd-prototipo-2 .rd-listado__cabecera { background: var(--rd-fondo-suave); padding: 36px 32px; margin: 0 -20px 24px; }
+body.rd-prototipo-2 .rd-listado__titulo { font-size: 34px; }
 body.rd-prototipo-2 .rd-arbol a { font-size: 14px; }
+body.rd-prototipo-2 .rd-paginacion a, body.rd-prototipo-2 .rd-paginacion span { border-radius: 2px; }
+body.rd-prototipo-2 .rd-paginacion__actual { background: #111; border-color: #111; }
 
 /* Ficha */
-body.rd-prototipo-2 .rd-ficha__titulo { font-size: 34px; }
-body.rd-prototipo-2 .rd-precio--grande { border: 0; padding: 4px 0; }
-body.rd-prototipo-2 .rd-precio--grande .rd-precio__importe { font-family: var(--rd-letra-titulos); font-weight: 400; font-size: 36px; }
-body.rd-prototipo-2 .rd-pestanas { border: 1px solid #e5e5e5; padding: 20px 24px; }
-body.rd-prototipo-2 .rd-pestanas__botones { justify-content: center; }
+body.rd-prototipo-2 .rd-ficha__titulo { font-size: 30px; }
+body.rd-prototipo-2 .rd-galeria__mini { border-radius: 0; }
+body.rd-prototipo-2 .rd-pedido__cantidad input { border-radius: 2px; }
 
-/* Ventajas y pie sobrios */
-body.rd-prototipo-2 .rd-ventajas { border: 0; background: #fff; }
-body.rd-prototipo-2 .rd-ventaja__titulo { font-family: var(--rd-letra-titulos); font-weight: 400; font-size: 18px; }
-body.rd-prototipo-2 .rd-pie { border-top: 1px solid #eee; }
+/* Pie oscuro */
+body.rd-prototipo-2 .rd-pie__copy, body.rd-prototipo-2 .rd-pie__leader { color: #bbb; }
+body.rd-prototipo-2 .rd-pie__leader { border-top-color: #333; }
+body.rd-prototipo-2 .rd-pie__marca img { background: #fff; padding: 6px; }
 
 @media (max-width: 1023px) {
-  body.rd-prototipo-2 .rd-cab__fila { justify-content: space-between; }
-  body.rd-prototipo-2 .rd-logo { flex: 0 1 auto; }
-  body.rd-prototipo-2 .rd-menu { margin-top: 0; }
-  .rd2-hero__rotulo { font-size: 48px; }
-  .rd2-banner__enlace { grid-template-columns: 1fr; }
-  .rd2-banner__enlace img { max-width: none; height: 220px; }
-  .rd2-banner:nth-of-type(odd) .rd2-banner__enlace img { order: 0; }
-  .rd2-tarjetas__lista { grid-template-columns: 1fr; }
+  .p2-carrusel { grid-auto-columns: calc((100% - 40px) / 3); }
+  .p2-cuadros, .p2-natalia__cuerpo { grid-template-columns: 1fr; }
+  .p2-hero { min-height: 420px; }
+  .p2-hero__titulo { font-size: 32px; }
 }
 @media (max-width: 599px) {
-  body.rd-prototipo-2 .rd-barra__contacto, body.rd-prototipo-2 .rd-barra__idiomas { display: none; }
-  body.rd-prototipo-2 .rd-barra__fila { justify-content: center; }
-  .rd2-hero__foto img { max-height: 260px; }
-  .rd2-hero__rotulo { font-size: 36px; }
-  .rd2-frase { padding: 32px 0; }
-  .rd2-frase__caja { padding: 24px; font-size: 20px; }
-  .rd2-banner__rotulo { font-size: 28px; }
+  .p2-carrusel { grid-auto-columns: 70%; }
+  .p2-hero { min-height: 380px; }
+  .p2-hero__titulo { font-size: 26px; }
+  .p2-hero__linea { font-size: 15px; }
+  .p2-banner__enlace, .p2-cuadro { min-height: 300px; }
+  .p2-banner__titulo { font-size: 26px; }
+  .p2-cuadro__texto { left: 20px; right: 20px; bottom: 20px; }
+  .p2-cuadro__texto strong { font-size: 24px; }
+  body.rd-prototipo-2 .rd-listado__cabecera { margin: 0 -16px 20px; padding: 24px 16px; }
 }
-
-/* Mismo marcado que el diseño publicado: lo que en la opción 2 era otra plantilla se resuelve aquí con estilos. */
-body.rd-prototipo-2 .rd-cab__fila { justify-content: center; }
-body.rd-prototipo-2 .rd-cab__wa { display: none; }
-body.rd-prototipo-2 .rd-barra__lista li::before { content: none; }
-body.rd-prototipo-2 .rd-barra__lista li:not(:first-child) { display: none; }
-body.rd-prototipo-2 .rd-barra__lista li { font-weight: 700; color: #333; }
-body.rd-prototipo-2 .rd-rejilla--3 { grid-template-columns: repeat(4, 1fr); }
-@media (max-width: 1023px) { body.rd-prototipo-2 .rd-rejilla--3 { grid-template-columns: repeat(2, 1fr); } }
