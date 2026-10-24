@@ -2,14 +2,27 @@
   "_nota": "Lo NUEVO de la web (Dec. 8: pedido por WhatsApp, sin carrito). Son los únicos textos que no vienen de la tienda vieja. Yama puede cambiarlos aquí.",
   "whatsapp_numero": "34643945052",
   "pedir_whatsapp": "Pedir por WhatsApp",
-  "mensaje_ficha": "Hola, quiero pedir: {nombre} (ref. {referencia}). Cantidad: {cantidad}. {url}",
+  "mensaje_ficha": "Hola, quiero pedir: {nombre} (ref. {referencia}). Cantidad: {cantidad} cm. {url}",
   "mensaje_lista": "Hola, me interesa: {nombre} (ref. {referencia}). {url}",
   "pie_pedidos_titulo": "Pedidos",
   "pie_pedidos_enlaces": [
-    { "texto": "Pedir por WhatsApp", "href": "https://wa.me/34643945052", "externo": true },
-    { "texto": "Contacte con nosotros", "href": "/es/contactenos" },
-    { "texto": "Envíos y devoluciones", "href": "/es/content/1-envios-y-devoluciones" },
-    { "texto": "Pago seguro", "href": "/es/content/5-pago-seguro" }
+    {
+      "texto": "Pedir por WhatsApp",
+      "href": "https://wa.me/34643945052",
+      "externo": true
+    },
+    {
+      "texto": "Contacte con nosotros",
+      "href": "/es/contactenos"
+    },
+    {
+      "texto": "Envíos y devoluciones",
+      "href": "/es/content/1-envios-y-devoluciones"
+    },
+    {
+      "texto": "Pago seguro",
+      "href": "/es/content/5-pago-seguro"
+    }
   ],
   "buscador_aviso": "El buscador se activará más adelante",
   "boletin_aviso": "La suscripción al boletín se activará más adelante",
@@ -18,5 +31,6 @@
   "adjunto_aviso": "Los archivos adjuntos no se pueden enviar desde este formulario; envíalos por WhatsApp o correo",
   "contacto_correo": "contacto@telasdemama.com",
   "disponible_texto": "En stock",
-  "_nota_disponible": "Fase 3 (PENDIENTE de Yama): la tienda vieja no escribe nada cuando hay existencias; el rediseño muestra este texto, tomado del filtro «Disponibilidad» de la propia tienda. «¡AGOTADO!» y «Últimas unidades en stock» son los textos originales."
+  "_nota_disponible": "Fase 3 (PENDIENTE de Yama): la tienda vieja no escribe nada cuando hay existencias; el rediseño muestra este texto, tomado del filtro «Disponibilidad» de la propia tienda. «¡AGOTADO!» y «Últimas unidades en stock» son los textos originales.",
+  "_nota_cantidad": "Yama, 24-10-2026: la venta es por centímetros (a petición del cliente); la cantidad del mensaje va en cm. Corte mínimo: [CONFIRMAR]."
 }

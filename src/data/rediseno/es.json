@@ -35,9 +35,9 @@
     },
     {
       "icono": "/img/iconos/whatsapp.png",
-      "titulo": "Pago acordado por WhatsApp",
+      "titulo": "Pago con tarjeta",
       "texto": "",
-      "_texto": "[CONFIRMAR formas de cobro] (informe §7.2): vacío hasta que Yama diga qué se anuncia."
+      "_texto": "Yama, 24-10-2026: el pago será con tarjeta. Cómo se cobra (enlace de pago, pasarela) se decide y se monta en la Fase 5; hasta entonces sin detalle."
     },
     {
       "icono": "",
@@ -134,8 +134,8 @@
       },
       {
         "pregunta": "¿Cómo se paga?",
-        "respuesta": "",
-        "_nota": "[CONFIRMAR formas de cobro] informe §7.2."
+        "respuesta": "Con tarjeta.",
+        "_nota": "Yama, 24-10-2026. El mecanismo de cobro se monta en la Fase 5."
       },
       {
         "pregunta": "¿Puedo devolver una tela?",
@@ -157,10 +157,11 @@
   "ficha": {
     "envio_linea": "Envío en 48 h tras el pago · Gratis en Península desde 50 €",
     "pedir": "Pedir por WhatsApp",
-    "cantidad_nota": "",
-    "_cantidad_nota": "[CONFIRMAR unidad de la cantidad] informe §7.1: vacío hasta que Yama diga qué es «cantidad 1».",
+    "cantidad_nota": "La tela se vende por centímetros.",
+    "_cantidad_nota": "Yama, 24-10-2026: venta por centímetros a petición del cliente. El corte mínimo sigue [CONFIRMAR] (informe §7.1).",
     "otros_titulo": "Otras telas de la misma categoría",
-    "ver_tela": "Ver tela"
+    "ver_tela": "Ver tela",
+    "cantidad_etiqueta": "Cantidad (cm)"
   },
   "pie": {
     "pedidos": "Pedidos",

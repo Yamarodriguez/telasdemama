@@ -50,7 +50,7 @@ const largaDistinta = Boolean(p.descripcion) && textoPlano(p.descripcion).trim()
     {puede ? (
       <form class="rd-pedido" action="#" method="post" data-mensaje={mensaje} data-numero={n.whatsapp_numero}>
         <label class="rd-pedido__cantidad" for="rd-cantidad">
-          <span>{t.cantidad}</span>
+          <span>{r.ficha.cantidad_etiqueta || t.cantidad}</span>
           <input type="number" id="rd-cantidad" name="qty" value={p.cantidad_minima || 1} min={p.cantidad_minima || 1} step="1" inputmode="numeric" />
         </label>
         <a class="rd-btn rd-btn--wa rd-btn--grande rd-pedido__boton" href={whatsapp} target="_blank" rel="noreferrer noopener"><span class="rd-ico-wa" aria-hidden="true"></span>{r.ficha.pedir}</a>
