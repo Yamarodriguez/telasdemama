@@ -1,0 +1,71 @@
+/* PROTOTIPO 3 (para enseñar al cliente; la web publicada no lo usa) — «taller editorial»: cabecera oscura, letra con
+   serifa (Playfair Display, Google Fonts) para los títulos, mosaico de telas en el hero, esquinas rectas, y opiniones
+   y preguntas frecuentes a dos columnas. Mismos textos y datos que el diseño publicado. */
+@import url("rediseno.css");
+
+body.rd-prototipo-3 {
+  --rd-letra-titulos: "Playfair Display", Georgia, serif;
+  --rd-texto: #1f1f1f;
+  --rd-fondo: #fff;
+  --rd-fondo-suave: #f3f1ed;
+  --rd-acento: #d9566b;
+  --rd-acento-oscuro: #b8324a;
+  --rd-precio: #1f1f1f;
+  --rd-radio: 0;
+  --rd-radio-boton: 0;
+  --rd-tarjeta-borde: 1px solid #e3e3e3;
+  --rd-barra-fondo: #2b2b2b;
+  --rd-barra-texto: #ddd;
+  --rd-pie-fondo: #1f1f1f;
+  --rd-pie-texto: #e8e8e8;
+}
+body.rd-prototipo-3 h1, body.rd-prototipo-3 h2, body.rd-prototipo-3 h3 { font-weight: 400; letter-spacing: .2px; }
+body.rd-prototipo-3 .rd-barra__lista li::before { color: #f3b7c0; }
+
+/* Cabecera oscura; el logotipo (jpg con fondo blanco) va sobre una pastilla blanca */
+body.rd-prototipo-3 .rd-cab { background: #1f1f1f; color: #fff; }
+body.rd-prototipo-3 .rd-logo { background: #fff; padding: 6px 12px; }
+body.rd-prototipo-3 .rd-menu__lista > li > a { color: #fff; font-weight: 400; letter-spacing: .3px; font-size: 14px; padding: 10px 9px; }
+body.rd-prototipo-3 .rd-cab__fila { gap: 16px; }
+body.rd-prototipo-3 .rd-menu__lista > li > a:hover, body.rd-prototipo-3 .rd-menu__actual > a { border-bottom-color: #f3b7c0; }
+body.rd-prototipo-3 .rd-menu__flecha { color: #fff; }
+body.rd-prototipo-3 .rd-menu__sub a { color: #1f1f1f; }
+body.rd-prototipo-3 .rd-menu-boton { color: #fff; border-color: #555; }
+body.rd-prototipo-3 .rd-cab__wa { color: #fff; }
+@media (max-width: 1023px) { body.rd-prototipo-3 .rd-menu__lista > li > a { border-bottom-color: #333; } }
+
+/* Hero: mosaico de telas con el texto encima */
+.rd3-hero { position: relative; background: #1f1f1f; color: #fff; overflow: hidden; }
+.rd3-mosaico { display: grid; grid-template-columns: repeat(6, 1fr); }
+.rd3-mosaico li { aspect-ratio: 3 / 4; overflow: hidden; max-height: 520px; }
+.rd3-mosaico img { width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.rd3-hero__texto { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; background: linear-gradient(rgba(0, 0, 0, .15), rgba(0, 0, 0, .45)); }
+.rd3-hero__titulo { font-size: 52px; color: #fff; max-width: 900px; margin-bottom: 14px; text-shadow: 0 2px 14px rgba(0, 0, 0, .5); }
+.rd3-hero__linea { font-size: 18px; max-width: 640px; color: #f4f4f4; margin-bottom: 22px; text-shadow: 0 1px 8px rgba(0, 0, 0, .6); }
+.rd3-hero .rd-btn--primario { background: #fff; color: #1f1f1f; }
+
+/* Opiniones y preguntas a dos columnas */
+.rd3-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px; max-width: 1200px; margin: 0 auto; }
+.rd3-dos .rd-faq { background: transparent; }
+.rd3-dos .rd-faq__item { background: var(--rd-fondo-suave); }
+
+/* Tarjetas sobrias */
+body.rd-prototipo-3 .rd-tarjeta:hover { box-shadow: none; border-color: #1f1f1f; }
+body.rd-prototipo-3 .rd-tarjeta__nombre { font-family: var(--rd-letra-titulos); font-size: 17px; font-weight: 400; }
+
+/* Pie oscuro */
+body.rd-prototipo-3 .rd-pie__copy, body.rd-prototipo-3 .rd-pie__leader { color: #bbb; }
+body.rd-prototipo-3 .rd-pie__leader { border-top-color: #333; }
+body.rd-prototipo-3 .rd-pie__marca img { background: #fff; padding: 6px; }
+
+@media (max-width: 1023px) {
+  .rd3-mosaico { grid-template-columns: repeat(3, 1fr); }
+  .rd3-mosaico li:nth-child(n + 4) { display: none; }
+  .rd3-hero__titulo { font-size: 34px; }
+  .rd3-dos { grid-template-columns: 1fr; }
+}
+@media (max-width: 599px) {
+  .rd3-mosaico li { aspect-ratio: 3 / 5; }
+  .rd3-hero__titulo { font-size: 28px; }
+  .rd3-hero__linea { font-size: 15px; }
+}

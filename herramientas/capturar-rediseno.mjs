@@ -4,9 +4,12 @@
 // No pide nada a telasdemama.com. Compila en su propia carpeta, dist-rediseno/ (no toca dist/, que usan las
 // comprobaciones y el hook pre-push).
 //
-// Uso: node herramientas/capturar-rediseno.mjs [--solo nuevo|ahora] [--anchos 1400,390] [--sin-compilar] [--alto-1400 2400] [--alto-390 2600]
-//   --sin-compilar: captura lo que haya en dist-rediseno/ (solo tiene sentido con --solo).
-// Salida: capturas/rediseno-<ahora|nuevo>-<pagina>-<ancho>.png y capturas/rediseno-comparativa-<pagina>-<ancho>.png
+// Prototipos para enseñar al cliente (Yama, 24-10-2026): --solo prototipo-2,prototipo-3 compila con REDISENO_PROTOTIPO=2|3
+// (la web publicada nunca los lleva) y los añade a la comparativa: ahora | nuevo | prototipo 2 | prototipo 3.
+//
+// Uso: node herramientas/capturar-rediseno.mjs [--solo ahora,nuevo,prototipo-2,prototipo-3] [--anchos 1400,390] [--sin-compilar] [--alto-1400 2400] [--alto-390 2600]
+//   --sin-compilar: captura lo que haya en dist-rediseno/ (solo tiene sentido con un --solo de una versión).
+// Salida: capturas/rediseno-<version>-<pagina>-<ancho>.png y capturas/rediseno-comparativa-<pagina>-<ancho>.png
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -22,7 +25,8 @@ const ALTO = { 1400: Number(arg('alto-1400', 2400)), 390: Number(arg('alto-390',
 const SIN_COMPILAR = process.argv.includes('--sin-compilar');
 const PUERTO = 8093;
 const SALIDA = 'dist-rediseno'; // carpeta propia: dist/ es de las comprobaciones (npm run todo:visual, hook pre-push)
-const NOMBRES = { ahora: 'Ahora (copia fiel)', nuevo: 'Nuevo diseño' };
+const NOMBRES = { ahora: 'Ahora (copia fiel)', nuevo: 'Diseño elegido', 'prototipo-2': 'Prototipo 2 · Al estilo de quekucas', 'prototipo-3': 'Prototipo 3 · Taller editorial' };
+const TODAS = ['ahora', 'nuevo', 'prototipo-2', 'prototipo-3'];
 const PERMITIDOS = /^https?:\/\/(localhost|fonts\.googleapis\.com|fonts\.gstatic\.com|revi\.io|[a-z0-9.-]*\.revi\.io)(:|\/|$)/;
 
 const rediseno = JSON.parse(fs.readFileSync('src/data/rediseno.json', 'utf8'));
@@ -30,8 +34,10 @@ const paginas = rediseno.paginas;
 fs.mkdirSync('capturas', { recursive: true });
 
 function compilar(version) {
-  const env = { ...process.env, REDISENO: version === 'nuevo' ? '1' : '0' };
-  process.stdout.write(`\n=== compilar (${version === 'nuevo' ? 'rediseño encendido' : 'copia fiel'}) ===\n`);
+  const env = { ...process.env, REDISENO: version === 'ahora' ? '0' : '1' };
+  delete env.REDISENO_PROTOTIPO;
+  if (version.startsWith('prototipo-')) env.REDISENO_PROTOTIPO = version.slice('prototipo-'.length);
+  process.stdout.write(`\n=== compilar (${NOMBRES[version] ?? version}) ===\n`);
   const r = process.platform === 'win32' ? spawnSync('npx astro build --outDir ' + SALIDA, { stdio: 'inherit', shell: true, env }) : spawnSync('npx', ['astro', 'build', '--outDir', SALIDA], { stdio: 'inherit', env });
   if (r.status !== 0) { console.log('Falló la compilación.'); process.exit(1); }
 }
@@ -74,7 +80,7 @@ for (const version of VERSIONES) {
       const page = await contexto.newPage();
       await page.goto(`http://localhost:${PUERTO}${pagina}`, { waitUntil: 'networkidle' });
       const tieneRediseno = await page.evaluate(() => document.body.classList.contains('rd'));
-      if (version === 'nuevo' && !tieneRediseno) console.log(`AVISO: ${pagina} no lleva el rediseño (¿${SALIDA}/ compilado sin REDISENO=1?)`);
+      if (version !== 'ahora' && !tieneRediseno) console.log(`AVISO: ${pagina} no lleva el rediseño (¿${SALIDA}/ compilado sin REDISENO=1?)`);
       if (version === 'ahora' && tieneRediseno) console.log(`AVISO: ${pagina} lleva el rediseño en la columna «ahora»`);
       await page.evaluate(async () => { await document.fonts.ready; });
       await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 700) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 40)); } window.scrollTo(0, 0); });
@@ -100,12 +106,12 @@ async function etiqueta(texto, anchoImg) {
 for (const pagina of paginas) {
   for (const ancho of ANCHOS) {
     const columnas = [];
-    for (const version of ['ahora', 'nuevo']) {
+    for (const version of TODAS) {
       const fichero = path.join('capturas', `rediseno-${version}-${slug(pagina)}-${ancho}.png`);
       if (fs.existsSync(fichero)) columnas.push({ version, fichero });
     }
     if (columnas.length < 2) continue;
-    const anchoCol = ancho >= 1000 ? 700 : ancho;
+    const anchoCol = ancho >= 1000 ? (columnas.length > 2 ? 600 : 700) : ancho;
     const altoCol = Math.round(ALTO[ancho] * (anchoCol / ancho));
     const SEP = 24;
     const partes = [];

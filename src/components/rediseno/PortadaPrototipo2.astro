@@ -1,0 +1,87 @@
+---
+/**
+ * PROTOTIPO 2 para enseñar al cliente (informe §6, estructura al estilo de quekucas.es con fotos y textos propios):
+ * solo existe al compilar con REDISENO_PROTOTIPO=2 (capturas); la web publicada no lo usa. Hero
+ * «Nueva colección» con rótulo caligráfico, Novedades, tres tarjetas de categoría sobre un fondo de tela propia,
+ * dos banners a todo el ancho (Nueva colección, Ofertas), frase de marca, «Nuestras combinaciones», ventajas y Revi.
+ */
+import { bloques, catalogo } from '../../lib/catalogo';
+import { textosRediseno, webpDe, srcsetWebp, foto, primeraFotoDeCategoria, primeraFotoDeLista, combinaciones } from '../../lib/rediseno';
+import Tarjeta from './Tarjeta.astro';
+import Ventajas from './Ventajas.astro';
+import Opiniones from './Opiniones.astro';
+interface Props { idioma: string; h1: string }
+const { idioma, h1 } = Astro.props;
+const t = textosRediseno(idioma);
+const o2 = t.prototipo2;
+const c = catalogo(idioma);
+const po = bloques(idioma).portada;
+const destacados = c.productosDe(po.destacados.productos);
+// La categoría «Nueva colección» (139) está vacía en el catálogo bajado: si no hay foto, se usa la primera de los destacados.
+const heroProducto = (o2.hero.categoria_id && primeraFotoDeCategoria(idioma, o2.hero.categoria_id)) || destacados.find((p) => p.imagenes.length > 0);
+const heroImg = heroProducto?.imagenes.find((i) => i.portada) ?? heroProducto?.imagenes[0];
+const heroWebp = webpDe(heroImg?.id);
+const fondoTela = c.productos.flatMap((p) => p.imagenes).find((i) => i.id === o2.fondo_tela_imagen_id);
+const banners = o2.banners.map((b: any) => {
+  const p = (b.categoria_id ? primeraFotoDeCategoria(idioma, b.categoria_id) : primeraFotoDeLista(idioma, b.lista)) ?? destacados.find((x) => x.imagenes.length > 0);
+  return { ...b, imagen: p ? foto(p, 'large_default', idioma) : null };
+});
+const combos = combinaciones(idioma).slice(0, 8);
+---
+<h1 class="rd-oculto">{h1}</h1>
+<section class="rd2-hero">
+  <a class="rd2-hero__enlace" href={o2.hero.href}>
+    {heroImg && (
+      <picture class="rd2-hero__foto">
+        {heroWebp && <source type="image/webp" srcset={srcsetWebp(heroWebp)} sizes="100vw" />}
+        <img src={heroImg.por_tamano.large_default} alt="" width={heroWebp?.ancho ?? 1000} height={heroWebp?.alto ?? 750} fetchpriority="high" />
+      </picture>
+    )}
+    <span class="rd2-hero__rotulo">{o2.hero.rotulo}</span>
+  </a>
+</section>
+
+<section class="rd-seccion rd-novedades">
+  <div class="rd-contenedor">
+    <h2 class="rd-seccion__titulo rd-seccion__titulo--centrado">{t.novedades.titulo}</h2>
+    <ul class="rd-carrusel">
+      {destacados.map((p, i) => <li><Tarjeta producto={p} idioma={idioma} prioridad={i < 4} /></li>)}
+    </ul>
+    <p class="rd-centrado"><a class="rd-btn rd-btn--secundario" href={t.novedades.href}>{o2.ver_todas}</a></p>
+  </div>
+</section>
+
+<section class="rd2-tarjetas" style={fondoTela ? `background-image:url('${fondoTela.por_tamano.large_default}')` : undefined}>
+  <div class="rd-contenedor rd2-tarjetas__lista">
+    {o2.tarjetas.map((x: any) => <a class="rd2-tarjeta" href={x.href}>{x.titulo}</a>)}
+  </div>
+</section>
+
+{banners.map((b: any) => (
+  <section class="rd2-banner">
+    <a class="rd2-banner__enlace" href={b.href}>
+      {b.imagen && <img src={b.imagen} alt="" width="1000" height="750" loading="lazy" />}
+      <span class="rd2-banner__rotulo">{b.titulo}</span>
+    </a>
+  </section>
+))}
+
+<section class="rd2-frase">
+  <div class="rd-contenedor">
+    <blockquote class="rd2-frase__caja"><p>{o2.frase}</p></blockquote>
+  </div>
+</section>
+
+{combos.length > 0 && (
+  <section class="rd-seccion rd-combinaciones">
+    <div class="rd-contenedor">
+      <h2 class="rd-seccion__titulo rd-seccion__titulo--centrado">{o2.combinaciones.titulo}</h2>
+      <ul class="rd-carrusel">
+        {combos.map((p) => <li><Tarjeta producto={p} idioma={idioma} /></li>)}
+      </ul>
+    </div>
+  </section>
+)}
+
+<Ventajas idioma={idioma} />
+<Opiniones idioma={idioma} />

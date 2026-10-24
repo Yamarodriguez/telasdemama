@@ -98,6 +98,28 @@ export function srcsetWebp(w: Webp): string {
   return w.anchos.map((a) => `${w.base}-${a}.webp ${a}w`).join(', ');
 }
 
+/* ---- Solo para los prototipos que se enseñan al cliente (REDISENO_PROTOTIPO=2|3) ---- */
+
+/** Primer producto con foto de una categoría (foto grande para banners y hero del prototipo 2). */
+export function primeraFotoDeCategoria(idioma: string, idCategoria: number): Producto | undefined {
+  const c = catalogo(idioma);
+  const cat = c.categoriaPorId.get(idCategoria);
+  if (!cat) return undefined;
+  return c.productosDe(cat.productos).find((p) => p.imagenes.length > 0);
+}
+
+/** Primer producto con foto de una lista (más vendidos, novedades, rebajados). */
+export function primeraFotoDeLista(idioma: string, tipo: string): Producto | undefined {
+  const c = catalogo(idioma);
+  const o = Object.values(c.otras).find((x) => x.tipo === tipo);
+  return o ? c.productosDe(o.productos ?? []).find((p) => p.imagenes.length > 0) : undefined;
+}
+
+/** Las fichas «COMBINACION …» (sin precio), para «Nuestras combinaciones» del prototipo 2. */
+export function combinaciones(idioma: string): Producto[] {
+  return catalogo(idioma).productos.filter((p) => /^COMBINACI/i.test(p.nombre) && p.imagenes.length > 0);
+}
+
 /** Subtítulo y párrafos de «Sobre mí» (cms 4), tal cual, para el bloque de Natalia. */
 export function sobreMi(idioma: string): { subtitulo: string; parrafos: string[]; href: string } {
   const c = catalogo(idioma);

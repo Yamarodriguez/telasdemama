@@ -151,7 +151,8 @@
   "listado": {
     "subcategorias": "Categorías",
     "pagina_anterior": "Anterior",
-    "pagina_siguiente": "Siguiente"
+    "pagina_siguiente": "Siguiente",
+    "mostrando": "Mostrando {desde}-{hasta} de {total}"
   },
   "ficha": {
     "envio_linea": "Envío en 48 h tras el pago · Gratis en Península desde 50 €",
@@ -165,5 +166,52 @@
     "pedidos": "Pedidos",
     "contacto": "Contacto",
     "redes": "Síguenos"
+  },
+  "prototipo2": {
+    "barra": "Envío gratis en Península desde 50 €",
+    "hero": {
+      "rotulo": "Nueva colección",
+      "href": "/es/novedades",
+      "categoria_id": 0,
+      "_imagen": "Foto grande: la primera tela de los destacados de la portada, hasta que haya fotos nuevas (informe §7.5). La categoría «Nueva colección» (139) está vacía en el catálogo bajado, por eso el rótulo enlaza a Novedades."
+    },
+    "tarjetas": [
+      {
+        "titulo": "Telas infantiles",
+        "href": "/es/3-telas"
+      },
+      {
+        "titulo": "Básicos",
+        "href": "/es/12-composicion"
+      },
+      {
+        "titulo": "Mercería",
+        "href": "/es/6-merceria"
+      }
+    ],
+    "fondo_tela_imagen_id": 588,
+    "_fondo_tela": "Fondo de tela tras las tarjetas: una foto propia de la tienda (VICHY ALGODON CELESTE 5MM, imagen 588), nunca de quekucas.",
+    "banners": [
+      {
+        "titulo": "Nueva colección",
+        "href": "/es/139-nueva-coleccion",
+        "categoria_id": 139,
+        "_nota": "La categoría está vacía en el catálogo bajado (inventario §11): el banner usa la foto de los destacados hasta que Yama decida."
+      },
+      {
+        "titulo": "Ofertas",
+        "href": "/es/productos-rebajados",
+        "lista": "prices-drop"
+      }
+    ],
+    "frase": "buscando y seleccionando las telas más bonitas para confección infantil",
+    "_frase": "Literal de la página «Sobre mí» actual.",
+    "combinaciones": {
+      "titulo": "Nuestras combinaciones",
+      "ver": "Ver",
+      "_nota": "Las fichas «COMBINACION …» actuales, sin precio (informe §7.4: Yama decide si se mantienen)."
+    },
+    "ver_todas": "Todas las novedades",
+    "_nota": "Solo para el prototipo 2 (al estilo de quekucas) que se enseña al cliente; la web publicada no lo usa."
   }
 }

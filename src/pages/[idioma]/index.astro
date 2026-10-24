@@ -5,6 +5,9 @@ import Portada from '../../components/plantillas/Portada.astro';
 import { idiomas, catalogo } from '../../lib/catalogo';
 import Rediseno from '../../layouts/Rediseno.astro';
 import PortadaRd from '../../components/rediseno/Portada.astro';
+import PortadaPrototipo2 from '../../components/rediseno/PortadaPrototipo2.astro';
+import PortadaPrototipo3 from '../../components/rediseno/PortadaPrototipo3.astro';
+import { REDISENO } from '../../lib/sitio';
 import { redisenoActivo } from '../../lib/sitio';
 import { tituloPortada, h1Portada } from '../../lib/reglas-titulos.mjs';
 
@@ -18,7 +21,8 @@ const rd = redisenoActivo(`/${idioma}/`);
 ---
 {rd ? (
   <Rediseno idioma={idioma} tipo="index" title={tituloPortada(idioma, o.title)} description={o.meta_description} keywords={o.meta_keywords ?? ''} canonical="" hreflang={o.hreflang} urlActual={`/${idioma}/`}>
-    <PortadaRd idioma={idioma} h1={h1Portada(idioma)} />
+    {/* Los prototipos para el cliente solo existen al compilar con REDISENO_PROTOTIPO=2|3 (capturas). */}
+    {REDISENO.prototipo === '2' ? <PortadaPrototipo2 idioma={idioma} h1={h1Portada(idioma)} /> : REDISENO.prototipo === '3' ? <PortadaPrototipo3 idioma={idioma} h1={h1Portada(idioma)} /> : <PortadaRd idioma={idioma} h1={h1Portada(idioma)} />}
   </Rediseno>
 ) : (
   <Base idioma={idioma} tipo="index" layout="layout-full-width" title={tituloPortada(idioma, o.title)} description={o.meta_description} keywords={o.meta_keywords ?? ''} canonical="" hreflang={o.hreflang} urlActual={`/${idioma}/`} migas={o.breadcrumb} portada>

@@ -69,6 +69,12 @@ export const REDISENO = {
   idiomas: ((rediseno as any).idiomas ?? []) as string[],
   /** Páginas sueltas con el rediseño (y muestra para las capturas). */
   paginas: rediseno.paginas as string[],
+  /**
+   * Prototipos para enseñar al cliente (Yama, 24-10-2026): «2» (al estilo de quekucas) y «3» (taller editorial).
+   * Solo existen al compilar con REDISENO_PROTOTIPO=2|3 (lo hace herramientas/capturar-rediseno.mjs);
+   * la web publicada no los lleva nunca: va siempre con el diseño elegido.
+   */
+  prototipo: /^[23]$/.test(process.env.REDISENO_PROTOTIPO ?? '') ? (process.env.REDISENO_PROTOTIPO as string) : '',
 };
 
 /** ¿Esta página (ruta sin dominio, como /es/3-telas) lleva el rediseño? */

@@ -1,0 +1,103 @@
+---
+/**
+ * PROTOTIPO 3 para enseñar al cliente, «taller editorial»: cabecera oscura, letra con serifa, mosaico de telas
+ * en el hero (fotos de los destacados), y opiniones y preguntas frecuentes a dos columnas. Mismos textos y datos
+ * que el diseño publicado. Solo existe al compilar con REDISENO_PROTOTIPO=3 (capturas); la web no lo usa.
+ */
+import { bloques, catalogo } from '../../lib/catalogo';
+import { textosRediseno, whatsappGenerico, webpMedioDe, srcsetWebp, sobreMi, foto } from '../../lib/rediseno';
+import Tarjeta from './Tarjeta.astro';
+import Ventajas from './Ventajas.astro';
+import Opiniones from './Opiniones.astro';
+import Faq from './Faq.astro';
+interface Props { idioma: string; h1: string }
+const { idioma, h1 } = Astro.props;
+const t = textosRediseno(idioma);
+const c = catalogo(idioma);
+const po = bloques(idioma).portada;
+const destacados = c.productosDe(po.destacados.productos);
+const titulo = t.hero.titulo || h1;
+const mosaico = destacados.filter((p) => p.imagenes.length > 0).slice(0, 6);
+const natalia = sobreMi(idioma);
+---
+<section class="rd3-hero">
+  <ul class="rd3-mosaico" aria-hidden="true">
+    {mosaico.map((p) => {
+      const img = p.imagenes.find((i) => i.portada) ?? p.imagenes[0];
+      const w = webpMedioDe(img?.id);
+      return (
+        <li>
+          <picture>
+            {w && <source type="image/webp" srcset={srcsetWebp(w)} sizes="17vw" />}
+            <img src={foto(p, 'medium_default', idioma)} alt="" width={w?.ancho ?? 382} height={w?.alto ?? 272} />
+          </picture>
+        </li>
+      );
+    })}
+  </ul>
+  <div class="rd3-hero__texto">
+    <h1 class="rd3-hero__titulo">{titulo}</h1>
+    <p class="rd3-hero__linea">{t.hero.texto}</p>
+    <div class="rd-botones">
+      <a class="rd-btn rd-btn--primario" href={t.hero.boton_telas_href}>{t.hero.boton_telas}</a>
+      <a class="rd-btn rd-btn--wa" href={whatsappGenerico(idioma)} target="_blank" rel="noreferrer noopener"><span class="rd-ico-wa" aria-hidden="true"></span>{t.hero.boton_whatsapp}</a>
+    </div>
+  </div>
+</section>
+
+<Ventajas idioma={idioma} />
+
+<section class="rd-seccion rd-accesos" aria-label="Secciones de la tienda">
+  <div class="rd-contenedor rd-accesos__lista">
+    {t.accesos.map((a: any) => (
+      <a class="rd-acceso" href={a.href}>
+        <img src={a.imagen} alt="" width={a.ancho} height={a.alto} loading="lazy" />
+        <span class="rd-acceso__texto"><strong>{a.titulo}</strong><small>{a.subtitulo}</small></span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<section class="rd-seccion rd-novedades">
+  <div class="rd-contenedor">
+    <div class="rd-seccion__cabecera">
+      <h2 class="rd-seccion__titulo">{t.novedades.titulo}</h2>
+      <a class="rd-enlace" href={t.novedades.href}>{t.novedades.ver_todas}</a>
+    </div>
+    <ul class="rd-carrusel">
+      {destacados.map((p, i) => <li><Tarjeta producto={p} idioma={idioma} prioridad={i < 4} /></li>)}
+    </ul>
+  </div>
+</section>
+
+<section class="rd-seccion rd-pasos">
+  <div class="rd-contenedor">
+    <h2 class="rd-seccion__titulo">{t.como_se_pide.titulo}</h2>
+    <ol class="rd-pasos__lista">
+      {t.como_se_pide.pasos.map((p: any, i: number) => (
+        <li class="rd-paso">
+          <span class="rd-paso__numero" aria-hidden="true">{i + 1}</span>
+          <strong>{p.titulo}</strong>
+          <p>{p.texto}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="rd-seccion rd-natalia">
+  <div class="rd-contenedor rd-natalia__cuerpo">
+    <img class="rd-natalia__foto" src={t.natalia.imagen} alt="" width={t.natalia.ancho} height={t.natalia.alto} loading="lazy" />
+    <div class="rd-natalia__texto">
+      <h2 class="rd-seccion__titulo">{t.natalia.titulo}</h2>
+      {natalia.subtitulo && <p class="rd-natalia__sub">{natalia.subtitulo}</p>}
+      {natalia.parrafos.map((p) => <p>{p}</p>)}
+      <a class="rd-enlace" href={natalia.href || t.natalia.href}>{t.natalia.enlace}</a>
+    </div>
+  </div>
+</section>
+
+<div class="rd3-dos">
+  <Opiniones idioma={idioma} />
+  <Faq idioma={idioma} />
+</div>
