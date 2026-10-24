@@ -1,17 +1,19 @@
 ---
 /**
- * Tarjeta de producto del rediseño (rejillas y carruseles). Foto mediana (382×272, sin estirar), nombre, precio
- * con «Impuestos incluidos» y, si la ficha lo tiene, el precio por unidad; botón «Pedir por WhatsApp» siempre
- * visible y enlace a la ficha. Opción 2: además una línea de descripción y la lupa en vez del texto «Ver tela».
+ * Tarjeta de producto del rediseño (rejillas y carruseles). Foto cuadrada (en webp y sin el relleno blanco de la
+ * tienda vieja, si herramientas/webp.mjs la generó; si no, el jpg mediano), nombre, precio con «Impuestos incluidos»
+ * y, si la ficha lo tiene, el precio por unidad; botón «Pedir por WhatsApp» siempre visible y enlace a la ficha.
+ * Las fichas sin precio (COMBINACIÓN) salen sin precio ni botón, solo con el enlace.
  */
 import type { Producto } from '../../lib/catalogo';
 import { textos, altImagen, bloques } from '../../lib/catalogo';
-import { textosRediseno, whatsappProducto, pedible, disponibilidad, precioPorUnidad, foto, lineaDescripcion } from '../../lib/rediseno';
-interface Props { producto: Producto; idioma: string; opcion: string; sinPrecio?: boolean; prioridad?: boolean }
-const { producto: p, idioma, opcion, sinPrecio = false, prioridad = false } = Astro.props;
+import { textosRediseno, whatsappProducto, pedible, disponibilidad, precioPorUnidad, foto, webpMedioDe, srcsetWebp } from '../../lib/rediseno';
+interface Props { producto: Producto; idioma: string; prioridad?: boolean }
+const { producto: p, idioma, prioridad = false } = Astro.props;
 const t = textos(idioma);
 const r = textosRediseno(idioma);
 const portada = p.imagenes.find((i) => i.portada) ?? p.imagenes[0];
+const webp = webpMedioDe(portada?.id);
 const leyendas = bloques(idioma).fichasExtra[String(p.id)]?.leyendas;
 const dispo = disponibilidad(p);
 const unidad = precioPorUnidad(p);
@@ -19,13 +21,15 @@ const puede = pedible(p);
 ---
 <article class="rd-tarjeta">
   <a class="rd-tarjeta__foto" href={p.url}>
-    <img src={foto(p, 'medium_default', idioma)} alt={altImagen(leyendas, portada?.id) || p.nombre} width="382" height="272" loading={prioridad ? 'eager' : 'lazy'} />
+    <picture>
+      {webp && <source type="image/webp" srcset={srcsetWebp(webp)} sizes="(min-width: 1024px) 380px, 50vw" />}
+      <img src={foto(p, 'medium_default', idioma)} alt={altImagen(leyendas, portada?.id) || p.nombre} width={webp?.ancho ?? 382} height={webp?.alto ?? 272} loading={prioridad ? 'eager' : 'lazy'} />
+    </picture>
     {dispo.texto && <span class:list={['rd-etiqueta', `rd-etiqueta--${dispo.estado}`]}>{dispo.texto}</span>}
   </a>
   <div class="rd-tarjeta__cuerpo">
     <h3 class="rd-tarjeta__nombre"><a href={p.url}>{p.nombre}</a></h3>
-    {opcion === '2' && lineaDescripcion(p) && <p class="rd-tarjeta__desc">{lineaDescripcion(p)}</p>}
-    {!sinPrecio && p.muestra_precio && (
+    {p.muestra_precio && (
       <p class="rd-precio">
         <strong class="rd-precio__importe">{p.precio_visible}</strong>
         {p.tiene_descuento && p.precio_tachado != null && <s class="rd-precio__antes">{p.precio_tachado.toFixed(2).replace('.', ',')} €</s>}
@@ -34,18 +38,10 @@ const puede = pedible(p);
       </p>
     )}
     <div class="rd-tarjeta__acciones">
-      {sinPrecio ? (
-        <a class="rd-btn rd-btn--secundario" href={p.url}>{r.opcion2.combinaciones.ver}</a>
-      ) : (
-        <Fragment>
-          <a class:list={['rd-btn rd-btn--wa', !puede && 'rd-btn--apagado']} href={puede ? whatsappProducto(idioma, p) : p.url} target={puede ? '_blank' : undefined} rel={puede ? 'noreferrer noopener' : undefined}><span class="rd-ico-wa" aria-hidden="true"></span>{r.ficha.pedir}</a>
-          {opcion === '2' ? (
-            <a class="rd-tarjeta__ver rd-tarjeta__ver--lupa" href={p.url} aria-label={`${t.mas_informacion}: ${p.nombre}`}><span class="rd-ico-lupa" aria-hidden="true"></span></a>
-          ) : (
-            <a class="rd-tarjeta__ver" href={p.url}>{r.novedades.ver_tela}</a>
-          )}
-        </Fragment>
+      {p.muestra_precio && (
+        <a class:list={['rd-btn rd-btn--wa', !puede && 'rd-btn--apagado']} href={puede ? whatsappProducto(idioma, p) : p.url} target={puede ? '_blank' : undefined} rel={puede ? 'noreferrer noopener' : undefined}><span class="rd-ico-wa" aria-hidden="true"></span>{r.ficha.pedir}</a>
       )}
+      <a class="rd-tarjeta__ver" href={p.url}>{r.novedades.ver_tela}</a>
     </div>
   </div>
 </article>

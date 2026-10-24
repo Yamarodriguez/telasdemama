@@ -4,9 +4,8 @@ import Base from '../../layouts/Base.astro';
 import Portada from '../../components/plantillas/Portada.astro';
 import { idiomas, catalogo } from '../../lib/catalogo';
 import Rediseno from '../../layouts/Rediseno.astro';
-import Portada1 from '../../components/rediseno/Portada1.astro';
-import Portada2 from '../../components/rediseno/Portada2.astro';
-import { REDISENO, redisenoActivo } from '../../lib/sitio';
+import PortadaRd from '../../components/rediseno/Portada.astro';
+import { redisenoActivo } from '../../lib/sitio';
 import { tituloPortada, h1Portada } from '../../lib/reglas-titulos.mjs';
 
 export function getStaticPaths() {
@@ -18,8 +17,8 @@ const o = catalogo(idioma).otras[`/${idioma}`];
 const rd = redisenoActivo(`/${idioma}/`);
 ---
 {rd ? (
-  <Rediseno idioma={idioma} tipo="index" opcion={REDISENO.opcion} title={tituloPortada(idioma, o.title)} description={o.meta_description} keywords={o.meta_keywords ?? ''} canonical="" hreflang={o.hreflang} urlActual={`/${idioma}/`}>
-    {REDISENO.opcion === '2' ? <Portada2 idioma={idioma} h1={h1Portada(idioma)} /> : <Portada1 idioma={idioma} h1={h1Portada(idioma)} />}
+  <Rediseno idioma={idioma} tipo="index" title={tituloPortada(idioma, o.title)} description={o.meta_description} keywords={o.meta_keywords ?? ''} canonical="" hreflang={o.hreflang} urlActual={`/${idioma}/`}>
+    <PortadaRd idioma={idioma} h1={h1Portada(idioma)} />
   </Rediseno>
 ) : (
   <Base idioma={idioma} tipo="index" layout="layout-full-width" title={tituloPortada(idioma, o.title)} description={o.meta_description} keywords={o.meta_keywords ?? ''} canonical="" hreflang={o.hreflang} urlActual={`/${idioma}/`} migas={o.breadcrumb} portada>

@@ -20,7 +20,7 @@ import TiendasRd from '../../components/rediseno/Tiendas.astro';
 import MapaRd from '../../components/rediseno/MapaDelSitio.astro';
 import MarcasRd from '../../components/rediseno/Marcas.astro';
 import ProveedoresRd from '../../components/rediseno/Proveedores.astro';
-import { REDISENO, redisenoActivo } from '../../lib/sitio';
+import { redisenoActivo } from '../../lib/sitio';
 
 export function getStaticPaths() {
   // Tipos de página suelta con plantilla propia (getStaticPaths no ve las constantes de fuera).
@@ -51,8 +51,8 @@ const urlActual = l ? l.base : decodeURIComponent(url);
 const rd = redisenoActivo(urlActual);
 ---
 {l && rd ? (
-  <Rediseno idioma={idioma} tipo={l.tipo} opcion={REDISENO.opcion} title={l.title} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual}>
-    <ListadoRd idioma={idioma} opcion={REDISENO.opcion} titulo={l.h1} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} migas={l.migas} marca={l.tipo === 'manufacturer' ? b.marcas[l.base] : undefined} />
+  <Rediseno idioma={idioma} tipo={l.tipo} title={l.title} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual}>
+    <ListadoRd idioma={idioma} titulo={l.h1} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} migas={l.migas} marca={l.tipo === 'manufacturer' ? b.marcas[l.base] : undefined} />
   </Rediseno>
 ) : l ? (
   <Base idioma={idioma} tipo={l.tipo} layout={l.layout} clasesExtra={l.clasesBody} title={l.title} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual} migas={l.migas} menuActual={l.menuActual}>
@@ -62,7 +62,7 @@ const rd = redisenoActivo(urlActual);
     <Listado idioma={idioma} tipo={l.tipo} titulo={l.titulo} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} facetas={l.facetas} orden={l.orden} />
   </Base>
 ) : rd ? (
-  <Rediseno idioma={idioma} tipo={clase === 'marcas' ? 'manufacturer' : clase} opcion={REDISENO.opcion} title={o!.title} description={o!.meta_description} canonical={o!.canonical} hreflang={o!.hreflang} urlActual={urlActual}>
+  <Rediseno idioma={idioma} tipo={clase === 'marcas' ? 'manufacturer' : clase} title={o!.title} description={o!.meta_description} canonical={o!.canonical} hreflang={o!.hreflang} urlActual={urlActual}>
     {clase === 'contact' && <ContactoRd idioma={idioma} titulo={o!.title} migas={o!.breadcrumb} />}
     {clase === 'stores' && <TiendasRd idioma={idioma} migas={o!.breadcrumb} />}
     {clase === 'sitemap' && <MapaRd idioma={idioma} migas={o!.breadcrumb} />}

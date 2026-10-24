@@ -2,18 +2,18 @@
 /**
  * Ficha del rediseño. Galería a la izquierda; a la derecha nombre, referencia, precio (y precio por unidad si la
  * ficha lo tiene), disponibilidad, cantidad, botón grande «Pedir por WhatsApp» con el mensaje precargado y la línea
- * de envío. Opción 1: descripción tal cual debajo, opiniones de Revi, accesorios y otras telas. Opción 2: lo mismo
- * en pestañas (Descripción / Detalles / Opiniones). El texto de la tela no se toca (regla A3).
+ * de envío; debajo la descripción tal cual, las opiniones de Revi, los accesorios y otras telas de la categoría.
+ * El texto de la tela no se toca (regla A3). Las fichas sin precio (COMBINACIÓN) salen sin precio ni botón.
  */
 import type { Producto } from '../../lib/catalogo';
-import { bloques, catalogo, textos, nuevo, numeroPlano } from '../../lib/catalogo';
+import { bloques, catalogo, textos, nuevo, textoPlano } from '../../lib/catalogo';
 import { absoluta, enlaceWhatsApp, plantilla, REVI } from '../../lib/sitio';
 import { textosRediseno, pedible, disponibilidad, precioPorUnidad } from '../../lib/rediseno';
-import { textoPlano } from '../../lib/catalogo';
 import Galeria from './Galeria.astro';
 import Tarjeta from './Tarjeta.astro';
-interface Props { idioma: string; opcion: string; producto: Producto }
-const { idioma, opcion, producto: p } = Astro.props;
+import Migas from './Migas.astro';
+interface Props { idioma: string; producto: Producto }
+const { idioma, producto: p } = Astro.props;
 const t = textos(idioma);
 const r = textosRediseno(idioma);
 const n = nuevo(idioma);
@@ -27,14 +27,10 @@ const mensaje = plantilla(n.mensaje_ficha, { nombre: p.nombre, referencia: p.ref
 const whatsapp = enlaceWhatsApp(n.whatsapp_numero, mensaje.replace('{cantidad}', String(p.cantidad_minima || 1)));
 const accesorios = c.productosDe(p.accesorios.map((a) => a.id));
 const otros = c.productosDe(extra.otros ?? []).slice(0, 8);
-const caracteristicas = (p as any).caracteristicas ?? [];
-const conDetalles = Boolean(p.referencia) || caracteristicas.length > 0;
 // En muchas fichas la descripción corta y la larga son el mismo texto: la larga solo se repite abajo si es distinta.
 const largaDistinta = Boolean(p.descripcion) && textoPlano(p.descripcion).trim() !== textoPlano(p.descripcion_corta || '').trim();
 ---
-<nav class="rd-contenedor rd-migas" aria-label="Estás en">
-  <ol>{p.breadcrumb.map((m, i) => <li>{i < p.breadcrumb.length - 1 ? <a href={m.url}>{m.texto}</a> : <span aria-current="page">{m.texto}</span>}</li>)}</ol>
-</nav>
+<Migas migas={p.breadcrumb} />
 <article class="rd-contenedor rd-ficha" data-id={p.id}>
   <div class="rd-ficha__galeria"><Galeria producto={p} idioma={idioma} /></div>
   <div class="rd-ficha__datos">
@@ -64,84 +60,50 @@ const largaDistinta = Boolean(p.descripcion) && textoPlano(p.descripcion).trim()
       p.muestra_precio && <p class="rd-pedido__agotado">{dispo.texto}</p>
     )}
     <p class="rd-ficha__envio">{r.ficha.envio_linea}</p>
-    {opcion === '1' && p.descripcion_corta && <div class="rd-ficha__corta rd-texto" set:html={p.descripcion_corta} />}
+    {p.descripcion_corta && <div class="rd-ficha__corta rd-texto" set:html={p.descripcion_corta} />}
   </div>
 </article>
 
-{opcion === '1' ? (
-  <div class="rd-contenedor rd-ficha__mas">
-    {largaDistinta && (
-      <section class="rd-ficha__bloque">
-        <h2 class="rd-seccion__titulo">{t.descripcion}</h2>
-        <div class="rd-texto" set:html={p.descripcion} />
-      </section>
-    )}
-    <section class="rd-ficha__bloque rd-ficha__revi">
-      <h2 class="rd-seccion__titulo">{t.opiniones}</h2>
-      <div id="revi_prod"></div>
-      <div class={`revi_widget_product_${REVI.tienda}`}></div>
+<div class="rd-contenedor rd-ficha__mas">
+  {largaDistinta && (
+    <section class="rd-ficha__bloque">
+      <h2 class="rd-seccion__titulo">{t.descripcion}</h2>
+      <div class="rd-texto" set:html={p.descripcion} />
     </section>
-  </div>
-) : (
-  <div class="rd-contenedor rd-ficha__mas">
-    <div class="rd-pestanas">
-      <div class="rd-pestanas__botones" role="tablist">
-        {p.descripcion && <button role="tab" type="button" aria-selected="true" aria-controls="rd-tab-descripcion" id="rd-btn-descripcion">{t.descripcion}</button>}
-        {conDetalles && <button role="tab" type="button" aria-selected={p.descripcion ? 'false' : 'true'} aria-controls="rd-tab-detalles" id="rd-btn-detalles">{r.ficha.detalles}</button>}
-        <button role="tab" type="button" aria-selected="false" aria-controls="rd-tab-opiniones" id="rd-btn-opiniones">{t.opiniones}</button>
-      </div>
-      {p.descripcion && <div class="rd-pestanas__panel rd-texto" role="tabpanel" id="rd-tab-descripcion" aria-labelledby="rd-btn-descripcion" set:html={p.descripcion} />}
-      {conDetalles && (
-        <div class="rd-pestanas__panel" role="tabpanel" id="rd-tab-detalles" aria-labelledby="rd-btn-detalles" hidden={Boolean(p.descripcion)}>
-          <dl class="rd-detalles">
-            {p.referencia && <Fragment><dt>{t.referencia}</dt><dd>{p.referencia}</dd></Fragment>}
-            {caracteristicas.map((x: any) => <Fragment><dt>{x.nombre}</dt><dd>{x.valor}</dd></Fragment>)}
-          </dl>
-        </div>
-      )}
-      <div class="rd-pestanas__panel" role="tabpanel" id="rd-tab-opiniones" aria-labelledby="rd-btn-opiniones" hidden>
-        <div id="revi_prod"></div>
-        <div class={`revi_widget_product_${REVI.tienda}`}></div>
-      </div>
-    </div>
-  </div>
-)}
+  )}
+  <section class="rd-ficha__bloque rd-ficha__revi">
+    <h2 class="rd-seccion__titulo">{t.opiniones}</h2>
+    <div id="revi_prod"></div>
+    <div class={`revi_widget_product_${REVI.tienda}`}></div>
+  </section>
+</div>
 <script is:inline type="text/javascript" set:html={`var s = document.createElement("script");s.type = "text/javascript";s.setAttribute("async", "");s.setAttribute("defer", "");s.src = "https://revi.io/widgets/product/${REVI.cuenta}/${p.id}/0/${REVI.tienda}/${idioma}";document.getElementsByTagName('body')[0].appendChild(s);`} />
 
 {accesorios.length > 0 && (
   <section class="rd-seccion rd-contenedor">
     <h2 class="rd-seccion__titulo">{t.accesorios}</h2>
-    <ul class="rd-carrusel">{accesorios.map((a) => <li><Tarjeta producto={a} idioma={idioma} opcion={opcion} /></li>)}</ul>
+    <ul class="rd-carrusel">{accesorios.map((a) => <li><Tarjeta producto={a} idioma={idioma} /></li>)}</ul>
   </section>
 )}
 {otros.length > 0 && (
   <section class="rd-seccion rd-contenedor">
     <h2 class="rd-seccion__titulo">{r.ficha.otros_titulo}</h2>
-    <ul class="rd-carrusel">{otros.map((o) => <li><Tarjeta producto={o} idioma={idioma} opcion={opcion} /></li>)}</ul>
+    <ul class="rd-carrusel">{otros.map((o) => <li><Tarjeta producto={o} idioma={idioma} /></li>)}</ul>
   </section>
 )}
 
 <script is:inline>
+  // El enlace de WhatsApp lleva la cantidad que escribe el cliente.
   (function () {
-    // El enlace de WhatsApp lleva la cantidad que escribe el cliente.
     var form = document.querySelector('.rd-pedido');
-    if (form) {
-      var enlace = form.querySelector('.rd-pedido__boton'), cantidad = form.querySelector('#rd-cantidad');
-      var actualizar = function () {
-        var n = parseInt(cantidad.value, 10); if (!(n > 0)) n = 1;
-        enlace.setAttribute('href', 'https://wa.me/' + form.getAttribute('data-numero') + '?text=' + encodeURIComponent(form.getAttribute('data-mensaje').replace('{cantidad}', n)));
-      };
-      cantidad.addEventListener('input', actualizar); cantidad.addEventListener('change', actualizar);
-      form.addEventListener('submit', function (e) { e.preventDefault(); actualizar(); window.open(enlace.getAttribute('href'), '_blank', 'noopener'); });
-      actualizar();
-    }
-    // Pestañas (opción 2).
-    var botones = document.querySelectorAll('.rd-pestanas [role="tab"]');
-    botones.forEach(function (b) {
-      b.addEventListener('click', function () {
-        botones.forEach(function (x) { x.setAttribute('aria-selected', 'false'); document.getElementById(x.getAttribute('aria-controls')).hidden = true; });
-        b.setAttribute('aria-selected', 'true'); document.getElementById(b.getAttribute('aria-controls')).hidden = false;
-      });
-    });
+    if (!form) return;
+    var enlace = form.querySelector('.rd-pedido__boton'), cantidad = form.querySelector('#rd-cantidad');
+    var actualizar = function () {
+      var n = parseInt(cantidad.value, 10); if (!(n > 0)) n = 1;
+      enlace.setAttribute('href', 'https://wa.me/' + form.getAttribute('data-numero') + '?text=' + encodeURIComponent(form.getAttribute('data-mensaje').replace('{cantidad}', n)));
+    };
+    cantidad.addEventListener('input', actualizar); cantidad.addEventListener('change', actualizar);
+    form.addEventListener('submit', function (e) { e.preventDefault(); actualizar(); window.open(enlace.getAttribute('href'), '_blank', 'noopener'); });
+    actualizar();
   })();
 </script>

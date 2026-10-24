@@ -5,7 +5,7 @@ import Listado from '../../../components/plantillas/Listado.astro';
 import { idiomas, bloques } from '../../../lib/catalogo';
 import Rediseno from '../../../layouts/Rediseno.astro';
 import ListadoRd from '../../../components/rediseno/Listado.astro';
-import { REDISENO, redisenoActivo } from '../../../lib/sitio';
+import { redisenoActivo } from '../../../lib/sitio';
 import { listados } from '../../../lib/paginas';
 
 export function getStaticPaths() {
@@ -22,8 +22,8 @@ const { slug } = Astro.props;
 const l = listados(idioma).find((x) => x.slug === slug)!;
 ---
 {redisenoActivo(l.base) ? (
-  <Rediseno idioma={idioma} tipo="manufacturer" opcion={REDISENO.opcion} title={l.title} description={l.description} canonical={l.canonical} hreflang={l.hreflang} urlActual={l.base}>
-    <ListadoRd idioma={idioma} opcion={REDISENO.opcion} titulo={l.titulo} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} migas={l.migas} marca={bloques(idioma).marcas[l.base]} />
+  <Rediseno idioma={idioma} tipo="manufacturer" title={l.title} description={l.description} canonical={l.canonical} hreflang={l.hreflang} urlActual={l.base}>
+    <ListadoRd idioma={idioma} titulo={l.titulo} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} migas={l.migas} marca={bloques(idioma).marcas[l.base]} />
   </Rediseno>
 ) : (
 <Base idioma={idioma} tipo="manufacturer" layout="layout-left-column" title={l.title} description={l.description} canonical={l.canonical} hreflang={l.hreflang} urlActual={l.base} migas={l.migas}>

@@ -5,8 +5,8 @@
  */
 import { bloques, nuevo } from '../../lib/catalogo';
 import { textosRediseno } from '../../lib/rediseno';
-interface Props { idioma: string; opcion: string }
-const { idioma, opcion } = Astro.props;
+interface Props { idioma: string }
+const { idioma } = Astro.props;
 const t = textosRediseno(idioma);
 const pie = bloques(idioma).pie;
 const cab = bloques(idioma).cabecera;

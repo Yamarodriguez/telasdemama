@@ -1,6 +1,34 @@
-/* Rediseño (Fase 3) — reglas comunes a las dos opciones. Cada opción (1.css, 2.css) importa esta hoja y define
-   colores, letras y formas en variables --rd-*. Esta hoja es la única que cargan las páginas del rediseño:
-   no toca las del tema Cosmetics. Medidas en px. Nunca cambia textos ni precios: solo cómo se ven. */
+/* Hoja del REDISEÑO (Fase 3, diseño elegido por Yama el 23-10-2026: «La tienda de telas infantiles de Asturias»,
+   informes/analisis-competencia.md §5). Es la única hoja de las páginas del rediseño: no toca las del tema Cosmetics.
+   Blanco y gris muy claro, el rosa y el verde agua de la tienda solo como acentos; Open Sans para el texto y
+   Philosopher para los títulos (las dos letras ya estaban en el tema, se reutilizan sus ficheros). Sin Segoe Script.
+   El rosa no va en texto pequeño: para texto se usa #d9566b (contraste 4,5 sobre blanco). Medidas en px.
+   Nunca cambia textos ni precios: solo cómo se ven. */
+
+@font-face { font-family: "Open Sans"; src: url("/themes/cosmetics_th/assets/css/ac327c4db6284ef64ebe872b6308f5da.woff") format("woff"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("/themes/cosmetics_th/assets/css/9f2144213fad53d4e0fdb26ecf93865f.woff") format("woff"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Open Sans"; src: url("/themes/cosmetics_th/assets/css/892667349c5cff6fcf7e40439596b97c.woff") format("woff"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Philosopher"; src: url("/themes/cosmetics_th/assets/css/e716c252efb90d4dcef8bd8408cf1c81.woff2") format("woff2"), url("/themes/cosmetics_th/assets/css/471708caea84ccf84d7ac0a8a1de55ec.woff") format("woff"); font-weight: 400 700; font-style: normal; font-display: swap; }
+
+body.rd {
+  --rd-letra: "Open Sans", Arial, sans-serif;
+  --rd-letra-titulos: "Philosopher", Georgia, serif;
+  --rd-texto: #2d2d2d;
+  --rd-fondo: #fff;
+  --rd-fondo-suave: #f7f5f2;
+  --rd-acento: #ef7e8e;
+  --rd-acento-oscuro: #d9566b;
+  --rd-precio: #d9566b;
+  --rd-wa: #075e54;
+  --rd-barra-fondo: #e3f3f2;
+  --rd-radio: 12px;
+  --rd-radio-boton: 24px;
+  --rd-tarjeta-fondo: #fff;
+  --rd-tarjeta-borde: 1px solid #ececec;
+  --rd-pie-fondo: #f7f5f2;
+}
+body.rd .rd-hero__titulo { color: #2d2d2d; }
+body.rd .rd-cab { border-bottom: 1px solid #efefef; }
 
 /* ===== Base ===== */
 *, *::before, *::after { box-sizing: border-box; }
@@ -38,9 +66,6 @@ button { font: inherit; cursor: pointer; }
 .rd-ico-wa { display: inline-block; width: 20px; height: 20px; background: currentColor; flex: none;
   -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/></svg>") center / contain no-repeat;
   mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z'/></svg>") center / contain no-repeat; }
-.rd-ico-lupa { display: inline-block; width: 18px; height: 18px; background: currentColor;
-  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10 2a8 8 0 016.32 12.9l5.39 5.4-1.41 1.4-5.4-5.38A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z'/></svg>") center / contain no-repeat;
-  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M10 2a8 8 0 016.32 12.9l5.39 5.4-1.41 1.4-5.4-5.38A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z'/></svg>") center / contain no-repeat; }
 .rd-ico-estrella { display: inline-block; width: 32px; height: 32px; background: var(--rd-acento, #ef7e8e);
   -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21.1l1.6-7L2 9.3l7.1-.7z'/></svg>") center / contain no-repeat;
   mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7L12 17.4 5.8 21.1l1.6-7L2 9.3l7.1-.7z'/></svg>") center / contain no-repeat; }
@@ -82,7 +107,9 @@ button { font: inherit; cursor: pointer; }
 .rd-hero__titulo { font-size: 44px; margin-bottom: 16px; }
 .rd-hero__linea { font-size: 18px; color: #4a4a4a; margin-bottom: 24px; }
 .rd-botones { display: flex; gap: 12px; flex-wrap: wrap; }
-.rd-hero__foto img { width: 100%; max-width: 1000px; border-radius: var(--rd-radio, 12px); }
+/* La foto llena su marco (4:3) sin estirarse: se recorta lo que sobra. El relleno blanco de la tienda vieja viene quitado (webp). */
+.rd-hero__foto { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--rd-radio, 12px); background: #f6f6f6; }
+.rd-hero__foto img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ===== Ventajas ===== */
 .rd-ventajas { background: #fff; border-top: 1px solid #efefef; border-bottom: 1px solid #efefef; }
@@ -105,18 +132,17 @@ button { font: inherit; cursor: pointer; }
 .rd-carrusel > li { scroll-snap-align: start; }
 .rd-rejilla { display: grid; gap: 20px; }
 .rd-rejilla--3 { grid-template-columns: repeat(3, 1fr); }
-.rd-rejilla--4 { grid-template-columns: repeat(4, 1fr); }
 .rd-tarjeta { height: 100%; display: flex; flex-direction: column; background: var(--rd-tarjeta-fondo, #fff); border: var(--rd-tarjeta-borde, 1px solid #ececec); border-radius: var(--rd-radio, 12px); overflow: hidden; transition: box-shadow .2s; }
 .rd-tarjeta:hover { box-shadow: 0 10px 28px rgba(0, 0, 0, .08); }
-.rd-tarjeta__foto { position: relative; display: block; background: #f6f6f6; }
-.rd-tarjeta__foto img { width: 100%; max-width: 382px; margin: 0 auto; }
+/* Foto cuadrada: llena el marco sin estirarse (recorta lo que sobra); el relleno blanco de la tienda vieja viene quitado (webp). */
+.rd-tarjeta__foto { position: relative; display: block; background: #f6f6f6; aspect-ratio: 1; overflow: hidden; }
+.rd-tarjeta__foto img { width: 100%; height: 100%; object-fit: cover; }
 .rd-etiqueta { position: absolute; left: 10px; top: 10px; padding: 3px 9px; border-radius: 4px; font-size: 12px; font-weight: 700; background: #fff; }
 .rd-etiqueta--agotado { color: #b3261e; }
 .rd-etiqueta--ultimas { color: #9a5a1c; }
 .rd-tarjeta__cuerpo { display: flex; flex-direction: column; gap: 8px; padding: 14px 14px 16px; flex: 1; }
 .rd-tarjeta__nombre { font-family: inherit; font-size: 15px; font-weight: 600; margin: 0; line-height: 1.35; }
 .rd-tarjeta__nombre a { text-decoration: none; }
-.rd-tarjeta__desc { font-size: 13px; color: #666; margin: 0; }
 .rd-precio { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; margin: 0; }
 .rd-precio__importe { font-size: 20px; color: var(--rd-precio, #d9566b); }
 .rd-precio__antes { color: #888; font-size: 14px; }
@@ -125,7 +151,6 @@ button { font: inherit; cursor: pointer; }
 .rd-tarjeta__acciones { margin-top: auto; display: flex; align-items: center; gap: 10px; }
 .rd-tarjeta__acciones .rd-btn { flex: 1; min-height: 42px; padding: 8px 10px; font-size: 14px; }
 .rd-tarjeta__ver { font-size: 13px; white-space: nowrap; }
-.rd-tarjeta__ver--lupa { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; border: 1px solid #ddd; border-radius: var(--rd-radio-boton, 24px); color: #555; }
 
 /* ===== Cómo se pide ===== */
 .rd-pasos { background: var(--rd-fondo-suave, #f7f5f2); }
@@ -192,12 +217,6 @@ button { font: inherit; cursor: pointer; }
 .rd-ficha__corta { margin-top: 20px; padding-top: 16px; border-top: 1px solid #eee; }
 .rd-ficha__mas { padding-bottom: 24px; }
 .rd-ficha__bloque { margin-bottom: 36px; }
-.rd-pestanas__botones { display: flex; gap: 6px; border-bottom: 2px solid #eee; margin-bottom: 20px; flex-wrap: wrap; }
-.rd-pestanas__botones button { background: none; border: 0; border-bottom: 3px solid transparent; margin-bottom: -2px; padding: 10px 16px; font-weight: 600; color: #666; }
-.rd-pestanas__botones button[aria-selected="true"] { color: var(--rd-texto, #2d2d2d); border-bottom-color: var(--rd-acento, #ef7e8e); }
-.rd-detalles { display: grid; grid-template-columns: max-content 1fr; gap: 8px 24px; font-size: 15px; }
-.rd-detalles dt { font-weight: 600; }
-.rd-detalles dd { margin: 0; }
 
 /* ===== Páginas sueltas: texto, contacto, tienda, mapa, marcas, 404 ===== */
 .rd-pagina { padding-top: 8px; padding-bottom: 48px; }
@@ -271,7 +290,7 @@ button { font: inherit; cursor: pointer; }
   .rd-hero__cuerpo, .rd-natalia__cuerpo, .rd-ficha { grid-template-columns: 1fr; gap: 24px; }
   .rd-ventajas__lista { grid-template-columns: repeat(2, 1fr); }
   .rd-carrusel { grid-auto-columns: calc((100% - 20px) / 2); }
-  .rd-rejilla--3, .rd-rejilla--4 { grid-template-columns: repeat(2, 1fr); }
+  .rd-rejilla--3 { grid-template-columns: repeat(2, 1fr); }
   .rd-listado { grid-template-columns: 1fr; gap: 24px; }
   .rd-contacto__cuerpo { grid-template-columns: 1fr; }
   .rd-tienda { grid-template-columns: 1fr; }
@@ -289,7 +308,7 @@ button { font: inherit; cursor: pointer; }
   .rd-ventajas__lista { grid-template-columns: 1fr; gap: 12px; }
   .rd-accesos__lista, .rd-pasos__lista { grid-template-columns: 1fr; }
   .rd-carrusel { grid-auto-columns: 78%; gap: 12px; }
-  .rd-rejilla--3, .rd-rejilla--4 { gap: 12px; }
+  .rd-rejilla--3 { gap: 12px; }
   .rd-tarjeta__cuerpo { padding: 10px 10px 12px; }
   .rd-tarjeta__acciones { flex-wrap: wrap; }
   .rd-tarjeta__acciones .rd-btn { font-size: 13px; }

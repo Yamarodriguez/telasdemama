@@ -5,6 +5,9 @@ node_modules/
 /dist/
 # compilación aparte de las capturas del rediseño (herramientas/capturar-rediseno.mjs), para no pisar dist/
 /dist-rediseno/
+# fotos webp y su índice: los genera herramientas/webp.mjs en cada compilación (integración en astro.config.mjs)
+public/webp/
+src/data/imagenes-webp.json
 # compilación propia del hook pre-push (herramientas/todo.mjs --dist)
 /dist-comprobacion/
 .astro/

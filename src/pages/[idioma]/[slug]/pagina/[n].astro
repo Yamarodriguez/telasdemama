@@ -6,7 +6,7 @@ import { idiomas } from '../../../../lib/catalogo';
 import { listados } from '../../../../lib/paginas';
 import Rediseno from '../../../../layouts/Rediseno.astro';
 import ListadoRd from '../../../../components/rediseno/Listado.astro';
-import { REDISENO, redisenoActivo } from '../../../../lib/sitio';
+import { redisenoActivo } from '../../../../lib/sitio';
 
 export function getStaticPaths() {
   const rutas = [];
@@ -26,8 +26,8 @@ const urlActual = `${l.base}/pagina/${pagina}`;
 const titulo = l.tipo === 'category' ? `${l.title} (${pagina})` : l.title;
 ---
 {redisenoActivo(urlActual) ? (
-  <Rediseno idioma={idioma} tipo={l.tipo} opcion={REDISENO.opcion} title={titulo} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual}>
-    <ListadoRd idioma={idioma} opcion={REDISENO.opcion} titulo={l.h1} productos={l.productos} base={l.base} pagina={pagina} raiz={l.raiz} migas={l.migas} />
+  <Rediseno idioma={idioma} tipo={l.tipo} title={titulo} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={urlActual}>
+    <ListadoRd idioma={idioma} titulo={l.h1} productos={l.productos} base={l.base} pagina={pagina} raiz={l.raiz} migas={l.migas} />
   </Rediseno>
 ) : (
 <Base idioma={idioma} tipo={l.tipo} layout={l.layout} clasesExtra={l.clasesBody} title={l.tipo === 'category' ? `${l.title} (${pagina})` : l.title} description={l.description} keywords={l.keywords} canonical={l.canonical} hreflang={l.hreflang} urlActual={`${l.base}/pagina/${pagina}`} migas={l.migas} menuActual={l.menuActual}>

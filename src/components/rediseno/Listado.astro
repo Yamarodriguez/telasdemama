@@ -1,46 +1,37 @@
 ---
 /**
- * Categoría del rediseño. Opción 1: subcategorías a la izquierda, rejilla de 3 columnas. Opción 2: árbol de
- * categorías a la izquierda, rejilla de 4 columnas. Mismas 12 telas por página y mismas URL de paginación que
- * la tienda vieja (/pagina/n), para que ninguna URL cambie. Sin filtros por facetas ni orden (pendientes de la Fase 2).
+ * Categoría o lista del rediseño: subcategorías a la izquierda y rejilla de 3 columnas. Mismas 12 telas por
+ * página y mismas URL de paginación que la tienda vieja (/pagina/n), para que ninguna URL cambie.
+ * Sin filtros por facetas ni orden (pendientes de la Fase 2).
  */
 import type { NodoArbol, Producto } from '../../lib/catalogo';
 import { textos, contadorProductos, paginar, urlPagina, PRODUCTOS_POR_PAGINA } from '../../lib/catalogo';
 import { textosRediseno } from '../../lib/rediseno';
-import { plantilla } from '../../lib/sitio';
 import Tarjeta from './Tarjeta.astro';
-interface Props { idioma: string; opcion: string; titulo: string; productos: Producto[]; base: string; pagina: number; raiz: NodoArbol; migas: { texto: string; url: string }[]; /** Página de marca: descripciones de la marca bajo el título. */ marca?: { descripcion_corta_html: string; descripcion_html: string } }
-const { idioma, opcion, titulo, productos, base, pagina, raiz, migas, marca } = Astro.props;
+import Migas from './Migas.astro';
+interface Props { idioma: string; titulo: string; productos: Producto[]; base: string; pagina: number; raiz: NodoArbol; migas: { texto: string; url: string }[]; /** Página de marca: descripciones de la marca bajo el título. */ marca?: { descripcion_corta_html: string; descripcion_html: string } }
+const { idioma, titulo, productos, base, pagina, raiz, migas, marca } = Astro.props;
 const t = textos(idioma);
 const r = textosRediseno(idioma);
 const paginas = paginar(productos, PRODUCTOS_POR_PAGINA);
 const visibles = paginas[pagina - 1] ?? [];
 const total = paginas.length;
-const desde = (pagina - 1) * PRODUCTOS_POR_PAGINA + 1;
-const hasta = Math.min(pagina * PRODUCTOS_POR_PAGINA, productos.length);
 const numeros = [...new Set([1, 2, 3, pagina - 1, pagina, pagina + 1, total - 1, total].filter((n) => n >= 1 && n <= total))].sort((a, b) => a - b);
 const items: ({ n: number } | { espacio: true })[] = [];
 numeros.forEach((n, i) => { if (i > 0 && n - numeros[i - 1] > 1) items.push({ espacio: true }); items.push({ n }); });
 ---
-<nav class="rd-contenedor rd-migas" aria-label="Estás en">
-  <ol>{migas.map((m, i) => <li>{i < migas.length - 1 ? <a href={m.url}>{m.texto}</a> : <span aria-current="page">{m.texto}</span>}</li>)}</ol>
-</nav>
+<Migas migas={migas} />
 <div class="rd-contenedor rd-listado">
   <aside class="rd-listado__lateral">
     <h2 class="rd-listado__lateral-titulo">{r.listado.subcategorias}</h2>
     <ul class="rd-arbol">
-      {raiz.hijos.map((h) => (
-        <li>
-          <a href={h.href}>{h.nombre}</a>
-          {opcion === '2' && h.hijos.length > 0 && <ul>{h.hijos.map((n) => <li><a href={n.href}>{n.nombre}</a></li>)}</ul>}
-        </li>
-      ))}
+      {raiz.hijos.map((h) => <li><a href={h.href}>{h.nombre}</a></li>)}
     </ul>
   </aside>
   <section class="rd-listado__principal">
     <header class="rd-listado__cabecera">
       <h1 class="rd-listado__titulo">{titulo}</h1>
-      <p class="rd-listado__contador">{opcion === '2' ? plantilla(r.listado.mostrando, { desde, hasta, total: productos.length }) : contadorProductos(t, productos.length)}</p>
+      <p class="rd-listado__contador">{contadorProductos(t, productos.length)}</p>
     </header>
     {marca && (marca.descripcion_corta_html || marca.descripcion_html) && (
       <div class="rd-texto rd-listado__marca">
@@ -48,8 +39,8 @@ numeros.forEach((n, i) => { if (i > 0 && n - numeros[i - 1] > 1) items.push({ es
         <Fragment set:html={marca.descripcion_html} />
       </div>
     )}
-    <div class:list={['rd-rejilla', opcion === '2' ? 'rd-rejilla--4' : 'rd-rejilla--3']}>
-      {visibles.map((p, i) => <Tarjeta producto={p} idioma={idioma} opcion={opcion} prioridad={i < 3} />)}
+    <div class="rd-rejilla rd-rejilla--3">
+      {visibles.map((p, i) => <Tarjeta producto={p} idioma={idioma} prioridad={i < 3} />)}
     </div>
     {total > 1 && (
       <nav class="rd-paginacion" aria-label={t.pagina}>

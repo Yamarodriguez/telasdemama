@@ -60,13 +60,11 @@ export function plantilla(texto: string, valores: Record<string, string | number
 /**
  * Interruptor del rediseño (Fase 3, Dec. 4): src/data/rediseno.json. Apagado, la web es la copia fiel.
  * Encendido, solo las páginas de la lista cargan la hoja del rediseño y sus añadidos.
- * REDISENO=1 / REDISENO=0 y REDISENO_OPCION=a|b|c en el entorno mandan sobre el fichero (para compilar
- * las opciones en imagen sin editar nada).
+ * REDISENO=1 / REDISENO=0 en el entorno manda sobre el fichero (para compilar las capturas sin editar nada).
  */
 const envActivo = process.env.REDISENO;
 export const REDISENO = {
   activo: envActivo === '1' ? true : envActivo === '0' ? false : Boolean(rediseno.activo),
-  opcion: process.env.REDISENO_OPCION || rediseno.opcion || '1',
   /** Idiomas con el rediseño en TODAS sus páginas (los demás siguen como copia fiel). */
   idiomas: ((rediseno as any).idiomas ?? []) as string[],
   /** Páginas sueltas con el rediseño (y muestra para las capturas). */

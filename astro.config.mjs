@@ -2,6 +2,17 @@
 // Las URL de PrestaShop no llevan barra final y las fichas acaban en .html,
 // por eso build.format 'preserve' (las fichas con .html, las categorías sin extensión) y trailingSlash 'ignore' (B1 del método, adaptado).
 import { defineConfig } from 'astro/config';
+import { generarWebp } from './herramientas/webp.mjs';
+
+/** Fase 3: antes de compilar (o de arrancar el servidor de desarrollo) se generan las fotos webp que faltan (herramientas/webp.mjs). */
+const fotosWebp = {
+  name: 'telasdemama-webp',
+  hooks: {
+    'astro:config:setup': async ({ logger }) => {
+      await generarWebp({ log: (m) => logger.info(m) });
+    },
+  },
+};
 
 export default defineConfig({
   site: 'https://telasdemama.com',
@@ -13,4 +24,5 @@ export default defineConfig({
     assets: '_astro',
   },
   compressHTML: false,
+  integrations: [fotosWebp],
 });

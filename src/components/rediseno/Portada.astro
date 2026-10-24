@@ -1,6 +1,6 @@
 ---
 /**
- * Portada de la OPCIÓN 1 (informe §5): hero con foto de tela y dos botones, franja de ventajas, tres accesos con
+ * Portada del rediseño (informe §5): hero con foto de tela y dos botones, franja de ventajas, tres accesos con
  * foto, Novedades, «Cómo se pide», bloque de Natalia, opiniones de Revi y preguntas frecuentes.
  * Los productos de Novedades son los «Productos destacados» de la portada actual.
  */
@@ -60,7 +60,7 @@ const natalia = sobreMi(idioma);
       <a class="rd-enlace" href={t.novedades.href}>{t.novedades.ver_todas}</a>
     </div>
     <ul class="rd-carrusel">
-      {destacados.map((p, i) => <li><Tarjeta producto={p} idioma={idioma} opcion="1" prioridad={i < 4} /></li>)}
+      {destacados.map((p, i) => <li><Tarjeta producto={p} idioma={idioma} prioridad={i < 4} /></li>)}
     </ul>
   </div>
 </section>

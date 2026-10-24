@@ -4,6 +4,7 @@
 import { bloques, catalogo, nuevo, textoPlano, type Producto } from './catalogo';
 import { absoluta, enlaceWhatsApp, plantilla } from './sitio';
 import es from '../data/rediseno/es.json';
+import webpDatos from '../data/imagenes-webp.json';
 
 const TEXTOS: Record<string, any> = { es };
 
@@ -78,12 +79,19 @@ export function foto(p: Producto, tam: 'home_default' | 'medium_default' | 'larg
   return portada ? portada.por_tamano[tam] : `/img/p/${idioma}-default-${tam === 'large_default' ? 'large_default' : 'home_default'}.jpg`;
 }
 
-/** Versiones webp (src/data/imagenes-webp.json) de una imagen, si herramientas/webp.mjs las generó. */
-import webpDatos from '../data/imagenes-webp.json';
+/**
+ * Versiones webp de las fotos (src/data/imagenes-webp.json, que genera herramientas/webp.mjs al compilar): sin el
+ * relleno blanco de la tienda vieja, con sus medidas reales. «grande» para la ficha y el hero, «medio» para tarjetas.
+ */
 export interface Webp { ancho: number; alto: number; base: string; anchos: number[] }
 export function webpDe(idImagen: number | string | undefined): Webp | undefined {
   if (idImagen == null) return undefined;
   const w = (webpDatos as Record<string, any>)[String(idImagen)];
+  return w && w.base ? (w as Webp) : undefined;
+}
+export function webpMedioDe(idImagen: number | string | undefined): Webp | undefined {
+  if (idImagen == null) return undefined;
+  const w = (webpDatos as Record<string, any>)[String(idImagen)]?.medio;
   return w && w.base ? (w as Webp) : undefined;
 }
 export function srcsetWebp(w: Webp): string {
@@ -99,32 +107,4 @@ export function sobreMi(idioma: string): { subtitulo: string; parrafos: string[]
   const h4 = [...html.matchAll(/<h4[^>]*>([\s\S]*?)<\/h4>/gi)].map((m) => textoPlano(m[1]).trim()).filter(Boolean);
   const ps = [...html.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map((m) => textoPlano(m[1]).trim()).filter((x) => x.length > 60);
   return { subtitulo: h4.find((x) => !/^sobre m/i.test(x)) ?? '', parrafos: ps.slice(0, 2), href: pagina.url };
-}
-
-/** Primer producto con foto de una categoría (foto grande para banners y hero de la opción 2). */
-export function primeraFotoDeCategoria(idioma: string, idCategoria: number): Producto | undefined {
-  const c = catalogo(idioma);
-  const cat = c.categoriaPorId.get(idCategoria);
-  if (!cat) return undefined;
-  return c.productosDe(cat.productos).find((p) => p.imagenes.length > 0);
-}
-
-/** Primer producto con foto de una lista (más vendidos, novedades, rebajados). */
-export function primeraFotoDeLista(idioma: string, tipo: string): Producto | undefined {
-  const c = catalogo(idioma);
-  const o = Object.values(c.otras).find((x) => x.tipo === tipo);
-  return o ? c.productosDe(o.productos ?? []).find((p) => p.imagenes.length > 0) : undefined;
-}
-
-/** Las fichas «COMBINACION …» (sin precio), para «Nuestras combinaciones» de la opción 2. */
-export function combinaciones(idioma: string): Producto[] {
-  return catalogo(idioma).productos.filter((p) => /^COMBINACI/i.test(p.nombre) && p.imagenes.length > 0);
-}
-
-/** Descripción corta en una línea para las tarjetas de la opción 2. */
-export function lineaDescripcion(p: Producto, max = 90): string {
-  const s = textoPlano(p.descripcion_corta || p.descripcion || '').replace(/\s+/g, ' ').trim();
-  if (s.length <= max) return s;
-  const corte = s.lastIndexOf(' ', max);
-  return s.slice(0, corte > 40 ? corte : max) + '…';
 }
