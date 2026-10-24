@@ -214,7 +214,10 @@ button { font: inherit; cursor: pointer; }
 .rd-pedido__nota, .rd-ficha__envio { grid-column: 1 / -1; font-size: 13px; color: #555; margin: 10px 0 0; }
 .rd-precio__cm { width: 100%; font-size: 14px; color: #555; }
 .rd-pedido__total { display: flex; align-items: baseline; gap: 10px; margin: 0 0 8px; font-size: 15px; color: #555; }
-.rd-pedido__boton { grid-column: 1 / -1; }
+.rd-pedido__boton, .rd-pedido__tarjeta { grid-column: 1 / -1; }
+.rd-pedido__tarjeta { border: 2px solid transparent; }
+.rd-pedido__tarjeta[disabled] { opacity: .6; cursor: wait; }
+.rd-pedido__error { grid-column: 1 / -1; margin: 0; padding: 10px 12px; background: #fdecea; color: #8a1c14; border-radius: 6px; font-size: 14px; }
 .rd-pedido__total strong { font-size: 24px; color: var(--rd-texto, #2d2d2d); }
 .rd-ficha__envio::before { content: "✓ "; color: var(--rd-wa, #075e54); font-weight: 700; }
 .rd-pedido__agotado { font-weight: 700; color: #b3261e; }

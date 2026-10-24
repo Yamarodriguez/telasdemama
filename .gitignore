@@ -32,3 +32,5 @@ public/css/
 .env.*
 .DS_Store
 Thumbs.db
+# tabla de precios que lee la función de pago (derivada del catálogo; la genera herramientas/precios-pago.mjs en cada compilación)
+netlify/functions/precios-pago.mjs

@@ -1,0 +1,24 @@
+---
+/**
+ * Página a la que Stripe devuelve al cliente después de pagar con tarjeta (Fase 5, pago por centímetros).
+ * Oculta a Google. Los textos salen de src/data/rediseno/es.json → pago_correcto; el plazo de envío es el que ya
+ * decía la tienda («dentro de las 48 horas siguientes a la recepción del pago»).
+ */
+import Rediseno from '../layouts/Rediseno.astro';
+import { idiomas } from '../lib/catalogo';
+import { textosRediseno, whatsappGenerico } from '../lib/rediseno';
+const idioma = idiomas()[0];
+const t = textosRediseno(idioma);
+const c = t.pago_correcto;
+---
+<Rediseno idioma={idioma} tipo="pago" title={c.titulo} hreflang={{}} urlActual="/pago-correcto" noindex>
+  <div class="rd-contenedor rd-pagina rd-404">
+    <h1 class="rd-pagina__titulo">{c.titulo}</h1>
+    <p class="rd-404__texto"><strong>{c.gracias}</strong></p>
+    <p class="rd-404__texto">{c.plazo}</p>
+    <div class="rd-botones">
+      <a class="rd-btn rd-btn--wa" href={whatsappGenerico(idioma)} target="_blank" rel="noreferrer noopener"><span class="rd-ico-wa" aria-hidden="true"></span>{c.whatsapp}</a>
+      <a class="rd-btn rd-btn--secundario" href={`/${idioma}/`}>{c.volver}</a>
+    </div>
+  </div>
+</Rediseno>

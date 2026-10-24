@@ -4,6 +4,12 @@
   command = "npm run build"
   publish = "dist"
 
+# Funciones sin servidor: netlify/functions/pago.mjs crea la sesión de pago con tarjeta (Stripe Checkout).
+# Necesita la variable de entorno STRIPE_SECRET_KEY en Netlify (Site configuration → Environment variables).
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 [build.environment]
   # Astro 7 necesita Node 22.12 o superior
   NODE_VERSION = "22"

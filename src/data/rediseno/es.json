@@ -163,7 +163,11 @@
     "ver_tela": "Ver tela",
     "cantidad_etiqueta": "Cantidad (cm)",
     "por_cm": "por centímetro",
-    "total": "Total"
+    "total": "Total",
+    "pagar_tarjeta": "Pagar con tarjeta",
+    "pagar_cargando": "Abriendo el pago…",
+    "pagar_error": "No se ha podido abrir el pago con tarjeta. Pídelo por WhatsApp y lo resolvemos.",
+    "_pagar": "Yama, 24-10-2026: cobro con tarjeta (Stripe Checkout). Textos nuevos, pendientes de tu visto bueno."
   },
   "pie": {
     "pedidos": "Pedidos",
@@ -210,5 +214,13 @@
     "categoria_slug": "3-telas",
     "ficha_id": 1091,
     "ficha_elegida_href": "/es/inicio/1091-algodon-mar-caspio.html"
+  },
+  "pago_correcto": {
+    "_nota": "Página /pago-correcto, a la que Stripe devuelve al cliente tras pagar. El plazo es el que ya decía la tienda.",
+    "titulo": "Pago recibido",
+    "gracias": "Gracias por tu pedido.",
+    "plazo": "Los paquetes se envían dentro de las 48 horas siguientes a la recepción del pago.",
+    "whatsapp": "Escribirnos por WhatsApp",
+    "volver": "Volver a la tienda"
   }
 }

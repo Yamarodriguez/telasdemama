@@ -63,6 +63,8 @@ const largaDistinta = Boolean(p.descripcion) && textoPlano(p.descripcion).trim()
         </label>
         <p class="rd-pedido__total"><span>{r.ficha.total}</span> <strong id="rd-total">{totalInicial}</strong></p>
         <a class="rd-btn rd-btn--wa rd-btn--grande rd-pedido__boton" href={whatsapp} target="_blank" rel="noreferrer noopener"><span class="rd-ico-wa" aria-hidden="true"></span>{r.ficha.pedir}</a>
+        <button type="button" class="rd-btn rd-btn--primario rd-btn--grande rd-pedido__tarjeta" data-id={p.id} data-cargando={r.ficha.pagar_cargando} data-error={r.ficha.pagar_error}>{r.ficha.pagar_tarjeta}</button>
+        <p class="rd-pedido__error" role="alert" hidden></p>
         {r.ficha.cantidad_nota && <p class="rd-pedido__nota">{r.ficha.cantidad_nota}</p>}
       </form>
     ) : (
@@ -116,6 +118,18 @@ const largaDistinta = Boolean(p.descripcion) && textoPlano(p.descripcion).trim()
       enlace.setAttribute('href', 'https://wa.me/' + form.getAttribute('data-numero') + '?text=' + encodeURIComponent(form.getAttribute('data-mensaje').replace('{cantidad}', n).replace('{total}', importe)));
     };
     cantidad.addEventListener('input', actualizar); cantidad.addEventListener('change', actualizar);
+    // Pago con tarjeta: la función de Netlify recalcula el importe en el servidor y devuelve la dirección de pago de Stripe.
+    var tarjeta = form.querySelector('.rd-pedido__tarjeta'), aviso = form.querySelector('.rd-pedido__error');
+    if (tarjeta) tarjeta.addEventListener('click', function () {
+      var n = parseInt(cantidad.value, 10); if (!(n > 0)) n = 1;
+      var texto = tarjeta.textContent;
+      tarjeta.disabled = true; tarjeta.textContent = tarjeta.getAttribute('data-cargando'); aviso.hidden = true;
+      var fallo = function () { tarjeta.disabled = false; tarjeta.textContent = texto; aviso.textContent = tarjeta.getAttribute('data-error'); aviso.hidden = false; };
+      fetch('/.netlify/functions/pago', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: parseInt(tarjeta.getAttribute('data-id'), 10), cm: n }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { if (d && d.url) window.location.href = d.url; else fallo(); })
+        .catch(fallo);
+    });
     form.addEventListener('submit', function (e) { e.preventDefault(); actualizar(); window.open(enlace.getAttribute('href'), '_blank', 'noopener'); });
     actualizar();
   })();
