@@ -1,0 +1,21 @@
+---
+/** Ficha de muestra pintada con el prototipo n (2 o 3), dentro de la web, oculta a Google. */
+import Rediseno from '../../../layouts/Rediseno.astro';
+import BarraPrototipo from '../../../components/rediseno/BarraPrototipo.astro';
+import FichaRd from '../../../components/rediseno/Ficha.astro';
+import { idiomas, catalogo, textoPlano } from '../../../lib/catalogo';
+import { textosRediseno } from '../../../lib/rediseno';
+import { tituloProducto } from '../../../lib/reglas-titulos.mjs';
+
+export function getStaticPaths() {
+  return ['2', '3'].map((n) => ({ params: { n } }));
+}
+const { n } = Astro.params;
+const idioma = idiomas()[0];
+const t = textosRediseno(idioma).prototipos;
+const p = catalogo(idioma).porId.get(Number(t.ficha_id))!;
+---
+<Rediseno idioma={idioma} tipo="product" prototipo={n} title={`${t.etiqueta} ${n} · ${tituloProducto(idioma, p)}`} description={p.meta_description || textoPlano(p.descripcion_corta)} hreflang={{}} urlActual={`/prototipos/${n}/ficha`} noindex>
+  <BarraPrototipo idioma={idioma} n={n} actual="ficha" />
+  <FichaRd idioma={idioma} producto={p} />
+</Rediseno>

@@ -213,5 +213,23 @@
     },
     "ver_todas": "Todas las novedades",
     "_nota": "Solo para el prototipo 2 (al estilo de quekucas) que se enseña al cliente; la web publicada no lo usa."
+  },
+  "prototipos": {
+    "_nota": "Páginas /prototipos/ (índice, y portada + categoría + ficha de cada prototipo) para enseñar los diseños al cliente dentro de la web, ocultas a Google. Textos de la barra y del índice.",
+    "titulo": "Prototipos de diseño",
+    "intro": "Tres maneras de vestir la misma tienda, con los mismos textos, fotos y precios. La primera es la que lleva la web; las otras dos son propuestas.",
+    "etiqueta": "Prototipo",
+    "elegido": "Diseño elegido (el de la web)",
+    "nombres": {
+      "2": "Al estilo de quekucas",
+      "3": "Taller editorial"
+    },
+    "portada": "Portada",
+    "categoria": "Categoría «Telas»",
+    "ficha": "Ficha de producto",
+    "indice": "Todos los prototipos",
+    "categoria_slug": "3-telas",
+    "ficha_id": 1091,
+    "ficha_elegida_href": "/es/inicio/1091-algodon-mar-caspio.html"
   }
 }

@@ -318,3 +318,13 @@ button { font: inherit; cursor: pointer; }
   .rd-pedido { grid-template-columns: 100px 1fr; }
   .rd-pie__cuerpo { grid-template-columns: 1fr; gap: 24px; }
 }
+
+/* ===== Prototipos para el cliente (/prototipos/): barra e índice ===== */
+.rd-prototipo-barra { position: sticky; top: 0; z-index: 50; background: #111; color: #fff; font-size: 14px; }
+.rd-prototipo-barra__fila { display: flex; align-items: center; justify-content: space-between; gap: 12px 24px; flex-wrap: wrap; min-height: 44px; padding-top: 6px; padding-bottom: 6px; }
+.rd-prototipo-barra nav { display: flex; gap: 4px 18px; flex-wrap: wrap; }
+.rd-prototipo-barra a { color: #fff; text-decoration: none; opacity: .8; }
+.rd-prototipo-barra a:hover, .rd-prototipo-barra a[aria-current] { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.rd-lista-prototipos { display: grid; gap: 20px; max-width: 820px; }
+.rd-lista-prototipos__item { background: var(--rd-fondo-suave, #f7f5f2); border-radius: var(--rd-radio, 12px); padding: 24px; }
+.rd-lista-prototipos__item h2 { font-size: 24px; margin-bottom: 14px; }

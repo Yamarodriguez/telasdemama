@@ -8,8 +8,9 @@
 import Cabecera from '../components/rediseno/Cabecera.astro';
 import Pie from '../components/rediseno/Pie.astro';
 import { SEGUIMIENTO, REDISENO } from '../lib/sitio';
-// Prototipos para el cliente (solo al compilar con REDISENO_PROTOTIPO=2|3): otra hoja y, en el 2 y el 3, letras de Google Fonts.
-const prototipo = REDISENO.prototipo;
+// Prototipos para el cliente: otra hoja y letras de Google Fonts. Llegan por la propiedad «prototipo» (páginas
+// /prototipos/<n>/ dentro de la web) o, para las capturas, por REDISENO_PROTOTIPO=2|3 al compilar.
+const prototipo = Astro.props.prototipo ?? REDISENO.prototipo;
 const hoja = prototipo ? `/estilos/rediseno/prototipo-${prototipo}.css` : '/estilos/rediseno/rediseno.css';
 const FUENTES: Record<string, string> = {
   '2': 'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@700&display=swap',
@@ -29,6 +30,8 @@ interface Props {
   og?: { property: string; content: string }[];
   jsonLd?: object;
   noindex?: boolean;
+  /** «2» o «3»: la página se pinta con ese prototipo (hoja y letras) en vez de con el diseño elegido. */
+  prototipo?: string;
 }
 const { idioma, tipo, title, description = '', keywords = '', canonical = '', hreflang, urlActual, og = [], jsonLd, noindex = false } = Astro.props;
 const seg = SEGUIMIENTO;

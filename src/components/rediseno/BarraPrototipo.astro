@@ -1,0 +1,22 @@
+---
+/** Barra fija de las páginas /prototipos/<n>/: dice qué prototipo es y enlaza sus tres páginas de muestra y el índice. */
+import { textosRediseno } from '../../lib/rediseno';
+interface Props { idioma: string; n: string; actual: 'portada' | 'categoria' | 'ficha' }
+const { idioma, n, actual } = Astro.props;
+const t = textosRediseno(idioma).prototipos;
+const base = `/prototipos/${n}`;
+const enlaces = [
+  { clave: 'portada', texto: t.portada, href: `${base}/` },
+  { clave: 'categoria', texto: t.categoria, href: `${base}/telas` },
+  { clave: 'ficha', texto: t.ficha, href: `${base}/ficha` },
+];
+---
+<div class="rd-prototipo-barra">
+  <div class="rd-contenedor rd-prototipo-barra__fila">
+    <strong>{t.etiqueta} {n} · {t.nombres[n]}</strong>
+    <nav aria-label={t.titulo}>
+      {enlaces.map((e) => <a href={e.href} aria-current={e.clave === actual ? 'page' : undefined}>{e.texto}</a>)}
+      <a href="/prototipos/">{t.indice}</a>
+    </nav>
+  </div>
+</div>

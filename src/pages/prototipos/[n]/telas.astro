@@ -1,0 +1,21 @@
+---
+/** Categoría «Telas» pintada con el prototipo n (2 o 3), dentro de la web, oculta a Google. */
+import Rediseno from '../../../layouts/Rediseno.astro';
+import BarraPrototipo from '../../../components/rediseno/BarraPrototipo.astro';
+import ListadoRd from '../../../components/rediseno/Listado.astro';
+import { idiomas } from '../../../lib/catalogo';
+import { listados } from '../../../lib/paginas';
+import { textosRediseno } from '../../../lib/rediseno';
+
+export function getStaticPaths() {
+  return ['2', '3'].map((n) => ({ params: { n } }));
+}
+const { n } = Astro.params;
+const idioma = idiomas()[0];
+const t = textosRediseno(idioma).prototipos;
+const l = listados(idioma).find((x) => x.slug === t.categoria_slug)!;
+---
+<Rediseno idioma={idioma} tipo={l.tipo} prototipo={n} title={`${t.etiqueta} ${n} · ${l.title}`} description={l.description} hreflang={{}} urlActual={`/prototipos/${n}/telas`} noindex>
+  <BarraPrototipo idioma={idioma} n={n} actual="categoria" />
+  <ListadoRd idioma={idioma} titulo={l.h1} productos={l.productos} base={l.base} pagina={1} raiz={l.raiz} migas={l.migas} />
+</Rediseno>

@@ -1,0 +1,35 @@
+---
+/**
+ * Índice de los prototipos de diseño para enseñar al cliente (Yama, 24-10-2026). Páginas aparte de la web
+ * normal, ocultas a Google (noindex), con el diseño elegido como esqueleto. Cada prototipo tiene tres páginas de
+ * muestra: portada, categoría «Telas» y una ficha.
+ */
+import Rediseno from '../../layouts/Rediseno.astro';
+import { idiomas } from '../../lib/catalogo';
+import { textosRediseno } from '../../lib/rediseno';
+const idioma = idiomas()[0];
+const t = textosRediseno(idioma).prototipos;
+const lista = [
+  { n: '', nombre: t.elegido, href: `/${idioma}/`, telas: `/${idioma}/3-telas`, ficha: t.ficha_elegida_href },
+  { n: '2', nombre: t.nombres['2'], href: '/prototipos/2/', telas: '/prototipos/2/telas', ficha: '/prototipos/2/ficha' },
+  { n: '3', nombre: t.nombres['3'], href: '/prototipos/3/', telas: '/prototipos/3/telas', ficha: '/prototipos/3/ficha' },
+];
+---
+<Rediseno idioma={idioma} tipo="prototipos" title={t.titulo} hreflang={{}} urlActual="/prototipos/" noindex>
+  <div class="rd-contenedor rd-pagina">
+    <h1 class="rd-pagina__titulo">{t.titulo}</h1>
+    <p class="rd-pagina__intro">{t.intro}</p>
+    <ul class="rd-lista-prototipos">
+      {lista.map((p) => (
+        <li class="rd-lista-prototipos__item">
+          <h2>{p.n ? `${t.etiqueta} ${p.n} · ${p.nombre}` : p.nombre}</h2>
+          <div class="rd-botones">
+            <a class="rd-btn rd-btn--primario" href={p.href}>{t.portada}</a>
+            <a class="rd-btn rd-btn--secundario" href={p.telas}>{t.categoria}</a>
+            <a class="rd-btn rd-btn--secundario" href={p.ficha}>{t.ficha}</a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Rediseno>

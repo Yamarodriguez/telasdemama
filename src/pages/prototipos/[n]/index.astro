@@ -1,0 +1,22 @@
+---
+/** Portada del prototipo n (2 o 3), dentro de la web, oculta a Google. Mismos textos y datos que la portada real. */
+import Rediseno from '../../../layouts/Rediseno.astro';
+import BarraPrototipo from '../../../components/rediseno/BarraPrototipo.astro';
+import PortadaPrototipo2 from '../../../components/rediseno/PortadaPrototipo2.astro';
+import PortadaPrototipo3 from '../../../components/rediseno/PortadaPrototipo3.astro';
+import { idiomas, catalogo } from '../../../lib/catalogo';
+import { textosRediseno } from '../../../lib/rediseno';
+import { tituloPortada, h1Portada } from '../../../lib/reglas-titulos.mjs';
+
+export function getStaticPaths() {
+  return ['2', '3'].map((n) => ({ params: { n } }));
+}
+const { n } = Astro.params;
+const idioma = idiomas()[0];
+const o = catalogo(idioma).otras[`/${idioma}`];
+const t = textosRediseno(idioma).prototipos;
+---
+<Rediseno idioma={idioma} tipo="index" prototipo={n} title={`${t.etiqueta} ${n} · ${tituloPortada(idioma, o.title)}`} description={o.meta_description} hreflang={{}} urlActual={`/prototipos/${n}/`} noindex>
+  <BarraPrototipo idioma={idioma} n={n} actual="portada" />
+  {n === '2' ? <PortadaPrototipo2 idioma={idioma} h1={h1Portada(idioma)} /> : <PortadaPrototipo3 idioma={idioma} h1={h1Portada(idioma)} />}
+</Rediseno>
